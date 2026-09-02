@@ -1,0 +1,927 @@
+{
+  "Text_Core_Retry": {
+    "NameKor": "재시도",
+    "NameEng": "Retry",
+    "NameJap": "リトライ"
+  },
+  "Text_Core_Use": {
+    "NameKor": "사용",
+    "NameEng": "Use",
+    "NameJap": "使用"
+  },
+  "Text_Core_Delete": {
+    "NameKor": "삭제",
+    "NameEng": "Delete",
+    "NameJap": "削除"
+  },
+  "Text_Core_Warning": {
+    "NameKor": "경고",
+    "NameEng": "Warning",
+    "NameJap": "警告"
+  },
+  "Text_Core_Lobby": {
+    "NameKor": "로비",
+    "NameEng": "Lobby",
+    "NameJap": "ロビー"
+  },
+  "Text_Core_Yes": {
+    "NameKor": "예",
+    "NameEng": "Yes",
+    "NameJap": "はい"
+  },
+  "Text_Core_No": {
+    "NameKor": "아니오",
+    "NameEng": "No",
+    "NameJap": "いいえ"
+  },
+  "Text_Core_GameStart": {
+    "NameKor": "전투 시작",
+    "NameEng": "Start Battle",
+    "NameJap": "戦闘開始"
+  },
+  "Text_Core_Cancel": {
+    "NameKor": "취소",
+    "NameEng": "Cancel",
+    "NameJap": "キャンセル"
+  },
+  "Text_Core_Close": {
+    "NameKor": "닫기",
+    "NameEng": "Close",
+    "NameJap": "閉じる"
+  },
+  "Text_Core_Money": {
+    "NameKor": "골드",
+    "NameEng": "Gold",
+    "NameJap": "ゴールド"
+  },
+  "Text_Core_Equip": {
+    "NameKor": "장착",
+    "NameEng": "Equip",
+    "NameJap": "装備"
+  },
+  "Text_Core_Unequip": {
+    "NameKor": "해제",
+    "NameEng": "Unequip",
+    "NameJap": "解除"
+  },
+  "Text_Core_Buy": {
+    "NameKor": "구매",
+    "NameEng": "Buy",
+    "NameJap": "購入"
+  },
+  "Text_Core_MaxLevel": {
+    "NameKor": "최대",
+    "NameEng": "Max",
+    "NameJap": "最大"
+  },
+  "Text_Core_NotEnoughGold": {
+    "NameKor": "골드 부족",
+    "NameEng": "Not enough gold",
+    "NameJap": "ゴールド不足"
+  },
+  "Text_Core_GameTitle": {
+    "NameKor": "게임",
+    "NameEng": "Game",
+    "NameJap": "ゲーム"
+  },
+  "Text_Core_Start": {
+    "NameKor": "시작",
+    "NameEng": "Start",
+    "NameJap": "スタート"
+  },
+  "Text_Core_ElapsedTime": {
+    "NameKor": "소요 시간",
+    "NameEng": "Elapsed Time",
+    "NameJap": "経過時間"
+  },
+  "Text_Core_DifficultyNovice": {
+    "NameKor": "견습 주방",
+    "NameEng": "Novice Kitchen",
+    "NameJap": "見習いキッチン"
+  },
+  "Text_Core_DifficultyRegular": {
+    "NameKor": "정규 주방",
+    "NameEng": "Regular Kitchen",
+    "NameJap": "レギュラーキッチン"
+  },
+  "Text_Core_DifficultySpecial": {
+    "NameKor": "특선 주방",
+    "NameEng": "Special Kitchen",
+    "NameJap": "スペシャルキッチン"
+  },
+  "Text_Core_DifficultyMichelin": {
+    "NameKor": "미슐랭 주방",
+    "NameEng": "Michelin Kitchen",
+    "NameJap": "ミシュランキッチン"
+  },
+  "Text_Core_WeaponKnife": {
+    "NameKor": "셰프 나이프",
+    "NameEng": "Chef Knife",
+    "NameJap": "シェフナイフ"
+  },
+  "Text_Core_WeaponGun": {
+    "NameKor": "크림 건",
+    "NameEng": "Cream Gun",
+    "NameJap": "クリームガン"
+  },
+  "Text_Core_CardAttackName": {
+    "NameKor": "매운맛",
+    "NameEng": "Spice Up",
+    "NameJap": "辛味"
+  },
+  "Text_Core_CardAttackDesc": {
+    "NameKor": "공격력 +8% (최대 5중첩)",
+    "NameEng": "Attack power +8% (up to 5 stacks)",
+    "NameJap": "攻撃力 +8%（最大5重複）"
+  },
+  "Text_Core_CardAttackSpeedName": {
+    "NameKor": "손놀림",
+    "NameEng": "Quick Hands",
+    "NameJap": "手さばき"
+  },
+  "Text_Core_CardAttackSpeedDesc": {
+    "NameKor": "공격 속도 +8% (최대 5중첩)",
+    "NameEng": "Attack speed +8% (up to 5 stacks)",
+    "NameJap": "攻撃速度 +8%（最大5重複）"
+  },
+  "Text_Core_CardMoveSpeedName": {
+    "NameKor": "경쾌한 발",
+    "NameEng": "Light Steps",
+    "NameJap": "軽やかな足"
+  },
+  "Text_Core_CardMoveSpeedDesc": {
+    "NameKor": "이동 속도 +8% (최대 5중첩)",
+    "NameEng": "Move speed +8% (up to 5 stacks)",
+    "NameJap": "移動速度 +8%（最大5重複）"
+  },
+  "Text_Core_CardMaxHpName": {
+    "NameKor": "든든한 한 끼",
+    "NameEng": "Hearty Meal",
+    "NameJap": "しっかり一食"
+  },
+  "Text_Core_CardMaxHpDesc": {
+    "NameKor": "최대 체력 +8% (최대 5중첩)",
+    "NameEng": "Max HP +8% (up to 5 stacks)",
+    "NameJap": "最大HP +8%（最大5重複）"
+  },
+  "Text_Core_CardPickupRangeName": {
+    "NameKor": "긴 국자",
+    "NameEng": "Long Ladle",
+    "NameJap": "長いお玉"
+  },
+  "Text_Core_CardPickupRangeDesc": {
+    "NameKor": "획득 범위 +8% (최대 5중첩)",
+    "NameEng": "Pickup range +8% (up to 5 stacks)",
+    "NameJap": "取得範囲 +8%（最大5重複）"
+  },
+  "Text_Core_CardPierceName": {
+    "NameKor": "꼬치 사격",
+    "NameEng": "Skewer Shot",
+    "NameJap": "串刺し射撃"
+  },
+  "Text_Core_CardPierceDesc": {
+    "NameKor": "원거리 무기 투사체가 적 1체를 더 관통한다 (최대 2중첩, 3체 관통)",
+    "NameEng": "Ranged weapon shots pierce one more enemy (up to 2 stacks, 3 targets)",
+    "NameJap": "遠距離武器の弾がもう1体貫通（最大2重複・3体貫通）"
+  },
+  "Text_Core_CardRapidFireName": {
+    "NameKor": "연속 짜기",
+    "NameEng": "Rapid Squeeze",
+    "NameJap": "連続絞り"
+  },
+  "Text_Core_CardRapidFireDesc": {
+    "NameKor": "원거리 무기 공격 주기 -8% (최대 5중첩)",
+    "NameEng": "Ranged weapon fire interval -8% (up to 5 stacks)",
+    "NameJap": "遠距離武器の攻撃周期 -8%（最大5重複）"
+  },
+  "Text_Core_CardMultiShotName": {
+    "NameKor": "세 갈래 짜기",
+    "NameEng": "Triple Squeeze",
+    "NameJap": "三又絞り"
+  },
+  "Text_Core_CardMultiShotDesc": {
+    "NameKor": "원거리 무기가 투사체 1발을 더 부채꼴로 쏜다 (최대 2중첩, 3발)",
+    "NameEng": "Ranged weapon fires one more spread shot (up to 2 stacks, 3 shots)",
+    "NameJap": "遠距離武器が弾を1発追加で扇状に発射（最大2重複・3発）"
+  },
+  "Text_Core_CardWiderArcName": {
+    "NameKor": "넓은 손질",
+    "NameEng": "Wide Sweep",
+    "NameJap": "広い手さばき"
+  },
+  "Text_Core_CardWiderArcDesc": {
+    "NameKor": "근접 무기 부채꼴 각도 +15% (최대 5중첩)",
+    "NameEng": "Melee weapon arc angle +15% (up to 5 stacks)",
+    "NameJap": "近接武器の扇角度 +15%（最大5重複）"
+  },
+  "Text_Core_CardMultiHitName": {
+    "NameKor": "다지기",
+    "NameEng": "Mince",
+    "NameJap": "みじん切り"
+  },
+  "Text_Core_CardMultiHitDesc": {
+    "NameKor": "근접 무기 1회 공격의 타격 수 +1 (최대 5중첩)",
+    "NameEng": "Melee weapon hits once more per swing (up to 5 stacks)",
+    "NameJap": "近接武器の1回攻撃の打撃数 +1（最大5重複）"
+  },
+  "Text_Core_CardSpinSlashName": {
+    "NameKor": "회전 손질",
+    "NameEng": "Spin Slash",
+    "NameJap": "回転さばき"
+  },
+  "Text_Core_CardSpinSlashDesc": {
+    "NameKor": "근접 무기가 360° 전방위를 벤다 (최대 1중첩)",
+    "NameEng": "Melee weapon slashes a full 360 degrees (max 1 stack)",
+    "NameJap": "近接武器が360°全方位を斬る（最大1重複）"
+  },
+  "Text_Core_CardOvenBlastName": {
+    "NameKor": "오븐 폭발",
+    "NameEng": "Oven Blast",
+    "NameJap": "オーブン爆発"
+  },
+  "Text_Core_CardOvenBlastDesc": {
+    "NameKor": "3초마다 주변에 장판 피해를 준다. 중첩마다 피해 +20%",
+    "NameEng": "Deals area damage around you every 3 seconds. +20% damage per stack",
+    "NameJap": "3秒ごとに周囲へ範囲ダメージ。重複ごとにダメージ +20%"
+  },
+  "Text_Core_CardSugarThornName": {
+    "NameKor": "설탕 가시",
+    "NameEng": "Sugar Thorn",
+    "NameJap": "砂糖の棘"
+  },
+  "Text_Core_CardSugarThornDesc": {
+    "NameKor": "피격 시 주변에 반사 피해를 준다. 중첩마다 피해 +20%",
+    "NameEng": "Reflects damage around you when hit. +20% damage per stack",
+    "NameJap": "被弾時に周囲へ反射ダメージ。重複ごとにダメージ +20%"
+  },
+  "Text_Core_CardSugarRushName": {
+    "NameKor": "슈가 러시",
+    "NameEng": "Sugar Rush",
+    "NameJap": "シュガーラッシュ"
+  },
+  "Text_Core_CardSugarRushDesc": {
+    "NameKor": "주기적으로 일정 시간 이동 속도가 오른다. 중첩마다 효과 +20%",
+    "NameEng": "Periodically boosts move speed for a while. +20% effect per stack",
+    "NameJap": "周期的に一定時間、移動速度が上がる。重複ごとに効果 +20%"
+  },
+  "Text_Core_CardHealMacaronName": {
+    "NameKor": "회복 마카롱",
+    "NameEng": "Healing Macaron",
+    "NameJap": "回復マカロン"
+  },
+  "Text_Core_CardHealMacaronDesc": {
+    "NameKor": "주기적으로 체력을 회복한다. 중첩마다 회복량 +20%",
+    "NameEng": "Periodically restores HP. +20% healing per stack",
+    "NameJap": "周期的にHPを回復。重複ごとに回復量 +20%"
+  },
+  "Text_Core_UnlockCardOvenBlast": {
+    "NameKor": "새 카드 - 오븐 폭발",
+    "NameEng": "New card - Oven Blast",
+    "NameJap": "新カード - オーブン爆発"
+  },
+  "Text_Core_UnlockCardSugarThorn": {
+    "NameKor": "새 카드 - 설탕 가시",
+    "NameEng": "New card - Sugar Thorn",
+    "NameJap": "新カード - 砂糖の棘"
+  },
+  "Text_Core_UnlockCardSugarRush": {
+    "NameKor": "새 카드 - 슈가 러시",
+    "NameEng": "New card - Sugar Rush",
+    "NameJap": "新カード - シュガーラッシュ"
+  },
+  "Text_Core_UnlockCardHealMacaron": {
+    "NameKor": "새 카드 - 회복 마카롱",
+    "NameEng": "New card - Healing Macaron",
+    "NameJap": "新カード - 回復マカロン"
+  },
+  "Text_Core_UnlockBaseMaxHp": {
+    "NameKor": "기초 체력 강화",
+    "NameEng": "Base HP boosted",
+    "NameJap": "基礎HP強化"
+  },
+  "Text_Core_UnlockBaseAttack": {
+    "NameKor": "기초 공격력 강화",
+    "NameEng": "Base attack boosted",
+    "NameJap": "基礎攻撃力強化"
+  },
+  "Text_Core_UnlockBaseMoveSpeed": {
+    "NameKor": "기초 이동 속도 강화",
+    "NameEng": "Base move speed boosted",
+    "NameJap": "基礎移動速度強化"
+  },
+  "Text_Core_UnlockTitle": {
+    "NameKor": "주방 보급",
+    "NameEng": "Kitchen Supply",
+    "NameJap": "キッチン補給"
+  },
+  "Text_Core_UpgradeSelectTitle": {
+    "NameKor": "레시피 선택",
+    "NameEng": "Choose a Recipe",
+    "NameJap": "レシピ選択"
+  },
+  "Text_Core_StageResultTitle": {
+    "NameKor": "영업 결과",
+    "NameEng": "Service Result",
+    "NameJap": "営業結果"
+  },
+  "Text_Core_Clear": {
+    "NameKor": "주문 완성",
+    "NameEng": "Order Complete",
+    "NameJap": "注文完成"
+  },
+  "Text_Core_Fail": {
+    "NameKor": "조리 실패",
+    "NameEng": "Burnt Out",
+    "NameJap": "調理失敗"
+  },
+  "Text_Core_GiveUpConfirm": {
+    "NameKor": "앞치마를 내려놓을까?",
+    "NameEng": "Hang up your apron?",
+    "NameJap": "エプロンを置く？"
+  },
+  "Text_Core_EnemyApple": {
+    "NameKor": "사과 병사",
+    "NameEng": "Apple Trooper",
+    "NameJap": "リンゴ兵"
+  },
+  "Text_Core_EnemyBanana": {
+    "NameKor": "바나나 병사",
+    "NameEng": "Banana Trooper",
+    "NameJap": "バナナ兵"
+  },
+  "Text_Core_EnemyOrange": {
+    "NameKor": "오렌지 병사",
+    "NameEng": "Orange Trooper",
+    "NameJap": "オレンジ兵"
+  },
+  "Text_Core_EnemyWatermelon": {
+    "NameKor": "수박 병사",
+    "NameEng": "Watermelon Trooper",
+    "NameJap": "スイカ兵"
+  },
+  "Text_Core_WeaponRollingPin": {
+    "NameKor": "페이스트리 밀대",
+    "NameEng": "Pastry Pin",
+    "NameJap": "ペストリー麺棒"
+  },
+  "Text_Core_WeaponWhisk": {
+    "NameKor": "휘핑 거품기",
+    "NameEng": "Whipping Whisk",
+    "NameJap": "ホイップ泡立て器"
+  },
+  "Text_Core_WeaponSkewer": {
+    "NameKor": "카라멜 꼬치",
+    "NameEng": "Caramel Skewer",
+    "NameJap": "キャラメル串"
+  },
+  "Text_Core_WeaponSprinkle": {
+    "NameKor": "스프링클 통",
+    "NameEng": "Sprinkle Shaker",
+    "NameJap": "スプリンクル缶"
+  },
+  "Text_Core_CurrencySugar": {
+    "NameKor": "설탕",
+    "NameEng": "Sugar",
+    "NameJap": "砂糖"
+  },
+  "Text_Core_CurrencyCrumb": {
+    "NameKor": "부스러기",
+    "NameEng": "Crumb",
+    "NameJap": "くず"
+  },
+  "Text_Core_WeaponDrawTitle": {
+    "NameKor": "무기 뽑기",
+    "NameEng": "Weapon Draw",
+    "NameJap": "武器ガチャ"
+  },
+  "Text_Core_WeaponDraw": {
+    "NameKor": "뽑기",
+    "NameEng": "Draw",
+    "NameJap": "ガチャ"
+  },
+  "Text_Core_WeaponDrawNew": {
+    "NameKor": "새 무기 획득!",
+    "NameEng": "New weapon!",
+    "NameJap": "新武器獲得！"
+  },
+  "Text_Core_WeaponDrawDuplicate": {
+    "NameKor": "중복! 부스러기로 바꿨다",
+    "NameEng": "Duplicate! Converted to Crumbs",
+    "NameJap": "重複！くずに変換"
+  },
+  "Text_Core_NotEnoughSugar": {
+    "NameKor": "설탕 부족",
+    "NameEng": "Not enough Sugar",
+    "NameJap": "砂糖不足"
+  },
+  "Text_Core_NotEnoughCrumb": {
+    "NameKor": "부스러기 부족",
+    "NameEng": "Not enough Crumbs",
+    "NameJap": "くず不足"
+  },
+  "Text_Core_WeaponUpgrade": {
+    "NameKor": "강화",
+    "NameEng": "Upgrade",
+    "NameJap": "強化"
+  },
+  "Text_Core_WeaponList": {
+    "NameKor": "무기 목록",
+    "NameEng": "Weapons",
+    "NameJap": "武器一覧"
+  },
+  "Text_Core_TabShop": {
+    "NameKor": "상점",
+    "NameEng": "Shop",
+    "NameJap": "ショップ"
+  },
+  "Text_Core_TabMission": {
+    "NameKor": "미션",
+    "NameEng": "Missions",
+    "NameJap": "ミッション"
+  },
+  "Text_Core_TabHome": {
+    "NameKor": "주방",
+    "NameEng": "Kitchen",
+    "NameJap": "キッチン"
+  },
+  "Text_Core_TabWeapon": {
+    "NameKor": "무기",
+    "NameEng": "Weapons",
+    "NameJap": "武器"
+  },
+  "Text_Core_AttendTitle": {
+    "NameKor": "출근 도장",
+    "NameEng": "Daily Check-In",
+    "NameJap": "出勤スタンプ"
+  },
+  "Text_Core_AttendDay": {
+    "NameKor": "{0}일차",
+    "NameEng": "Day {0}",
+    "NameJap": "{0}日目"
+  },
+  "Text_Core_AttendToday": {
+    "NameKor": "오늘",
+    "NameEng": "Today",
+    "NameJap": "今日"
+  },
+  "Text_Core_Claim": {
+    "NameKor": "받기",
+    "NameEng": "Claim",
+    "NameJap": "受け取る"
+  },
+  "Text_Core_Claimed": {
+    "NameKor": "수령 완료",
+    "NameEng": "Claimed",
+    "NameJap": "受取済み"
+  },
+  "Text_Core_MissionTitle": {
+    "NameKor": "오늘의 주문",
+    "NameEng": "Today's Orders",
+    "NameJap": "今日の注文"
+  },
+  "Text_Core_MissionDaily": {
+    "NameKor": "일일 미션",
+    "NameEng": "Daily Missions",
+    "NameJap": "デイリーミッション"
+  },
+  "Text_Core_MissionAchieve": {
+    "NameKor": "주방 업적",
+    "NameEng": "Kitchen Records",
+    "NameJap": "キッチン実績"
+  },
+  "Text_Core_MissionDailyPlay": {
+    "NameKor": "영업 3회 개시",
+    "NameEng": "Start 3 services",
+    "NameJap": "営業を3回開始"
+  },
+  "Text_Core_MissionDailyKill": {
+    "NameKor": "과일 3,000개 손질",
+    "NameEng": "Chop 3,000 fruits",
+    "NameJap": "フルーツを3,000体さばく"
+  },
+  "Text_Core_MissionDailyClear": {
+    "NameKor": "주문 1회 완성",
+    "NameEng": "Complete 1 order",
+    "NameJap": "注文を1回完成"
+  },
+  "Text_Core_MissionAchievePlay": {
+    "NameKor": "영업 누적",
+    "NameEng": "Total Services",
+    "NameJap": "累計営業"
+  },
+  "Text_Core_MissionAchieveKill": {
+    "NameKor": "손질 누적",
+    "NameEng": "Total Chops",
+    "NameJap": "累計さばき"
+  },
+  "Text_Core_MissionAchieveDraw": {
+    "NameKor": "뽑기 누적",
+    "NameEng": "Total Draws",
+    "NameJap": "累計ガチャ"
+  },
+  "Text_Core_ShopTitle": {
+    "NameKor": "주방 상점",
+    "NameEng": "Kitchen Shop",
+    "NameJap": "キッチンショップ"
+  },
+  "Text_Core_ShopCrumbSmall": {
+    "NameKor": "부스러기 한 줌",
+    "NameEng": "Handful of Crumbs",
+    "NameJap": "くず一握り"
+  },
+  "Text_Core_ShopCrumbLarge": {
+    "NameKor": "부스러기 한 봉지",
+    "NameEng": "Bag of Crumbs",
+    "NameJap": "くず一袋"
+  },
+  "Text_Core_ShopSugarFree": {
+    "NameKor": "오늘의 설탕",
+    "NameEng": "Today's Sugar",
+    "NameJap": "今日の砂糖"
+  },
+  "Text_Core_ShopFree": {
+    "NameKor": "무료",
+    "NameEng": "Free",
+    "NameJap": "無料"
+  },
+  "Text_Core_ShopSoldOut": {
+    "NameKor": "오늘 구매 완료",
+    "NameEng": "Sold out today",
+    "NameJap": "本日分完売"
+  },
+  "Text_Core_PauseTitle": {
+    "NameKor": "잠시 멈춤",
+    "NameEng": "Paused",
+    "NameJap": "一時停止"
+  },
+  "Text_Core_Resume": {
+    "NameKor": "계속하기",
+    "NameEng": "Resume",
+    "NameJap": "再開"
+  },
+  "Text_Core_GiveUp": {
+    "NameKor": "영업 종료",
+    "NameEng": "Give Up",
+    "NameJap": "営業終了"
+  },
+  "Text_Thebackend_DefaultNickname": {
+    "NameKor": "플레이어",
+    "NameEng": "Player"
+  },
+  "Text_Thebackend_ID": {
+    "NameKor": "아이디",
+    "NameEng": "ID"
+  },
+  "Text_Thebackend_PW": {
+    "NameKor": "비밀번호",
+    "NameEng": "Password"
+  },
+  "Text_Thebackend_Email": {
+    "NameKor": "이메일",
+    "NameEng": "Email"
+  },
+  "Text_Thebackend_Login": {
+    "NameKor": "로그인",
+    "NameEng": "Login"
+  },
+  "Text_Thebackend_Signup": {
+    "NameKor": "회원가입",
+    "NameEng": "Sign Up"
+  },
+  "Text_Thebackend_Nick": {
+    "NameKor": "닉네임",
+    "NameEng": "Nickname"
+  },
+  "Text_Thebackend_Chart": {
+    "NameKor": "테이블",
+    "NameEng": "Table"
+  },
+  "Text_Thebackend_CloudSave": {
+    "NameKor": "클라우드",
+    "NameEng": "Cloud"
+  },
+  "Text_Thebackend_DBSave": {
+    "NameKor": "데이터베이스",
+    "NameEng": "Database"
+  },
+  "Text_Thebackend_LogoutNotify": {
+    "NameKor": "로그아웃 하시겠습니까?",
+    "NameEng": "Do you want to log out?"
+  },
+  "Text_Thebackend_SubscriptCustom": {
+    "NameKor": "일반계정",
+    "NameEng": "Standard Account"
+  },
+  "Text_Thebackend_SubscriptFederation": {
+    "NameKor": "소셜계정",
+    "NameEng": "Social Account"
+  },
+  "Text_Thebackend_Init": {
+    "NameKor": "초기화",
+    "NameEng": "Reset"
+  },
+  "Text_Thebackend_WithdrawNotify1": {
+    "NameKor": "회원탈퇴를 하시겠습니까?\r\r\r\n1주일 뒤 탈퇴처리가 완료됩니다.",
+    "NameEng": "Do you want to delete your account?\r\r\r\nDeletion will be completed in one week."
+  },
+  "Text_Thebackend_WithdrawNotify2": {
+    "NameKor": "정말 회원탈퇴를 하시겠습니까?\r\r\r\n1주일 이전에 로그인 시 탈퇴가 취소됩니다.",
+    "NameEng": "Are you sure you want to delete your account?\r\r\r\nLogging in within one week will cancel the deletion."
+  },
+  "Text_Thebackend_WithdrawNotify3": {
+    "NameKor": "진심으로 회원탈퇴를 하시겠습니까?\r\r\r\n탈퇴 완료시 복구가 불가합니다.",
+    "NameEng": "Do you really want to delete your account?\r\r\r\nOnce completed, it cannot be recovered."
+  },
+  "Text_Thebackend_Local": {
+    "NameKor": "기기",
+    "NameEng": "Device"
+  },
+  "Text_Thebackend_DB": {
+    "NameKor": "계정",
+    "NameEng": "Account"
+  },
+  "Text_Thebackend_RemoveLocalNotUUID1": {
+    "NameKor": "이 기기에 다른 계정의 데이터가 감지되었습니다.\r\r\r\n\r\r\r\n삭제하시겠습니까?",
+    "NameEng": "Data from another account was detected on this device.\r\r\r\n\r\r\r\nDo you want to delete it?"
+  },
+  "Text_Thebackend_RemoveLocalNotUUID2": {
+    "NameKor": "정말 기기에 저장된 데이터를 삭제 하시겠습니까?\r\r\r\n\r\r\r\n계정에 백업되었는지 확인하는 것을 권장합니다.",
+    "NameEng": "Are you sure you want to delete the data saved on this device?\r\r\r\n\r\r\r\nWe recommend confirming it is backed up to your account first."
+  },
+  "Text_Thebackend_RemoveLocalUseServer1": {
+    "NameKor": "계정에 최근 저장된 데이터가 있습니다.\r\r\r\n사용할 데이터를 선택해주세요.\r\r\r\n\r\r\r\n기기 : {0}\r\r\r\n계정 : {1}",
+    "NameEng": "There is recently saved data in your account.\r\r\r\nPlease choose which data to use.\r\r\r\n\r\r\r\nDevice: {0}\r\r\r\nAccount: {1}"
+  },
+  "Text_Thebackend_RemoveLocalUseServer2_Local": {
+    "NameKor": "정말 기기에 저장된 데이터를 사용하시겠습니까?\r\r\r\n\r\r\r\n계정에 저장된 데이터는 삭제됩니다.",
+    "NameEng": "Are you sure you want to use the data saved on this device?\r\r\r\n\r\r\r\nThe data saved in your account will be deleted."
+  },
+  "Text_Thebackend_RemoveLocalUseServer2_Server": {
+    "NameKor": "정말 계정에 저장된 데이터를 사용하시겠습니까?\r\r\r\n\r\r\r\n기기에 저장된 데이터는 삭제됩니다.",
+    "NameEng": "Are you sure you want to use the data saved in your account?\r\r\r\n\r\r\r\nThe data saved on this device will be deleted."
+  },
+  "Text_Thebackend_NewServerUseLocal1": {
+    "NameKor": "이 기기에 기존 데이터가 감지되었습니다.\r\r\r\n\r\r\r\n사용하시겠습니까?",
+    "NameEng": "Existing data was detected on this device.\r\r\r\n\r\r\r\nDo you want to use it?"
+  },
+  "Text_Thebackend_NewServerUseLocal2": {
+    "NameKor": "기기에 저장된 데이터가 삭제됩니다.\r\r\r\n\r\r\r\n새 데이터를 사용하시겠습니까?",
+    "NameEng": "The data saved on this device will be deleted.\r\r\r\n\r\r\r\nDo you want to use the new data?"
+  },
+  "Text_Thebackend_NewServerUseLocal3": {
+    "NameKor": "기기에 저장된 데이터가\r\r\r\n영구적으로 삭제되며\r\r\r\n복구 할 수 없습니다.",
+    "NameEng": "The data saved on this device\r\r\r\nwill be permanently deleted\r\r\r\nand cannot be recovered."
+  },
+  "Text_Thebackend_ChangeSuccess": {
+    "NameKor": "{0} 변경 성공",
+    "NameEng": "{0} changed successfully"
+  },
+  "Text_Thebackend_ChangeFailed": {
+    "NameKor": "{0} 변경 실패",
+    "NameEng": "Failed to change {0}"
+  },
+  "Text_Thebackend_Success": {
+    "NameKor": "{0} 성공",
+    "NameEng": "{0} succeeded"
+  },
+  "Text_Thebackend_Failed": {
+    "NameKor": "{0} 실패",
+    "NameEng": "{0} failed"
+  },
+  "Text_Thebackend_SetFailed": {
+    "NameKor": "{0} 설정 실패",
+    "NameEng": "Failed to set {0}"
+  },
+  "Text_Thebackend_DownloadFailed": {
+    "NameKor": "{0} 다운로드 실패",
+    "NameEng": "Failed to download {0}"
+  },
+  "Text_Thebackend_LoadFailed": {
+    "NameKor": "{0} 로딩 실패",
+    "NameEng": "Failed to load {0}"
+  },
+  "Text_Thebackend_SaveFailed": {
+    "NameKor": "{0} 저장 실패",
+    "NameEng": "Failed to save {0}"
+  },
+  "Text_Thebackend_FindSomeSuccess": {
+    "NameKor": "{0} 찾기 성공",
+    "NameEng": "{0} found successfully"
+  },
+  "Text_Thebackend_FindSomeFailed": {
+    "NameKor": "{0} 찾기 실패",
+    "NameEng": "Failed to find {0}"
+  },
+  "Text_Thebackend_ResetSomeSuccess": {
+    "NameKor": "{0} 초기화 성공",
+    "NameEng": "{0} reset successfully"
+  },
+  "Text_Thebackend_ResetSomeFailed": {
+    "NameKor": "{0} 초기화 실패",
+    "NameEng": "Failed to reset {0}"
+  },
+  "Text_Thebackend_ErrorUnknown": {
+    "NameKor": "처리되지 않은 에러입니다.",
+    "NameEng": "An unhandled error occurred."
+  },
+  "Text_Thebackend_ErrorNoInternet": {
+    "NameKor": "인터넷 연결이 없습니다.",
+    "NameEng": "No internet connection."
+  },
+  "Text_Thebackend_ErrorClientRequestFail": {
+    "NameKor": "네트워크 상태가 불안정합니다.",
+    "NameEng": "Network connection is unstable."
+  },
+  "Text_Thebackend_ErrorMaintenance": {
+    "NameKor": "점검중입니다.",
+    "NameEng": "Under maintenance."
+  },
+  "Text_Thebackend_ErrorBadAccessToken": {
+    "NameKor": "로그인 정보가 만료되었습니다.",
+    "NameEng": "Your login session has expired."
+  },
+  "Text_Thebackend_ErrorTooManyRequests": {
+    "NameKor": "과도한 요청이 감지되었습니다. (5분 뒤 재시도)",
+    "NameEng": "Too many requests detected. (Retry in 5 minutes)"
+  },
+  "Text_Thebackend_ErrorBlocked": {
+    "NameKor": "차단당한 기기입니다.",
+    "NameEng": "This device has been blocked."
+  },
+  "Text_Thebackend_ErrorTimeout": {
+    "NameKor": "타임아웃되었습니다.",
+    "NameEng": "The request timed out."
+  },
+  "Text_Thebackend_ErrorProvisionExceeded": {
+    "NameKor": "데이터베이스 할당량이 초과되었습니다.",
+    "NameEng": "Database quota has been exceeded."
+  },
+  "Text_Thebackend_ErrorProvisionUpdating": {
+    "NameKor": "데이터베이스 할당량이 업데이트중입니다.",
+    "NameEng": "Database quota is being updated."
+  },
+  "Text_Thebackend_ErrorServerError": {
+    "NameKor": "서버가 과부하 상태입니다.",
+    "NameEng": "The server is overloaded."
+  },
+  "Text_Thebackend_ErrorBadNick": {
+    "NameKor": "20자 이하 공백 없이 작성해주세요.",
+    "NameEng": "Please use up to 20 characters with no spaces."
+  },
+  "Text_Thebackend_ErrorDuplicateNick": {
+    "NameKor": "이미 존재하는 닉네임입니다.",
+    "NameEng": "This nickname is already taken."
+  },
+  "Text_Thebackend_ErrorBadPassword": {
+    "NameKor": "잘못된 비밀번호입니다.",
+    "NameEng": "Incorrect password."
+  },
+  "Text_Thebackend_ErrorBadEmail": {
+    "NameKor": "잘못된 이메일입니다.",
+    "NameEng": "Invalid email."
+  },
+  "Text_Popup_NotifyTitle": {
+    "NameKor": "알림",
+    "NameEng": "Notice",
+    "NameJap": "お知らせ"
+  },
+  "Text_Popup_Back": {
+    "NameKor": "뒤로",
+    "NameEng": "Back",
+    "NameJap": "戻る"
+  },
+  "Text_Popup_Confirm": {
+    "NameKor": "확정",
+    "NameEng": "Confirm",
+    "NameJap": "決定"
+  },
+  "Text_Popup_Setting": {
+    "NameKor": "설정",
+    "NameEng": "Settings",
+    "NameJap": "設定"
+  },
+  "Text_Popup_Change": {
+    "NameKor": "{0} 변경",
+    "NameEng": "Change {0}"
+  },
+  "Text_Popup_ErrorPWNotSame": {
+    "NameKor": "비밀번호가 일치하지 않습니다.",
+    "NameEng": "Passwords do not match."
+  },
+  "Text_Popup_FindSome": {
+    "NameKor": "{0} 찾기",
+    "NameEng": "Find {0}"
+  },
+  "Text_Popup_NeedInitBackend": {
+    "NameKor": "인터넷 필요!",
+    "NameEng": "Internet required!"
+  },
+  "Text_Popup_Notice": {
+    "NameKor": "공지",
+    "NameEng": "Notice"
+  },
+  "Text_Popup_Privacy": {
+    "NameKor": "개인정보처리방침",
+    "NameEng": "Privacy Policy"
+  },
+  "Text_Popup_ResetSome": {
+    "NameKor": "{0} 초기화",
+    "NameEng": "Reset {0}"
+  },
+  "Text_Popup_Support": {
+    "NameKor": "고객센터",
+    "NameEng": "Support"
+  },
+  "Text_Popup_Terms": {
+    "NameKor": "서비스이용약관",
+    "NameEng": "Terms of Service"
+  },
+  "Text_Popup_UserInfo": {
+    "NameKor": "계정정보",
+    "NameEng": "Account Info"
+  },
+  "Text_Shutdown_Text": {
+    "NameKor": "에러 발생으로 잠시 후 로비로 이동합니다.",
+    "NameEng": "An error occurred. Returning to the lobby shortly."
+  },
+  "Text_Quit_Title": {
+    "NameKor": "게임 종료",
+    "NameEng": "Quit Game",
+    "NameJap": "ゲーム終了"
+  },
+  "Text_Quit_Text": {
+    "NameKor": "정말 게임을 종료하시겠습니까?",
+    "NameEng": "Are you sure you want to quit the game?",
+    "NameJap": "本当にゲームを終了しますか?"
+  },
+  "Text_Popup_Setting_BGM": {
+    "NameKor": "배경음",
+    "NameEng": "BGM",
+    "NameJap": "BGM"
+  },
+  "Text_Popup_Setting_Language": {
+    "NameKor": "한국어",
+    "NameEng": "English",
+    "NameJap": "日本語"
+  },
+  "Text_Popup_Setting_SE": {
+    "NameKor": "효과음",
+    "NameEng": "SFX",
+    "NameJap": "効果音"
+  },
+  "Text_Popup_Setting_Game": {
+    "NameKor": "게임",
+    "NameEng": "Game",
+    "NameJap": "ゲーム"
+  },
+  "Text_Popup_Setting_Graphic": {
+    "NameKor": "그래픽",
+    "NameEng": "Graphics",
+    "NameJap": "グラフィック"
+  },
+  "Text_Popup_Setting_Sound": {
+    "NameKor": "음량",
+    "NameEng": "Volume",
+    "NameJap": "音量"
+  },
+  "Text_Popup_Setting_Master": {
+    "NameKor": "전체 음량",
+    "NameEng": "Master Volume",
+    "NameJap": "全体音量"
+  },
+  "Text_Popup_Setting_Mute": {
+    "NameKor": "음소거",
+    "NameEng": "Mute",
+    "NameJap": "ミュート"
+  },
+  "Text_Popup_Setting_LanguageLabel": {
+    "NameKor": "언어",
+    "NameEng": "Language",
+    "NameJap": "言語"
+  },
+  "Text_Popup_Setting_Fullscreen": {
+    "NameKor": "전체 화면",
+    "NameEng": "Fullscreen",
+    "NameJap": "フルスクリーン"
+  },
+  "Text_Popup_Setting_Resolution": {
+    "NameKor": "해상도",
+    "NameEng": "Resolution",
+    "NameJap": "解像度"
+  },
+  "Text_Popup_Setting_Apply": {
+    "NameKor": "적용",
+    "NameEng": "Apply",
+    "NameJap": "適用"
+  },
+  "Text_Popup_Setting_Default": {
+    "NameKor": "기본값",
+    "NameEng": "Defaults",
+    "NameJap": "既定値"
+  },
+  "Text_Popup_Setting_Applied": {
+    "NameKor": "설정을 적용했다",
+    "NameEng": "Settings applied",
+    "NameJap": "設定を適用した"
+  }
+}

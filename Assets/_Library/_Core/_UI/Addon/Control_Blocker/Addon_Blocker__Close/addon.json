@@ -1,0 +1,17 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Addon_Blocker__Close.prefab": null,
+    "Addon_Blocker__Close.prefab.meta": null,
+    "Script/Addon_Blocker__Close.cs": null,
+    "Script/Addon_Blocker__Close.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "description": "Blocker를 누르면 팝업이 꺼지는 기능",
+  "inAsset": true,
+  "parentControlId": "Control_Blocker",
+  "sortOrder": 0,
+  "fixedWidth": false,
+  "fixedHeight": false
+}

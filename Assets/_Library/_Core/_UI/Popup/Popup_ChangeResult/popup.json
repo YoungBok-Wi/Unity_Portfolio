@@ -1,0 +1,14 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Popup_ChangeResult.prefab": null,
+    "Popup_ChangeResult.prefab.meta": null,
+    "Script/Popup_ChangeResult.cs": null,
+    "Script/Popup_ChangeResult.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "description": "설정 변경 결과를 표시하는 팝업",
+  "inAsset": true,
+  "sortOrder": 0
+}

@@ -1,0 +1,23 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Control_Button_Box.prefab": null,
+    "Control_Button_Box.prefab.meta": null,
+    "Control_Button_Box_Blue.prefab": null,
+    "Control_Button_Box_Blue.prefab.meta": null,
+    "Control_Button_Box_Green.prefab": null,
+    "Control_Button_Box_Green.prefab.meta": null,
+    "Control_Button_Box_Purple.prefab": null,
+    "Control_Button_Box_Purple.prefab.meta": null,
+    "Control_Button_Box_Yellow.prefab": null,
+    "Control_Button_Box_Yellow.prefab.meta": null,
+    "Script/Control_Button_Box.cs": null,
+    "Script/Control_Button_Box.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "description": "직사각형 버튼 (긍정적 액션)\n- 색상 변형: base(Green)·Purple·Yellow·Blue — 변형은 자식 Image의 스프라이트만 다르다\n- 비활성 시 자식 Image가 공용 Disable 이미지로 바뀌고 활성 복원 시 변형 고유 색상으로 되돌아간다\n- 용도: 확인, 동의, 진행 등",
+  "inAsset": true,
+  "fixedWidth": false,
+  "fixedHeight": false
+}

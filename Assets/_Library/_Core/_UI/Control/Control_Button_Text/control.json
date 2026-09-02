@@ -1,0 +1,15 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Control_Button_Text.prefab": null,
+    "Control_Button_Text.prefab.meta": null,
+    "Script/Control_Button_Text.cs": null,
+    "Script/Control_Button_Text.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "description": "텍스트형 버튼\n- 비활성 시 자식 Image(TextMeshProUGUI)가 검정·알파 25%로 틴트되고 활성 복원 시 원래 컬러로 되돌아간다\n- 원래 컬러는 런타임 시작 시점의 값을 캐시하므로 사용처마다 달라도 된다",
+  "inAsset": true,
+  "fixedWidth": false,
+  "fixedHeight": false
+}

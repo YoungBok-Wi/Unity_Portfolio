@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6202353508704560184
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8127785070499347629, guid: 4cf4683d086660c4b977019a0516a214, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c0c5b0db5c74d42dba7eb6747f5c8fb7, type: 3}
+    - target: {fileID: 8973609423348985356, guid: 4cf4683d086660c4b977019a0516a214, type: 3}
+      propertyPath: m_Name
+      value: Control_Button_Box_Blue
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4cf4683d086660c4b977019a0516a214, type: 3}

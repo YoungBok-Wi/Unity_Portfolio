@@ -1,0 +1,17 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Addon_Button_Box__Text.prefab": null,
+    "Addon_Button_Box__Text.prefab.meta": null,
+    "Script/Addon_Button_Box__Text.cs": null,
+    "Script/Addon_Button_Box__Text.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "description": "버튼에 텍스트 표시",
+  "inAsset": true,
+  "parentControlId": "Control_Button_Box",
+  "sortOrder": 0,
+  "fixedWidth": false,
+  "fixedHeight": false
+}

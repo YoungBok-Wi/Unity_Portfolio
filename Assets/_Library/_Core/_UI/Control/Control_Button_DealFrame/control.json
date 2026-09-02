@@ -1,0 +1,15 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Control_Button_DealFrame.prefab": null,
+    "Control_Button_DealFrame.prefab.meta": null,
+    "Script/Control_Button_DealFrame.cs": null,
+    "Script/Control_Button_DealFrame.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "description": "",
+  "inAsset": true,
+  "fixedWidth": false,
+  "fixedHeight": false
+}

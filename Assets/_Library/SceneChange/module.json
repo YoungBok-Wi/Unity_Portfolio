@@ -1,0 +1,25 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "module.md": null,
+    "module.md.meta": null,
+    "Prefab/[SceneChangeManager].prefab": null,
+    "Prefab/[SceneChangeManager].prefab.meta": null,
+    "Script/SceneChangeAni.cs": null,
+    "Script/SceneChangeAni.cs.meta": null,
+    "Script/SceneChangeAni_Fade.cs": null,
+    "Script/SceneChangeAni_Fade.cs.meta": null,
+    "Script/SceneChangeManager.cs": null,
+    "Script/SceneChangeManager.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "verifyBlacklist": [],
+  "description": "씬 전환을 전환 애니메이션과 묶어 처리하는 씬 로드 래퍼.\n시작 애니메이션 -> 씬 로드 -> 종료 애니메이션을 한 호출로 순차 진행하고, 로비·게임 씬 ID를 중앙에서 보관한다.",
+  "important": "Basic",
+  "inAsset": true,
+  "replicateBlacklist": [],
+  "globalManagerPrefab": "Prefab/[SceneChangeManager]",
+  "localManagerPrefab": "",
+  "parentNodeId": "기반"
+}

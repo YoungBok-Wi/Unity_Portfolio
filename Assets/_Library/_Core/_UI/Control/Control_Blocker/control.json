@@ -1,0 +1,15 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Control_Blocker.prefab": null,
+    "Control_Blocker.prefab.meta": null,
+    "Script/Control_Blocker.cs": null,
+    "Script/Control_Blocker.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "description": "팝업 뒤쪽의 터치 입력 막기\nUI 배경을 어둡게 처리(Dimming)",
+  "inAsset": true,
+  "fixedWidth": false,
+  "fixedHeight": false
+}

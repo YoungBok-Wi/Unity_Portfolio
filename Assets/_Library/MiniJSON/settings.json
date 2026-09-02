@@ -1,0 +1,15 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "module.json": null,
+    "module.json.meta": null,
+    "module.md": null,
+    "module.md.meta": null,
+    "Script/MiniJson.cs": null,
+    "Script/MiniJson.cs.meta": null
+  },
+  "verifyBlacklist": [
+    "Script/MiniJson.cs",
+    "module.md"
+  ]
+}

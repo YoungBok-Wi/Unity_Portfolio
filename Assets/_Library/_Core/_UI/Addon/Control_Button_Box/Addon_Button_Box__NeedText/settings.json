@@ -1,0 +1,11 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "addon.json": null,
+    "addon.json.meta": null,
+    "Addon_Button_Box__NeedText.prefab": null,
+    "Addon_Button_Box__NeedText.prefab.meta": null,
+    "Script/Addon_Button_Box__NeedText.cs": null,
+    "Script/Addon_Button_Box__NeedText.cs.meta": null
+  }
+}

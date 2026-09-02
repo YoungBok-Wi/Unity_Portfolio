@@ -1,0 +1,14 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Popup_Quit.prefab": null,
+    "Popup_Quit.prefab.meta": null,
+    "Script/Popup_Quit.cs": null,
+    "Script/Popup_Quit.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "description": "앱 종료 확인 팝업",
+  "inAsset": true,
+  "sortOrder": 0
+}

@@ -1,0 +1,23 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Editor/Script/Setup_Camera2D.cs": null,
+    "Editor/Script/Setup_Camera2D.cs.meta": null,
+    "module.md": null,
+    "module.md.meta": null,
+    "Prefabs/[LocalCameraManager].prefab": null,
+    "Prefabs/[LocalCameraManager].prefab.meta": null,
+    "Script/CameraClamp_2D.cs": null,
+    "Script/CameraClamp_2D.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "verifyBlacklist": [],
+  "description": "2D 카메라 모듈. 자체 [LocalCameraManager] 프리팹과 2D 클램프(CameraClamp_2D)를 보유하고, [Local] 하위에 무조건 인스턴스화한다.\n변형 선택 분기 없이 모든 씬이 동일한 2D 카메라를 사용하도록 보장한다. Camera 코어의 LocalCameraManager·CameraClampBase 베이스를 사용한다.",
+  "important": "Basic",
+  "inAsset": true,
+  "replicateBlacklist": [],
+  "globalManagerPrefab": "",
+  "localManagerPrefab": "Prefabs/[LocalCameraManager]",
+  "parentNodeId": "카메라"
+}

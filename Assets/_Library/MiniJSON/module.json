@@ -1,0 +1,19 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "module.md": null,
+    "module.md.meta": null,
+    "Script/MiniJson.cs": null,
+    "Script/MiniJson.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "verifyBlacklist": [],
+  "description": "의존성 없는 경량 JSON 파서/직렬화기 모듈 (서드파티 MiniJSON 벤더링).\n동적 키 JSON을 Dictionary<string,object>/List<object> 트리로 다뤄 JsonUtility가 못 다루는 가변 구조를 외부 라이브러리 없이 처리한다.",
+  "important": "Basic",
+  "inAsset": true,
+  "replicateBlacklist": [],
+  "globalManagerPrefab": "",
+  "localManagerPrefab": "",
+  "parentNodeId": "유틸_직렬화"
+}

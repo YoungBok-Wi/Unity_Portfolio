@@ -1,0 +1,15 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Control_Frame.prefab": null,
+    "Control_Frame.prefab.meta": null,
+    "Script/Control_Frame.cs": null,
+    "Script/Control_Frame.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "description": "팝업 프레임 (닫기 버튼 없음)\n- 구조: Frame, Top/Title, AddonSlot, ControlSlot\n- ControlSlot에 커스텀 UI 배치\n- 용도: 닫기 버튼이 필요 없는 팝업",
+  "inAsset": true,
+  "fixedWidth": false,
+  "fixedHeight": false
+}

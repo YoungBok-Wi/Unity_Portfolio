@@ -1,0 +1,17 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Addon_Button_DealFrame__BotNameText.prefab": null,
+    "Addon_Button_DealFrame__BotNameText.prefab.meta": null,
+    "Script/Addon_Button_DealFrame__BotNameText.cs": null,
+    "Script/Addon_Button_DealFrame__BotNameText.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "description": "",
+  "inAsset": true,
+  "parentControlId": "Control_Button_DealFrame",
+  "sortOrder": 0,
+  "fixedWidth": false,
+  "fixedHeight": false
+}

@@ -1,0 +1,11 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "addon.json": null,
+    "addon.json.meta": null,
+    "Addon_Blocker__Close.prefab": null,
+    "Addon_Blocker__Close.prefab.meta": null,
+    "Script/Addon_Blocker__Close.cs": null,
+    "Script/Addon_Blocker__Close.cs.meta": null
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "control.json": null,
+    "control.json.meta": null,
+    "Control_Button_Text.prefab": null,
+    "Control_Button_Text.prefab.meta": null,
+    "Script/Control_Button_Text.cs": null,
+    "Script/Control_Button_Text.cs.meta": null
+  }
+}

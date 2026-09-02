@@ -1,0 +1,11 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "addon.json": null,
+    "addon.json.meta": null,
+    "Addon_Frame__Title.prefab": null,
+    "Addon_Frame__Title.prefab.meta": null,
+    "Script/Addon_Frame__Title.cs": null,
+    "Script/Addon_Frame__Title.cs.meta": null
+  }
+}

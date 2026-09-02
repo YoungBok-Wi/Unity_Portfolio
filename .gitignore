@@ -102,5 +102,23 @@ InitTestScene*.unity*
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
+# Mac OS
+*.DS_Store
+
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# Nbing-specific
+/_Temp/
+/.claude/
+
+# Codex/agent runtime mirrors (auto-generated, not committed)
+/.agents/
+/.codex/
+/AGENTS.md
+
+# Data / markdown
+/_Data/*
+!/_Data/Job/
+/_Data/Job/**/*.json
+/Assets/**/*.md

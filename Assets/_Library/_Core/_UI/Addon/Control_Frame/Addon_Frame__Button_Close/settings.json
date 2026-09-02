@@ -1,0 +1,11 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "addon.json": null,
+    "addon.json.meta": null,
+    "Addon_Frame__Button_Close.prefab": null,
+    "Addon_Frame__Button_Close.prefab.meta": null,
+    "Script/Addon_Frame__Button_Close.cs": null,
+    "Script/Addon_Frame__Button_Close.cs.meta": null
+  }
+}

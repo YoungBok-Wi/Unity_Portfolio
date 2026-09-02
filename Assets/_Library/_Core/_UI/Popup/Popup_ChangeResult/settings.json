@@ -1,0 +1,11 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "popup.json": null,
+    "popup.json.meta": null,
+    "Popup_ChangeResult.prefab": null,
+    "Popup_ChangeResult.prefab.meta": null,
+    "Script/Popup_ChangeResult.cs": null,
+    "Script/Popup_ChangeResult.cs.meta": null
+  }
+}

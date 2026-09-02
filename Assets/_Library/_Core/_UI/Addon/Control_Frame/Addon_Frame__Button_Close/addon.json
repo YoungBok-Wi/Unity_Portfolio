@@ -1,0 +1,17 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Addon_Frame__Button_Close.prefab": null,
+    "Addon_Frame__Button_Close.prefab.meta": null,
+    "Script/Addon_Frame__Button_Close.cs": null,
+    "Script/Addon_Frame__Button_Close.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "description": "팝업 닫기 버튼",
+  "inAsset": true,
+  "parentControlId": "Control_Frame",
+  "sortOrder": 0,
+  "fixedWidth": false,
+  "fixedHeight": false
+}

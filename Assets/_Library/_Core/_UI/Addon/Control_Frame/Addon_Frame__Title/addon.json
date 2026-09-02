@@ -1,0 +1,17 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Addon_Frame__Title.prefab": null,
+    "Addon_Frame__Title.prefab.meta": null,
+    "Script/Addon_Frame__Title.cs": null,
+    "Script/Addon_Frame__Title.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "description": "팝업 제목",
+  "inAsset": true,
+  "parentControlId": "Control_Frame",
+  "sortOrder": 0,
+  "fixedWidth": false,
+  "fixedHeight": false
+}

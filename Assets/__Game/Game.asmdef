@@ -1,0 +1,21 @@
+{
+    "name": "Game",
+    "rootNamespace": "Game",
+    "references": [
+        "Library",
+        "Unity.TextMeshPro",
+        "Unity.Mathematics",
+        "Unity.Splines",
+        "Unity.Cinemachine",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,15 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Control_Slider_Default.prefab": null,
+    "Control_Slider_Default.prefab.meta": null,
+    "Script/Control_Slider_Default.cs": null,
+    "Script/Control_Slider_Default.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "description": "기본 슬라이더\n- UnityEngine.UI.Slider + 값 표시 TMP 포함\n- 용도: 범용 값 조절 슬라이더",
+  "inAsset": true,
+  "fixedWidth": false,
+  "fixedHeight": false
+}

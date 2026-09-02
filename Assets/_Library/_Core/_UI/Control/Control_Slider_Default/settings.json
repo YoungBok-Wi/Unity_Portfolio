@@ -1,0 +1,11 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "control.json": null,
+    "control.json.meta": null,
+    "Control_Slider_Default.prefab": null,
+    "Control_Slider_Default.prefab.meta": null,
+    "Script/Control_Slider_Default.cs": null,
+    "Script/Control_Slider_Default.cs.meta": null
+  }
+}

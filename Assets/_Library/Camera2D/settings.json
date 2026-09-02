@@ -1,0 +1,16 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Editor/Script/Setup_Camera2D.cs": null,
+    "Editor/Script/Setup_Camera2D.cs.meta": null,
+    "module.json": null,
+    "module.json.meta": null,
+    "module.md": null,
+    "module.md.meta": null,
+    "Prefabs/[LocalCameraManager].prefab": null,
+    "Prefabs/[LocalCameraManager].prefab.meta": null,
+    "Script/CameraClamp_2D.cs": null,
+    "Script/CameraClamp_2D.cs.meta": null
+  },
+  "verifyBlacklist": []
+}

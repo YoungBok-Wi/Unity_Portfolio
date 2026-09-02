@@ -1,0 +1,17 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "control.json": null,
+    "control.json.meta": null,
+    "Control_Button_Box.prefab": null,
+    "Control_Button_Box.prefab.meta": null,
+    "Control_Button_Box_Blue.prefab": null,
+    "Control_Button_Box_Blue.prefab.meta": null,
+    "Control_Button_Box_Purple.prefab": null,
+    "Control_Button_Box_Purple.prefab.meta": null,
+    "Control_Button_Box_Yellow.prefab": null,
+    "Control_Button_Box_Yellow.prefab.meta": null,
+    "Script/Control_Button_Box.cs": null,
+    "Script/Control_Button_Box.cs.meta": null
+  }
+}

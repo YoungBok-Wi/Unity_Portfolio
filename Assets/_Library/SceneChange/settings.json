@@ -1,0 +1,18 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "module.json": null,
+    "module.json.meta": null,
+    "module.md": null,
+    "module.md.meta": null,
+    "Prefab/[SceneChangeManager].prefab": null,
+    "Prefab/[SceneChangeManager].prefab.meta": null,
+    "Script/SceneChangeAni.cs": null,
+    "Script/SceneChangeAni.cs.meta": null,
+    "Script/SceneChangeAni_Fade.cs": null,
+    "Script/SceneChangeAni_Fade.cs.meta": null,
+    "Script/SceneChangeManager.cs": null,
+    "Script/SceneChangeManager.cs.meta": null
+  },
+  "verifyBlacklist": []
+}

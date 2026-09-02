@@ -1,0 +1,17 @@
+{
+  "reuse": "add",
+  "confirmed": {
+    "Addon_Button_Box__NeedText.prefab": null,
+    "Addon_Button_Box__NeedText.prefab.meta": null,
+    "Script/Addon_Button_Box__NeedText.cs": null,
+    "Script/Addon_Button_Box__NeedText.cs.meta": null,
+    "settings.json": null,
+    "settings.json.meta": null
+  },
+  "description": "조건(레벨, 스테이지 등) 미달성 시 해금 조건을 안내",
+  "inAsset": true,
+  "parentControlId": "Control_Button_Box",
+  "sortOrder": 100,
+  "fixedWidth": false,
+  "fixedHeight": false
+}
