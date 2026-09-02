@@ -1,18 +1,22 @@
 {
   "Battle": {
     "Name": "Text_Core_RoomBattle",
-    "Desc": "Text_Core_RoomBattleDesc"
+    "Desc": "Text_Core_RoomBattleDesc",
+    "Icon": "Icon_Casual_Room_Battle"
   },
   "Heal": {
     "Name": "Text_Core_RoomHeal",
-    "Desc": "Text_Core_RoomHealDesc"
+    "Desc": "Text_Core_RoomHealDesc",
+    "Icon": "Icon_Casual_Room_Heal"
   },
   "Ability": {
     "Name": "Text_Core_RoomAbility",
-    "Desc": "Text_Core_RoomAbilityDesc"
+    "Desc": "Text_Core_RoomAbilityDesc",
+    "Icon": "Icon_Casual_Room_Ability"
   },
   "Boss": {
     "Name": "Text_Core_RoomBoss",
-    "Desc": "Text_Core_RoomBossDesc"
+    "Desc": "Text_Core_RoomBossDesc",
+    "Icon": "Icon_Casual_Room_Boss"
   }
 }

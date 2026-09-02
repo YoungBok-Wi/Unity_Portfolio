@@ -2,6 +2,7 @@
   "Attack": {
     "Name": "Text_Core_AbilityAttack",
     "Desc": "Text_Core_AbilityAttackDesc",
+    "Icon": "Icon_Casual_Upgrade_Attack",
     "Category": "Kill",
     "StackMode": "Additive",
     "Value": "0.2",
@@ -11,6 +12,7 @@
   "AttackSpeed": {
     "Name": "Text_Core_AbilityAttackSpeed",
     "Desc": "Text_Core_AbilityAttackSpeedDesc",
+    "Icon": "Icon_Casual_Upgrade_AttackSpeed",
     "Category": "Kill",
     "StackMode": "Multiplicative",
     "Value": "0.12",
@@ -20,6 +22,7 @@
   "MaxHp": {
     "Name": "Text_Core_AbilityMaxHp",
     "Desc": "Text_Core_AbilityMaxHpDesc",
+    "Icon": "Icon_Casual_Upgrade_MaxHp",
     "Category": "Survive",
     "StackMode": "Additive",
     "Value": "25",
@@ -29,6 +32,7 @@
   "MoveSpeed": {
     "Name": "Text_Core_AbilityMoveSpeed",
     "Desc": "Text_Core_AbilityMoveSpeedDesc",
+    "Icon": "Icon_Casual_Upgrade_MoveSpeed",
     "Category": "Evade",
     "StackMode": "Additive",
     "Value": "0.1",
@@ -38,6 +42,7 @@
   "HealMacaron": {
     "Name": "Text_Core_AbilityHealMacaron",
     "Desc": "Text_Core_AbilityHealMacaronDesc",
+    "Icon": "Icon_Casual_Upgrade_HealMacaron",
     "Category": "Survive",
     "StackMode": "Instant",
     "Value": "0.6",
@@ -47,6 +52,7 @@
   "MultiHit": {
     "Name": "Text_Core_AbilityMultiHit",
     "Desc": "Text_Core_AbilityMultiHitDesc",
+    "Icon": "Icon_Casual_Upgrade_MultiHit",
     "Category": "Kill",
     "StackMode": "Additive",
     "Value": "2",

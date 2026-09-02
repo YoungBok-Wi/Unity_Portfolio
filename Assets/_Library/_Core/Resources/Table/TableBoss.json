@@ -2,6 +2,7 @@
   "Pumpkin": {
     "Name": "Text_Core_BossPumpkin",
     "Desc": "Text_Core_BossPumpkinDesc",
+    "Icon": "AnimationSheet_Casual_Boss_Pumpkin_Idle_01",
     "AttackType": "Melee",
     "Hp": "600",
     "MoveSpeed": "3",
@@ -31,6 +32,7 @@
   "Pineapple": {
     "Name": "Text_Core_BossPineapple",
     "Desc": "Text_Core_BossPineappleDesc",
+    "Icon": "AnimationSheet_Casual_Boss_Pineapple_Move_01",
     "AttackType": "Ranged",
     "Hp": "450",
     "MoveSpeed": "3.5",

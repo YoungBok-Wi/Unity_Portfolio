@@ -2,6 +2,7 @@
   "Knife": {
     "Name": "Text_Core_WeaponKnife",
     "Desc": "Text_Core_WeaponKnifeDesc",
+    "Icon": "Icon_Casual_Weapon_Knife",
     "WeaponType": "Melee",
     "Hp": "100",
     "Attack1": "12",
@@ -24,6 +25,7 @@
   "Gun": {
     "Name": "Text_Core_WeaponGun",
     "Desc": "Text_Core_WeaponGunDesc",
+    "Icon": "Icon_Casual_Weapon_Gun",
     "WeaponType": "Ranged",
     "Hp": "80",
     "Attack1": "6",
