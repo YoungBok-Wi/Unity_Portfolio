@@ -1,0 +1,7 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "description": "런 결과 프레임형 팝업 — 승패·도달 방 순번·Crumb 총량·Gun 해금 알림, 확인 시 Scene_Lobby로 전환",
+  "inAsset": true,
+  "sortOrder": 0
+}

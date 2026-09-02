@@ -1,0 +1,7 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "description": "일시정지 프레임형 팝업 — 게임 시간 정지, 재개·설정(Popup_Setting)·포기(로비로) 버튼, 취소 입력 소비 주체",
+  "inAsset": true,
+  "sortOrder": 0
+}

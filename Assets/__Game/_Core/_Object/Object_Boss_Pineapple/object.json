@@ -1,0 +1,6 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "description": "원거리형 보스 Pineapple — FSM 5상태(Idle·Retreat·Spike·Rain·Enrage), 전조 표시 후 광역, 넉백 면역, 런타임 스폰",
+  "inAsset": true
+}

@@ -1,0 +1,12 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "verifyBlacklist": [],
+  "description": "전투 게임모듈 — HP·데미지·넉백·히트스톱·투사체·Crumb 낙하 등 플레이어·적·보스 간 전투 규칙을 처리한다.",
+  "important": "Basic",
+  "inAsset": true,
+  "replicateBlacklist": [],
+  "globalManagerPrefab": "",
+  "localManagerPrefab": "",
+  "parentNodeId": "게임기능_전투"
+}

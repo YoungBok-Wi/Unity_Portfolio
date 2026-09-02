@@ -1,0 +1,7 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "description": "전투 HUD 베이스형 팝업 — HP 게이지(UI_Casual_Gauge/Horizontal_Red)·방 순번·지나온 방 종류 아이콘 열·Crumb 잔액·데미지 숫자 팝",
+  "inAsset": true,
+  "sortOrder": 0
+}

@@ -1,0 +1,6 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "description": "원거리형 일반 적 Banana — 사거리 유지·껍질 투사체 직선 발사, ObjectPool 런타임 스폰",
+  "inAsset": true
+}

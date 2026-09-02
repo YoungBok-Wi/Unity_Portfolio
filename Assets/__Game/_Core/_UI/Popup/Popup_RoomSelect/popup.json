@@ -1,0 +1,7 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "description": "방 선택 프레임형 팝업 — 2택 선택지(방 종류 아이콘 + 다음 방 적 종류·마릿수 미리보기), 취소 불가",
+  "inAsset": true,
+  "sortOrder": 0
+}
