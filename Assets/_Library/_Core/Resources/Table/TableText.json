@@ -564,221 +564,121 @@
     "NameEng": "Give Up",
     "NameJap": "営業終了"
   },
-  "Text_Thebackend_DefaultNickname": {
-    "NameKor": "플레이어",
-    "NameEng": "Player"
+  "Text_Core_WeaponKnifeDesc": {
+    "NameKor": "근접 3단 콤보. 전방 범위 안의 적을 한꺼번에 벤다",
+    "NameEng": "Three-hit melee combo. Slashes every enemy in front of you at once"
   },
-  "Text_Thebackend_ID": {
-    "NameKor": "아이디",
-    "NameEng": "ID"
+  "Text_Core_WeaponGunDesc": {
+    "NameKor": "원거리 연사. 제자리에서 투사체를 쏘며 거리를 벌린다",
+    "NameEng": "Ranged rapid fire. Stand still and kite with a stream of shots"
   },
-  "Text_Thebackend_PW": {
-    "NameKor": "비밀번호",
-    "NameEng": "Password"
+  "Text_Core_EnemyAppleDesc": {
+    "NameKor": "가까이 달려와 문다",
+    "NameEng": "Rushes in and bites"
   },
-  "Text_Thebackend_Email": {
-    "NameKor": "이메일",
-    "NameEng": "Email"
+  "Text_Core_EnemyWatermelonDesc": {
+    "NameKor": "느리지만 단단하다. 몸통 박치기",
+    "NameEng": "Slow but tough. Body slams"
   },
-  "Text_Thebackend_Login": {
-    "NameKor": "로그인",
-    "NameEng": "Login"
+  "Text_Core_EnemyBananaDesc": {
+    "NameKor": "거리를 두고 껍질을 던진다",
+    "NameEng": "Keeps its distance and throws peels"
   },
-  "Text_Thebackend_Signup": {
-    "NameKor": "회원가입",
-    "NameEng": "Sign Up"
+  "Text_Core_BossPumpkin": {
+    "NameKor": "호박 대장",
+    "NameEng": "Pumpkin Boss"
   },
-  "Text_Thebackend_Nick": {
-    "NameKor": "닉네임",
-    "NameEng": "Nickname"
+  "Text_Core_BossPumpkinDesc": {
+    "NameKor": "근접형 보스. 내려찍기와 돌진, 체력 절반 이하에서 격노",
+    "NameEng": "Melee boss. Slams and charges, enrages below half HP"
   },
-  "Text_Thebackend_Chart": {
-    "NameKor": "테이블",
-    "NameEng": "Table"
+  "Text_Core_BossPineapple": {
+    "NameKor": "파인애플 대장",
+    "NameEng": "Pineapple Boss"
   },
-  "Text_Thebackend_CloudSave": {
-    "NameKor": "클라우드",
-    "NameEng": "Cloud"
+  "Text_Core_BossPineappleDesc": {
+    "NameKor": "원거리형 보스. 가시 연발과 가시 비, 체력 절반 이하에서 격노",
+    "NameEng": "Ranged boss. Spike volleys and spike rain, enrages below half HP"
   },
-  "Text_Thebackend_DBSave": {
-    "NameKor": "데이터베이스",
-    "NameEng": "Database"
+  "Text_Core_RoomBattle": {
+    "NameKor": "전투",
+    "NameEng": "Battle"
   },
-  "Text_Thebackend_LogoutNotify": {
-    "NameKor": "로그아웃 하시겠습니까?",
-    "NameEng": "Do you want to log out?"
+  "Text_Core_RoomBattleDesc": {
+    "NameKor": "적 웨이브를 전부 처치한다",
+    "NameEng": "Defeat every enemy wave"
   },
-  "Text_Thebackend_SubscriptCustom": {
-    "NameKor": "일반계정",
-    "NameEng": "Standard Account"
+  "Text_Core_RoomHeal": {
+    "NameKor": "회복",
+    "NameEng": "Heal"
   },
-  "Text_Thebackend_SubscriptFederation": {
-    "NameKor": "소셜계정",
-    "NameEng": "Social Account"
+  "Text_Core_RoomHealDesc": {
+    "NameKor": "최대 체력의 50%를 즉시 회복한다",
+    "NameEng": "Instantly restore 50% of max HP"
   },
-  "Text_Thebackend_Init": {
-    "NameKor": "초기화",
-    "NameEng": "Reset"
+  "Text_Core_RoomAbility": {
+    "NameKor": "강화",
+    "NameEng": "Ability"
   },
-  "Text_Thebackend_WithdrawNotify1": {
-    "NameKor": "회원탈퇴를 하시겠습니까?\r\r\r\n1주일 뒤 탈퇴처리가 완료됩니다.",
-    "NameEng": "Do you want to delete your account?\r\r\r\nDeletion will be completed in one week."
+  "Text_Core_RoomAbilityDesc": {
+    "NameKor": "능력 3개 중 1개를 고른다",
+    "NameEng": "Pick one of three abilities"
   },
-  "Text_Thebackend_WithdrawNotify2": {
-    "NameKor": "정말 회원탈퇴를 하시겠습니까?\r\r\r\n1주일 이전에 로그인 시 탈퇴가 취소됩니다.",
-    "NameEng": "Are you sure you want to delete your account?\r\r\r\nLogging in within one week will cancel the deletion."
+  "Text_Core_RoomBoss": {
+    "NameKor": "보스",
+    "NameEng": "Boss"
   },
-  "Text_Thebackend_WithdrawNotify3": {
-    "NameKor": "진심으로 회원탈퇴를 하시겠습니까?\r\r\r\n탈퇴 완료시 복구가 불가합니다.",
-    "NameEng": "Do you really want to delete your account?\r\r\r\nOnce completed, it cannot be recovered."
+  "Text_Core_RoomBossDesc": {
+    "NameKor": "보스를 처치하면 승리한다",
+    "NameEng": "Defeat the boss to win the run"
   },
-  "Text_Thebackend_Local": {
-    "NameKor": "기기",
-    "NameEng": "Device"
+  "Text_Core_AbilityAttack": {
+    "NameKor": "매운맛",
+    "NameEng": "Spice Up"
   },
-  "Text_Thebackend_DB": {
-    "NameKor": "계정",
-    "NameEng": "Account"
+  "Text_Core_AbilityAttackDesc": {
+    "NameKor": "공격력 +20% (최대 5중첩)",
+    "NameEng": "Attack +20% (up to 5 stacks)"
   },
-  "Text_Thebackend_RemoveLocalNotUUID1": {
-    "NameKor": "이 기기에 다른 계정의 데이터가 감지되었습니다.\r\r\r\n\r\r\r\n삭제하시겠습니까?",
-    "NameEng": "Data from another account was detected on this device.\r\r\r\n\r\r\r\nDo you want to delete it?"
+  "Text_Core_AbilityAttackSpeed": {
+    "NameKor": "손놀림",
+    "NameEng": "Quick Hands"
   },
-  "Text_Thebackend_RemoveLocalNotUUID2": {
-    "NameKor": "정말 기기에 저장된 데이터를 삭제 하시겠습니까?\r\r\r\n\r\r\r\n계정에 백업되었는지 확인하는 것을 권장합니다.",
-    "NameEng": "Are you sure you want to delete the data saved on this device?\r\r\r\n\r\r\r\nWe recommend confirming it is backed up to your account first."
+  "Text_Core_AbilityAttackSpeedDesc": {
+    "NameKor": "공격 주기 -12% (최대 4중첩)",
+    "NameEng": "Attack interval -12% (up to 4 stacks)"
   },
-  "Text_Thebackend_RemoveLocalUseServer1": {
-    "NameKor": "계정에 최근 저장된 데이터가 있습니다.\r\r\r\n사용할 데이터를 선택해주세요.\r\r\r\n\r\r\r\n기기 : {0}\r\r\r\n계정 : {1}",
-    "NameEng": "There is recently saved data in your account.\r\r\r\nPlease choose which data to use.\r\r\r\n\r\r\r\nDevice: {0}\r\r\r\nAccount: {1}"
+  "Text_Core_AbilityMaxHp": {
+    "NameKor": "든든한 한 끼",
+    "NameEng": "Hearty Meal"
   },
-  "Text_Thebackend_RemoveLocalUseServer2_Local": {
-    "NameKor": "정말 기기에 저장된 데이터를 사용하시겠습니까?\r\r\r\n\r\r\r\n계정에 저장된 데이터는 삭제됩니다.",
-    "NameEng": "Are you sure you want to use the data saved on this device?\r\r\r\n\r\r\r\nThe data saved in your account will be deleted."
+  "Text_Core_AbilityMaxHpDesc": {
+    "NameKor": "최대 체력 +25, 즉시 25 회복",
+    "NameEng": "Max HP +25 and heal 25 instantly"
   },
-  "Text_Thebackend_RemoveLocalUseServer2_Server": {
-    "NameKor": "정말 계정에 저장된 데이터를 사용하시겠습니까?\r\r\r\n\r\r\r\n기기에 저장된 데이터는 삭제됩니다.",
-    "NameEng": "Are you sure you want to use the data saved in your account?\r\r\r\n\r\r\r\nThe data saved on this device will be deleted."
+  "Text_Core_AbilityMoveSpeed": {
+    "NameKor": "경쾌한 발",
+    "NameEng": "Light Steps"
   },
-  "Text_Thebackend_NewServerUseLocal1": {
-    "NameKor": "이 기기에 기존 데이터가 감지되었습니다.\r\r\r\n\r\r\r\n사용하시겠습니까?",
-    "NameEng": "Existing data was detected on this device.\r\r\r\n\r\r\r\nDo you want to use it?"
+  "Text_Core_AbilityMoveSpeedDesc": {
+    "NameKor": "이동 속도 +10% (최대 3중첩)",
+    "NameEng": "Move speed +10% (up to 3 stacks)"
   },
-  "Text_Thebackend_NewServerUseLocal2": {
-    "NameKor": "기기에 저장된 데이터가 삭제됩니다.\r\r\r\n\r\r\r\n새 데이터를 사용하시겠습니까?",
-    "NameEng": "The data saved on this device will be deleted.\r\r\r\n\r\r\r\nDo you want to use the new data?"
+  "Text_Core_AbilityHealMacaron": {
+    "NameKor": "회복 마카롱",
+    "NameEng": "Healing Macaron"
   },
-  "Text_Thebackend_NewServerUseLocal3": {
-    "NameKor": "기기에 저장된 데이터가\r\r\r\n영구적으로 삭제되며\r\r\r\n복구 할 수 없습니다.",
-    "NameEng": "The data saved on this device\r\r\r\nwill be permanently deleted\r\r\r\nand cannot be recovered."
+  "Text_Core_AbilityHealMacaronDesc": {
+    "NameKor": "최대 체력의 60%를 즉시 회복한다",
+    "NameEng": "Instantly restore 60% of max HP"
   },
-  "Text_Thebackend_ChangeSuccess": {
-    "NameKor": "{0} 변경 성공",
-    "NameEng": "{0} changed successfully"
+  "Text_Core_AbilityMultiHit": {
+    "NameKor": "다지기",
+    "NameEng": "Mince"
   },
-  "Text_Thebackend_ChangeFailed": {
-    "NameKor": "{0} 변경 실패",
-    "NameEng": "Failed to change {0}"
-  },
-  "Text_Thebackend_Success": {
-    "NameKor": "{0} 성공",
-    "NameEng": "{0} succeeded"
-  },
-  "Text_Thebackend_Failed": {
-    "NameKor": "{0} 실패",
-    "NameEng": "{0} failed"
-  },
-  "Text_Thebackend_SetFailed": {
-    "NameKor": "{0} 설정 실패",
-    "NameEng": "Failed to set {0}"
-  },
-  "Text_Thebackend_DownloadFailed": {
-    "NameKor": "{0} 다운로드 실패",
-    "NameEng": "Failed to download {0}"
-  },
-  "Text_Thebackend_LoadFailed": {
-    "NameKor": "{0} 로딩 실패",
-    "NameEng": "Failed to load {0}"
-  },
-  "Text_Thebackend_SaveFailed": {
-    "NameKor": "{0} 저장 실패",
-    "NameEng": "Failed to save {0}"
-  },
-  "Text_Thebackend_FindSomeSuccess": {
-    "NameKor": "{0} 찾기 성공",
-    "NameEng": "{0} found successfully"
-  },
-  "Text_Thebackend_FindSomeFailed": {
-    "NameKor": "{0} 찾기 실패",
-    "NameEng": "Failed to find {0}"
-  },
-  "Text_Thebackend_ResetSomeSuccess": {
-    "NameKor": "{0} 초기화 성공",
-    "NameEng": "{0} reset successfully"
-  },
-  "Text_Thebackend_ResetSomeFailed": {
-    "NameKor": "{0} 초기화 실패",
-    "NameEng": "Failed to reset {0}"
-  },
-  "Text_Thebackend_ErrorUnknown": {
-    "NameKor": "처리되지 않은 에러입니다.",
-    "NameEng": "An unhandled error occurred."
-  },
-  "Text_Thebackend_ErrorNoInternet": {
-    "NameKor": "인터넷 연결이 없습니다.",
-    "NameEng": "No internet connection."
-  },
-  "Text_Thebackend_ErrorClientRequestFail": {
-    "NameKor": "네트워크 상태가 불안정합니다.",
-    "NameEng": "Network connection is unstable."
-  },
-  "Text_Thebackend_ErrorMaintenance": {
-    "NameKor": "점검중입니다.",
-    "NameEng": "Under maintenance."
-  },
-  "Text_Thebackend_ErrorBadAccessToken": {
-    "NameKor": "로그인 정보가 만료되었습니다.",
-    "NameEng": "Your login session has expired."
-  },
-  "Text_Thebackend_ErrorTooManyRequests": {
-    "NameKor": "과도한 요청이 감지되었습니다. (5분 뒤 재시도)",
-    "NameEng": "Too many requests detected. (Retry in 5 minutes)"
-  },
-  "Text_Thebackend_ErrorBlocked": {
-    "NameKor": "차단당한 기기입니다.",
-    "NameEng": "This device has been blocked."
-  },
-  "Text_Thebackend_ErrorTimeout": {
-    "NameKor": "타임아웃되었습니다.",
-    "NameEng": "The request timed out."
-  },
-  "Text_Thebackend_ErrorProvisionExceeded": {
-    "NameKor": "데이터베이스 할당량이 초과되었습니다.",
-    "NameEng": "Database quota has been exceeded."
-  },
-  "Text_Thebackend_ErrorProvisionUpdating": {
-    "NameKor": "데이터베이스 할당량이 업데이트중입니다.",
-    "NameEng": "Database quota is being updated."
-  },
-  "Text_Thebackend_ErrorServerError": {
-    "NameKor": "서버가 과부하 상태입니다.",
-    "NameEng": "The server is overloaded."
-  },
-  "Text_Thebackend_ErrorBadNick": {
-    "NameKor": "20자 이하 공백 없이 작성해주세요.",
-    "NameEng": "Please use up to 20 characters with no spaces."
-  },
-  "Text_Thebackend_ErrorDuplicateNick": {
-    "NameKor": "이미 존재하는 닉네임입니다.",
-    "NameEng": "This nickname is already taken."
-  },
-  "Text_Thebackend_ErrorBadPassword": {
-    "NameKor": "잘못된 비밀번호입니다.",
-    "NameEng": "Incorrect password."
-  },
-  "Text_Thebackend_ErrorBadEmail": {
-    "NameKor": "잘못된 이메일입니다.",
-    "NameEng": "Invalid email."
+  "Text_Core_AbilityMultiHitDesc": {
+    "NameKor": "나이프 명중 상한 +2, 건 관통 +1 (최대 3중첩)",
+    "NameEng": "Knife hit cap +2, Gun pierce +1 (up to 3 stacks)"
   },
   "Text_Popup_NotifyTitle": {
     "NameKor": "알림",
@@ -843,85 +743,5 @@
   "Text_Shutdown_Text": {
     "NameKor": "에러 발생으로 잠시 후 로비로 이동합니다.",
     "NameEng": "An error occurred. Returning to the lobby shortly."
-  },
-  "Text_Quit_Title": {
-    "NameKor": "게임 종료",
-    "NameEng": "Quit Game",
-    "NameJap": "ゲーム終了"
-  },
-  "Text_Quit_Text": {
-    "NameKor": "정말 게임을 종료하시겠습니까?",
-    "NameEng": "Are you sure you want to quit the game?",
-    "NameJap": "本当にゲームを終了しますか?"
-  },
-  "Text_Popup_Setting_BGM": {
-    "NameKor": "배경음",
-    "NameEng": "BGM",
-    "NameJap": "BGM"
-  },
-  "Text_Popup_Setting_Language": {
-    "NameKor": "한국어",
-    "NameEng": "English",
-    "NameJap": "日本語"
-  },
-  "Text_Popup_Setting_SE": {
-    "NameKor": "효과음",
-    "NameEng": "SFX",
-    "NameJap": "効果音"
-  },
-  "Text_Popup_Setting_Game": {
-    "NameKor": "게임",
-    "NameEng": "Game",
-    "NameJap": "ゲーム"
-  },
-  "Text_Popup_Setting_Graphic": {
-    "NameKor": "그래픽",
-    "NameEng": "Graphics",
-    "NameJap": "グラフィック"
-  },
-  "Text_Popup_Setting_Sound": {
-    "NameKor": "음량",
-    "NameEng": "Volume",
-    "NameJap": "音量"
-  },
-  "Text_Popup_Setting_Master": {
-    "NameKor": "전체 음량",
-    "NameEng": "Master Volume",
-    "NameJap": "全体音量"
-  },
-  "Text_Popup_Setting_Mute": {
-    "NameKor": "음소거",
-    "NameEng": "Mute",
-    "NameJap": "ミュート"
-  },
-  "Text_Popup_Setting_LanguageLabel": {
-    "NameKor": "언어",
-    "NameEng": "Language",
-    "NameJap": "言語"
-  },
-  "Text_Popup_Setting_Fullscreen": {
-    "NameKor": "전체 화면",
-    "NameEng": "Fullscreen",
-    "NameJap": "フルスクリーン"
-  },
-  "Text_Popup_Setting_Resolution": {
-    "NameKor": "해상도",
-    "NameEng": "Resolution",
-    "NameJap": "解像度"
-  },
-  "Text_Popup_Setting_Apply": {
-    "NameKor": "적용",
-    "NameEng": "Apply",
-    "NameJap": "適用"
-  },
-  "Text_Popup_Setting_Default": {
-    "NameKor": "기본값",
-    "NameEng": "Defaults",
-    "NameJap": "既定値"
-  },
-  "Text_Popup_Setting_Applied": {
-    "NameKor": "설정을 적용했다",
-    "NameEng": "Settings applied",
-    "NameJap": "設定を適用した"
   }
 }

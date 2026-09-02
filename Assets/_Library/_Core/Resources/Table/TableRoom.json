@@ -1,0 +1,18 @@
+{
+  "Battle": {
+    "Name": "Text_Core_RoomBattle",
+    "Desc": "Text_Core_RoomBattleDesc"
+  },
+  "Heal": {
+    "Name": "Text_Core_RoomHeal",
+    "Desc": "Text_Core_RoomHealDesc"
+  },
+  "Ability": {
+    "Name": "Text_Core_RoomAbility",
+    "Desc": "Text_Core_RoomAbilityDesc"
+  },
+  "Boss": {
+    "Name": "Text_Core_RoomBoss",
+    "Desc": "Text_Core_RoomBossDesc"
+  }
+}

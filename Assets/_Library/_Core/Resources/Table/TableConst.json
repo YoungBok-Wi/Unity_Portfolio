@@ -1,0 +1,47 @@
+{
+  "Room_GrowthHp": {
+    "": "0.15"
+  },
+  "Room_GrowthAtk": {
+    "": "0.1"
+  },
+  "Room_GunUnlock": {
+    "": "5"
+  },
+  "Room_BossMin": {
+    "": "6"
+  },
+  "Room_BossForce": {
+    "": "10"
+  },
+  "Room_HealRatio": {
+    "": "0.5"
+  },
+  "Battle_MaxEnemyOnScreen": {
+    "": "8"
+  },
+  "Battle_MeleeSlotPerSide": {
+    "": "2"
+  },
+  "Ability_RerollBaseCost": {
+    "": "10"
+  },
+  "Ability_RerollCostStep": {
+    "": "5"
+  },
+  "Ability_ChoiceCount": {
+    "": "3"
+  },
+  "Room_ChoiceSet1": {
+    "": "Battle/Heal"
+  },
+  "Room_ChoiceSet2": {
+    "": "Heal/Ability"
+  },
+  "Room_ChoiceSet3": {
+    "": "Battle/Boss"
+  },
+  "Room_ChoiceSet4": {
+    "": "Battle/Battle"
+  }
+}

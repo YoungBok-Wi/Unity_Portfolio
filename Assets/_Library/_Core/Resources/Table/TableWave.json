@@ -1,0 +1,293 @@
+{
+  "Wave_R01_W1": {
+    "RoomMin": "1",
+    "RoomMax": "1",
+    "WaveIndex": "1",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "3",
+    "Enemy2Count": "0",
+    "Enemy3Count": "0"
+  },
+  "Wave_R01_W2": {
+    "RoomMin": "1",
+    "RoomMax": "1",
+    "WaveIndex": "2",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "4",
+    "Enemy2Count": "0",
+    "Enemy3Count": "0"
+  },
+  "Wave_R02_W1": {
+    "RoomMin": "2",
+    "RoomMax": "2",
+    "WaveIndex": "1",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "3",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "1",
+    "Enemy3Count": "0"
+  },
+  "Wave_R02_W2": {
+    "RoomMin": "2",
+    "RoomMax": "2",
+    "WaveIndex": "2",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "3",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "1",
+    "Enemy3Count": "0"
+  },
+  "Wave_R03_W1": {
+    "RoomMin": "3",
+    "RoomMax": "3",
+    "WaveIndex": "1",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "2",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "1",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "1"
+  },
+  "Wave_R03_W2": {
+    "RoomMin": "3",
+    "RoomMax": "3",
+    "WaveIndex": "2",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "2",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "1",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "1"
+  },
+  "Wave_R04_W1": {
+    "RoomMin": "4",
+    "RoomMax": "4",
+    "WaveIndex": "1",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "3",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "1",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "1"
+  },
+  "Wave_R04_W2": {
+    "RoomMin": "4",
+    "RoomMax": "4",
+    "WaveIndex": "2",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "3",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "1",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "1"
+  },
+  "Wave_R04_W3": {
+    "RoomMin": "4",
+    "RoomMax": "4",
+    "WaveIndex": "3",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "3",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "1",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "1"
+  },
+  "Wave_R05_W1": {
+    "RoomMin": "5",
+    "RoomMax": "5",
+    "WaveIndex": "1",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "2",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "2",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "1"
+  },
+  "Wave_R05_W2": {
+    "RoomMin": "5",
+    "RoomMax": "5",
+    "WaveIndex": "2",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "2",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "2",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "1"
+  },
+  "Wave_R05_W3": {
+    "RoomMin": "5",
+    "RoomMax": "5",
+    "WaveIndex": "3",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "2",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "2",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "1"
+  },
+  "Wave_R06_W1": {
+    "RoomMin": "6",
+    "RoomMax": "6",
+    "WaveIndex": "1",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "3",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "2",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "1"
+  },
+  "Wave_R06_W2": {
+    "RoomMin": "6",
+    "RoomMax": "6",
+    "WaveIndex": "2",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "3",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "2",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "1"
+  },
+  "Wave_R06_W3": {
+    "RoomMin": "6",
+    "RoomMax": "6",
+    "WaveIndex": "3",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "3",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "2",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "1"
+  },
+  "Wave_R07_W1": {
+    "RoomMin": "7",
+    "RoomMax": "7",
+    "WaveIndex": "1",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "3",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "1",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "2"
+  },
+  "Wave_R07_W2": {
+    "RoomMin": "7",
+    "RoomMax": "7",
+    "WaveIndex": "2",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "3",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "1",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "2"
+  },
+  "Wave_R07_W3": {
+    "RoomMin": "7",
+    "RoomMax": "7",
+    "WaveIndex": "3",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "3",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "1",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "2"
+  },
+  "Wave_R08_W1": {
+    "RoomMin": "8",
+    "RoomMax": "8",
+    "WaveIndex": "1",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "3",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "2",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "2"
+  },
+  "Wave_R08_W2": {
+    "RoomMin": "8",
+    "RoomMax": "8",
+    "WaveIndex": "2",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "3",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "2",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "2"
+  },
+  "Wave_R08_W3": {
+    "RoomMin": "8",
+    "RoomMax": "8",
+    "WaveIndex": "3",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "3",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "2",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "2"
+  },
+  "Wave_R09_W1": {
+    "RoomMin": "9",
+    "RoomMax": "9",
+    "WaveIndex": "1",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "4",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "1",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "2"
+  },
+  "Wave_R09_W2": {
+    "RoomMin": "9",
+    "RoomMax": "9",
+    "WaveIndex": "2",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "4",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "1",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "2"
+  },
+  "Wave_R09_W3": {
+    "RoomMin": "9",
+    "RoomMax": "9",
+    "WaveIndex": "3",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "4",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "1",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "2"
+  },
+  "Wave_R10_W1": {
+    "RoomMin": "10",
+    "RoomMax": "99",
+    "WaveIndex": "1",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "4",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "2",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "2"
+  },
+  "Wave_R10_W2": {
+    "RoomMin": "10",
+    "RoomMax": "99",
+    "WaveIndex": "2",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "4",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "2",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "2"
+  },
+  "Wave_R10_W3": {
+    "RoomMin": "10",
+    "RoomMax": "99",
+    "WaveIndex": "3",
+    "Enemy1Id": "Apple",
+    "Enemy1Count": "4",
+    "Enemy2Id": "Watermelon",
+    "Enemy2Count": "2",
+    "Enemy3Id": "Banana",
+    "Enemy3Count": "2"
+  }
+}

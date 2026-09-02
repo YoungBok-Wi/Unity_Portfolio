@@ -14,24 +14,48 @@ namespace Library
     {
         #if UNITY_EDITOR
         #region Preview
+        [SerializeField, ReadOnly] private List<string> m_AbilityPreview;
+        [SerializeField, ReadOnly] private List<string> m_BossPreview;
+        [SerializeField, ReadOnly] private List<string> m_CharacterPreview;
+        [SerializeField, ReadOnly] private List<string> m_EnemyPreview;
+        [SerializeField, ReadOnly] private List<string> m_RoomPreview;
         [SerializeField, ReadOnly] private List<string> m_TextPreview;
+        [SerializeField, ReadOnly] private List<string> m_WavePreview;
         #endregion
         #endif
 
         #region Property
         public Table_Const Const { get; } = new();
+        public Table_Ability Ability { get; } = new();
+        public Table_Boss Boss { get; } = new();
+        public Table_Character Character { get; } = new();
+        public Table_Enemy Enemy { get; } = new();
+        public Table_Room Room { get; } = new();
         public Table_Text Text { get; } = new();
+        public Table_Wave Wave { get; } = new();
         #endregion
 
         #region Event
         public override void Init()
         {
             Const.Init();
+            Ability.Init(All);
+            Boss.Init(All);
+            Character.Init(All);
+            Enemy.Init(All);
+            Room.Init(All);
             Text.Init(All);
+            Wave.Init(All);
             base.Init();
 
             #if UNITY_EDITOR
+            m_AbilityPreview = Ability.ID as List<string>;
+            m_BossPreview = Boss.ID as List<string>;
+            m_CharacterPreview = Character.ID as List<string>;
+            m_EnemyPreview = Enemy.ID as List<string>;
+            m_RoomPreview = Room.ID as List<string>;
             m_TextPreview = Text.ID as List<string>;
+            m_WavePreview = Wave.ID as List<string>;
             #endif
         }
 
@@ -47,8 +71,20 @@ namespace Library
             		ContentItem c = null;
             		if (chart.TryGetValue("Const", out c))
             			Const.OnApplyBackend(chart["Const"]);
+            		if (chart.TryGetValue("Ability", out c))
+            			Ability.OnApplyBackend(chart["Ability"], All);
+            		if (chart.TryGetValue("Boss", out c))
+            			Boss.OnApplyBackend(chart["Boss"], All);
+            		if (chart.TryGetValue("Character", out c))
+            			Character.OnApplyBackend(chart["Character"], All);
+            		if (chart.TryGetValue("Enemy", out c))
+            			Enemy.OnApplyBackend(chart["Enemy"], All);
+            		if (chart.TryGetValue("Room", out c))
+            			Room.OnApplyBackend(chart["Room"], All);
             		if (chart.TryGetValue("Text", out c))
             			Text.OnApplyBackend(chart["Text"], All);
+            		if (chart.TryGetValue("Wave", out c))
+            			Wave.OnApplyBackend(chart["Wave"], All);
             	}
             }
             await base.InitBackend();

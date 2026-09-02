@@ -1,0 +1,56 @@
+{
+  "Attack": {
+    "Name": "Text_Core_AbilityAttack",
+    "Desc": "Text_Core_AbilityAttackDesc",
+    "Category": "Kill",
+    "StackMode": "Additive",
+    "Value": "0.2",
+    "ValueSub": "0",
+    "MaxStack": "5"
+  },
+  "AttackSpeed": {
+    "Name": "Text_Core_AbilityAttackSpeed",
+    "Desc": "Text_Core_AbilityAttackSpeedDesc",
+    "Category": "Kill",
+    "StackMode": "Multiplicative",
+    "Value": "0.12",
+    "ValueSub": "0",
+    "MaxStack": "4"
+  },
+  "MaxHp": {
+    "Name": "Text_Core_AbilityMaxHp",
+    "Desc": "Text_Core_AbilityMaxHpDesc",
+    "Category": "Survive",
+    "StackMode": "Additive",
+    "Value": "25",
+    "ValueSub": "25",
+    "MaxStack": "0"
+  },
+  "MoveSpeed": {
+    "Name": "Text_Core_AbilityMoveSpeed",
+    "Desc": "Text_Core_AbilityMoveSpeedDesc",
+    "Category": "Evade",
+    "StackMode": "Additive",
+    "Value": "0.1",
+    "ValueSub": "0",
+    "MaxStack": "3"
+  },
+  "HealMacaron": {
+    "Name": "Text_Core_AbilityHealMacaron",
+    "Desc": "Text_Core_AbilityHealMacaronDesc",
+    "Category": "Survive",
+    "StackMode": "Instant",
+    "Value": "0.6",
+    "ValueSub": "0",
+    "MaxStack": "0"
+  },
+  "MultiHit": {
+    "Name": "Text_Core_AbilityMultiHit",
+    "Desc": "Text_Core_AbilityMultiHitDesc",
+    "Category": "Kill",
+    "StackMode": "Additive",
+    "Value": "2",
+    "ValueSub": "1",
+    "MaxStack": "3"
+  }
+}
