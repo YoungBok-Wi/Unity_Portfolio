@@ -27,7 +27,7 @@ namespace Game
             m_Count = 0;
             m_CountTimer = 0;
             if (data.AttackType == BattleConst.GroupMelee)
-                LocalBattleManager.instance.ShowTelegraph(AreaCenter(data), AreaSize(data), data.Skill1Telegraph);
+                LocalBattleManager.instance.ShowTelegraph(new Vector2(AreaCenter(data).x, Unit.transform.position.y), data.Skill1Range, data.Skill1Telegraph);
         }
         protected override FSMState OnUpdate()
         {

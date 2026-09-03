@@ -201,7 +201,7 @@ namespace Game
             if (CharacterManager.instance.OnRoomCleared(m_RoomIndex.v) && Popup_Notify.instance != null)
             {
                 var language = LanguageManager.instance;
-                Popup_Notify.instance.Open(new Popup_Notify.SOption(null, string.Format(language.Get(RoomConst.TextGunUnlock), TableManager.instance.Const.Room_GunUnlock), language.Get(RoomConst.TextConfirm), null));
+                Popup_Notify.instance.Open(new Popup_Notify.SOption(null, string.Format(language.Get(RoomConst.TextGunUnlocked), TableManager.instance.Const.Room_GunUnlock), language.Get(RoomConst.TextConfirm), null));
             }
             if (m_RoomKind.v == RoomConst.KindBoss)
             {

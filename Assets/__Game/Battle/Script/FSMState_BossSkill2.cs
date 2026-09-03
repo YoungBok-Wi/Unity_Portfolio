@@ -33,7 +33,7 @@ namespace Game
             if (data.AttackType == BattleConst.GroupMelee)
             {
                 float length = data.Skill2TriggerDistance * 2f;
-                battle.ShowTelegraph(Unit.HitPoint + Vector2.right * (m_Dir * length * 0.5f), new Vector2(length, BattleConst.HitBoxHeight), data.Skill2Telegraph);
+                battle.ShowTelegraph(new Vector2(Unit.HitPoint.x + m_Dir * length * 0.5f, Unit.transform.position.y), length, data.Skill2Telegraph);
                 return;
             }
             int count = Unit.IsEnraged ? data.Skill2EnrageAreaCount : data.Skill2AreaCount;
@@ -44,7 +44,7 @@ namespace Game
                 float offset = (i + 1) / 2 * data.Skill2AreaWidth * 1.5f * ((i % 2 == 0) ? 1 : -1);
                 var center = new Vector2(playerX + offset, Unit.HitPoint.y);
                 m_Areas.Add(center);
-                battle.ShowTelegraph(center, new Vector2(data.Skill2AreaWidth, BattleConst.HitBoxHeight * 2f), data.Skill2Telegraph);
+                battle.ShowTelegraph(new Vector2(center.x, Unit.transform.position.y), data.Skill2AreaWidth, data.Skill2Telegraph);
             }
         }
         protected override FSMState OnUpdate()

@@ -2,7 +2,7 @@
   "reuse": "add",
   "confirmed": {},
   "verifyBlacklist": [],
-  "description": "캐릭터 게임모듈 — 선택 캐릭터(Knife·Gun)·Gun 해금·최고 도달 방 순번을 저장하고 `Scene_Game`에서 선택 캐릭터 오브젝트를 스폰한다.",
+  "description": "캐릭터 게임모듈 — 선택 캐릭터(Knife·Gun)·Gun 해금·최고 도달 방 순번을 저장하고 `Scene_Game`에서 선택 캐릭터 오브젝트를 스폰하며 `Scene_Lobby` BGM을 재생한다.",
   "important": "Basic",
   "inAsset": true,
   "replicateBlacklist": [],

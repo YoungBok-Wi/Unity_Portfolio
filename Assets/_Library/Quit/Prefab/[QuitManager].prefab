@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7477190763247473793
+--- !u!1 &6920713190154639819
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7705292318532549370}
-  - component: {fileID: 6136074006216091253}
+  - component: {fileID: 9113523188740382893}
+  - component: {fileID: 5145666505022833675}
   m_Layer: 0
-  m_Name: '[LocalCharacterManager]'
+  m_Name: '[QuitManager]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7705292318532549370
+--- !u!4 &9113523188740382893
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7477190763247473793}
+  m_GameObject: {fileID: 6920713190154639819}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,20 +32,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6136074006216091253
+--- !u!114 &5145666505022833675
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7477190763247473793}
+  m_GameObject: {fileID: 6920713190154639819}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0e830a106b87a94ea28b367f9ace689, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c26172e23592924383adf83f2227f11, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Game::Game.LocalCharacterManager
-  m_PlayerPrefabs:
-  - {fileID: 7155225150703407844, guid: 39793c6aef3b1c74bb71f8766fa03be4, type: 3}
-  - {fileID: 210516991495230365, guid: 6fe10a802e879844db3a31ac0bc47891, type: 3}
-  m_PlayerRoot: {fileID: 0}
-  m_LobbyBgm: {fileID: 8300000, guid: aca007db4c27d9b4b9958a649b9a66ea, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::Library.QuitManager

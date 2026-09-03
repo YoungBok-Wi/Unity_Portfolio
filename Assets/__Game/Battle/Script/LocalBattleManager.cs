@@ -21,7 +21,7 @@ namespace Game
         [SerializeField, Tooltip("히트스톱 시간 (초, 실시간)")] private float m_HitStopSec = 0.06f;
         [SerializeField, Tooltip("히트 이펙트 프리팹 (없으면 생략)")] private GameObject m_HitEffectPrefab;
         [SerializeField, Tooltip("히트 이펙트 수명 (초)")] private float m_HitEffectSec = 0.3f;
-        [SerializeField, Tooltip("전조 표시 프리팹 (1u 스프라이트, 없으면 생략)")] private GameObject m_TelegraphPrefab;
+        [SerializeField, Tooltip("전조 표시 프리팹 (폭 1u 가로 타원 스프라이트, 없으면 생략)")] private GameObject m_TelegraphPrefab;
         [SerializeField, Tooltip("타격음")] private AudioClip m_SfxHit;
         [SerializeField, Tooltip("처치음")] private AudioClip m_SfxDie;
         [SerializeField, Tooltip("전투 BGM (없으면 재생 생략)")] private AudioClip m_Bgm;
@@ -184,6 +184,14 @@ namespace Game
                 return;
             StartCoroutine(HitStopRoutine(m_HitStopSec));
         }
+        /// <summary>_a·_b 루트의 비트리거 콜라이더끼리 물리 충돌을 무시시킨다 — 적·플레이어가 서로 밀지 않고 겹친다 (판정은 Overlap 조회라 영향 없음)</summary>
+        private void IgnoreContact(Object_UnitBase _a, Object_UnitBase _b)
+        {
+            foreach (var ca in _a.GetComponents<Collider2D>())
+                foreach (var cb in _b.GetComponents<Collider2D>())
+                    if (!ca.isTrigger && !cb.isTrigger)
+                        Physics2D.IgnoreCollision(ca, cb, true);
+        }
         /// <summary>MultiHit 스택에 따른 가산치를 반환한다 — _isMelee 면 명중 상한(Value), 아니면 관통 수(ValueSub)</summary>
         private int GetMultiHit(bool _isMelee)
         {
@@ -205,6 +213,8 @@ namespace Game
             var unit = go.GetComponent<Object_UnitBase>();
             m_PoolByObject.Set(go, pool);
             unit.Spawn(_pos, _hpScale, _atkScale);
+            if (Player != null)
+                IgnoreContact(Player, unit);
             if (unit.Kind == EUnitKind.Boss)
             {
                 Boss = unit;
@@ -217,9 +227,10 @@ namespace Game
             }
             return unit;
         }
-        /// <summary>_wave 구성을 좌우 _left·_right 에서 번갈아 _spacing 간격으로 스폰하고 스폰 수를 반환한다</summary>
+        /// <summary>_wave 구성을 좌우 _left·_right 에서 번갈아 _spacing 간격으로 스폰하고 스폰 수를 반환한다 (x 는 방 반폭 − _spacing 안쪽으로 클램프)</summary>
         public int SpawnWave(WaveTable _wave, float _hpScale, float _atkScale, Vector2 _left, Vector2 _right, float _spacing)
         {
+            float maxX = LocalRoomManager.instance != null ? LocalRoomManager.instance.RoomHalfWidth - _spacing : float.MaxValue;
             var slots = new (string id, int count)[] { (_wave.Enemy1Id, _wave.Enemy1Count), (_wave.Enemy2Id, _wave.Enemy2Count), (_wave.Enemy3Id, _wave.Enemy3Count) };
             int index = 0;
             foreach (var (id, count) in slots)
@@ -229,6 +240,7 @@ namespace Game
                     int side = index % 2;
                     float offset = index / 2 * _spacing;
                     var pos = side == 0 ? _left + Vector2.left * offset : _right + Vector2.right * offset;
+                    pos.x = Mathf.Clamp(pos.x, -maxX, maxX);
                     SpawnUnit(id, pos, _hpScale, _atkScale);
                 }
             }
@@ -363,13 +375,13 @@ namespace Game
         {
             m_MeleeSlots.Remove(_unit);
         }
-        /// <summary>_center·_size 범위에 전조 표시를 _sec 동안 띄운다 (프리팹이 없으면 생략)</summary>
-        public void ShowTelegraph(Vector2 _center, Vector2 _size, float _sec)
+        /// <summary>_groundCenter(발밑 바닥 y) 에 폭 _width 의 납작한 가로 타원 전조를 _sec 동안 띄운다 (프리팹이 없으면 생략)</summary>
+        public void ShowTelegraph(Vector2 _groundCenter, float _width, float _sec)
         {
             if (m_TelegraphPrefab == null)
                 return;
-            var go = Instantiate(m_TelegraphPrefab, _center, Quaternion.identity);
-            go.transform.localScale = new Vector3(_size.x, _size.y, 1);
+            var go = Instantiate(m_TelegraphPrefab, _groundCenter, Quaternion.identity);
+            go.transform.localScale = new Vector3(_width, _width, 1);
             Destroy(go, _sec);
         }
         /// <summary>_id 능력을 한 스택 더 얻을 수 있는지 반환한다 (MaxStack 0 은 무제한)</summary>

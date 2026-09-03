@@ -1,6 +1,7 @@
 using Library;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Game
 {
@@ -12,6 +13,7 @@ namespace Game
         #region Inspector
         [SerializeField, Tooltip("플레이어 프리팹 목록 (이름 Object_Player_{캐릭터 ID})")] private GameObject[] m_PlayerPrefabs;
         [SerializeField, Tooltip("스폰한 플레이어를 둘 루트 (없으면 씬 루트)")] private Transform m_PlayerRoot;
+        [SerializeField, Tooltip("로비 BGM (로비 씬에서만 재생, 없으면 생략)")] private AudioClip m_LobbyBgm;
         #endregion
         #region Property
         /// <summary>스폰된 플레이어 오브젝트. 없으면 null</summary>
@@ -29,6 +31,13 @@ namespace Game
         {
             if (instance == this)
                 instance = null;
+        }
+        // 로비 씬에서만 건다 — 전투 씬 BGM 은 Battle 로컬 매니저가 재생하므로 여기서 걸면 초기화 순서에 따라 덮어쓴다
+        public override void InitGame()
+        {
+            if (m_LobbyBgm != null && SceneManager.GetActiveScene().name == SceneChangeManager.instance.LobbySceneID)
+                BattleManager.instance.PlayBGM(m_LobbyBgm);
+            base.InitGame();
         }
         #endregion
         #region Local Function
@@ -68,6 +77,7 @@ namespace Game
             _report.AddRaw("gunUnlocked", mgr.GunUnlocked.v ? "true" : "false");
             _report.AddNumber("bestRoom", mgr.BestRoom.v);
             _report.AddRaw("playerSpawned", Player != null ? "true" : "false");
+            _report.Add("lobbyBgm", m_LobbyBgm != null ? m_LobbyBgm.name : "");
         }
         public override void MCPInteraction(MCPReport _report)
         {
