@@ -1,6 +1,6 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "Gun 요리사 플레이어 — 정지 연사 투사체(첫 충돌 단일 명중, MultiHit로 관통)·점프, 5번째 방 클리어 해금, 런타임 스폰",
+  "description": "Gun 요리사 플레이어 — 정지 연사 투사체 공격, 대기·이동은 Gun 전용 프레임(Idle_Gun·Move_Gun) 재생",
   "inAsset": true
 }

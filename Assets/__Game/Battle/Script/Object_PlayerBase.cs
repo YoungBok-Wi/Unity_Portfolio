@@ -88,6 +88,11 @@ namespace Game
         }
         /// <summary>매 프레임 공격 입력·진행을 갱신한다 (파생이 구현)</summary>
         protected abstract void UpdateAttack();
+        /// <summary>_action 모션명을 이 캐릭터의 프레임 동작명으로 바꿔 반환한다 (기본은 그대로, 전용 시트가 있는 파생이 override)</summary>
+        protected virtual string ResolveAnim(string _action)
+        {
+            return _action;
+        }
         #endregion
         #region Local Function
         /// <summary>키보드·마우스·게임패드에서 이동·점프·공격 입력을 읽는다</summary>
@@ -140,16 +145,17 @@ namespace Game
         }
         #endregion
         #region Function
-        /// <summary>_action 모션을 _loop 로 재생한다 — 같은 모션이 재생 중이면 다시 시작하지 않는다 (모션 전환 단일 통로)</summary>
+        /// <summary>_action 모션을 ResolveAnim 으로 바꾼 동작명으로 _loop 재생한다 — 같은 모션이 재생 중이면 다시 시작하지 않는다 (모션 전환 단일 통로)</summary>
         public void PlayAnim(string _action, bool _loop)
         {
             if (Anim == null)
                 return;
-            if (m_CurAnim == _action && m_CurLoop == _loop && !Anim.IsFinished)
+            string action = ResolveAnim(_action);
+            if (m_CurAnim == action && m_CurLoop == _loop && !Anim.IsFinished)
                 return;
-            m_CurAnim = _action;
+            m_CurAnim = action;
             m_CurLoop = _loop;
-            Anim.Play(_action, _loop);
+            Anim.Play(action, _loop);
         }
         /// <summary>공격 판정 범위 오브젝트를 _isActive 로 켜고 끈다</summary>
         public void SetAttackRange(bool _isActive)

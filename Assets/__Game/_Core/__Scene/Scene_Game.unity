@@ -197,11 +197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1734681400815666210, guid: 2dbd1ee707cde1a43afa427f1254b086, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 8832
+      value: 7200
       objectReference: {fileID: 0}
     - target: {fileID: 1734681400815666210, guid: 2dbd1ee707cde1a43afa427f1254b086, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2736
+      value: -2430
       objectReference: {fileID: 0}
     - target: {fileID: 1734681400815666210, guid: 2dbd1ee707cde1a43afa427f1254b086, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -215,6 +215,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2877542677462171064, guid: 2dbd1ee707cde1a43afa427f1254b086, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 317986619}
     - target: {fileID: 2877542677462171064, guid: 2dbd1ee707cde1a43afa427f1254b086, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -261,6 +265,37 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1734681400815666210, guid: 2dbd1ee707cde1a43afa427f1254b086, type: 3}
   m_PrefabInstance: {fileID: 15087628}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &188228794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 188228795}
+  m_Layer: 0
+  m_Name: -----------------------------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &188228795
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188228794}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 490914356}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &201872576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -277,6 +312,10 @@ PrefabInstance:
       propertyPath: m_TextStyleHashCode
       value: -1183493901
       objectReference: {fileID: 0}
+    - target: {fileID: 1183930104762153098, guid: 1a5c64516ae526242bbb4a5a2117442c, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 317986619}
     - target: {fileID: 1183930104762153098, guid: 1a5c64516ae526242bbb4a5a2117442c, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -347,11 +386,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2015312061915837326, guid: 1a5c64516ae526242bbb4a5a2117442c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 4416
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2015312061915837326, guid: 1a5c64516ae526242bbb4a5a2117442c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2736
+      value: -2430
       objectReference: {fileID: 0}
     - target: {fileID: 2015312061915837326, guid: 1a5c64516ae526242bbb4a5a2117442c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -577,6 +616,10 @@ PrefabInstance:
       propertyPath: m_ReferenceResolution.y
       value: 1080
       objectReference: {fileID: 0}
+    - target: {fileID: 4565210547397689182, guid: 8450c5c18ac36c84399c73b273816cd0, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 317986619}
     - target: {fileID: 8227001671701842091, guid: 8450c5c18ac36c84399c73b273816cd0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -643,7 +686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8227001671701842091, guid: 8450c5c18ac36c84399c73b273816cd0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1368
+      value: -1080
       objectReference: {fileID: 0}
     - target: {fileID: 8227001671701842091, guid: 8450c5c18ac36c84399c73b273816cd0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -786,6 +829,10 @@ PrefabInstance:
       value: Popup_Pause
       objectReference: {fileID: 0}
     - target: {fileID: 4301656689638956958, guid: 546f86b52207bd749af59e2e51789988, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 317986619}
+    - target: {fileID: 4301656689638956958, guid: 546f86b52207bd749af59e2e51789988, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
@@ -851,11 +898,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4369553784220818445, guid: 546f86b52207bd749af59e2e51789988, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 6624
+      value: 4800
       objectReference: {fileID: 0}
     - target: {fileID: 4369553784220818445, guid: 546f86b52207bd749af59e2e51789988, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2736
+      value: -2430
       objectReference: {fileID: 0}
     - target: {fileID: 4369553784220818445, guid: 546f86b52207bd749af59e2e51789988, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -947,12 +994,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1162716106}
-  - {fileID: 1952109335}
+  - {fileID: 328037628}
+  - {fileID: 188228795}
   - {fileID: 201872577}
+  - {fileID: 1162716106}
   - {fileID: 437331976}
   - {fileID: 15087629}
-  - {fileID: 328037628}
+  - {fileID: 1952109335}
   - {fileID: 1892468838}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1372,11 +1420,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3745262326091090930, guid: a800b2f0a7521c34b883476d13df8a61, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 2400
       objectReference: {fileID: 0}
     - target: {fileID: 3745262326091090930, guid: a800b2f0a7521c34b883476d13df8a61, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2736
+      value: -2430
       objectReference: {fileID: 0}
     - target: {fileID: 3745262326091090930, guid: a800b2f0a7521c34b883476d13df8a61, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1398,6 +1446,10 @@ PrefabInstance:
       propertyPath: m_TextStyleHashCode
       value: -1183493901
       objectReference: {fileID: 0}
+    - target: {fileID: 6461797312935620162, guid: a800b2f0a7521c34b883476d13df8a61, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 317986619}
     - target: {fileID: 6461797312935620162, guid: a800b2f0a7521c34b883476d13df8a61, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -1625,11 +1677,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2193910953348948674, guid: c9344f5a2c879d54e8feadd270911966, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 11040
+      value: 12000
       objectReference: {fileID: 0}
     - target: {fileID: 2193910953348948674, guid: c9344f5a2c879d54e8feadd270911966, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2736
+      value: -2430
       objectReference: {fileID: 0}
     - target: {fileID: 2193910953348948674, guid: c9344f5a2c879d54e8feadd270911966, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1699,6 +1751,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6765570487419806109, guid: c9344f5a2c879d54e8feadd270911966, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 317986619}
     - target: {fileID: 6765570487419806109, guid: c9344f5a2c879d54e8feadd270911966, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -1772,6 +1828,10 @@ PrefabInstance:
       propertyPath: m_TextStyleHashCode
       value: -1183493901
       objectReference: {fileID: 0}
+    - target: {fileID: 1363517604509531040, guid: 9dff5e63956024c4c9c24d6b17066568, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 317986619}
     - target: {fileID: 1363517604509531040, guid: 9dff5e63956024c4c9c24d6b17066568, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -1850,11 +1910,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2550408983067907915, guid: 9dff5e63956024c4c9c24d6b17066568, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2208
+      value: 9600
       objectReference: {fileID: 0}
     - target: {fileID: 2550408983067907915, guid: 9dff5e63956024c4c9c24d6b17066568, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2736
+      value: -2430
       objectReference: {fileID: 0}
     - target: {fileID: 2550408983067907915, guid: 9dff5e63956024c4c9c24d6b17066568, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

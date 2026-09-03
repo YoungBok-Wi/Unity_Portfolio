@@ -1,7 +1,7 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "로비 화면 베이스형 팝업 — 캐릭터 선택 카드(Knife·Gun, Gun 미해금 잠금 마크)·시작 버튼·설정 버튼·최고 도달 방 순번 표시",
+  "description": "로비 베이스형 팝업 — Knife·Gun 선택 카드(선택 시 파란 카드, 미해금 회색·잠금 마크·해금 조건 알림)·중앙 요리사 일러스트(선택 캐릭터 전환)·시작·설정 버튼·별 배지 최고 도달 방 순번",
   "inAsset": true,
   "sortOrder": 0
 }

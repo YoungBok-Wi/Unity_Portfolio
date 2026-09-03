@@ -82,7 +82,7 @@ namespace Game
             {
                 m_UnlockLabel.gameObject.SetActive(newlyUnlocked);
                 if (newlyUnlocked)
-                    m_UnlockLabel.Set(language.Get(RoomConst.TextGunUnlock));
+                    m_UnlockLabel.Set(string.Format(language.Get(RoomConst.TextGunUnlock), TableManager.instance.Const.Room_GunUnlock));
             }
         }
         #endregion

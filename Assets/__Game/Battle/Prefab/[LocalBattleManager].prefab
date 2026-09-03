@@ -59,5 +59,6 @@ MonoBehaviour:
   m_HitEffectPrefab: {fileID: 1100000000000000001, guid: 5a1e7c0b2d3f4a6b8c9d0e1f2a3b4c5d, type: 3}
   m_HitEffectSec: 0.3
   m_TelegraphPrefab: {fileID: 1200000000000000001, guid: 6b2f8d1c3e4a5b7c9d0e1f2a3b4c5d6e, type: 3}
-  m_SfxHit: {fileID: 0}
-  m_SfxDie: {fileID: 0}
+  m_SfxHit: {fileID: 8300000, guid: 32f899c6d119ee5438b6217eb6ac4add, type: 3}
+  m_SfxDie: {fileID: 8300000, guid: e776d05fdb833234a9a202039107a143, type: 3}
+  m_Bgm: {fileID: 8300000, guid: 3d5d45925b725d941a2639ee55d81a8c, type: 3}

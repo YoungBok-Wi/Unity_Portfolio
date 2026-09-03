@@ -1,9 +1,10 @@
 using Library;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game
 {
-    /// <summary>로비 화면 베이스형 팝업 — Knife·Gun 선택 카드(잠금 마크·해금 조건)·시작·설정 버튼·최고 도달 방 순번을 표시한다</summary>
+    /// <summary>로비 화면 베이스형 팝업 — Knife·Gun 선택 카드(선택 파랑·잠금 회색·해금 조건)·중앙 요리사 일러스트·시작·설정 버튼·최고 도달 방 순번을 표시한다</summary>
     public class Popup_Lobby : PopupBase
     {
         public static Popup_Lobby instance { get; private set; }
@@ -14,6 +15,13 @@ namespace Game
         [SerializeField, Tooltip("Knife 선택 강조 프레임")] private GameObject m_KnifeSelect;
         [SerializeField, Tooltip("Gun 선택 강조 프레임")] private GameObject m_GunSelect;
         [SerializeField, Tooltip("Gun 잠금 마크 (미해금 시 표시)")] private GameObject m_GunLock;
+        [SerializeField, Tooltip("Knife 카드 배경 이미지 (선택 시 파란 스프라이트로 교체)")] private Image m_KnifeCardImage;
+        [SerializeField, Tooltip("Gun 카드 배경 이미지 (선택 시 파란 스프라이트로 교체)")] private Image m_GunCardImage;
+        [SerializeField, Tooltip("카드 기본 스프라이트")] private Sprite m_CardNormal;
+        [SerializeField, Tooltip("카드 선택 스프라이트 (파랑)")] private Sprite m_CardSelected;
+        [SerializeField, Tooltip("Gun 미해금 시 회색 처리할 그래픽 (카드 배경·아이콘)")] private Graphic[] m_GunGrayTargets;
+        [SerializeField, Tooltip("중앙 요리사 일러스트 Knife (Knife 선택 시 표시)")] private GameObject m_ChefKnife;
+        [SerializeField, Tooltip("중앙 요리사 일러스트 Gun (Gun 선택 시 표시)")] private GameObject m_ChefGun;
         [SerializeField, Tooltip("Knife 이름 라벨")] private UIWrapper_Text m_KnifeName;
         [SerializeField, Tooltip("Gun 이름 라벨")] private UIWrapper_Text m_GunName;
         [SerializeField, Tooltip("Knife 설명 라벨")] private UIWrapper_Text m_KnifeDesc;
@@ -28,6 +36,7 @@ namespace Game
         private const string KnifeId = "Knife";
         private const string GunId = "Gun";
         private const string SettingPopupId = "Popup_Setting";
+        private static readonly Color LockedTint = new(0.55f, 0.55f, 0.55f);
         #endregion
 
         #region Event
@@ -112,18 +121,39 @@ namespace Game
         }
         #endregion
         #region Local Function
-        /// <summary>선택 강조·잠금 마크·Gun 설명(해금 전엔 해금 조건)을 갱신한다</summary>
+        /// <summary>선택 강조(파란 카드·프레임·요리사 일러스트)·잠금 마크·회색 처리·Gun 설명(해금 전엔 해금 조건)을 갱신한다</summary>
         private void RefreshCards(ValueBase _)
         {
             var mgr = CharacterManager.instance;
             if (mgr == null)
                 return;
             bool gunUnlocked = mgr.IsUnlocked(GunId);
-            m_KnifeSelect.SetActive(mgr.SelectedId.v == KnifeId);
-            m_GunSelect.SetActive(mgr.SelectedId.v == GunId);
+            bool knifeSelected = mgr.SelectedId.v == KnifeId;
+            bool gunSelected = mgr.SelectedId.v == GunId;
+            m_KnifeSelect.SetActive(knifeSelected);
+            m_GunSelect.SetActive(gunSelected);
+            SetCardSprite(m_KnifeCardImage, knifeSelected);
+            SetCardSprite(m_GunCardImage, gunSelected);
+            if (m_ChefKnife != null)
+                m_ChefKnife.SetActive(knifeSelected);
+            if (m_ChefGun != null)
+                m_ChefGun.SetActive(gunSelected);
             m_GunLock.SetActive(!gunUnlocked);
+            if (m_GunGrayTargets != null)
+                foreach (var graphic in m_GunGrayTargets)
+                    if (graphic != null)
+                        graphic.color = gunUnlocked ? Color.white : LockedTint;
             if (LanguageManager.instance != null)
                 UIWrapper_Text.Set(m_GunDesc, gunUnlocked ? LanguageManager.instance.Get(TableManager.instance.Character.Data[GunId].Desc) : UnlockText());
+        }
+        /// <summary>_card 의 스프라이트를 _selected 에 따라 선택·기본 스프라이트로 바꾼다 (미배선이면 무시)</summary>
+        private void SetCardSprite(Image _card, bool _selected)
+        {
+            if (_card == null)
+                return;
+            var sprite = _selected ? m_CardSelected : m_CardNormal;
+            if (sprite != null)
+                _card.sprite = sprite;
         }
         /// <summary>최고 도달 방 순번 표시를 갱신한다</summary>
         private void RefreshBest(ValueBase _)

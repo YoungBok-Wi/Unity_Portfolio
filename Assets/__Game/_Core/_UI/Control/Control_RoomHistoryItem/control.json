@@ -1,7 +1,7 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "HUD 지나온 방 이력 항목 — 방 종류 아이콘 1개 (UI_Casual_Panel_Item 배경)",
+  "description": "지나온 방 이력 항목 — 방 종류 아이콘 하나와 앞 항목과 잇는 점선(Link, 첫 항목은 끔)",
   "inAsset": true,
   "fixedWidth": true,
   "fixedHeight": true
