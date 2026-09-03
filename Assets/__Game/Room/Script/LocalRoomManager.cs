@@ -16,7 +16,7 @@ namespace Game
         [SerializeField, Tooltip("방 오른쪽 끝 적 스폰 위치")] private Transform m_SpawnRight;
         [SerializeField, Tooltip("같은 쪽 적 사이 간격 (u)")] private float m_EnemySpacing = 1.0f;
         [SerializeField, Tooltip("카메라 추종 속도")] private float m_CameraLerp = 5f;
-        [SerializeField, Tooltip("카메라 추종 X 한계 (방 반폭, u)")] private float m_CameraClampX = 8f;
+        [SerializeField, Tooltip("방 반폭 (u) — 좌우 벽 위치, 카메라 X 클램프는 여기서 화면 반폭을 뺀 값")] private float m_RoomHalfWidth = 12f;
         [SerializeField, Tooltip("카메라 고정 Y")] private float m_CameraFixedY = 0f;
         #endregion
         #region Property
@@ -44,6 +44,8 @@ namespace Game
         public IReadOnlyList<string> AbilityChoices => m_AbilityChoices;
         /// <summary>다음 리롤 Crumb 비용</summary>
         public int RerollCost => TableManager.instance.Const.Ability_RerollBaseCost + m_RerollCount.v * TableManager.instance.Const.Ability_RerollCostStep;
+        /// <summary>방 반폭 (u) — 좌우 벽 x 위치의 절댓값</summary>
+        public float RoomHalfWidth => m_RoomHalfWidth;
         #endregion
         #region Value
         private IntValue m_RoomIndex;
@@ -91,6 +93,7 @@ namespace Game
             battle.AliveEnemyCount.AddChanged(this, OnAliveChanged);
             battle.IsPlayerDead.AddChanged(this, OnPlayerDead);
             battle.IsBossDead.AddChanged(this, OnBossDead);
+            CreateWalls();
             base.InitGame();
             StartRun();
         }
@@ -107,6 +110,23 @@ namespace Game
         }
         #endregion
         #region Local Function
+        /// <summary>방 좌우 끝(x = ±RoomHalfWidth)에 유닛 차단 벽 콜라이더를 만든다</summary>
+        private void CreateWalls()
+        {
+            foreach (int side in new[] { -1, 1 })
+            {
+                var wall = new GameObject(side < 0 ? "WallLeft" : "WallRight");
+                wall.transform.SetParent(transform, false);
+                wall.transform.position = new Vector3(side * (m_RoomHalfWidth + RoomConst.WallThickness * 0.5f), m_CameraFixedY, 0);
+                wall.AddComponent<BoxCollider2D>().size = new Vector2(RoomConst.WallThickness, 40f);
+            }
+        }
+        /// <summary>카메라 X 클램프를 반환한다 — 방 반폭에서 화면 반폭(orthographicSize × aspect)을 뺀 값, 0 미만이면 0(고정)</summary>
+        private float GetCameraClampX()
+        {
+            var cam = LocalCameraManager.instance.CurCam;
+            return Mathf.Max(0, m_RoomHalfWidth - cam.orthographicSize * cam.aspect);
+        }
         /// <summary>살아 있는 적이 0 이면 다음 웨이브 또는 클리어로 넘긴다</summary>
         private void OnAliveChanged(ValueBase _)
         {
@@ -135,7 +155,9 @@ namespace Game
             var battle = LocalBattleManager.instance;
             battle.ClearUnits();
             m_History.Add(_kind);
-            m_HistoryCount.v = m_History.Count;
+            if (RoomConst.HistoryMax < m_History.Count)
+                m_History.RemoveAt(0);
+            m_HistoryCount.v += 1;
             m_RoomKind.v = _kind;
             m_State.v = ERoomState.Playing;
             switch (_kind)
@@ -179,7 +201,7 @@ namespace Game
             if (CharacterManager.instance.OnRoomCleared(m_RoomIndex.v) && Popup_Notify.instance != null)
             {
                 var language = LanguageManager.instance;
-                Popup_Notify.instance.Open(new Popup_Notify.SOption(null, language.Get(RoomConst.TextGunUnlock), language.Get(RoomConst.TextConfirm), null));
+                Popup_Notify.instance.Open(new Popup_Notify.SOption(null, string.Format(language.Get(RoomConst.TextGunUnlock), TableManager.instance.Const.Room_GunUnlock), language.Get(RoomConst.TextConfirm), null));
             }
             if (m_RoomKind.v == RoomConst.KindBoss)
             {
@@ -264,7 +286,7 @@ namespace Game
                 throw new InvalidOperationException($"{playerGo.name} 에 Object_UnitBase 이 없다");
             player.Spawn(m_PlayerSpawn.position, 1f, 1f);
             if (LocalCameraManager.instance != null)
-                LocalCameraManager.instance.SetFollow(player.transform, m_CameraLerp, m_CameraClampX, m_CameraFixedY);
+                LocalCameraManager.instance.SetFollow(player.transform, m_CameraLerp, GetCameraClampX(), m_CameraFixedY);
 
             m_RoomIndex.Set(1, true, false);
             EnterRoom(RoomConst.KindBattle);
@@ -322,6 +344,9 @@ namespace Game
             _report.AddNumber("waveCount", m_WaveCount.v);
             _report.Add("result", m_Result.v.ToString());
             _report.Add("history", string.Join(",", m_History));
+            _report.AddNumber("historyCount", m_HistoryCount.v);
+            _report.Add("roomHalfWidth", m_RoomHalfWidth.ToString("0.00"));
+            _report.Add("cameraClampX", (LocalCameraManager.instance != null ? GetCameraClampX() : 0).ToString("0.00"));
             for (int i = 0; i < m_Choices.Count; i++)
                 _report.Add($"choice{i}", $"{m_Choices[i].Kind}{(m_Choices[i].BossId != null ? ":" + m_Choices[i].BossId : "")}");
             _report.Add("abilityChoices", string.Join(",", m_AbilityChoices));
@@ -378,6 +403,8 @@ namespace Game
             switch (_cheatId)
             {
                 case "ClearRoom":
+                    if (m_State.v != ERoomState.Playing)
+                        return $"{{\"error\":\"Playing 상태가 아니다 : {m_State.v}\"}}";
                     LocalBattleManager.instance.ClearUnits();
                     m_AbilityChoices.Clear();
                     LocalPopupManager.instance.Close(RoomConst.PopupAbility);

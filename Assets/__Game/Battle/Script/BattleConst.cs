@@ -32,6 +32,8 @@ namespace Game
         public const float MeleeWaitDistance = 3.0f;
         public const float HitBoxHeight = 1.5f;
         public const float BossProjectileRange = 15.0f;
+        public const float PlayerKnockbackDist = 0.5f;
+        public const float PlayerKnockbackTime = 0.15f;
         #endregion
     }
 }

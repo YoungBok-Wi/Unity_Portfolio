@@ -53,7 +53,12 @@ namespace Game
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (IsStunned || Physics == null || !CanControl)
+            if (IsStunned || Physics == null)
+                return;
+            // 이동 입력이 없거나 조작 불가·공격 중이면 수평 속도를 즉시 0 으로 — 감속 잔여 속도가 없어야 넉백·밀림 뒤 표류하지 않는다
+            if (!CanControl || IsAttacking || m_MoveInput == 0)
+                StopHorizontal();
+            if (!CanControl)
                 return;
             SetMoveSpeed(Battle != null ? Battle.GetPlayerMoveSpeed(CharacterData.MoveSpeed) : CharacterData.MoveSpeed);
             if (IsAttacking)
@@ -166,11 +171,10 @@ namespace Game
             var data = CharacterData;
             return (HitPoint + Vector2.right * (Facing * data.RangeWidth * 0.5f), new Vector2(data.RangeWidth, data.RangeHeight));
         }
-        /// <summary>제자리에 선다 — 공격 시작 시 수평 속도를 지운다 (공중이면 유지)</summary>
+        /// <summary>제자리에 선다 — 공격 시작 시 수평 속도를 지운다</summary>
         public void StopMove()
         {
-            if (Physics != null && Physics.FlyState == CharacterPhysicsBase.EFlyState.None)
-                Physics.SetVelocity(new Vector2(0, Physics.Rig.linearVelocity.y));
+            StopHorizontal();
         }
         #endregion
     }

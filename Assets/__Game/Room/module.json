@@ -2,7 +2,7 @@
   "reuse": "add",
   "confirmed": {},
   "verifyBlacklist": [],
-  "description": "방 진행 게임모듈 — 방 순번·이력·2택 선택지 세트·웨이브 진행·클리어 판정·능력 선택·런 종료를 관리한다.",
+  "description": "방 진행 게임모듈 — 방 순번·이력(최근 N개)·2택 선택지 세트·웨이브 진행·클리어 판정·능력 선택·런 종료와 방 좌우 벽·카메라 클램프를 관리한다.",
   "important": "Basic",
   "inAsset": true,
   "replicateBlacklist": [],

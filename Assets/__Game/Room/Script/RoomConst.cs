@@ -13,6 +13,8 @@ namespace Game
         public const string PopupResult = "Popup_Result";
         public const string TextGunUnlock = "Text_Core_GunUnlock";
         public const string TextConfirm = "Text_Core_Confirm";
+        public const int HistoryMax = 8;
+        public const float WallThickness = 1.0f;
         #endregion
     }
 }

@@ -91,7 +91,10 @@ namespace Game
                 return;
             m_StunTimer -= Time.deltaTime;
             if (m_StunTimer <= 0 && m_Physics != null)
+            {
                 m_Physics.MoveSpeed.v = m_MoveSpeedBase;
+                StopHorizontal();
+            }
         }
         // 넉백은 물리의 Move 통로로 밀어야 접지 감속 로직에 지워지지 않는다 — 경직 동안 이동속도를 넉백 속도로 바꿔 민다
         protected virtual void FixedUpdate()
@@ -229,6 +232,12 @@ namespace Game
         public int ScaleAttack(int _base)
         {
             return Mathf.RoundToInt(_base * m_AttackScale);
+        }
+        /// <summary>수평 속도를 즉시 0 으로 지운다 (수직 속도·비행 상태 유지, 물리가 없으면 무시)</summary>
+        public void StopHorizontal()
+        {
+            if (m_Physics != null)
+                m_Physics.Rig.linearVelocity = new Vector2(0, m_Physics.Rig.linearVelocity.y);
         }
         #endregion
     }

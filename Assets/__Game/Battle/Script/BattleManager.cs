@@ -18,6 +18,7 @@ namespace Game
         #region Value
         private LongValue m_Crumb;
         private IntValue m_CrumbTotal;
+        private AudioSource m_BgmSource;
         #endregion
 
         #region Event
@@ -28,14 +29,21 @@ namespace Game
         }
         public override bool RequireInit()
         {
-            return InitUtil.IsInit(new ManagerBase[] { BankManager.instance, NumberManager.instance });
+            return InitUtil.IsInit(new ManagerBase[] { BankManager.instance, NumberManager.instance, SoundManager.instance });
         }
         public override void Init()
         {
             m_Crumb = BankManager.instance.Create(this, BattleConst.CrumbId, "", "", 0, false);
             m_CrumbTotal = new IntValue(this, "CrumbTotal", 0);
             NumberManager.instance.Create(this, "CrumbTotal", m_CrumbTotal);
+            SoundManager.instance.BGMVolume.AddChanged(this, OnBgmVolumeChanged);
             base.Init();
+        }
+        /// <summary>BGM 볼륨 변경을 재생 중인 소스에 반영한다</summary>
+        private void OnBgmVolumeChanged(ValueBase _)
+        {
+            if (m_BgmSource != null)
+                m_BgmSource.volume = SoundManager.instance.BGMVolume.v;
         }
         #endregion
         #region Function
@@ -52,6 +60,27 @@ namespace Game
         {
             BankManager.instance.Set(BattleConst.CrumbId, 0);
             m_CrumbTotal.v = 0;
+        }
+        /// <summary>_clip 을 BGM 으로 루프 재생한다 (SoundManager BGM 볼륨 적용, 같은 클립이 재생 중이면 유지, null 이면 정지)</summary>
+        public void PlayBGM(AudioClip _clip)
+        {
+            if (m_BgmSource == null)
+            {
+                m_BgmSource = gameObject.AddComponent<AudioSource>();
+                m_BgmSource.playOnAwake = false;
+                m_BgmSource.loop = true;
+            }
+            if (_clip == null)
+            {
+                m_BgmSource.Stop();
+                m_BgmSource.clip = null;
+                return;
+            }
+            if (m_BgmSource.clip == _clip && m_BgmSource.isPlaying)
+                return;
+            m_BgmSource.clip = _clip;
+            m_BgmSource.volume = SoundManager.instance.BGMVolume.v;
+            m_BgmSource.Play();
         }
         #endregion
     }

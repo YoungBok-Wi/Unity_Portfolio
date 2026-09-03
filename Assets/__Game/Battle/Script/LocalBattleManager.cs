@@ -24,6 +24,7 @@ namespace Game
         [SerializeField, Tooltip("전조 표시 프리팹 (1u 스프라이트, 없으면 생략)")] private GameObject m_TelegraphPrefab;
         [SerializeField, Tooltip("타격음")] private AudioClip m_SfxHit;
         [SerializeField, Tooltip("처치음")] private AudioClip m_SfxDie;
+        [SerializeField, Tooltip("전투 BGM (없으면 재생 생략)")] private AudioClip m_Bgm;
         #endregion
         #region Property
         /// <summary>등록된 플레이어 유닛. 없으면 null</summary>
@@ -44,8 +45,10 @@ namespace Game
         public IReadOnlyFloatFactor MoveSpeedFactor => m_MoveSpeedFactor;
         /// <summary>능력 ID → 스택</summary>
         public IReadOnlyDictionary<string, int> AbilityStacks => m_AbilityStacks;
-        /// <summary>일시정지 중인지 (timeScale 소유자는 이 매니저 하나다)</summary>
+        /// <summary>일시정지 중인지 (timeScale 은 TimeManager 가 소유하고 이 매니저는 자기 몫 배율만 건다)</summary>
         public bool IsPaused => m_IsPaused;
+        /// <summary>명중이 적용될 때마다 (피격 정보, 피격 유닛) 을 알린다 — 구독 해제는 OnShutdown</summary>
+        public event Action<SHit, Object_UnitBase> HitApplied;
         #endregion
         #region Value
         private IntValue m_AliveEnemyCount;
@@ -76,7 +79,8 @@ namespace Game
         {
             if (instance == this)
                 instance = null;
-            Time.timeScale = 1;
+            if (TimeManager.instance != null)
+                TimeManager.instance.SetTimeScale(this, this, 1);
         }
         public override void OnRegisterObject(ObjectBase _object)
         {
@@ -103,6 +107,8 @@ namespace Game
                 CreateUnitPool(prefab, 1, root);
             if (m_ProjectilePrefab != null)
                 m_ProjectilePool = new ObjectPool(m_ProjectilePrefab, root, m_ProjectilePoolSize);
+            if (m_Bgm != null)
+                BattleManager.instance.PlayBGM(m_Bgm);
             base.InitGame();
         }
         #endregion
@@ -126,14 +132,19 @@ namespace Game
                 Destroy(Instantiate(m_HitEffectPrefab, _point, Quaternion.identity), m_HitEffectSec);
             SoundManager.instance.PlaySE(_clip);
         }
-        /// <summary>실시간 _sec 동안 timeScale 을 0 으로 멈춘다 — 복원값은 일시정지 여부로 정한다 (timeScale 소유자 단일화)</summary>
+        /// <summary>실시간 _sec 동안 히트스톱 배율을 걸었다 푼다 — 복원은 ApplyTimeScale 이 일시정지 상태로 정한다</summary>
         private IEnumerator HitStopRoutine(float _sec)
         {
             m_IsHitStopping = true;
-            Time.timeScale = 0;
+            ApplyTimeScale();
             yield return new WaitForSecondsRealtime(_sec);
-            Time.timeScale = m_IsPaused ? 0 : 1;
             m_IsHitStopping = false;
+            ApplyTimeScale();
+        }
+        /// <summary>일시정지·히트스톱 상태를 이 매니저 몫의 TimeManager 배율(0 또는 1)로 건다 — 다른 소유자의 슬로모 배율과 곱해져 충돌하지 않는다</summary>
+        private void ApplyTimeScale()
+        {
+            TimeManager.instance.SetTimeScale(this, this, m_IsPaused || m_IsHitStopping ? 0 : 1);
         }
         /// <summary>_id 능력 스택을 Factor·플레이어 스탯에 반영한다</summary>
         private void ApplyAbility(string _id, AbilityTable _table, int _stack)
@@ -258,16 +269,22 @@ namespace Game
                 m_AliveEnemyCount.v = m_Enemies.Count;
             }
         }
-        /// <summary>_hit 를 _target 에 적용하고 연출을 재생한다. 같은 진영·사망·null 이면 false</summary>
+        /// <summary>_hit 를 _target 에 적용하고 연출·HitApplied 통지를 낸다 (플레이어 피격은 넉백을 공통값으로 덮는다). 같은 진영·사망·null 이면 false</summary>
         public bool Hit(SHit _hit, Object_UnitBase _target)
         {
             if (_target == null || _hit.Attacker == null || _target.Team == _hit.Attacker.Team)
                 return false;
+            if (_target.Kind == EUnitKind.Player)
+            {
+                _hit.KnockbackDist = BattleConst.PlayerKnockbackDist;
+                _hit.KnockbackTime = BattleConst.PlayerKnockbackTime;
+            }
             if (!_target.TakeHit(_hit))
                 return false;
             PlayHitEffect(_hit.Point, m_SfxHit);
             if (_hit.IsFinish || _target.Kind == EUnitKind.Boss)
                 HitStop();
+            HitApplied?.Invoke(_hit, _target);
             return true;
         }
         /// <summary>_center·_size 사각 범위의 상대 진영 유닛을 가까운 순으로 최대 _maxHits(플레이어는 MultiHit 가산) 명중시키고 명중 수를 반환한다</summary>
@@ -309,6 +326,12 @@ namespace Game
                 throw new InvalidOperationException($"{go.name} 에 IProjectile 구현이 없다");
             if (_data.Owner.Kind == EUnitKind.Player)
                 _data.Pierce += GetMultiHit(false);
+            // 방 벽까지의 거리로 비행 거리를 자른다 — 투사체가 벽에서 소멸한다
+            if (LocalRoomManager.instance != null && _data.Velocity.x != 0)
+            {
+                float wallX = (_data.Velocity.x < 0 ? -1 : 1) * LocalRoomManager.instance.RoomHalfWidth;
+                _data.MaxDistance = Mathf.Min(_data.MaxDistance, Mathf.Abs(wallX - _data.Origin.x));
+            }
             go.transform.position = _data.Origin;
             projectile.Launch(_data);
         }
@@ -317,14 +340,18 @@ namespace Game
         {
             m_ProjectilePool.Return(_object);
         }
-        /// <summary>_unit 에 플레이어 _side(-1 좌·+1 우) 근접 슬롯을 준다. 이미 가졌거나 자리가 있으면 true</summary>
+        /// <summary>_unit 에 플레이어 _side(-1 좌·+1 우) 근접 슬롯을 준다. 같은 쪽 슬롯을 이미 가졌거나 자리가 있으면 true (반대쪽 슬롯은 반납 후 재판정, 죽은 유닛 슬롯은 세지 않는다)</summary>
         public bool RequestMeleeSlot(Object_UnitBase _unit, int _side)
         {
-            if (m_MeleeSlots.ContainsKey(_unit))
-                return true;
+            if (m_MeleeSlots.TryGetValue(_unit, out var held))
+            {
+                if (held == _side)
+                    return true;
+                m_MeleeSlots.Remove(_unit);
+            }
             int count = 0;
-            foreach (var side in m_MeleeSlots.Values)
-                if (side == _side)
+            foreach (var pair in m_MeleeSlots)
+                if (pair.Value == _side && !pair.Key.IsDead.v && pair.Key.gameObject.activeInHierarchy)
                     count += 1;
             if (TableManager.instance.Const.Battle_MeleeSlotPerSide <= count)
                 return false;
@@ -394,12 +421,11 @@ namespace Game
             m_MeleeSlots.Clear();
             m_AliveEnemyCount.Set(0, false, false);
         }
-        /// <summary>일시정지를 _isPaused 로 바꾸고 timeScale 을 반영한다 (히트스톱 중이면 히트스톱 종료 시 반영)</summary>
+        /// <summary>일시정지를 _isPaused 로 바꾸고 이 매니저 몫의 timeScale 배율을 반영한다</summary>
         public void SetPaused(bool _isPaused)
         {
             m_IsPaused = _isPaused;
-            if (!m_IsHitStopping)
-                Time.timeScale = _isPaused ? 0 : 1;
+            ApplyTimeScale();
         }
         /// <summary>플레이어를 최대 HP 의 _ratio 만큼 회복한다 (플레이어가 없으면 무시)</summary>
         public void HealPlayer(float _ratio)
@@ -434,6 +460,13 @@ namespace Game
             _report.Add("boss", Boss != null ? Boss.Id : "");
             _report.AddNumber("bossHp", Boss != null ? Boss.Hp.v : 0);
             _report.AddRaw("bossDead", m_IsBossDead.v ? "true" : "false");
+            _report.AddRaw("paused", m_IsPaused ? "true" : "false");
+            _report.Add("timeScale", Time.timeScale.ToString("0.00"));
+            int left = 0, right = 0;
+            foreach (var side in m_MeleeSlots.Values)
+                if (side < 0) left += 1; else right += 1;
+            _report.AddNumber("meleeSlotLeft", left);
+            _report.AddNumber("meleeSlotRight", right);
             foreach (var pair in m_AbilityStacks)
                 _report.AddNumber($"ability_{pair.Key}", pair.Value);
         }

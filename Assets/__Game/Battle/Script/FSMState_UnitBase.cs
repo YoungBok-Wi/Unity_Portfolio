@@ -57,7 +57,7 @@ namespace Game
         {
             return Unit.Anim != null ? Unit.Anim.GetLength(_action) : _fallback;
         }
-        /// <summary>_center·_size 사각 범위로 근접 판정을 낸다 (플레이어 넉백 없음)</summary>
+        /// <summary>_center·_size 사각 범위로 근접 판정을 낸다 (플레이어 피격 넉백은 매니저 Hit 이 공통값으로 준다)</summary>
         protected int HitBox(Vector2 _center, Vector2 _size, int _damage, int _maxHits)
         {
             return LocalBattleManager.instance.HitBox(Unit, _center, _size, _damage, _maxHits, 0, 0, false);
