@@ -692,6 +692,10 @@
     "NameKor": "다음 방 선택",
     "NameEng": "Choose the Next Room"
   },
+  "Text_Core_GunUnlocked": {
+    "NameKor": "크림 건 해금!",
+    "NameEng": "Cream Gun unlocked!"
+  },
   "Text_Popup_NotifyTitle": {
     "NameKor": "알림",
     "NameEng": "Notice",
@@ -755,6 +759,16 @@
   "Text_Shutdown_Text": {
     "NameKor": "에러 발생으로 잠시 후 로비로 이동합니다.",
     "NameEng": "An error occurred. Returning to the lobby shortly."
+  },
+  "Text_Quit_Title": {
+    "NameKor": "게임 종료",
+    "NameEng": "Quit Game",
+    "NameJap": "ゲーム終了"
+  },
+  "Text_Quit_Text": {
+    "NameKor": "정말 게임을 종료하시겠습니까?",
+    "NameEng": "Are you sure you want to quit the game?",
+    "NameJap": "本当にゲームを終了しますか?"
   },
   "Text_Popup_Setting_BGM": {
     "NameKor": "배경음",
