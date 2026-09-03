@@ -2,11 +2,11 @@
   "reuse": "add",
   "confirmed": {},
   "verifyBlacklist": [],
-  "description": "캐릭터 게임모듈 — 선택 캐릭터(Knife·Gun) 저장·스폰과 Gun 해금(5번째 방 클리어) 영구 저장을 관리한다.",
+  "description": "캐릭터 게임모듈 — 선택 캐릭터(Knife·Gun)·Gun 해금·최고 도달 방 순번을 저장하고 `Scene_Game`에서 선택 캐릭터 오브젝트를 스폰한다.",
   "important": "Basic",
   "inAsset": true,
   "replicateBlacklist": [],
-  "globalManagerPrefab": "",
-  "localManagerPrefab": "",
+  "globalManagerPrefab": "Prefab/[CharacterManager]",
+  "localManagerPrefab": "Prefab/[LocalCharacterManager]",
   "parentNodeId": "게임기능_캐릭터"
 }

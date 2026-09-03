@@ -2,11 +2,11 @@
   "reuse": "add",
   "confirmed": {},
   "verifyBlacklist": [],
-  "description": "전투 게임모듈 — HP·데미지·넉백·히트스톱·투사체·Crumb 낙하 등 플레이어·적·보스 간 전투 규칙을 처리한다.",
+  "description": "전투 게임모듈 — 유닛 공용 베이스(HP·피격·넉백·사망), 근접 박스·투사체 판정, 적·보스 FSM 상태, 능력 강화 Factor, Crumb 재화를 처리한다.",
   "important": "Basic",
   "inAsset": true,
   "replicateBlacklist": [],
-  "globalManagerPrefab": "",
-  "localManagerPrefab": "",
+  "globalManagerPrefab": "Prefab/[BattleManager]",
+  "localManagerPrefab": "Prefab/[LocalBattleManager]",
   "parentNodeId": "게임기능_전투"
 }

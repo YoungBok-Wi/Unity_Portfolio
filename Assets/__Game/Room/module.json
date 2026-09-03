@@ -2,11 +2,11 @@
   "reuse": "add",
   "confirmed": {},
   "verifyBlacklist": [],
-  "description": "방 진행 게임모듈 — 방 순번·이력·2택 선택지 세트·웨이브 스폰·클리어 판정·능력 선택·런 결과를 관리한다.",
+  "description": "방 진행 게임모듈 — 방 순번·이력·2택 선택지 세트·웨이브 진행·클리어 판정·능력 선택·런 종료를 관리한다.",
   "important": "Basic",
   "inAsset": true,
   "replicateBlacklist": [],
   "globalManagerPrefab": "",
-  "localManagerPrefab": "",
+  "localManagerPrefab": "Prefab/[LocalRoomManager]",
   "parentNodeId": "게임기능_진행"
 }
