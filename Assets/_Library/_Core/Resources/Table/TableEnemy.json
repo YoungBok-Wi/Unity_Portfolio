@@ -5,7 +5,7 @@
     "Icon": "AnimationSheet_Casual_Enemy_Apple_Move_01",
     "Group": "Melee",
     "Hp": "30",
-    "Attack": "8",
+    "Attack": "6",
     "AttackInterval": "1",
     "MoveSpeed": "3.5",
     "StopDistance": "0.8",
