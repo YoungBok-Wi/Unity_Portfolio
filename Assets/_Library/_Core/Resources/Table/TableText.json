@@ -680,6 +680,18 @@
     "NameKor": "나이프 명중 상한 +2, 건 관통 +1 (최대 3중첩)",
     "NameEng": "Knife hit cap +2, Gun pierce +1 (up to 3 stacks)"
   },
+  "Text_Core_GunUnlock": {
+    "NameKor": "{0}번째 방을 클리어하면 크림 건 해금",
+    "NameEng": "Clear room {0} to unlock the Cream Gun"
+  },
+  "Text_Core_Confirm": {
+    "NameKor": "확인",
+    "NameEng": "OK"
+  },
+  "Text_Core_RoomSelectTitle": {
+    "NameKor": "다음 방 선택",
+    "NameEng": "Choose the Next Room"
+  },
   "Text_Popup_NotifyTitle": {
     "NameKor": "알림",
     "NameEng": "Notice",
@@ -743,5 +755,75 @@
   "Text_Shutdown_Text": {
     "NameKor": "에러 발생으로 잠시 후 로비로 이동합니다.",
     "NameEng": "An error occurred. Returning to the lobby shortly."
+  },
+  "Text_Popup_Setting_BGM": {
+    "NameKor": "배경음",
+    "NameEng": "BGM",
+    "NameJap": "BGM"
+  },
+  "Text_Popup_Setting_Language": {
+    "NameKor": "한국어",
+    "NameEng": "English",
+    "NameJap": "日本語"
+  },
+  "Text_Popup_Setting_SE": {
+    "NameKor": "효과음",
+    "NameEng": "SFX",
+    "NameJap": "効果音"
+  },
+  "Text_Popup_Setting_Game": {
+    "NameKor": "게임",
+    "NameEng": "Game",
+    "NameJap": "ゲーム"
+  },
+  "Text_Popup_Setting_Graphic": {
+    "NameKor": "그래픽",
+    "NameEng": "Graphics",
+    "NameJap": "グラフィック"
+  },
+  "Text_Popup_Setting_Sound": {
+    "NameKor": "음량",
+    "NameEng": "Volume",
+    "NameJap": "音量"
+  },
+  "Text_Popup_Setting_Master": {
+    "NameKor": "전체 음량",
+    "NameEng": "Master Volume",
+    "NameJap": "全体音量"
+  },
+  "Text_Popup_Setting_Mute": {
+    "NameKor": "음소거",
+    "NameEng": "Mute",
+    "NameJap": "ミュート"
+  },
+  "Text_Popup_Setting_LanguageLabel": {
+    "NameKor": "언어",
+    "NameEng": "Language",
+    "NameJap": "言語"
+  },
+  "Text_Popup_Setting_Fullscreen": {
+    "NameKor": "전체 화면",
+    "NameEng": "Fullscreen",
+    "NameJap": "フルスクリーン"
+  },
+  "Text_Popup_Setting_Resolution": {
+    "NameKor": "해상도",
+    "NameEng": "Resolution",
+    "NameJap": "解像度"
+  },
+  "Text_Popup_Setting_Apply": {
+    "NameKor": "적용",
+    "NameEng": "Apply",
+    "NameJap": "適用"
+  },
+  "Text_Popup_Setting_Default": {
+    "NameKor": "기본값",
+    "NameEng": "Defaults",
+    "NameJap": "既定値"
+  },
+  "Text_Popup_Setting_Applied": {
+    "NameKor": "설정을 적용했다",
+    "NameEng": "Settings applied",
+    "NameJap": "設定を適用した"
   }
 }
