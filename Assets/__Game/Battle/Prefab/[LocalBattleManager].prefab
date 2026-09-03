@@ -44,3 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a806c33d389a6e848bc86ac238485ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.LocalBattleManager
+  m_UnitRoot: {fileID: 0}
+  m_EnemyPrefabs:
+  - {fileID: 8222977138315168454, guid: ffe3d6b79c994844fa9baa4a7b9eb2b1, type: 3}
+  - {fileID: 6310319925626850183, guid: 858f42889980c4644abfa0f38d85bcbb, type: 3}
+  - {fileID: 190640769310391269, guid: 30c6fa6051ccc8f419dad7a370aea6ec, type: 3}
+  m_BossPrefabs:
+  - {fileID: 4260433173941678388, guid: 71e6c0a3cb174ab4693224724f72dc12, type: 3}
+  - {fileID: 8712770035807725783, guid: f34762828ce5d5d41945391878963c8e, type: 3}
+  m_ProjectilePrefab: {fileID: 539868943378240985, guid: cf714ea66d2ae8d45acfe2c1215a62ee, type: 3}
+  m_EnemyPoolSize: 8
+  m_ProjectilePoolSize: 24
+  m_HitStopSec: 0.06
+  m_HitEffectPrefab: {fileID: 1100000000000000001, guid: 5a1e7c0b2d3f4a6b8c9d0e1f2a3b4c5d, type: 3}
+  m_HitEffectSec: 0.3
+  m_TelegraphPrefab: {fileID: 1200000000000000001, guid: 6b2f8d1c3e4a5b7c9d0e1f2a3b4c5d6e, type: 3}
+  m_SfxHit: {fileID: 0}
+  m_SfxDie: {fileID: 0}

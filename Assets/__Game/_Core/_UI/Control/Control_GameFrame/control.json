@@ -1,0 +1,8 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "description": "게임 화풍 팝업 프레임 (UI_Casual_Panel_Popup) — 제목 라벨·닫기 버튼·본문 슬롯 ControlRoot. SetTitle·AddCloseListener 계약",
+  "inAsset": true,
+  "fixedWidth": false,
+  "fixedHeight": false
+}

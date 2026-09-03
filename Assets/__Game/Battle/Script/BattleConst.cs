@@ -17,6 +17,11 @@ namespace Game
         public const string AnimAttack1 = "Attack1";
         public const string AnimAttack2 = "Attack2";
         public const string AnimHit = "Hit";
+        public const string AnimJump = "Jump";
+        public const string AnimAttackKnife = "Attack_Knife";
+        public const string AnimAttackKnife2 = "Attack2";
+        public const string AnimAttackKnife3 = "Attack3";
+        public const string AnimAttackGun = "Attack_Gun";
         public const string AnimDie = "Die";
         public const string GroupMelee = "Melee";
         public const string GroupTank = "Tank";

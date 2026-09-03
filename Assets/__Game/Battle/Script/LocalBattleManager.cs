@@ -13,8 +13,8 @@ namespace Game
 
         #region Inspector
         [SerializeField, Tooltip("스폰 유닛·투사체를 둘 루트 (없으면 매니저 자신)")] private Transform m_UnitRoot;
-        [SerializeField, Tooltip("적 프리팹 목록 (Object_Unit.Id 로 매칭)")] private GameObject[] m_EnemyPrefabs;
-        [SerializeField, Tooltip("보스 프리팹 목록 (Object_Unit.Id 로 매칭)")] private GameObject[] m_BossPrefabs;
+        [SerializeField, Tooltip("적 프리팹 목록 (Object_UnitBase.Id 로 매칭)")] private GameObject[] m_EnemyPrefabs;
+        [SerializeField, Tooltip("보스 프리팹 목록 (Object_UnitBase.Id 로 매칭)")] private GameObject[] m_BossPrefabs;
         [SerializeField, Tooltip("투사체 프리팹 (IProjectile 구현)")] private GameObject m_ProjectilePrefab;
         [SerializeField, Tooltip("적 종류별 풀 크기")] private int m_EnemyPoolSize = 8;
         [SerializeField, Tooltip("투사체 풀 크기")] private int m_ProjectilePoolSize = 24;
@@ -27,9 +27,9 @@ namespace Game
         #endregion
         #region Property
         /// <summary>등록된 플레이어 유닛. 없으면 null</summary>
-        public Object_Unit Player { get; private set; }
+        public Object_UnitBase Player { get; private set; }
         /// <summary>스폰된 보스 유닛. 없으면 null</summary>
-        public Object_Unit Boss { get; private set; }
+        public Object_UnitBase Boss { get; private set; }
         /// <summary>살아 있는 일반 적 수 (스폰·사망마다 갱신)</summary>
         public IReadOnlyIntValue AliveEnemyCount => m_AliveEnemyCount;
         /// <summary>플레이어 사망 통지</summary>
@@ -44,6 +44,8 @@ namespace Game
         public IReadOnlyFloatFactor MoveSpeedFactor => m_MoveSpeedFactor;
         /// <summary>능력 ID → 스택</summary>
         public IReadOnlyDictionary<string, int> AbilityStacks => m_AbilityStacks;
+        /// <summary>일시정지 중인지 (timeScale 소유자는 이 매니저 하나다)</summary>
+        public bool IsPaused => m_IsPaused;
         #endregion
         #region Value
         private IntValue m_AliveEnemyCount;
@@ -55,11 +57,12 @@ namespace Game
         private readonly Dictionary<string, int> m_AbilityStacks = new();
         private readonly Dictionary<string, ObjectPool> m_UnitPools = new();
         private readonly Dictionary<GameObject, ObjectPool> m_PoolByObject = new();
-        private readonly List<Object_Unit> m_Enemies = new();
-        private readonly Dictionary<Object_Unit, int> m_MeleeSlots = new();
-        private readonly List<Object_Unit> m_HitBuffer = new();
+        private readonly List<Object_UnitBase> m_Enemies = new();
+        private readonly Dictionary<Object_UnitBase, int> m_MeleeSlots = new();
+        private readonly List<Object_UnitBase> m_HitBuffer = new();
         private ObjectPool m_ProjectilePool;
         private bool m_IsHitStopping;
+        private bool m_IsPaused;
         #endregion
 
         #region Event
@@ -73,11 +76,12 @@ namespace Game
         {
             if (instance == this)
                 instance = null;
+            Time.timeScale = 1;
         }
         public override void OnRegisterObject(ObjectBase _object)
         {
             base.OnRegisterObject(_object);
-            if (_object is Object_Unit unit && unit.Kind == EUnitKind.Player)
+            if (_object is Object_UnitBase unit && unit.Kind == EUnitKind.Player)
                 Player = unit;
         }
         public override void Init()
@@ -103,14 +107,14 @@ namespace Game
         }
         #endregion
         #region Local Function
-        /// <summary>_prefab 의 Object_Unit.Id 로 풀을 만든다. 컴포넌트가 없거나 ID 가 겹치면 예외</summary>
+        /// <summary>_prefab 의 Object_UnitBase.Id 로 풀을 만든다. 컴포넌트가 없거나 ID 가 겹치면 예외</summary>
         private void CreateUnitPool(GameObject _prefab, int _size, Transform _root)
         {
             if (_prefab == null)
                 throw new InvalidOperationException($"{name} : 유닛 프리팹 슬롯이 비어 있다");
-            var unit = _prefab.GetComponent<Object_Unit>();
+            var unit = _prefab.GetComponent<Object_UnitBase>();
             if (unit == null)
-                throw new InvalidOperationException($"{_prefab.name} 에 Object_Unit 이 없다");
+                throw new InvalidOperationException($"{_prefab.name} 에 Object_UnitBase 이 없다");
             if (m_UnitPools.ContainsKey(unit.Id))
                 throw new InvalidOperationException($"유닛 ID 가 겹친다 : {unit.Id}");
             m_UnitPools.Add(unit.Id, new ObjectPool(_prefab, _root, _size));
@@ -122,15 +126,13 @@ namespace Game
                 Destroy(Instantiate(m_HitEffectPrefab, _point, Quaternion.identity), m_HitEffectSec);
             SoundManager.instance.PlaySE(_clip);
         }
-        /// <summary>실시간 _sec 동안 timeScale 을 0 으로 멈춘다</summary>
-        // 단순화: 일시정지 팝업도 timeScale 을 쓰므로 이미 0 이면 걸지 않고, 히트스톱 중 일시정지가 들어오면 복원값이 어긋날 수 있다 — 겹침이 문제되면 일시정지 소유자를 한 곳으로 모아야 한다
+        /// <summary>실시간 _sec 동안 timeScale 을 0 으로 멈춘다 — 복원값은 일시정지 여부로 정한다 (timeScale 소유자 단일화)</summary>
         private IEnumerator HitStopRoutine(float _sec)
         {
             m_IsHitStopping = true;
-            float prev = Time.timeScale;
             Time.timeScale = 0;
             yield return new WaitForSecondsRealtime(_sec);
-            Time.timeScale = prev;
+            Time.timeScale = m_IsPaused ? 0 : 1;
             m_IsHitStopping = false;
         }
         /// <summary>_id 능력 스택을 Factor·플레이어 스탯에 반영한다</summary>
@@ -164,10 +166,10 @@ namespace Game
                     throw new ArgumentException($"처리가 정의되지 않은 능력 ID : {_id}", nameof(_id));
             }
         }
-        /// <summary>히트스톱을 건다 (이미 정지 중이면 무시)</summary>
+        /// <summary>히트스톱을 건다 (이미 정지·일시정지 중이면 무시)</summary>
         private void HitStop()
         {
-            if (m_IsHitStopping || Time.timeScale == 0)
+            if (m_IsHitStopping || m_IsPaused)
                 return;
             StartCoroutine(HitStopRoutine(m_HitStopSec));
         }
@@ -182,14 +184,14 @@ namespace Game
         #endregion
         #region Function
         /// <summary>_id 유닛을 풀에서 꺼내 _pos 에 성장 배율 _hpScale·_atkScale 로 스폰하고 반환한다. 풀이 없거나 비면 예외</summary>
-        public Object_Unit SpawnUnit(string _id, Vector2 _pos, float _hpScale, float _atkScale)
+        public Object_UnitBase SpawnUnit(string _id, Vector2 _pos, float _hpScale, float _atkScale)
         {
             if (!m_UnitPools.TryGetValue(_id, out var pool))
                 throw new ArgumentException($"풀에 등록되지 않은 유닛 ID : {_id}", nameof(_id));
             var go = pool.Get();
             if (go == null)
                 throw new InvalidOperationException($"{_id} 풀이 비었다 (크기 {m_EnemyPoolSize})");
-            var unit = go.GetComponent<Object_Unit>();
+            var unit = go.GetComponent<Object_UnitBase>();
             m_PoolByObject.Set(go, pool);
             unit.Spawn(_pos, _hpScale, _atkScale);
             if (unit.Kind == EUnitKind.Boss)
@@ -222,7 +224,7 @@ namespace Game
             return index;
         }
         /// <summary>_unit 을 풀로 되돌린다 (살아 있으면 통지 없이 목록에서 뺀다). 풀 소속이 아니면 예외</summary>
-        public void Despawn(Object_Unit _unit)
+        public void Despawn(Object_UnitBase _unit)
         {
             if (!m_PoolByObject.TryGetValue(_unit.gameObject, out var pool))
                 throw new ArgumentException($"풀 소속이 아닌 유닛 : {_unit.name}", nameof(_unit));
@@ -235,7 +237,7 @@ namespace Game
             pool.Return(_unit.gameObject);
         }
         /// <summary>_unit 이 죽었을 때 유닛이 호출한다 — 처치음·Crumb 적립·통지 갱신</summary>
-        public void OnUnitDied(Object_Unit _unit)
+        public void OnUnitDied(Object_UnitBase _unit)
         {
             if (_unit.Kind == EUnitKind.Player)
             {
@@ -257,7 +259,7 @@ namespace Game
             }
         }
         /// <summary>_hit 를 _target 에 적용하고 연출을 재생한다. 같은 진영·사망·null 이면 false</summary>
-        public bool Hit(SHit _hit, Object_Unit _target)
+        public bool Hit(SHit _hit, Object_UnitBase _target)
         {
             if (_target == null || _hit.Attacker == null || _target.Team == _hit.Attacker.Team)
                 return false;
@@ -269,14 +271,14 @@ namespace Game
             return true;
         }
         /// <summary>_center·_size 사각 범위의 상대 진영 유닛을 가까운 순으로 최대 _maxHits(플레이어는 MultiHit 가산) 명중시키고 명중 수를 반환한다</summary>
-        public int HitBox(Object_Unit _attacker, Vector2 _center, Vector2 _size, int _damage, int _maxHits, float _knockbackDist, float _knockbackTime, bool _isFinish)
+        public int HitBox(Object_UnitBase _attacker, Vector2 _center, Vector2 _size, int _damage, int _maxHits, float _knockbackDist, float _knockbackTime, bool _isFinish)
         {
             if (_attacker.Kind == EUnitKind.Player)
                 _maxHits += GetMultiHit(true);
             m_HitBuffer.Clear();
             foreach (var col in Physics2D.OverlapBoxAll(_center, _size, 0))
             {
-                var unit = col.GetComponentInParent<Object_Unit>();
+                var unit = col.GetComponentInParent<Object_UnitBase>();
                 if (unit == null || unit.IsDead.v || unit.Team == _attacker.Team || m_HitBuffer.Contains(unit))
                     continue;
                 m_HitBuffer.Add(unit);
@@ -316,7 +318,7 @@ namespace Game
             m_ProjectilePool.Return(_object);
         }
         /// <summary>_unit 에 플레이어 _side(-1 좌·+1 우) 근접 슬롯을 준다. 이미 가졌거나 자리가 있으면 true</summary>
-        public bool RequestMeleeSlot(Object_Unit _unit, int _side)
+        public bool RequestMeleeSlot(Object_UnitBase _unit, int _side)
         {
             if (m_MeleeSlots.ContainsKey(_unit))
                 return true;
@@ -330,7 +332,7 @@ namespace Game
             return true;
         }
         /// <summary>_unit 의 근접 슬롯을 반납한다 (없으면 무시)</summary>
-        public void ReleaseMeleeSlot(Object_Unit _unit)
+        public void ReleaseMeleeSlot(Object_UnitBase _unit)
         {
             m_MeleeSlots.Remove(_unit);
         }
@@ -391,6 +393,13 @@ namespace Game
             m_ProjectilePool?.Clear();
             m_MeleeSlots.Clear();
             m_AliveEnemyCount.Set(0, false, false);
+        }
+        /// <summary>일시정지를 _isPaused 로 바꾸고 timeScale 을 반영한다 (히트스톱 중이면 히트스톱 종료 시 반영)</summary>
+        public void SetPaused(bool _isPaused)
+        {
+            m_IsPaused = _isPaused;
+            if (!m_IsHitStopping)
+                Time.timeScale = _isPaused ? 0 : 1;
         }
         /// <summary>플레이어를 최대 HP 의 _ratio 만큼 회복한다 (플레이어가 없으면 무시)</summary>
         public void HealPlayer(float _ratio)

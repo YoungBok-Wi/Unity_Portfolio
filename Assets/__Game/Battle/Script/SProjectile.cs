@@ -6,7 +6,7 @@ namespace Game
     public struct SProjectile
     {
         #region Value
-        public Object_Unit Owner;
+        public Object_UnitBase Owner;
         public Vector2 Origin;
         public Vector2 Velocity;
         public int Damage;
@@ -17,7 +17,7 @@ namespace Game
         #endregion
 
         #region Event
-        public SProjectile(Object_Unit _owner, Vector2 _origin, Vector2 _velocity, int _damage, int _pierce, float _maxDistance, float _knockbackDist, float _knockbackTime)
+        public SProjectile(Object_UnitBase _owner, Vector2 _origin, Vector2 _velocity, int _damage, int _pierce, float _maxDistance, float _knockbackDist, float _knockbackTime)
         {
             Owner = _owner;
             Origin = _origin;

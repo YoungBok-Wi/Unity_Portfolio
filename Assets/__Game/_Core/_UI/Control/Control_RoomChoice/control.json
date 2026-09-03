@@ -1,0 +1,8 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "description": "방 선택지 카드 — 방 종류 아이콘·이름·설명 버튼과 적 미리보기(Control_EnemyPreview) 슬롯 ControlRoot",
+  "inAsset": true,
+  "fixedWidth": false,
+  "fixedHeight": false
+}

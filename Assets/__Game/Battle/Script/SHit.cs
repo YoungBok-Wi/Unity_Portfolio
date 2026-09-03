@@ -6,7 +6,7 @@ namespace Game
     public struct SHit
     {
         #region Value
-        public Object_Unit Attacker;
+        public Object_UnitBase Attacker;
         public int Damage;
         public float KnockbackDist;
         public float KnockbackTime;
@@ -16,7 +16,7 @@ namespace Game
         #endregion
 
         #region Event
-        public SHit(Object_Unit _attacker, int _damage, float _knockbackDist, float _knockbackTime, bool _isFinish, int _direction, Vector2 _point)
+        public SHit(Object_UnitBase _attacker, int _damage, float _knockbackDist, float _knockbackTime, bool _isFinish, int _direction, Vector2 _point)
         {
             Attacker = _attacker;
             Damage = _damage;

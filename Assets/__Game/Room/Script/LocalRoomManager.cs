@@ -259,9 +259,9 @@ namespace Game
             m_BossId = null;
 
             var playerGo = LocalCharacterManager.instance.SpawnPlayer(m_PlayerSpawn.position);
-            var player = playerGo.GetComponent<Object_Unit>();
+            var player = playerGo.GetComponent<Object_UnitBase>();
             if (player == null)
-                throw new InvalidOperationException($"{playerGo.name} 에 Object_Unit 이 없다");
+                throw new InvalidOperationException($"{playerGo.name} 에 Object_UnitBase 이 없다");
             player.Spawn(m_PlayerSpawn.position, 1f, 1f);
             if (LocalCameraManager.instance != null)
                 LocalCameraManager.instance.SetFollow(player.transform, m_CameraLerp, m_CameraClampX, m_CameraFixedY);

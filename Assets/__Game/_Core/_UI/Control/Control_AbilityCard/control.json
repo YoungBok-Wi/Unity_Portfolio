@@ -1,0 +1,8 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "description": "능력 선택 카드 — 능력 아이콘(Icon_Casual_Upgrade)·이름·설명 버튼 (UI_Casual_Panel_Item)",
+  "inAsset": true,
+  "fixedWidth": false,
+  "fixedHeight": false
+}

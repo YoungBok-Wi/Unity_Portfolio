@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Game
 {
     /// <summary>플레이어·적·보스 공용 유닛 베이스 — 테이블 스탯·HP·피격·넉백·경직·사망을 처리한다</summary>
-    public abstract class Object_Unit : ObjectBase
+    public abstract class Object_UnitBase : ObjectBase
     {
         #region Inspector
         [SerializeField, Tooltip("유닛 종류 (스탯 테이블 선택)")] private EUnitKind m_Kind;

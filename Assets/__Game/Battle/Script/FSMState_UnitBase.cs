@@ -9,9 +9,9 @@ namespace Game
     {
         #region Property
         /// <summary>이 상태를 가진 유닛</summary>
-        protected Object_Unit Unit { get; private set; }
+        protected Object_UnitBase Unit { get; private set; }
         /// <summary>현재 플레이어 유닛. 없으면 null</summary>
-        protected Object_Unit Player => LocalBattleManager.instance.Player;
+        protected Object_UnitBase Player => LocalBattleManager.instance.Player;
         /// <summary>플레이어가 살아 있는지</summary>
         protected bool HasPlayer => Player != null && !Player.IsDead.v;
         /// <summary>플레이어와의 X 거리. 플레이어가 없으면 최대값</summary>
@@ -23,9 +23,9 @@ namespace Game
         #region Event
         protected override void OnInit()
         {
-            Unit = GetComponentInParent<Object_Unit>();
+            Unit = GetComponentInParent<Object_UnitBase>();
             if (Unit == null)
-                throw new InvalidOperationException($"{name} : 상위에 Object_Unit 이 없다");
+                throw new InvalidOperationException($"{name} : 상위에 Object_UnitBase 이 없다");
         }
         #endregion
         #region Function

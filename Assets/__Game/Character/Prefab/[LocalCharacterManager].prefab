@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e830a106b87a94ea28b367f9ace689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.LocalCharacterManager
+  m_PlayerPrefabs:
+  - {fileID: 7155225150703407844, guid: 39793c6aef3b1c74bb71f8766fa03be4, type: 3}
+  - {fileID: 210516991495230365, guid: 6fe10a802e879844db3a31ac0bc47891, type: 3}
+  m_PlayerRoot: {fileID: 0}

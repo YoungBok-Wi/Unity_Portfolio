@@ -36,7 +36,8 @@ namespace Game
             {
                 if (m_Loop)
                 {
-                    m_Timer -= m_Cur.Length;
+                    // 씬 로드 직후 deltaTime 급증으로 한 프레임에 여러 바퀴가 지나도 범위 안에 들도록 나머지로 접는다
+                    m_Timer %= m_Cur.Length;
                     frame = (int)m_Timer;
                 }
                 else
@@ -87,10 +88,12 @@ namespace Game
         {
             return GetFrames(_action).Length / m_Fps;
         }
-        /// <summary>좌우 반전을 _isLeft 로 바꾼다 (원본 프레임은 우향)</summary>
+        /// <summary>좌우 반전을 _isLeft 로 바꾼다 — 렌더러 노드(반전 루트)의 scale.x 를 ±1 로 뒤집는다 (원본 프레임은 우향)</summary>
         public void SetFlip(bool _isLeft)
         {
-            m_Renderer.flipX = _isLeft;
+            var scale = m_Renderer.transform.localScale;
+            scale.x = _isLeft ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+            m_Renderer.transform.localScale = scale;
         }
         #endregion
     }
