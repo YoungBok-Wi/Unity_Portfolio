@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,9 +11,9 @@ namespace Library
     {
         public static SceneChangeManager instance { get; private set; }
         #region Inspector
-        [SerializeField, TabGroup("Component"), LabelText("씬변경 애니메이션")] private SceneChangeAni[] m_SceneChangeAni;
-        [SerializeField, TabGroup("SceneChangeManager", "설정")] private string m_LobbySceneID = "Scene_Lobby";
-        [SerializeField, TabGroup("SceneChangeManager", "설정")] private string m_GameSceneID = "GameScene";
+        [SerializeField] private SceneChangeAni[] m_SceneChangeAni;
+        [SerializeField] private string m_LobbySceneID = "Scene_Lobby";
+        [SerializeField] private string m_GameSceneID = "GameScene";
         #endregion
         #region Property
         /// <summary>로비 씬 이름</summary>

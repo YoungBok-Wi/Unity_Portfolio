@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -9,7 +8,7 @@ namespace Library
     public class SceneChangeAni_Fade : SceneChangeAni
     {
         #region Inspector
-        [SerializeField, TabGroup("Component"), LabelText("CanvasGroup")] private CanvasGroup m_CanvasGroup;
+        [SerializeField] private CanvasGroup m_CanvasGroup;
         #endregion
         #region Value
         // 화면을 가리거나 걷는 데 걸리는 시간 (초)

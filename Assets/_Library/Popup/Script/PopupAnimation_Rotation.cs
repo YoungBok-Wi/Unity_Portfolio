@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,17 +21,14 @@ namespace Library
         }
         #endregion
         #region Inspector
-        [Title("Open")]
         [SerializeField] private float m_OpenStartDelay = 0f;
         [SerializeField] private AnimationCurve m_OpenCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
         [SerializeField] private float m_OpenTime = 0.5f;
 
-        [Title("Close")]
         [SerializeField] private float m_CloseStartDelay = 0f;
         [SerializeField] private AnimationCurve m_CloseCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
         [SerializeField] private float m_CloseTime = 0.5f;
 
-        [Title("Targets (동시 회전)")]
         [Tooltip("같은 타이밍(위 Open/Close 커브·시간)으로 동시에 회전할 대상들. 대상마다 시작·끝 각도를 각자 가진다. 다른 타이밍이 필요하면 컴포넌트를 여러 개 둔다")]
         [SerializeField] private Entry[] m_Targets;
         #endregion

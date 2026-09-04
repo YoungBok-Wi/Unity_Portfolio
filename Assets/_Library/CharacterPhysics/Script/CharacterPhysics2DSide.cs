@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,14 +8,14 @@ namespace Library
     public class CharacterPhysics2DSide : CharacterPhysics2D
     {
         #region Inspector
-        [SerializeField, TabGroup("Physics"), LabelText("기본 머테리얼")] private PhysicsMaterial2D m_DefaultMat;
-        [SerializeField, TabGroup("Physics"), LabelText("이동시 머테리얼")] private PhysicsMaterial2D m_MoveMat;
-        [SerializeField, TabGroup("Option"), LabelText("최대 이동속도")] private float m_MoveSpeed = 2f;
-        [SerializeField, TabGroup("Option"), LabelText("0->최대이속 시간")] private float m_MoveMaxSec = 0.05f;
-        [SerializeField, TabGroup("Option"), LabelText("최대이속->0 시간")] private float m_MoveMinSec = 0.05f;
-        [SerializeField, TabGroup("Option"), LabelText("점프 세기")] private float m_JumpPower = 6f;
-        [SerializeField, TabGroup("Option"), LabelText("점프시 변경시간 배율")] private float m_JumpMoveChangeFac = 1.0f;
-        [SerializeField, TabGroup("Option"), LabelText("바닥 무시 레이어")] private string[] m_IgnoreLayer;
+        [SerializeField] private PhysicsMaterial2D m_DefaultMat;
+        [SerializeField] private PhysicsMaterial2D m_MoveMat;
+        [SerializeField] private float m_MoveSpeed = 2f;
+        [SerializeField] private float m_MoveMaxSec = 0.05f;
+        [SerializeField] private float m_MoveMinSec = 0.05f;
+        [SerializeField] private float m_JumpPower = 6f;
+        [SerializeField] private float m_JumpMoveChangeFac = 1.0f;
+        [SerializeField] private string[] m_IgnoreLayer;
         #endregion
         #region Property
         /// <summary>현재 비행 상태. 바닥에 닿아 있으면 항상 None</summary>

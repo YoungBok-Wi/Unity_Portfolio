@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "scopes": {
+    "Game": {
+      "templateId": "concept-게임컨셉",
+      "verifyMdConstraintId": "concept_game"
+    },
+    "Resource": {
+      "templateId": "concept-리소스컨셉",
+      "verifyMdConstraintId": "concept_resource"
+    },
+    "Balance": {
+      "templateId": "concept-밸런스컨셉",
+      "verifyMdConstraintId": "concept_balance"
+    },
+    "Scene": {
+      "templateId": "concept-씬컨셉",
+      "verifyMdConstraintId": "concept_scene"
+    }
+  },
+  "unity": {
+    "titleVar": "title",
+    "addressableVar": "projectSetting.addressable[].name",
+    "resolutionVar": "projectSetting.resolution",
+    "orientationVar": "projectSetting.orientation",
+    "frameRateVar": "projectSetting.targetFrameRate",
+    "buildTargetVar": "projectSetting.buildTarget[]",
+    "definePrefix": "NBING_",
+    "techVars": [
+      {
+        "var": "techSetting.useAddressable",
+        "define": "ADDRESSABLE"
+      },
+      {
+        "var": "techSetting.useThebackend",
+        "define": "THEBACKEND"
+      },
+      {
+        "var": "techSetting.usePhoton",
+        "define": "PHOTON"
+      }
+    ],
+    "buildIndexVar": "overview.buildIndex",
+    "moduleVar": "module[].name",
+    "popupVar": "ui[].name",
+    "objectVar": "object[].name"
+  }
+}

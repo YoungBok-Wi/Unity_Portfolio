@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Library
@@ -8,7 +7,7 @@ namespace Library
     {
         public static LogManager instance { get; private set; }
         #region Inspector
-        [SerializeField, TabGroup("LogManager", "설정")] private GameObject m_DebugConsole;
+        [SerializeField] private GameObject m_DebugConsole;
         #endregion
 
         #region Event

@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Library
@@ -7,8 +6,8 @@ namespace Library
     public abstract class CharacterPhysics2D : CharacterPhysicsBase
     {
         #region Inspector
-        [SerializeField, TabGroup("Component"), LabelText("Rigidbody2D")] private Rigidbody2D m_Rig;
-        [SerializeField, TabGroup("Option"), LabelText("Velocity제한")] private Vector2 m_LimitVel = new Vector2(float.MaxValue, float.MaxValue);
+        [SerializeField] private Rigidbody2D m_Rig;
+        [SerializeField] private Vector2 m_LimitVel = new Vector2(float.MaxValue, float.MaxValue);
         #endregion
         #region Property
         /// <summary>제어 대상 Rigidbody2D</summary>

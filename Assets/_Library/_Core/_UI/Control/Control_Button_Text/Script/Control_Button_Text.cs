@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
@@ -9,8 +8,8 @@ namespace Library
     public class Control_Button_Text : ControlBase
     {
         #region Inspector
-        [SerializeField, TabGroup("Control_Button_Text", "UI")] private TextMeshProUGUI m_Text;
-        [SerializeField, TabGroup("Control_Button_Text", "UI")] private Color m_DisableColor = new Color(0f, 0f, 0f, 0.25f);
+        [SerializeField] private TextMeshProUGUI m_Text;
+        [SerializeField] private Color m_DisableColor = new Color(0f, 0f, 0f, 0.25f);
         #endregion
         #region Value
         private UIWrapper_Button m_Button;

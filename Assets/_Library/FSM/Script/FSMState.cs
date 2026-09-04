@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Library
@@ -7,7 +6,7 @@ namespace Library
     public abstract class FSMState : MonoBehaviour
     {
         #region Inspector
-        [SerializeField, TabGroup("Base"), LabelText("ID")] private string m_ID;
+        [SerializeField] private string m_ID;
         #endregion
         #region Property
         /// <summary>상태 ID. 같은 FSM 안에서 겹치면 안 된다</summary>

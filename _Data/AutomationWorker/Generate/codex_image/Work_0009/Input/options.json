@@ -1,0 +1,8 @@
+{
+  "options": {
+    "prompt": "Art style, identical for every asset in this game: chunky rounded vector shapes, flat colour fills with at most two shading steps, thin uniform outlines in a low-luminance shade of each object's own hue, no gradient, no airbrush, no texture noise, no visible brush strokes. This is a full-screen background for a 2D side-scrolling game seen in pure side view (eye level, no top-down angle): a kitchen interior wall with shelves, appliances and props drawn as part of the background, and a flat floor whose front edge is a horizontal line at 25 percent of the image height from the bottom, with the floor face below that line. Keep the whole image low saturation (at or below 25 percent) and light (lightness 75 to 85 percent) so that colourful characters placed in front read clearly; props are silhouettes in the same muted palette. Landscape 16:9 composition, fully opaque, filling the canvas edge to edge, no border, no vignette, no characters, no text, no watermark, no logo, no pixel art, no photographic texture. Subject: a bright cheerful kitchen counter: cream pastel wall with a round window showing sky, hanging utensils, shelves with jars and plates, a long clean counter top, warm friendly lobby mood.",
+    "size": "1536x1024",
+    "background": "opaque",
+    "quality": "high"
+  }
+}

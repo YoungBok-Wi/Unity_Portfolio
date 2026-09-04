@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Library
@@ -7,12 +6,12 @@ namespace Library
     public class CharacterPhysicsCharacterController : CharacterPhysicsBase
     {
         #region Inspector
-        [SerializeField, TabGroup("Component"), LabelText("CharacterController")] private CharacterController m_Controller;
-        [SerializeField, TabGroup("Option"), LabelText("시뮬레이션 배율")] private float m_SimScale = 1.0f;
-        [SerializeField, TabGroup("Option"), LabelText("최대 이동속도")] private float m_MoveSpeed = 2f;
-        [SerializeField, TabGroup("Option"), LabelText("0->최대이속 시간")] private float m_MoveMaxSec = 0.05f;
-        [SerializeField, TabGroup("Option"), LabelText("최대이속->0 시간")] private float m_MoveMinSec = 0.05f;
-        [SerializeField, TabGroup("Physics"), LabelText("중력가속도")] private float m_Gravity = -9.81f;
+        [SerializeField] private CharacterController m_Controller;
+        [SerializeField] private float m_SimScale = 1.0f;
+        [SerializeField] private float m_MoveSpeed = 2f;
+        [SerializeField] private float m_MoveMaxSec = 0.05f;
+        [SerializeField] private float m_MoveMinSec = 0.05f;
+        [SerializeField] private float m_Gravity = -9.81f;
         #endregion
         #region Property
         /// <summary>이동·중력 시뮬레이션 배율. 1보다 크면 전체가 빨라진다</summary>

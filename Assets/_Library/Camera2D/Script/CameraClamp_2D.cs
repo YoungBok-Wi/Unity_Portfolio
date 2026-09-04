@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Library
@@ -7,15 +6,15 @@ namespace Library
     public class CameraClamp_2D : CameraClampBase
     {
         #region Inspector
-        [SerializeField, TabGroup("Option"), LabelText("기준 깊이")] private float m_TestDepth = 0;
-        [SerializeField, TabGroup("Option"), LabelText("Rect 왼쪽 아래")] private Vector2 m_RectLeftBot = new Vector2(-10, -10);
-        [SerializeField, TabGroup("Option"), LabelText("Rect 오른쪽 위")] private Vector2 m_RectRightTop = new Vector2(10, 10);
+        [SerializeField] private float m_TestDepth = 0;
+        [SerializeField] private Vector2 m_RectLeftBot = new Vector2(-10, -10);
+        [SerializeField] private Vector2 m_RectRightTop = new Vector2(10, 10);
 
         [Space(15)]
-        [SerializeField, TabGroup("Option"), LabelText("줌 제한 타입")] private EZoomType m_ZoomClampType = EZoomType.CameraZoom;
-        [SerializeField, TabGroup("Option"), ShowIf("IsZoomTypeCameraZoom"), MinMaxSlider(0.1f, 179.9f, true), LabelText("줌 범위(Perspective)")] private Vector2 m_FOVRange = new Vector2(30.0f, 90.0f);
-        [SerializeField, TabGroup("Option"), ShowIf("IsZoomTypeCameraZoom"), MinMaxSlider(0.1f, 1000.0f, true), LabelText("줌 범위(Orthographic)")] private Vector2 m_OrthographicSizeRange = new Vector2(3.0f, 10.0f);
-        [SerializeField, TabGroup("Option"), ShowIf("IsZoomTypePositionZoom"), MinMaxSlider(0, 500, true), LabelText("줌 범위(거리)")] private Vector2 m_ZoomDistanceRange = new Vector2(10.0f, 100.0f);
+        [SerializeField] private EZoomType m_ZoomClampType = EZoomType.CameraZoom;
+        [SerializeField] private Vector2 m_FOVRange = new Vector2(30.0f, 90.0f);
+        [SerializeField] private Vector2 m_OrthographicSizeRange = new Vector2(3.0f, 10.0f);
+        [SerializeField] private Vector2 m_ZoomDistanceRange = new Vector2(10.0f, 100.0f);
         #endregion
         #region Property
         /// <summary>화면 크기를 재는 기준 평면의 깊이</summary>
@@ -26,11 +25,6 @@ namespace Library
         public Vector2 RectRightTop => m_RectRightTop;
         /// <summary>줌을 카메라 거리로 할지 FOV 로 할지. 카메라 조작측이 이 값을 단일 소스로 따른다</summary>
         public override EZoomType ZoomClampType => m_ZoomClampType;
-
-        /// <summary>인스펙터 ShowIf 용</summary>
-        private bool IsZoomTypeCameraZoom => m_ZoomClampType == EZoomType.CameraZoom;
-        /// <summary>인스펙터 ShowIf 용</summary>
-        private bool IsZoomTypePositionZoom => m_ZoomClampType == EZoomType.PositionZoom;
         #endregion
         #region Local Function
         /// <summary>카메라 위치를 제한 사각형 안으로 당긴다</summary>

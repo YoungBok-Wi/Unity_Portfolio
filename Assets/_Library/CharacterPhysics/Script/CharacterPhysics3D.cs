@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,17 +8,17 @@ namespace Library
     public class CharacterPhysics3D : CharacterPhysicsBase
     {
         #region Inspector
-        [SerializeField, TabGroup("Component"), LabelText("Rigidbody")] private Rigidbody m_Rig;
-        [SerializeField, TabGroup("Component"), LabelText("캐릭터 캡슐")] private CapsuleCollider m_Capsule;
-        [SerializeField, TabGroup("Physics"), LabelText("기본 머테리얼")] private PhysicsMaterial m_DefaultMat;
-        [SerializeField, TabGroup("Physics"), LabelText("이동시 머테리얼")] private PhysicsMaterial m_MoveMat;
-        [SerializeField, TabGroup("Option"), LabelText("Velocity제한")] private Vector3 m_LimitVel = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
-        [SerializeField, TabGroup("Option"), LabelText("최대 이동속도")] private float m_MoveSpeed = 2f;
-        [SerializeField, TabGroup("Option"), LabelText("0->최대이속 시간")] private float m_MoveMaxSec = 0.05f;
-        [SerializeField, TabGroup("Option"), LabelText("최대이속->0 시간")] private float m_MoveMinSec = 0.05f;
-        [SerializeField, TabGroup("Option"), LabelText("점프 세기")] private float m_JumpPower = 6f;
-        [SerializeField, TabGroup("Option"), LabelText("점프시 이동시간 배율")] private float m_JumpMoveChangeFac = 5f;
-        [SerializeField, TabGroup("Option"), LabelText("중력 배율"), Tooltip("낙하·점프 시 총 중력 배율(1=기본). Rigidbody 기본 중력에 (배율-1)배를 매 물리프레임 수동 추가해 배율×기본으로 만든다. 값이 클수록 무겁게 떨어지고 점프가 짧아진다")] private float m_GravityScale = 2f;
+        [SerializeField] private Rigidbody m_Rig;
+        [SerializeField] private CapsuleCollider m_Capsule;
+        [SerializeField] private PhysicsMaterial m_DefaultMat;
+        [SerializeField] private PhysicsMaterial m_MoveMat;
+        [SerializeField] private Vector3 m_LimitVel = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+        [SerializeField] private float m_MoveSpeed = 2f;
+        [SerializeField] private float m_MoveMaxSec = 0.05f;
+        [SerializeField] private float m_MoveMinSec = 0.05f;
+        [SerializeField] private float m_JumpPower = 6f;
+        [SerializeField] private float m_JumpMoveChangeFac = 5f;
+        [SerializeField, Tooltip("낙하·점프 시 총 중력 배율(1=기본). Rigidbody 기본 중력에 (배율-1)배를 매 물리프레임 수동 추가해 배율×기본으로 만든다. 값이 클수록 무겁게 떨어지고 점프가 짧아진다")] private float m_GravityScale = 2f;
         #endregion
         #region Property
         /// <summary>현재 비행 상태. 바닥에 닿아 있으면 항상 None</summary>

@@ -1,0 +1,8 @@
+{
+  "options": {
+    "prompt": "Art style, identical for every asset in this game: chunky rounded vector shapes, flat two-step shading (one base colour plus one darker plane at the bottom) with a single cream glossy highlight in the upper left, uniform outline in a low-luminance shade of the object's own base hue, no gradient, no airbrush, no texture, no visible brush strokes, no pixel art. Palette: pastel bakery colours in their saturated variants. Character: a small chibi chef, two heads tall, big round head with a tall white chef hat, white double-breasted chef jacket with a red neckerchief, short arms and two short legs with brown shoes, dark brown hair, determined expression, holding a steel kitchen knife with a wooden handle. Viewpoint: pure side view of a 2D side-scrolling game, the character always faces right. Sprite sheet layout: a 3 columns by 2 rows grid of 6 consecutive animation frames on a fully transparent background, frames read left to right then top to bottom, each cell holds the whole character exactly once, centred, identical size and scale in every cell, feet on the same baseline height in every cell, generous empty margin, frames never touch each other or the cell edges, no grid lines, no cell borders, no text, no numbers, no watermark, no drop shadow, no ground shadow, no separate slash effect. Animation: kitchen knife slash attack, 6 frames: holding knife, wind-up raising the knife back and up, swing forward, full horizontal slash to the right, follow-through low, return to guard.",
+    "size": "1536x1024",
+    "background": "transparent",
+    "quality": "high"
+  }
+}

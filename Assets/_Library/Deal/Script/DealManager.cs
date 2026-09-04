@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,7 +31,7 @@ namespace Library
                 pay = _pay;
             }
         }
-        [SerializeField, TabGroup("DealManager", "미리보기"), ReadOnly] private List<SPreview> m_Preview = new();
+        [SerializeField] private List<SPreview> m_Preview = new();
 #endif
         #endregion
         #region Value

@@ -1,0 +1,13 @@
+{
+  "description": "리소스 업로드 자동 가공",
+  "status": "Completed",
+  "priority": "instant",
+  "progress": 100,
+  "createdAt": 1788391327972,
+  "startedAt": 1788391328286,
+  "completedAt": 1788391328615,
+  "error": null,
+  "errorType": null,
+  "retryCount": 0,
+  "nextRetryAt": null
+}

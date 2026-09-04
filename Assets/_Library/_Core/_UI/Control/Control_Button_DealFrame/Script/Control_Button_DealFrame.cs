@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,10 +9,10 @@ namespace Library
     public class Control_Button_DealFrame : ControlBase
     {
         #region Inspector
-        [SerializeField, TabGroup("Control_Button_DealFrame", "UI")] private Image m_Icon;
-        [SerializeField, TabGroup("Control_Button_DealFrame", "UI")] private TMP_Text m_CountText;
-        [SerializeField, TabGroup("Control_Button_DealFrame", "설정")] private bool m_IsUnit;
-        [SerializeField, TabGroup("Control_Button_DealFrame", "설정")] private SDeal m_Deal;
+        [SerializeField] private Image m_Icon;
+        [SerializeField] private TMP_Text m_CountText;
+        [SerializeField] private bool m_IsUnit;
+        [SerializeField] private SDeal m_Deal;
         #endregion
         #region Property
         /// <summary>현재 딜의 반응형 값</summary>

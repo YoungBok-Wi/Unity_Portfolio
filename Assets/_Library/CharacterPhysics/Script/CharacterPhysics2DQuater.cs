@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Library
@@ -7,9 +6,9 @@ namespace Library
     public class CharacterPhysics2DQuater : CharacterPhysics2D
     {
         #region Inspector
-        [SerializeField, TabGroup("Option"), LabelText("기본 이동속도")] private float m_MoveSpeed = 2f;
-        [SerializeField, TabGroup("Option"), LabelText("0->이속 시간")] private float m_MoveMaxSec = 0.05f;
-        [SerializeField, TabGroup("Option"), LabelText("이속->0 시간")] private float m_MoveMinSec = 0.05f;
+        [SerializeField] private float m_MoveSpeed = 2f;
+        [SerializeField] private float m_MoveMaxSec = 0.05f;
+        [SerializeField] private float m_MoveMinSec = 0.05f;
         #endregion
         #region Property
         /// <summary>최대 이동속도</summary>

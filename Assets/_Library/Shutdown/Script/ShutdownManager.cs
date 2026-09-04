@@ -1,5 +1,4 @@
 using System;
-using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,8 +10,8 @@ namespace Library
     {
         public static ShutdownManager instance { get; private set; }
         #region Inspector
-        [SerializeField, TabGroup("ShutdownManager", "설정")] private ShutdownUI m_ShutdownUI;
-        [SerializeField, TabGroup("ShutdownManager", "설정")] private string m_ReconnectScene = "Scene_Lobby";
+        [SerializeField] private ShutdownUI m_ShutdownUI;
+        [SerializeField] private string m_ReconnectScene = "Scene_Lobby";
         #endregion
         #region Property
         /// <summary>이미 중단됐는지 여부. true 면 이후 Shutdown 호출은 무시된다</summary>

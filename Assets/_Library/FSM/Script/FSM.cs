@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +8,8 @@ namespace Library
     public class FSM : MonoBehaviour, IManageValue
     {
         #region Inspector
-        [SerializeField, TabGroup("Component"), LabelText("상태 목록")] private FSMState[] m_States;
-        [SerializeField, TabGroup("Component"), LabelText("기본 상태")] private FSMState m_DefaultState;
+        [SerializeField] private FSMState[] m_States;
+        [SerializeField] private FSMState m_DefaultState;
         #endregion
         #region Property
         /// <summary>현재 상태 ID (구독용)</summary>

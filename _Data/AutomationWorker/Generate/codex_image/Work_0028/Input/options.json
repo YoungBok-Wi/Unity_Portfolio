@@ -1,0 +1,8 @@
+{
+  "options": {
+    "prompt": "Art style, identical for every asset in this game: chunky rounded vector shapes, flat two-step shading (one base colour plus one darker plane at the bottom) with a single cream glossy highlight in the upper left, uniform outline in a low-luminance shade of the object's own base hue, no gradient, no airbrush, no texture, no visible brush strokes, no pixel art. Character: a giant rebel fruit boss drawn as a single huge orange pumpkin with a thick green stem and leaves, a menacing cartoon face (thick angry eyebrows, glaring eyes, wide mouth full of jagged teeth) and no body, no arms, no legs. Viewpoint: pure side view of a 2D side-scrolling game, the boss faces right. Sprite sheet layout: a 3 columns by 2 rows grid of 6 consecutive animation frames on a fully transparent background, frames read left to right then top to bottom, each cell holds the whole pumpkin exactly once, centred, identical size and scale in every cell, the ground baseline at the same height in every cell, generous empty margin, frames never touch each other or the cell edges, no grid lines, no cell borders, no text, no numbers, no watermark, no drop shadow, no ground shadow, no dust or impact effect. Animation: ground slam attack, 6 frames: crouching squash wind-up, leaping high, hanging at the apex, plunging down, crushing slam with a wide flat squash, rebounding to round.",
+    "size": "1536x1024",
+    "background": "transparent",
+    "quality": "high"
+  }
+}

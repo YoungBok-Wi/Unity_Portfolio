@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -27,7 +26,7 @@ namespace Library
                 kor = _kor;
             }
         }
-        [SerializeField, TabGroup("LanguageManager", "미리보기"), ReadOnly] private List<SPreview> m_Preview = new();
+        [SerializeField] private List<SPreview> m_Preview = new();
 #endif
         #endregion
         #region Property

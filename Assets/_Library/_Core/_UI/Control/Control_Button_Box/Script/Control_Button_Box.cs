@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,8 +8,8 @@ namespace Library
     public class Control_Button_Box : ControlBase
     {
         #region Inspector
-        [SerializeField, TabGroup("Control_Button_Box", "UI")] private Image m_Image;
-        [SerializeField, TabGroup("Control_Button_Box", "UI")] private Sprite m_DisableSprite;
+        [SerializeField] private Image m_Image;
+        [SerializeField] private Sprite m_DisableSprite;
         #endregion
         #region Value
         private UIWrapper_Button m_Button;

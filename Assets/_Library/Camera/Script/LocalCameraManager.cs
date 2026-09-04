@@ -1,5 +1,4 @@
 using UnityEngine;
-using Sirenix.OdinInspector;
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -13,18 +12,18 @@ namespace Library
         public static LocalCameraManager instance { get; private set; }
 
         #region Inspector
-        [SerializeField, TabGroup("Component"), LabelText("카메라")] private Camera m_Camera;
-        [SerializeField, TabGroup("Component"), LabelText("카메라 회전 기준")] private Transform m_CameraRotRoot;
-        [SerializeField, TabGroup("Component"), LabelText("카메라 위치 기준")] private Transform m_CameraPosRoot;
-        [SerializeField, TabGroup("Component"), LabelText("카메라 제한")] private CameraClampBase m_CameraClamp;
-        [SerializeField, TabGroup("Animation"), LabelText("이동 커브")] private AnimationCurve m_PosCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-        [SerializeField, TabGroup("Animation"), LabelText("이동 속도")] private float m_PosSpeed = 3.0f;
-        [SerializeField, TabGroup("Animation"), LabelText("회전 커브")] private AnimationCurve m_RotCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-        [SerializeField, TabGroup("Animation"), LabelText("회전 속도")] private float m_RotSpeed = 3.0f;
-        [SerializeField, TabGroup("Animation"), LabelText("줌 커브")] private AnimationCurve m_ZoomCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-        [SerializeField, TabGroup("Animation"), LabelText("줌 속도")] private float m_ZoomSpeed = 3.0f;
-        [SerializeField, TabGroup("Animation"), LabelText("매니저 이동 커브")] private AnimationCurve m_ManagerPosCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-        [SerializeField, TabGroup("Animation"), LabelText("매니저 이동 속도")] private float m_ManagerPosSpeed = 3.0f;
+        [SerializeField] private Camera m_Camera;
+        [SerializeField] private Transform m_CameraRotRoot;
+        [SerializeField] private Transform m_CameraPosRoot;
+        [SerializeField] private CameraClampBase m_CameraClamp;
+        [SerializeField] private AnimationCurve m_PosCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+        [SerializeField] private float m_PosSpeed = 3.0f;
+        [SerializeField] private AnimationCurve m_RotCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+        [SerializeField] private float m_RotSpeed = 3.0f;
+        [SerializeField] private AnimationCurve m_ZoomCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+        [SerializeField] private float m_ZoomSpeed = 3.0f;
+        [SerializeField] private AnimationCurve m_ManagerPosCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+        [SerializeField] private float m_ManagerPosSpeed = 3.0f;
         #endregion
         #region Property
         /// <summary>현재 카메라</summary>

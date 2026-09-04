@@ -4,7 +4,6 @@ using BackEnd.Content;
 #endif
 using System.Collections.Generic;
 using Library;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Library
@@ -14,13 +13,13 @@ namespace Library
     {
         #if UNITY_EDITOR
         #region Preview
-        [SerializeField, ReadOnly] private List<string> m_AbilityPreview;
-        [SerializeField, ReadOnly] private List<string> m_BossPreview;
-        [SerializeField, ReadOnly] private List<string> m_CharacterPreview;
-        [SerializeField, ReadOnly] private List<string> m_EnemyPreview;
-        [SerializeField, ReadOnly] private List<string> m_RoomPreview;
-        [SerializeField, ReadOnly] private List<string> m_TextPreview;
-        [SerializeField, ReadOnly] private List<string> m_WavePreview;
+        [SerializeField] private List<string> m_AbilityPreview;
+        [SerializeField] private List<string> m_BossPreview;
+        [SerializeField] private List<string> m_CharacterPreview;
+        [SerializeField] private List<string> m_EnemyPreview;
+        [SerializeField] private List<string> m_RoomPreview;
+        [SerializeField] private List<string> m_TextPreview;
+        [SerializeField] private List<string> m_WavePreview;
         #endregion
         #endif
 

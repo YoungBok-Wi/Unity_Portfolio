@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using Sirenix.OdinInspector;
 
 namespace Library
 {
@@ -11,9 +10,9 @@ namespace Library
     public abstract class PopupBase : ObjectBase
     {
         #region Inspector
-        [SerializeField, TabGroup("PopupBase", "기본")] private bool m_IsCloseByCancel = false;
-        [SerializeField, TabGroup("PopupBase", "기본")] private bool m_IsDefaultOpen = false;
-        [SerializeField, TabGroup("PopupBase", "기본")] private int m_FixedOrder = -1;
+        [SerializeField] private bool m_IsCloseByCancel = false;
+        [SerializeField] private bool m_IsDefaultOpen = false;
+        [SerializeField] private int m_FixedOrder = -1;
         #endregion
         #region Property
         /// <summary>Cancel 키로 닫기 가능 여부</summary>

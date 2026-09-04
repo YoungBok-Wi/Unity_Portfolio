@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,8 +8,8 @@ namespace Library
     public class Control_Button_Icon : ControlBase
     {
         #region Inspector
-        [SerializeField, TabGroup("Control_Button_Icon", "UI")] private Image m_Image;
-        [SerializeField, TabGroup("Control_Button_Icon", "UI")] private Color m_DisableColor = new Color(0f, 0f, 0f, 0.25f);
+        [SerializeField] private Image m_Image;
+        [SerializeField] private Color m_DisableColor = new Color(0f, 0f, 0f, 0.25f);
         #endregion
         #region Value
         private UIWrapper_Button m_Button;

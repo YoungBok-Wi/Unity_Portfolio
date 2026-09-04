@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,9 +11,9 @@ namespace Library
     {
         public static LocalPopupManager instance { get; private set; }
         #region Inspector
-        [SerializeField, TabGroup("LocalPopupManager", "설정")] private Camera m_UICamera;
-        [SerializeField, TabGroup("LocalPopupManager", "설정")] private int m_BottomFixedOrder = 50;
-        [SerializeField, TabGroup("LocalPopupManager", "설정")] private bool m_IsCloseByCancel = true;
+        [SerializeField] private Camera m_UICamera;
+        [SerializeField] private int m_BottomFixedOrder = 50;
+        [SerializeField] private bool m_IsCloseByCancel = true;
         #endregion
         #region Property
         /// <summary>팝업 Canvas 들이 물릴 UI 카메라</summary>

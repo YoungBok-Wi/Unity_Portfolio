@@ -1,0 +1,13 @@
+{
+  "description": "AnimationSheet_Casual_Boss/Pumpkin_Attack2 Charge 6f (3x2) 재생성 (불투명 배경 재생성)",
+  "status": "Failed",
+  "priority": "instant",
+  "progress": 90,
+  "createdAt": 1788378584150,
+  "startedAt": 1788388045190,
+  "completedAt": 1788388048600,
+  "error": "codex 이미지 생성 실패 (exit 1): Reading additional input from stdin...\nOpenAI Codex v0.151.0-alpha.7.2\n--------\nworkdir: C:\\_Projects\\Unity_Portfolio\\_Data\\AutomationWorker\\Generate\\codex_image\\Work_0037\nmodel: gpt-5.6-sol\nprovider: openai\napproval: never\nsandbox: danger-full-access\nreasoning effort: medium\nreasoning summaries: none\nsession id: 01a0643b-f235-7851-8a67-2e9cf6aa41f4\n--------\nuser\n이미지 생성 스킬(C:\\Users\\we132/.codex/skills/.system/imagegen/SKILL.md)을 읽고 기본 내장 imagegen 워크플로로 요청된 이미지를 생성한다.\nInput/options.json 의 options.prompt 프롬프트를 사용한다.\nInput/image_1.*, Input/image_2.* 등이 존재하면 참조 이미지로 사용한다.\n최종 생성된 PNG 를 Output/art.png 에 저장한다. 그 외 다른 최종 파일은 만들지 않는다.\n최종 응답은 {\"outputPath\":\"Output/art.png\"} 형태의 짧은 JSON 객체만 반환한다.\nERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 7:34 AM.\nERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 7:34 AM.\n\n",
+  "errorType": "rateLimit",
+  "retryCount": 5,
+  "nextRetryAt": null
+}

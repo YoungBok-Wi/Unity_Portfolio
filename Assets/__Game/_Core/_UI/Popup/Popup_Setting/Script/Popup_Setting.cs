@@ -1,5 +1,4 @@
 using Game;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Library
@@ -10,17 +9,17 @@ namespace Library
         public static Popup_Setting instance { get; private set; }
 
         #region Inspector
-        [SerializeField, Tooltip("제목·닫기를 가진 팝업 프레임"), TabGroup("Popup_Setting", "UI")] private Control_GameFrame m_Frame;
-        [SerializeField, Tooltip("BGM 볼륨 슬라이더"), TabGroup("Popup_Setting", "UI")] private UIWrapper_Slider m_BgmSlider;
-        [SerializeField, Tooltip("효과음 볼륨 슬라이더"), TabGroup("Popup_Setting", "UI")] private UIWrapper_Slider m_SfxSlider;
-        [SerializeField, Tooltip("전체 화면 토글"), TabGroup("Popup_Setting", "UI")] private UIWrapper_Toggle m_FullscreenToggle;
-        [SerializeField, Tooltip("적용 버튼"), TabGroup("Popup_Setting", "UI")] private UIWrapper_Button m_ApplyButton;
-        [SerializeField, Tooltip("기본값 복원 버튼"), TabGroup("Popup_Setting", "UI")] private UIWrapper_Button m_DefaultButton;
-        [SerializeField, Tooltip("BGM 항목 라벨"), TabGroup("Popup_Setting", "번역")] private UIWrapper_Text m_BgmLabel;
-        [SerializeField, Tooltip("효과음 항목 라벨"), TabGroup("Popup_Setting", "번역")] private UIWrapper_Text m_SfxLabel;
-        [SerializeField, Tooltip("전체 화면 항목 라벨"), TabGroup("Popup_Setting", "번역")] private UIWrapper_Text m_FullscreenLabel;
-        [SerializeField, Tooltip("적용 버튼 라벨"), TabGroup("Popup_Setting", "번역")] private UIWrapper_Text m_ApplyLabel;
-        [SerializeField, Tooltip("기본값 버튼 라벨"), TabGroup("Popup_Setting", "번역")] private UIWrapper_Text m_DefaultLabel;
+        [SerializeField, Tooltip("제목·닫기를 가진 팝업 프레임")] private Control_GameFrame m_Frame;
+        [SerializeField, Tooltip("BGM 볼륨 슬라이더")] private UIWrapper_Slider m_BgmSlider;
+        [SerializeField, Tooltip("효과음 볼륨 슬라이더")] private UIWrapper_Slider m_SfxSlider;
+        [SerializeField, Tooltip("전체 화면 토글")] private UIWrapper_Toggle m_FullscreenToggle;
+        [SerializeField, Tooltip("적용 버튼")] private UIWrapper_Button m_ApplyButton;
+        [SerializeField, Tooltip("기본값 복원 버튼")] private UIWrapper_Button m_DefaultButton;
+        [SerializeField, Tooltip("BGM 항목 라벨")] private UIWrapper_Text m_BgmLabel;
+        [SerializeField, Tooltip("효과음 항목 라벨")] private UIWrapper_Text m_SfxLabel;
+        [SerializeField, Tooltip("전체 화면 항목 라벨")] private UIWrapper_Text m_FullscreenLabel;
+        [SerializeField, Tooltip("적용 버튼 라벨")] private UIWrapper_Text m_ApplyLabel;
+        [SerializeField, Tooltip("기본값 버튼 라벨")] private UIWrapper_Text m_DefaultLabel;
         #endregion
         #region Value
         // 기본값 복원이 되돌릴 볼륨. SoundManager 가 만드는 초기값과 같은 값이다

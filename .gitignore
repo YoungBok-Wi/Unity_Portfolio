@@ -111,14 +111,43 @@ InitTestScene*.unity*
 # Nbing-specific
 /_Temp/
 /.claude/
+/QWEN.md
+/.mcp.json
 
 # Codex/agent runtime mirrors (auto-generated, not committed)
 /.agents/
 /.codex/
 /AGENTS.md
 
+# Unity editor MCP bridge (local tooling, not part of the game)
+/Assets/_GameMCP/
+/Assets/_GameMCP.meta
+
 # Data / markdown
 /_Data/*
 !/_Data/Job/
 /_Data/Job/**/*.json
+!/_Data/Concept/
+!/_Data/AutomationWorker/
+/_Data/AutomationWorker/*
+!/_Data/AutomationWorker/Generate/
+/_Data/AutomationWorker/Generate/*
+!/_Data/AutomationWorker/Generate/codex_image/
+/_Data/AutomationWorker/Generate/codex_image/*
+!/_Data/AutomationWorker/Generate/codex_image/Work_0001/
+!/_Data/AutomationWorker/Generate/codex_image/Work_0003/
+!/_Data/AutomationWorker/Generate/codex_image/Work_0004/
+!/_Data/AutomationWorker/Generate/codex_image/Work_0009/
+!/_Data/AutomationWorker/Generate/codex_image/Work_0016/
+!/_Data/AutomationWorker/Generate/codex_image/Work_0028/
+!/_Data/AutomationWorker/Generate/codex_image/Work_0037/
+!/_Data/AutomationWorker/Generate/codex_image/Work_0042/
+!/_Data/AutomationWorker/Generate/codex_image/Work_0051/
+!/_Data/AutomationWorker/Process/
+/_Data/AutomationWorker/Process/*
+!/_Data/AutomationWorker/Process/image_normalize/
+/_Data/AutomationWorker/Process/image_normalize/*
+!/_Data/AutomationWorker/Process/image_normalize/Work_0001/
+!/_Data/AutomationWorker/Process/image_normalize/Work_0008/
+!/_Data/AutomationWorker/Process/image_normalize/Work_0019/
 /Assets/**/*.md
