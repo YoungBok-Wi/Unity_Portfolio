@@ -22,6 +22,7 @@ namespace Game
         [SerializeField, Tooltip("히트 이펙트 프리팹 (없으면 생략)")] private GameObject m_HitEffectPrefab;
         [SerializeField, Tooltip("히트 이펙트 수명 (초)")] private float m_HitEffectSec = 0.3f;
         [SerializeField, Tooltip("전조 표시 프리팹 (폭 1u 가로 타원 스프라이트, 없으면 생략)")] private GameObject m_TelegraphPrefab;
+        [SerializeField, Tooltip("공격 시작음")] private AudioClip m_SfxAttack;
         [SerializeField, Tooltip("타격음")] private AudioClip m_SfxHit;
         [SerializeField, Tooltip("처치음")] private AudioClip m_SfxDie;
         [SerializeField, Tooltip("전투 BGM (없으면 재생 생략)")] private AudioClip m_Bgm;
@@ -108,8 +109,25 @@ namespace Game
             if (m_ProjectilePrefab != null)
                 m_ProjectilePool = new ObjectPool(m_ProjectilePrefab, root, m_ProjectilePoolSize);
             if (m_Bgm != null)
-                BattleManager.instance.PlayBGM(m_Bgm);
+            {
+                if (LocalRoomManager.instance != null)
+                    LocalRoomManager.instance.RoomKind.AddChanged(this, OnRoomKindChanged, true);
+                else
+                    BattleManager.instance.PlayBGM(m_Bgm);
+            }
             base.InitGame();
+        }
+        public override void OnShutdown()
+        {
+            if (LocalRoomManager.instance != null)
+                LocalRoomManager.instance.RoomKind.RemoveChanged(this, OnRoomKindChanged);
+            base.OnShutdown();
+        }
+        /// <summary>방 종류 변경에 맞춰 전투 BGM 재생 속도를 건다 — 보스방은 Battle_BossBgmPitch, 그 외 1</summary>
+        private void OnRoomKindChanged(ValueBase _)
+        {
+            bool isBoss = LocalRoomManager.instance.RoomKind.v == RoomConst.KindBoss;
+            BattleManager.instance.PlayBGM(m_Bgm, isBoss ? TableManager.instance.Const.Battle_BossBgmPitch : 1f);
         }
         #endregion
         #region Local Function
@@ -184,7 +202,7 @@ namespace Game
                 return;
             StartCoroutine(HitStopRoutine(m_HitStopSec));
         }
-        /// <summary>_a·_b 루트의 비트리거 콜라이더끼리 물리 충돌을 무시시킨다 — 적·플레이어가 서로 밀지 않고 겹친다 (판정은 Overlap 조회라 영향 없음)</summary>
+        /// <summary>_a·_b 루트의 비트리거 콜라이더끼리 물리 충돌을 무시시킨다 — 유닛끼리 서로 밀지 않고 겹친다 (판정은 Overlap 조회라 영향 없음)</summary>
         private void IgnoreContact(Object_UnitBase _a, Object_UnitBase _b)
         {
             foreach (var ca in _a.GetComponents<Collider2D>())
@@ -215,6 +233,10 @@ namespace Game
             unit.Spawn(_pos, _hpScale, _atkScale);
             if (Player != null)
                 IgnoreContact(Player, unit);
+            foreach (var other in m_Enemies)
+                IgnoreContact(other, unit);
+            if (Boss != null)
+                IgnoreContact(Boss, unit);
             if (unit.Kind == EUnitKind.Boss)
             {
                 Boss = unit;
@@ -352,7 +374,7 @@ namespace Game
         {
             m_ProjectilePool.Return(_object);
         }
-        /// <summary>_unit 에 플레이어 _side(-1 좌·+1 우) 근접 슬롯을 준다. 같은 쪽 슬롯을 이미 가졌거나 자리가 있으면 true (반대쪽 슬롯은 반납 후 재판정, 죽은 유닛 슬롯은 세지 않는다)</summary>
+        /// <summary>_unit 에 플레이어 _side(-1 좌·+1 우) 근접 슬롯을 플레이어 거리순으로 준다. 같은 쪽 슬롯을 이미 가졌거나 자리가 있으면 true, 자리가 없어도 같은 쪽 보유 개체 중 가장 먼 개체보다 가까우면 그 슬롯을 회수해 true (반대쪽 슬롯은 반납 후 재판정, 죽은 유닛 슬롯은 세지 않는다)</summary>
         public bool RequestMeleeSlot(Object_UnitBase _unit, int _side)
         {
             if (m_MeleeSlots.TryGetValue(_unit, out var held))
@@ -361,14 +383,36 @@ namespace Game
                     return true;
                 m_MeleeSlots.Remove(_unit);
             }
+            float px = Player != null ? Player.transform.position.x : _unit.transform.position.x;
+            float myDist = Mathf.Abs(_unit.transform.position.x - px);
             int count = 0;
+            Object_UnitBase farthest = null;
+            float farthestDist = 0;
             foreach (var pair in m_MeleeSlots)
-                if (pair.Value == _side && !pair.Key.IsDead.v && pair.Key.gameObject.activeInHierarchy)
-                    count += 1;
+            {
+                if (pair.Value != _side || pair.Key.IsDead.v || !pair.Key.gameObject.activeInHierarchy)
+                    continue;
+                count += 1;
+                float dist = Mathf.Abs(pair.Key.transform.position.x - px);
+                if (farthest == null || farthestDist < dist)
+                {
+                    farthest = pair.Key;
+                    farthestDist = dist;
+                }
+            }
             if (TableManager.instance.Const.Battle_MeleeSlotPerSide <= count)
-                return false;
+            {
+                if (farthest == null || farthestDist <= myDist)
+                    return false;
+                m_MeleeSlots.Remove(farthest);
+            }
             m_MeleeSlots.Add(_unit, _side);
             return true;
+        }
+        /// <summary>플레이어 공격 시작음을 재생한다 (클립이 없으면 생략)</summary>
+        public void PlayAttackSfx()
+        {
+            SoundManager.instance.PlaySE(m_SfxAttack);
         }
         /// <summary>_unit 의 근접 슬롯을 반납한다 (없으면 무시)</summary>
         public void ReleaseMeleeSlot(Object_UnitBase _unit)
@@ -479,6 +523,8 @@ namespace Game
                 if (side < 0) left += 1; else right += 1;
             _report.AddNumber("meleeSlotLeft", left);
             _report.AddNumber("meleeSlotRight", right);
+            _report.Add("bgmPitch", BattleManager.instance != null ? BattleManager.instance.BgmPitch.ToString("0.00") : "");
+            _report.Add("sfxAttack", m_SfxAttack != null ? m_SfxAttack.name : "");
             foreach (var pair in m_AbilityStacks)
                 _report.AddNumber($"ability_{pair.Key}", pair.Value);
         }

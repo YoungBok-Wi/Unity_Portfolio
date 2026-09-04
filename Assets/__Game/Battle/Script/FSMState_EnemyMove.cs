@@ -3,13 +3,18 @@ using UnityEngine;
 
 namespace Game
 {
-    /// <summary>적 이동 상태 — 근접·탱커는 슬롯을 얻어 정지 거리까지 추격, 원거리는 정지 거리를 유지하다 사거리 안이면 공격으로 전환</summary>
+    /// <summary>적 이동 상태 — 근접·탱커는 슬롯을 얻어 정지 거리까지 추격, 원거리는 정지 거리를 유지하다 사거리 안이면 공격으로 전환 (후퇴가 막히면 유지 거리 미달이어도 발사)</summary>
     public class FSMState_EnemyMove : FSMState_UnitBase
     {
+        #region Value
+        private float m_RetreatSec;
+        #endregion
+
         #region Event
         protected override void OnStart()
         {
             PlayAnim(BattleConst.AnimMove, true);
+            m_RetreatSec = 0;
         }
         protected override FSMState OnUpdate()
         {
@@ -25,8 +30,16 @@ namespace Game
             if (data.Group == BattleConst.GroupRanged)
             {
                 if (dist < data.StopDistance * 0.7f)
+                {
                     Move(-dir);
-                else if (data.StopDistance < dist)
+                    m_RetreatSec += Time.deltaTime;
+                    // 후퇴가 벽에 막혀 서 있으면 유지 거리 미달이어도 사거리 안에서 발사한다 — 후퇴와 발사는 배타가 아니다
+                    if (dist <= data.Range && IsRetreatBlocked())
+                        return Parent.GetState(BattleConst.StateAttack);
+                    return this;
+                }
+                m_RetreatSec = 0;
+                if (data.StopDistance < dist)
                     Move(dir);
                 else
                 {
@@ -53,6 +66,13 @@ namespace Game
             }
             FacePlayer();
             return Parent.GetState(BattleConst.StateAttack);
+        }
+        #endregion
+        #region Local Function
+        /// <summary>후퇴 요청이 RetreatBlockSec 이상 이어졌는데 수평 속도가 RetreatBlockSpeed 미만이면 true 를 반환한다 (물리가 없으면 false)</summary>
+        private bool IsRetreatBlocked()
+        {
+            return Unit.Physics != null && BattleConst.RetreatBlockSec <= m_RetreatSec && Mathf.Abs(Unit.Physics.Rig.linearVelocity.x) < BattleConst.RetreatBlockSpeed;
         }
         #endregion
     }

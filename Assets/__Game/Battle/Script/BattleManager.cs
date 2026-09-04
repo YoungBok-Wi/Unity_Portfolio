@@ -14,6 +14,8 @@ namespace Game
         public IReadOnlyLongValue Crumb => m_Crumb;
         /// <summary>이번 런 누적 획득 Crumb (결과 점수)</summary>
         public IReadOnlyIntValue CrumbTotal => m_CrumbTotal;
+        /// <summary>현재 BGM 재생 속도 배율 (소스가 없으면 1)</summary>
+        public float BgmPitch => m_BgmSource != null ? m_BgmSource.pitch : 1f;
         #endregion
         #region Value
         private LongValue m_Crumb;
@@ -61,8 +63,8 @@ namespace Game
             BankManager.instance.Set(BattleConst.CrumbId, 0);
             m_CrumbTotal.v = 0;
         }
-        /// <summary>_clip 을 BGM 으로 루프 재생한다 (SoundManager BGM 볼륨 적용, 같은 클립이 재생 중이면 유지, null 이면 정지)</summary>
-        public void PlayBGM(AudioClip _clip)
+        /// <summary>_clip 을 BGM 으로 재생 속도 배율 _pitch(기본 1) 로 루프 재생한다 (SoundManager BGM 볼륨 적용, 같은 클립이 재생 중이면 pitch 만 갱신, null 이면 정지)</summary>
+        public void PlayBGM(AudioClip _clip, float _pitch = 1f)
         {
             if (m_BgmSource == null)
             {
@@ -76,6 +78,7 @@ namespace Game
                 m_BgmSource.clip = null;
                 return;
             }
+            m_BgmSource.pitch = _pitch;
             if (m_BgmSource.clip == _clip && m_BgmSource.isPlaying)
                 return;
             m_BgmSource.clip = _clip;

@@ -56,6 +56,8 @@ namespace Game
             StopMove();
             SetAttackRange(true);
             PlayAnim(_step == 1 ? BattleConst.AnimAttackKnife : (_step == 2 ? BattleConst.AnimAttackKnife2 : BattleConst.AnimAttackKnife3), false);
+            if (Battle != null)
+                Battle.PlayAttackSfx();
         }
         /// <summary>현재 단의 판정을 낸다 (3단은 마무리 넉백)</summary>
         private void Strike()
