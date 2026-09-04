@@ -43,5 +43,8 @@
   },
   "Room_ChoiceSet4": {
     "": "Battle/Battle"
+  },
+  "Battle_BossBgmPitch": {
+    "": "1.1"
   }
 }
