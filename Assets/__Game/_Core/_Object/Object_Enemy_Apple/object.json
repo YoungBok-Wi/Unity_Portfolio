@@ -1,6 +1,6 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "근접 공격형 일반 적 Apple — 추격 후 물기 공격, 피격 넉백, ObjectPool 런타임 스폰",
+  "description": "근접 공격형 일반 적 Apple — 추격 후 물기 공격, 피격 넉백, ObjectPool 런타임 스폰, View 정렬 순서 1(적)",
   "inAsset": true
 }

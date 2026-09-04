@@ -1,6 +1,6 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "Knife 요리사 플레이어 — 근접 3단 콤보(전방 사각 박스 다중 명중)·점프, 정지 공격 + 이동 회피, 런타임 스폰",
+  "description": "Knife 요리사 플레이어 — 근접 3단 콤보(전방 사각 박스 다중 명중)·점프, 정지 공격 + 이동 회피, 런타임 스폰, View 정렬 순서 2(플레이어)",
   "inAsset": true
 }

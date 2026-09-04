@@ -1,6 +1,6 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "탱킹형 일반 적 Watermelon — 높은 HP·느린 몸통 박치기·짧은 넉백, ObjectPool 런타임 스폰",
+  "description": "탱킹형 일반 적 Watermelon — 높은 HP·느린 몸통 박치기·짧은 넉백, ObjectPool 런타임 스폰, View 정렬 순서 1(적)",
   "inAsset": true
 }

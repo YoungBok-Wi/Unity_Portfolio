@@ -1,5 +1,6 @@
 using Library;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Game
@@ -119,6 +120,17 @@ namespace Game
         {
             LocalPopupManager.instance.TryOpen(SettingPopupId);
         }
+        /// <summary>취소 입력 — 이 팝업 위에 열린 팝업이 있으면 최상단 하나만 닫고 소비한다. 없으면 기본 처리로 넘겨 종료 팝업이 열리게 둔다</summary>
+        public override bool OnInputCancel(InputAction.CallbackContext _context)
+        {
+            if (!_context.performed)
+                return base.OnInputCancel(_context);
+            var top = FindTopOpenedPopup();
+            if (top == null)
+                return base.OnInputCancel(_context);
+            top.Close();
+            return true;
+        }
         #endregion
         #region Local Function
         /// <summary>선택 강조(파란 카드·프레임·요리사 일러스트)·잠금 마크·회색 처리·Gun 설명(해금 전엔 해금 조건)을 갱신한다</summary>
@@ -165,6 +177,23 @@ namespace Game
         private string UnlockText()
         {
             return string.Format(LanguageManager.instance.Get(RoomConst.TextGunUnlock), TableManager.instance.Const.Room_GunUnlock);
+        }
+        /// <summary>이 팝업을 제외하고 열려 있는(닫는 중 아님) 팝업 중 Canvas 정렬 순서가 가장 높은 것을 반환한다. 없으면 null</summary>
+        private PopupBase FindTopOpenedPopup()
+        {
+            var manager = LocalPopupManager.instance;
+            if (manager == null)
+                return null;
+            PopupBase top = null;
+            foreach (var id in manager.IDs)
+            {
+                var popup = manager.Get(id);
+                if (popup == this || !popup.IsOpened || popup.IsClosing)
+                    continue;
+                if (top == null || top.PopupCanvas.sortingOrder < popup.PopupCanvas.sortingOrder)
+                    top = popup;
+            }
+            return top;
         }
         #endregion
         #region MCP
