@@ -69,6 +69,7 @@ description: |
    - 회피(대시): 없음 — 사거리·이동속도 차와 점프로 회피가 성립해 입력 수를 줄인다
    - 무입력 정지: 이동 입력이 없으면 플레이어는 즉시 제자리에 선다 — 피격 넉백은 정해진 거리·시간만 이동한 뒤 자동 정지하고 잔여 속도를 남기지 않는다 (넉백 거리·시간은 `밸런스컨셉` 위임)
    - 적 접촉: 적과 플레이어의 물리 콜라이더는 서로 밀지 않는다 — 겹침 허용(적↔플레이어 물리 충돌 해소 없음, 접촉 피해는 정지 거리·판정 트리거로만), 플레이어 위치는 이동 입력·피격 넉백으로만 바뀐다
+   - 겹침 표시 우선순위: 겹침 시 플레이어가 적·보스보다 앞에 그려진다 — 스프라이트 정렬 순서는 플레이어 > 적·보스 > 투사체·전조·히트 이펙트 (정렬 순서 값은 `리소스컨셉` 규격 위임)
 
 **저장**
    - 저장 항목: Gun 해금 여부, 마지막 선택 캐릭터, 최고 도달 방 순번, BGM·SFX 볼륨
@@ -195,7 +196,7 @@ description: |
 
 **사운드**
    - 소비처: `Scene_Lobby`·`Scene_Game`
-   - 내용: 로비 `BGM_Casual/Lobby`, 전투 `BGM_Casual/Battle`, 해금 `SFX_Casual_Progress/Unlock`, 능력 획득 `SFX_Casual_Progress/LevelUp`
+   - 내용: 로비 `BGM_Casual/Lobby`, 전투 `BGM_Casual/Battle`, 해금 `SFX_Casual_Progress/Unlock`, 능력 획득 `SFX_Casual_Progress/LevelUp`. Boss 방은 전투 BGM의 재생 속도 배율을 올린다 — 배율은 고정값 `Battle_BossBgmPitch`(float)가 정본이고 코드 리터럴 금지, 값은 `밸런스컨셉` 위임
 
 **방 선택**
    - 소비처: `Scene_Game` 방 선택 `팝업`
