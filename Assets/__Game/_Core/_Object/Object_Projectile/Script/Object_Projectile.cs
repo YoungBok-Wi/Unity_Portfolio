@@ -20,6 +20,8 @@ namespace Game
         private float m_Traveled;
         private int m_HitCount;
         private readonly List<Object_UnitBase> m_HitList = new();
+        private static readonly List<Collider2D> s_Overlaps = new();
+        private static readonly ContactFilter2D s_NoFilter = new ContactFilter2D().NoFilter();
         #endregion
 
         #region Event
@@ -40,9 +42,10 @@ namespace Game
                 Finish();
                 return;
             }
-            foreach (var col in Physics2D.OverlapCircleAll(transform.position, m_Radius))
+            int overlapCount = Physics2D.OverlapCircle(transform.position, m_Radius, s_NoFilter, s_Overlaps);
+            for (int i = 0; i < overlapCount; i++)
             {
-                var unit = col.GetComponentInParent<Object_UnitBase>();
+                var unit = s_Overlaps[i].GetComponentInParent<Object_UnitBase>();
                 if (unit == null || unit == m_Data.Owner || m_HitList.Contains(unit))
                     continue;
                 m_HitList.Add(unit);

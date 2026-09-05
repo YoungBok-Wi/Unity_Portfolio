@@ -73,6 +73,17 @@ namespace Game
         private readonly List<Object_UnitBase> m_HitBuffer = new();
         private readonly Queue<(string id, Vector2 pos, float hpScale, float atkScale)> m_PendingSpawns = new();
         private readonly List<CrumbDrop> m_CrumbDrops = new();
+        private ObjectPool m_CrumbDropPool;
+        private readonly Dictionary<GameObject, ObjectPool> m_EffectPools = new();
+        private readonly List<SActiveEffect> m_ActiveEffects = new();
+        private static readonly List<SpriteRenderer> s_Sprites = new();
+        /// <summary>풀에서 꺼내 띄워 둔 이펙트와 회수 시각</summary>
+        private struct SActiveEffect
+        {
+            public GameObject Go;
+            public ObjectPool Pool;
+            public float EndTime;
+        }
         private float m_PlayerKnockAnchorX = float.NaN;
         private ObjectPool m_ProjectilePool;
         private bool m_IsHitStopping;
@@ -92,6 +103,16 @@ namespace Game
                 instance = null;
             if (TimeManager.instance != null)
                 TimeManager.instance.SetTimeScale(this, this, 1);
+        }
+        private void Update()
+        {
+            for (int i = m_ActiveEffects.Count - 1; 0 <= i; i--)
+            {
+                if (Time.time < m_ActiveEffects[i].EndTime)
+                    continue;
+                m_ActiveEffects[i].Pool.Return(m_ActiveEffects[i].Go);
+                m_ActiveEffects.RemoveAt(i);
+            }
         }
         public override void OnRegisterObject(ObjectBase _object)
         {
@@ -164,11 +185,31 @@ namespace Game
         {
             if (_prefab == null)
                 return;
-            var go = Instantiate(_prefab, _point, Quaternion.identity);
-            if (_facing < 0)
-                foreach (var sr in go.GetComponentsInChildren<SpriteRenderer>())
-                    sr.flipX = true;
-            Destroy(go, _sec);
+            if (!m_EffectPools.TryGetValue(_prefab, out var pool))
+            {
+                pool = new ObjectPool(_prefab, m_UnitRoot != null ? m_UnitRoot : transform, BattleConst.EffectPoolSize);
+                m_EffectPools.Add(_prefab, pool);
+            }
+            var go = pool.Get();
+            if (go == null)
+            {
+                // 풀 소진 — 같은 풀에서 가장 오래된 이펙트를 먼저 거둔다
+                for (int i = 0; i < m_ActiveEffects.Count; i++)
+                    if (m_ActiveEffects[i].Pool == pool)
+                    {
+                        pool.Return(m_ActiveEffects[i].Go);
+                        m_ActiveEffects.RemoveAt(i);
+                        break;
+                    }
+                go = pool.Get();
+                if (go == null)
+                    throw new InvalidOperationException($"{_prefab.name} 이펙트 풀에서 꺼낼 수 없다 (풀 크기 {BattleConst.EffectPoolSize})");
+            }
+            go.transform.position = _point;
+            go.GetComponentsInChildren(s_Sprites);
+            foreach (var sr in s_Sprites)
+                sr.flipX = _facing < 0;
+            m_ActiveEffects.Add(new SActiveEffect { Go = go, Pool = pool, EndTime = Time.time + _sec });
         }
         /// <summary>_unit 처치 보상 _amount 를 낙하물로 흩뿌린다 — 개수는 CrumbDropMax 이하로 나누고 프리팹이 없으면 즉시 적립한다</summary>
         private void SpawnCrumbDrops(Object_UnitBase _unit, int _amount)
@@ -178,12 +219,21 @@ namespace Game
                 BattleManager.instance.AddCrumb(_amount);
                 return;
             }
+            if (m_CrumbDropPool == null)
+                m_CrumbDropPool = new ObjectPool(m_CrumbDropPrefab, m_UnitRoot != null ? m_UnitRoot : transform, BattleConst.CrumbDropPoolSize);
             int count = Mathf.Min(_amount, BattleConst.CrumbDropMax);
             float floorY = _unit.transform.position.y;
             for (int i = 0; i < count; i++)
             {
                 int value = _amount / count + (i < _amount % count ? 1 : 0);
-                var drop = Instantiate(m_CrumbDropPrefab, _unit.HitPoint, Quaternion.identity, m_UnitRoot != null ? m_UnitRoot : transform).GetComponent<CrumbDrop>();
+                var go = m_CrumbDropPool.Get();
+                if (go == null)
+                {
+                    // 풀 소진 — 즉시 적립
+                    BattleManager.instance.AddCrumb(value);
+                    continue;
+                }
+                var drop = go.GetComponent<CrumbDrop>();
                 if (drop == null)
                     throw new InvalidOperationException($"{m_CrumbDropPrefab.name} 에 CrumbDrop 이 없다");
                 var velocity = new Vector2(UnityEngine.Random.Range(-BattleConst.CrumbTossSpeedX, BattleConst.CrumbTossSpeedX), BattleConst.CrumbTossSpeedY);
@@ -495,7 +545,7 @@ namespace Game
             if (!m_CrumbDrops.Remove(_drop))
                 return;
             BattleManager.instance.AddCrumb(_drop.Value);
-            Destroy(_drop.gameObject);
+            m_CrumbDropPool.Return(_drop.gameObject);
         }
         /// <summary>남은 낙하물을 전부 적립하고 제거한다 — 방 클리어·방 전환 시 잔존물을 남기지 않는다</summary>
         public void CollectAllCrumbs()
@@ -571,12 +621,15 @@ namespace Game
             m_IsPlayerDead.Set(false, false, false);
             m_IsBossDead.Set(false, false, false);
         }
-        /// <summary>스폰된 적·보스·투사체를 전부 풀로 되돌린다 (통지 없음)</summary>
+        /// <summary>스폰된 적·보스·투사체·이펙트·낙하물을 전부 풀로 되돌린다 (통지 없음)</summary>
         public void ClearUnits()
         {
             m_PendingSpawns.Clear();
             m_PlayerKnockAnchorX = float.NaN;
             CollectAllCrumbs();
+            foreach (var pool in m_EffectPools.Values)
+                pool.Clear();
+            m_ActiveEffects.Clear();
             foreach (var unit in m_Enemies.ToArray())
                 Despawn(unit);
             if (Boss != null)
