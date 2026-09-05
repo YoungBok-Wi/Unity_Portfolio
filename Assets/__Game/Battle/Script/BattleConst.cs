@@ -35,6 +35,13 @@ namespace Game
         public const float PlayerKnockbackDist = 0.5f;
         public const float PlayerKnockbackTime = 0.15f;
         public const float PlayerKnockbackDriftMax = 1.5f;
+        public const int CrumbDropMax = 8;
+        public const float CrumbTossSpeedX = 2.0f;
+        public const float CrumbTossSpeedY = 4.0f;
+        public const float CrumbGravity = 12.0f;
+        public const float CrumbCollectDistance = 0.6f;
+        public const float CrumbMagnetDistance = 3.0f;
+        public const float CrumbMagnetSpeed = 8.0f;
         public const float RetreatBlockSec = 0.1f;
         public const float RetreatBlockSpeed = 0.05f;
         #endregion
