@@ -65,6 +65,8 @@ namespace Game
                 return;
             if (m_MoveInput != 0)
             {
+                if (Battle != null)
+                    Battle.ResetPlayerKnockbackDrift();
                 SetFacing(m_MoveInput < 0 ? -1 : 1);
                 Physics.Move(m_MoveInput);
             }

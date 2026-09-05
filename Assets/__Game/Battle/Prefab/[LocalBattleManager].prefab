@@ -53,7 +53,7 @@ MonoBehaviour:
   - {fileID: 4260433173941678388, guid: 71e6c0a3cb174ab4693224724f72dc12, type: 3}
   - {fileID: 8712770035807725783, guid: f34762828ce5d5d41945391878963c8e, type: 3}
   m_ProjectilePrefab: {fileID: 539868943378240985, guid: cf714ea66d2ae8d45acfe2c1215a62ee, type: 3}
-  m_EnemyPoolSize: 8
+  m_EnemyPoolSize: 12
   m_ProjectilePoolSize: 24
   m_HitStopSec: 0.06
   m_HitEffectPrefab: {fileID: 1100000000000000001, guid: 5a1e7c0b2d3f4a6b8c9d0e1f2a3b4c5d, type: 3}

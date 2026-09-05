@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
-    /// <summary>적 이동 상태 — 근접·탱커는 슬롯을 얻어 정지 거리까지 추격, 원거리는 정지 거리를 유지하다 사거리 안이면 공격으로 전환 (후퇴가 막히면 유지 거리 미달이어도 발사)</summary>
+    /// <summary>적 이동 상태 — 근접·탱커는 슬롯을 얻어 정지 거리까지 추격(같은 쪽이 차고 반대쪽이 비면 플레이어를 지나 반대쪽 슬롯으로), 원거리는 정지 거리를 유지하다 사거리 안이면 공격으로 전환 (후퇴가 막히면 유지 거리 미달이어도 발사)</summary>
     public class FSMState_EnemyMove : FSMState_UnitBase
     {
         #region Value
@@ -50,9 +50,23 @@ namespace Game
                 return this;
             }
 
-            // 근접 슬롯이 없으면 대기 거리에서 기다린다 — 좌우 슬롯 수는 Battle_MeleeSlotPerSide
-            if (!LocalBattleManager.instance.RequestMeleeSlot(Unit, -dir))
+            // 반대쪽 슬롯을 받은 개체는 플레이어를 지나칠 때까지 그쪽으로 계속 간다 (적↔플레이어 겹침 허용이라 통과 가능)
+            var battle = LocalBattleManager.instance;
+            int side = -dir;
+            int held = battle.GetMeleeSlotSide(Unit);
+            if (held != 0 && held != side)
             {
+                Move(dir);
+                return this;
+            }
+            // 근접 슬롯이 없으면 반대쪽 빈 슬롯(회수 없이)을 받아 건너가고, 그것도 없으면 대기 거리에서 기다린다 — 좌우 슬롯 수는 Battle_MeleeSlotPerSide
+            if (!battle.RequestMeleeSlot(Unit, side))
+            {
+                if (battle.RequestMeleeSlot(Unit, -side, false))
+                {
+                    Move(dir);
+                    return this;
+                }
                 if (BattleConst.MeleeWaitDistance < dist)
                     Move(dir);
                 else

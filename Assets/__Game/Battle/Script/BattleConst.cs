@@ -34,6 +34,7 @@ namespace Game
         public const float BossProjectileRange = 15.0f;
         public const float PlayerKnockbackDist = 0.5f;
         public const float PlayerKnockbackTime = 0.15f;
+        public const float PlayerKnockbackDriftMax = 1.5f;
         public const float RetreatBlockSec = 0.1f;
         public const float RetreatBlockSpeed = 0.05f;
         #endregion
