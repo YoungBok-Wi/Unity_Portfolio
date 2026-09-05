@@ -22,9 +22,16 @@ namespace Game
         [SerializeField, Tooltip("히트 이펙트 프리팹 (없으면 생략)")] private GameObject m_HitEffectPrefab;
         [SerializeField, Tooltip("히트 이펙트 수명 (초)")] private float m_HitEffectSec = 0.3f;
         [SerializeField, Tooltip("전조 표시 프리팹 (폭 1u 가로 타원 스프라이트, 없으면 생략)")] private GameObject m_TelegraphPrefab;
+        [SerializeField, Tooltip("처치 스플래터 프리팹 (없으면 생략)")] private GameObject m_SplatterPrefab;
+        [SerializeField, Tooltip("스플래터 수명 (초)")] private float m_SplatterSec = 0.5f;
+        [SerializeField, Tooltip("Knife 휘두름 궤적 프리팹 (없으면 생략)")] private GameObject m_SlashPrefab;
+        [SerializeField, Tooltip("궤적 수명 (초)")] private float m_SlashSec = 0.2f;
+        [SerializeField, Tooltip("Crumb 낙하물 프리팹 (없으면 처치 즉시 적립)")] private GameObject m_CrumbDropPrefab;
         [SerializeField, Tooltip("공격 시작음")] private AudioClip m_SfxAttack;
         [SerializeField, Tooltip("타격음")] private AudioClip m_SfxHit;
         [SerializeField, Tooltip("처치음")] private AudioClip m_SfxDie;
+        [SerializeField, Tooltip("능력 획득음")] private AudioClip m_SfxLevelUp;
+        [SerializeField, Tooltip("Gun 해금음")] private AudioClip m_SfxUnlock;
         [SerializeField, Tooltip("전투 BGM (없으면 재생 생략)")] private AudioClip m_Bgm;
         #endregion
         #region Property
@@ -65,6 +72,7 @@ namespace Game
         private readonly Dictionary<Object_UnitBase, int> m_MeleeSlots = new();
         private readonly List<Object_UnitBase> m_HitBuffer = new();
         private readonly Queue<(string id, Vector2 pos, float hpScale, float atkScale)> m_PendingSpawns = new();
+        private readonly List<CrumbDrop> m_CrumbDrops = new();
         private float m_PlayerKnockAnchorX = float.NaN;
         private ObjectPool m_ProjectilePool;
         private bool m_IsHitStopping;
@@ -148,9 +156,40 @@ namespace Game
         /// <summary>_point 에 히트 이펙트를 띄우고 _clip 을 재생한다 (프리팹·클립이 없으면 각각 생략)</summary>
         private void PlayHitEffect(Vector2 _point, AudioClip _clip)
         {
-            if (m_HitEffectPrefab != null)
-                Destroy(Instantiate(m_HitEffectPrefab, _point, Quaternion.identity), m_HitEffectSec);
+            SpawnEffect(m_HitEffectPrefab, _point, m_HitEffectSec, 1);
             SoundManager.instance.PlaySE(_clip);
+        }
+        /// <summary>_prefab 을 _point 에 _sec 동안 띄운다 (_facing 이 음수면 스프라이트 X 반전, 프리팹이 없으면 생략)</summary>
+        private void SpawnEffect(GameObject _prefab, Vector2 _point, float _sec, int _facing)
+        {
+            if (_prefab == null)
+                return;
+            var go = Instantiate(_prefab, _point, Quaternion.identity);
+            if (_facing < 0)
+                foreach (var sr in go.GetComponentsInChildren<SpriteRenderer>())
+                    sr.flipX = true;
+            Destroy(go, _sec);
+        }
+        /// <summary>_unit 처치 보상 _amount 를 낙하물로 흩뿌린다 — 개수는 CrumbDropMax 이하로 나누고 프리팹이 없으면 즉시 적립한다</summary>
+        private void SpawnCrumbDrops(Object_UnitBase _unit, int _amount)
+        {
+            if (m_CrumbDropPrefab == null)
+            {
+                BattleManager.instance.AddCrumb(_amount);
+                return;
+            }
+            int count = Mathf.Min(_amount, BattleConst.CrumbDropMax);
+            float floorY = _unit.transform.position.y;
+            for (int i = 0; i < count; i++)
+            {
+                int value = _amount / count + (i < _amount % count ? 1 : 0);
+                var drop = Instantiate(m_CrumbDropPrefab, _unit.HitPoint, Quaternion.identity, m_UnitRoot != null ? m_UnitRoot : transform).GetComponent<CrumbDrop>();
+                if (drop == null)
+                    throw new InvalidOperationException($"{m_CrumbDropPrefab.name} 에 CrumbDrop 이 없다");
+                var velocity = new Vector2(UnityEngine.Random.Range(-BattleConst.CrumbTossSpeedX, BattleConst.CrumbTossSpeedX), BattleConst.CrumbTossSpeedY);
+                drop.Launch(_unit.HitPoint, velocity, floorY, value);
+                m_CrumbDrops.Add(drop);
+            }
         }
         /// <summary>실시간 _sec 동안 히트스톱 배율을 걸었다 푼다 — 복원은 ApplyTimeScale 이 일시정지 상태로 정한다</summary>
         private IEnumerator HitStopRoutine(float _sec)
@@ -317,10 +356,10 @@ namespace Game
                 return;
             }
             PlayHitEffect(_unit.HitPoint, m_SfxDie);
-            // 단순화: 낙하·수거 연출 없이 처치 즉시 적립한다 — 수거 오브젝트가 생기면 여기서 낙하만 만들고 적립은 수거 쪽으로 옮긴다
+            SpawnEffect(m_SplatterPrefab, _unit.transform.position, m_SplatterSec, 1);
             int drop = _unit.Kind == EUnitKind.Boss ? _unit.BossData.CrumbDrop : _unit.EnemyData.CrumbDrop;
             if (0 < drop)
-                BattleManager.instance.AddCrumb(drop);
+                SpawnCrumbDrops(_unit, drop);
             ReleaseMeleeSlot(_unit);
             if (_unit.Kind == EUnitKind.Boss)
                 m_IsBossDead.v = true;
@@ -450,6 +489,30 @@ namespace Game
         {
             m_PlayerKnockAnchorX = Player != null ? Player.transform.position.x : float.NaN;
         }
+        /// <summary>_drop 을 수거해 적립하고 제거한다 (목록에 없으면 무시)</summary>
+        public void CollectCrumb(CrumbDrop _drop)
+        {
+            if (!m_CrumbDrops.Remove(_drop))
+                return;
+            BattleManager.instance.AddCrumb(_drop.Value);
+            Destroy(_drop.gameObject);
+        }
+        /// <summary>남은 낙하물을 전부 적립하고 제거한다 — 방 클리어·방 전환 시 잔존물을 남기지 않는다</summary>
+        public void CollectAllCrumbs()
+        {
+            foreach (var drop in m_CrumbDrops.ToArray())
+                CollectCrumb(drop);
+        }
+        /// <summary>Knife 휘두름 궤적을 _center 에 _facing 방향으로 띄운다 (프리팹이 없으면 생략)</summary>
+        public void PlaySlashEffect(Vector2 _center, int _facing)
+        {
+            SpawnEffect(m_SlashPrefab, _center, m_SlashSec, _facing);
+        }
+        /// <summary>Gun 해금음을 재생한다 (클립이 없으면 생략)</summary>
+        public void PlayUnlockSfx()
+        {
+            SoundManager.instance.PlaySE(m_SfxUnlock);
+        }
         /// <summary>플레이어 공격 시작음을 재생한다 (클립이 없으면 생략)</summary>
         public void PlayAttackSfx()
         {
@@ -491,6 +554,7 @@ namespace Game
                 m_AbilityStacks.Set(_id, stack);
             }
             ApplyAbility(_id, table, stack);
+            SoundManager.instance.PlaySE(m_SfxLevelUp);
             return stack;
         }
         /// <summary>런 시작 시 유닛·투사체·능력·통지를 초기 상태로 되돌린다 (통지 없음)</summary>
@@ -512,6 +576,7 @@ namespace Game
         {
             m_PendingSpawns.Clear();
             m_PlayerKnockAnchorX = float.NaN;
+            CollectAllCrumbs();
             foreach (var unit in m_Enemies.ToArray())
                 Despawn(unit);
             if (Boss != null)
@@ -567,6 +632,7 @@ namespace Game
             _report.AddNumber("meleeSlotLeft", left);
             _report.AddNumber("meleeSlotRight", right);
             _report.AddNumber("pendingSpawn", m_PendingSpawns.Count);
+            _report.AddNumber("crumbDrops", m_CrumbDrops.Count);
             _report.Add("knockDrift", Player != null && !float.IsNaN(m_PlayerKnockAnchorX) ? (Player.transform.position.x - m_PlayerKnockAnchorX).ToString("0.00") : "");
             _report.Add("bgmPitch", BattleManager.instance != null ? BattleManager.instance.BgmPitch.ToString("0.00") : "");
             _report.Add("sfxAttack", m_SfxAttack != null ? m_SfxAttack.name : "");
@@ -591,10 +657,12 @@ namespace Game
                 case "KillEnemies":
                     foreach (var unit in m_Enemies.ToArray())
                         unit.TakeHit(new SHit(Player, unit.Hp.v, 0, 0, false, 1, unit.HitPoint));
+                    CollectAllCrumbs();
                     return "{\"success\":true}";
                 case "KillBoss":
                     if (Boss != null)
                         Boss.TakeHit(new SHit(Player, Boss.Hp.v, 0, 0, false, 1, Boss.HitPoint));
+                    CollectAllCrumbs();
                     return "{\"success\":true}";
                 case "HealPlayer":
                     HealPlayer(1f);

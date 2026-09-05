@@ -198,8 +198,10 @@ namespace Game
         /// <summary>방 클리어 — 해금·최고 순번 갱신 후 보스방이면 승리, 아니면 선택지를 뽑아 선택 팝업을 연다</summary>
         private void ClearRoom()
         {
+            LocalBattleManager.instance.CollectAllCrumbs();
             if (CharacterManager.instance.OnRoomCleared(m_RoomIndex.v) && Popup_Notify.instance != null)
             {
+                LocalBattleManager.instance.PlayUnlockSfx();
                 var language = LanguageManager.instance;
                 Popup_Notify.instance.Open(new Popup_Notify.SOption(null, string.Format(language.Get(RoomConst.TextGunUnlocked), TableManager.instance.Const.Room_GunUnlock), language.Get(RoomConst.TextConfirm), null));
             }

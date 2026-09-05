@@ -59,7 +59,14 @@ MonoBehaviour:
   m_HitEffectPrefab: {fileID: 1100000000000000001, guid: 5a1e7c0b2d3f4a6b8c9d0e1f2a3b4c5d, type: 3}
   m_HitEffectSec: 0.3
   m_TelegraphPrefab: {fileID: 1200000000000000001, guid: 6b2f8d1c3e4a5b7c9d0e1f2a3b4c5d6e, type: 3}
+  m_SplatterPrefab: {fileID: 1300000000000000001, guid: 8c572b3bd5d0a2f43851569eeb1e6d85, type: 3}
+  m_SplatterSec: 0.5
+  m_SlashPrefab: {fileID: 1400000000000000001, guid: 5b34583b08166bc47aa2cee65386936c, type: 3}
+  m_SlashSec: 0.2
+  m_CrumbDropPrefab: {fileID: 1500000000000000001, guid: 8a042e63318b0fe4cbcf5aba68ca7ed3, type: 3}
   m_SfxAttack: {fileID: 8300000, guid: 44c48957936693a4286f895a4a782974, type: 3}
   m_SfxHit: {fileID: 8300000, guid: 32f899c6d119ee5438b6217eb6ac4add, type: 3}
   m_SfxDie: {fileID: 8300000, guid: e776d05fdb833234a9a202039107a143, type: 3}
+  m_SfxLevelUp: {fileID: 8300000, guid: 93487ab63a2d9dc4eb0e367ee6ee8578, type: 3}
+  m_SfxUnlock: {fileID: 8300000, guid: a5e9c06c584b277469c11432f225d1f4, type: 3}
   m_Bgm: {fileID: 8300000, guid: 3d5d45925b725d941a2639ee55d81a8c, type: 3}
