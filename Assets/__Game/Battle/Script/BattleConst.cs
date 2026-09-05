@@ -36,6 +36,10 @@ namespace Game
         public const float PlayerKnockbackTime = 0.15f;
         public const float PlayerKnockbackDriftMax = 1.5f;
         public const int CrumbDropMax = 8;
+        /// <summary>낙하물 풀 크기 (초과분은 즉시 적립)</summary>
+        public const int CrumbDropPoolSize = 32;
+        /// <summary>히트·스플래터·궤적 이펙트 프리팹별 풀 크기 (초과 시 가장 오래된 것부터 회수)</summary>
+        public const int EffectPoolSize = 16;
         public const float CrumbTossSpeedX = 2.0f;
         public const float CrumbTossSpeedY = 4.0f;
         public const float CrumbGravity = 12.0f;
