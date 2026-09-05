@@ -30,7 +30,7 @@ description: |
    - Gun 전용 대기·이동 — `AnimationSheet_Casual_Player`에 `Idle_Gun`·`Move_Gun` 추가 (케첩 건을 든 실루엣, 기존 `Idle`·`Move`는 Knife 전용으로 확정해 Gun이 공유하지 않는다)
    - 로비 중앙 요리사 — 신규 타입 `Illust_Casual_Chef` (Knife·Gun 2종, 선택 캐릭터에 따라 교체)
    - 사운드 — `BGM_Casual`(Lobby·Battle)·`SFX_Casual_Battle`(Attack·Hit·Die)·`SFX_Casual_Progress`(LevelUp·Unlock) 7건 업로드 (`BGM_Casual`은 타입 정의(`type.json`)가 없어 타입 등록이 선행 — 규격은 "사운드컨셉")
-   - 일본어 한자 폴백 서체 — 신규 타입 `Font_Casual_NotoSansJP` (Noto Sans JP Regular, SIL OFL 1.1, 반입·라이선스 동봉) — 주 서체 `Font_Casual_GyeonggiTitle_*`가 한글·라틴·가나만 담아 한자가 □로 나오므로 TMP `DefaultFont`·`DefaultFont_Bold` 폴백 테이블에 연결한다(Dynamic 아틀라스 1024, 폴백 전용 — 가나·한글·라틴은 주 서체 유지). 획이 고른 산세리프라 둥근 제목체와 다르지만 한자 한정이라 테마 마디 `Casual` 안에 둔다
+   - 일본어 한자 폴백 서체 — 신규 타입 `Font_Casual_NotoSansJP` (Noto Sans JP Regular, SIL OFL 1.1, 반입·라이선스 동봉) — 주 서체 `Font_Casual_GyeonggiTitle_*`가 한글·라틴·가나만 담아 한자가 □로 나오므로 TMP `DefaultFont`·`DefaultFont_Bold` 폴백 테이블에 연결한다(Dynamic 아틀라스 1024, 폴백 에셋은 연결 대상 서체와 같은 샘플링·패딩(`DefaultFont` 96pt·4, `DefaultFont_Bold` 64pt·2)으로 각각 만든다 — 다르면 외곽선·밑판 머티리얼이 폴백 글리프에서 뒤틀린다, 폴백 전용 — 가나·한글·라틴은 주 서체 유지). 획이 고른 산세리프라 둥근 제목체와 다르지만 한자 한정이라 테마 마디 `Casual` 안에 둔다
 
 ### 캐릭터
 **플레이어 (요리사)**
