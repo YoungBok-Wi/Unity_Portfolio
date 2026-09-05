@@ -64,6 +64,8 @@ namespace Game
         private readonly List<Object_UnitBase> m_Enemies = new();
         private readonly Dictionary<Object_UnitBase, int> m_MeleeSlots = new();
         private readonly List<Object_UnitBase> m_HitBuffer = new();
+        private readonly Queue<(string id, Vector2 pos, float hpScale, float atkScale)> m_PendingSpawns = new();
+        private float m_PlayerKnockAnchorX = float.NaN;
         private ObjectPool m_ProjectilePool;
         private bool m_IsHitStopping;
         private bool m_IsPaused;
@@ -210,6 +212,25 @@ namespace Game
                     if (!ca.isTrigger && !cb.isTrigger)
                         Physics2D.IgnoreCollision(ca, cb, true);
         }
+        /// <summary>살아 있는 적 수 통지값을 생존 개체 + 스폰 대기 수로 갱신한다 (_notify 가 false 면 통지 없이)</summary>
+        private void UpdateAliveCount(bool _notify)
+        {
+            int count = m_Enemies.Count + m_PendingSpawns.Count;
+            if (_notify)
+                m_AliveEnemyCount.v = count;
+            else
+                m_AliveEnemyCount.Set(count, false, false);
+        }
+        /// <summary>풀이 비어 대기하던 스폰을 풀에 여유가 생긴 만큼 순서대로 실행한다</summary>
+        private void FlushPendingSpawns()
+        {
+            while (0 < m_PendingSpawns.Count)
+            {
+                var (id, pos, hpScale, atkScale) = m_PendingSpawns.Dequeue();
+                if (SpawnUnit(id, pos, hpScale, atkScale) == null)
+                    break;
+            }
+        }
         /// <summary>MultiHit 스택에 따른 가산치를 반환한다 — _isMelee 면 명중 상한(Value), 아니면 관통 수(ValueSub)</summary>
         private int GetMultiHit(bool _isMelee)
         {
@@ -220,14 +241,19 @@ namespace Game
         }
         #endregion
         #region Function
-        /// <summary>_id 유닛을 풀에서 꺼내 _pos 에 성장 배율 _hpScale·_atkScale 로 스폰하고 반환한다. 풀이 없거나 비면 예외</summary>
+        /// <summary>_id 유닛을 풀에서 꺼내 _pos 에 성장 배율 _hpScale·_atkScale 로 스폰하고 반환한다. 풀이 비면(사망 연출 개체가 점유) 대기열에 넣고 스폰 수에 미리 센 뒤 null — 반납 시 순서대로 스폰된다. 등록되지 않은 ID 면 예외</summary>
         public Object_UnitBase SpawnUnit(string _id, Vector2 _pos, float _hpScale, float _atkScale)
         {
             if (!m_UnitPools.TryGetValue(_id, out var pool))
                 throw new ArgumentException($"풀에 등록되지 않은 유닛 ID : {_id}", nameof(_id));
             var go = pool.Get();
             if (go == null)
-                throw new InvalidOperationException($"{_id} 풀이 비었다 (크기 {m_EnemyPoolSize})");
+            {
+                m_PendingSpawns.Enqueue((_id, _pos, _hpScale, _atkScale));
+                UpdateAliveCount(true);
+                Debug.Log($"[LocalBattleManager] {_id} 풀 소진 — 반납 대기 스폰 (풀 크기 {m_EnemyPoolSize}, 대기 {m_PendingSpawns.Count})");
+                return null;
+            }
             var unit = go.GetComponent<Object_UnitBase>();
             m_PoolByObject.Set(go, pool);
             unit.Spawn(_pos, _hpScale, _atkScale);
@@ -245,7 +271,7 @@ namespace Game
             else
             {
                 m_Enemies.Add(unit);
-                m_AliveEnemyCount.v = m_Enemies.Count;
+                UpdateAliveCount(true);
             }
             return unit;
         }
@@ -276,10 +302,11 @@ namespace Game
             m_PoolByObject.Remove(_unit.gameObject);
             ReleaseMeleeSlot(_unit);
             if (m_Enemies.Remove(_unit))
-                m_AliveEnemyCount.Set(m_Enemies.Count, false, false);
+                UpdateAliveCount(false);
             if (Boss == _unit)
                 Boss = null;
             pool.Return(_unit.gameObject);
+            FlushPendingSpawns();
         }
         /// <summary>_unit 이 죽었을 때 유닛이 호출한다 — 처치음·Crumb 적립·통지 갱신</summary>
         public void OnUnitDied(Object_UnitBase _unit)
@@ -300,17 +327,21 @@ namespace Game
             else
             {
                 m_Enemies.Remove(_unit);
-                m_AliveEnemyCount.v = m_Enemies.Count;
+                UpdateAliveCount(true);
             }
         }
-        /// <summary>_hit 를 _target 에 적용하고 연출·HitApplied 통지를 낸다 (플레이어 피격은 넉백을 공통값으로 덮는다). 같은 진영·사망·null 이면 false</summary>
+        /// <summary>_hit 를 _target 에 적용하고 연출·HitApplied 통지를 낸다 (플레이어 피격은 넉백을 공통값으로 덮되, 마지막 이동 입력 위치 기준 순 밀림이 PlayerKnockbackDriftMax 를 넘는 방향이면 거리 0 — 경직만). 같은 진영·사망·null 이면 false</summary>
         public bool Hit(SHit _hit, Object_UnitBase _target)
         {
             if (_target == null || _hit.Attacker == null || _target.Team == _hit.Attacker.Team)
                 return false;
             if (_target.Kind == EUnitKind.Player)
             {
-                _hit.KnockbackDist = BattleConst.PlayerKnockbackDist;
+                if (float.IsNaN(m_PlayerKnockAnchorX))
+                    m_PlayerKnockAnchorX = _target.transform.position.x;
+                float drift = _target.transform.position.x - m_PlayerKnockAnchorX;
+                bool capped = BattleConst.PlayerKnockbackDriftMax <= drift * _hit.Direction;
+                _hit.KnockbackDist = capped ? 0f : BattleConst.PlayerKnockbackDist;
                 _hit.KnockbackTime = BattleConst.PlayerKnockbackTime;
             }
             if (!_target.TakeHit(_hit))
@@ -374,8 +405,8 @@ namespace Game
         {
             m_ProjectilePool.Return(_object);
         }
-        /// <summary>_unit 에 플레이어 _side(-1 좌·+1 우) 근접 슬롯을 플레이어 거리순으로 준다. 같은 쪽 슬롯을 이미 가졌거나 자리가 있으면 true, 자리가 없어도 같은 쪽 보유 개체 중 가장 먼 개체보다 가까우면 그 슬롯을 회수해 true (반대쪽 슬롯은 반납 후 재판정, 죽은 유닛 슬롯은 세지 않는다)</summary>
-        public bool RequestMeleeSlot(Object_UnitBase _unit, int _side)
+        /// <summary>_unit 에 플레이어 _side(-1 좌·+1 우) 근접 슬롯을 플레이어 거리순으로 준다. 같은 쪽 슬롯을 이미 가졌거나 자리가 있으면 true, 자리가 없어도 _allowSteal 이고 같은 쪽 보유 개체 중 가장 먼 개체보다 가까우면 그 슬롯을 회수해 true (반대쪽 슬롯은 반납 후 재판정, 죽은 유닛 슬롯은 세지 않는다)</summary>
+        public bool RequestMeleeSlot(Object_UnitBase _unit, int _side, bool _allowSteal = true)
         {
             if (m_MeleeSlots.TryGetValue(_unit, out var held))
             {
@@ -402,12 +433,22 @@ namespace Game
             }
             if (TableManager.instance.Const.Battle_MeleeSlotPerSide <= count)
             {
-                if (farthest == null || farthestDist <= myDist)
+                if (!_allowSteal || farthest == null || farthestDist <= myDist)
                     return false;
                 m_MeleeSlots.Remove(farthest);
             }
             m_MeleeSlots.Add(_unit, _side);
             return true;
+        }
+        /// <summary>_unit 이 보유한 근접 슬롯 쪽(-1 좌·+1 우)을 반환한다. 없으면 0</summary>
+        public int GetMeleeSlotSide(Object_UnitBase _unit)
+        {
+            return m_MeleeSlots.TryGetValue(_unit, out var side) ? side : 0;
+        }
+        /// <summary>플레이어 넉백 누적 기준점을 현재 위치로 옮긴다 — 이동 입력이 들어올 때 플레이어가 호출한다</summary>
+        public void ResetPlayerKnockbackDrift()
+        {
+            m_PlayerKnockAnchorX = Player != null ? Player.transform.position.x : float.NaN;
         }
         /// <summary>플레이어 공격 시작음을 재생한다 (클립이 없으면 생략)</summary>
         public void PlayAttackSfx()
@@ -469,6 +510,8 @@ namespace Game
         /// <summary>스폰된 적·보스·투사체를 전부 풀로 되돌린다 (통지 없음)</summary>
         public void ClearUnits()
         {
+            m_PendingSpawns.Clear();
+            m_PlayerKnockAnchorX = float.NaN;
             foreach (var unit in m_Enemies.ToArray())
                 Despawn(unit);
             if (Boss != null)
@@ -523,6 +566,8 @@ namespace Game
                 if (side < 0) left += 1; else right += 1;
             _report.AddNumber("meleeSlotLeft", left);
             _report.AddNumber("meleeSlotRight", right);
+            _report.AddNumber("pendingSpawn", m_PendingSpawns.Count);
+            _report.Add("knockDrift", Player != null && !float.IsNaN(m_PlayerKnockAnchorX) ? (Player.transform.position.x - m_PlayerKnockAnchorX).ToString("0.00") : "");
             _report.Add("bgmPitch", BattleManager.instance != null ? BattleManager.instance.BgmPitch.ToString("0.00") : "");
             _report.Add("sfxAttack", m_SfxAttack != null ? m_SfxAttack.name : "");
             foreach (var pair in m_AbilityStacks)

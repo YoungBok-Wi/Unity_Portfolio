@@ -168,13 +168,13 @@ namespace Game
                 m_Fsm.Set(m_Kind == EUnitKind.Boss ? BattleConst.StateIdle : BattleConst.StateMove);
             OnSpawned();
         }
-        /// <summary>_hit 를 적용해 피해·넉백(보스 면역, Enemy 는 KnockbackRate 배)·경직을 주고 HP 0 이면 사망 처리한다. 이미 죽었으면 false</summary>
+        /// <summary>_hit 를 적용해 피해·넉백(보스 면역, Enemy 는 KnockbackRate 배, 거리 0 이면 경직만)·경직을 주고 HP 0 이면 사망 처리한다. 이미 죽었으면 false</summary>
         public bool TakeHit(SHit _hit)
         {
             if (m_IsDead.v)
                 return false;
             m_Hp.v = Mathf.Max(0, m_Hp.v - _hit.Damage);
-            if (m_Kind != EUnitKind.Boss && m_Physics != null && 0 < _hit.KnockbackTime && 0 < _hit.KnockbackDist)
+            if (m_Kind != EUnitKind.Boss && m_Physics != null && 0 < _hit.KnockbackTime && 0 <= _hit.KnockbackDist)
             {
                 float rate = EnemyData != null ? EnemyData.KnockbackRate : 1f;
                 m_KnockSpeed = _hit.KnockbackDist * rate / _hit.KnockbackTime;
