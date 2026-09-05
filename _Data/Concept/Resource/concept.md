@@ -30,6 +30,7 @@ description: |
    - Gun 전용 대기·이동 — `AnimationSheet_Casual_Player`에 `Idle_Gun`·`Move_Gun` 추가 (케첩 건을 든 실루엣, 기존 `Idle`·`Move`는 Knife 전용으로 확정해 Gun이 공유하지 않는다)
    - 로비 중앙 요리사 — 신규 타입 `Illust_Casual_Chef` (Knife·Gun 2종, 선택 캐릭터에 따라 교체)
    - 사운드 — `BGM_Casual`(Lobby·Battle)·`SFX_Casual_Battle`(Attack·Hit·Die)·`SFX_Casual_Progress`(LevelUp·Unlock) 7건 업로드 (`BGM_Casual`은 타입 정의(`type.json`)가 없어 타입 등록이 선행 — 규격은 "사운드컨셉")
+   - 일본어 한자 폴백 서체 — 신규 타입 `Font_Casual_NotoSansJP` (Noto Sans JP Regular, SIL OFL 1.1, 반입·라이선스 동봉) — 주 서체 `Font_Casual_GyeonggiTitle_*`가 한글·라틴·가나만 담아 한자가 □로 나오므로 TMP `DefaultFont`·`DefaultFont_Bold` 폴백 테이블에 연결한다(Dynamic 아틀라스 1024, 폴백 전용 — 가나·한글·라틴은 주 서체 유지). 획이 고른 산세리프라 둥근 제목체와 다르지만 한자 한정이라 테마 마디 `Casual` 안에 둔다
 
 ### 캐릭터
 **플레이어 (요리사)**
@@ -68,6 +69,7 @@ description: |
 ### UI
 **HUD·팝업**
    - 기존 `UI_Casual_Panel`·`Button`·`Gauge` 재사용, HP 게이지는 `Gauge/Horizontal_Red`, 잠금 표시는 `Mark/Mark_Lock`
+   - 서체: 전 UI 문구는 `Font_Casual_GyeonggiTitle_Light`(TMP `DefaultFont`)·`Bold`(`DefaultFont_Bold`), 일본어 한자는 `Font_Casual_NotoSansJP` 폴백으로 그린다 — 지원 언어 English·Korean·Japanese(라이브러리 `LanguageConst.LanguageList`) 전 언어에서 글리프 결손(□) 0이 규격이다
    - 방 이력은 `Icon_Casual_Room` 아이콘을 좌→우로 나열하고 현재 방을 `Panel/Select`로 강조한다 (슬롯 초과 시 최근 N개 — N은 `밸런스컨셉`)
    - 로비 중앙에는 선택 캐릭터의 `Illust_Casual_Chef` 일러스트를 세우고, 카드 위 최고 도달 방 순번은 `Icon_Casual_Room/Best` 별 배지 + 숫자로 표시한다 (방 종류 아이콘 재사용 금지)
    - 방 선택 팝업 선택지는 방종류 아이콘 + 적 미리보기(적 아이콘 대신 `AnimationSheet_Casual_Enemy` 첫 프레임 축소 표시 + 마릿수)
