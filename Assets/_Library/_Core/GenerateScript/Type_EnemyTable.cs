@@ -10,7 +10,6 @@ namespace Library
         #region Property
         public string Name { get; private set; }
         public string Desc { get; private set; }
-        public string Icon { get; private set; }
         public string Group { get; private set; }
         public int Hp { get; private set; }
         public int Attack { get; private set; }
@@ -43,12 +42,6 @@ namespace Library
             	_dic.Remove(_addID + "Desc");
             }
             m_Data.Add("Desc",Desc);
-            if (_dic.TryGetValue(_addID + "Icon", out o) && !string.IsNullOrEmpty(o))
-            {
-            	Icon = o;
-            	_dic.Remove(_addID + "Icon");
-            }
-            m_Data.Add("Icon",Icon);
             if (_dic.TryGetValue(_addID + "Group", out o) && !string.IsNullOrEmpty(o))
             {
             	Group = o;

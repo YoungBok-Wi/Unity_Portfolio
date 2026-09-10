@@ -8,12 +8,6 @@
   "Room_GunUnlock": {
     "": "5"
   },
-  "Room_BossMin": {
-    "": "6"
-  },
-  "Room_BossForce": {
-    "": "10"
-  },
   "Room_HealRatio": {
     "": "0.5"
   },
@@ -37,9 +31,6 @@
   },
   "Room_ChoiceSet2": {
     "": "Heal/Ability"
-  },
-  "Room_ChoiceSet3": {
-    "": "Battle/Boss"
   },
   "Room_ChoiceSet4": {
     "": "Battle/Battle"

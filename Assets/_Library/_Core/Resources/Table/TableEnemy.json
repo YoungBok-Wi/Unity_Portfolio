@@ -2,7 +2,6 @@
   "Apple": {
     "Name": "Text_Core_EnemyApple",
     "Desc": "Text_Core_EnemyAppleDesc",
-    "Icon": "AnimationSheet_Casual_Enemy_Apple_Move_01",
     "Group": "Melee",
     "Hp": "30",
     "Attack": "6",
@@ -19,7 +18,6 @@
   "Watermelon": {
     "Name": "Text_Core_EnemyWatermelon",
     "Desc": "Text_Core_EnemyWatermelonDesc",
-    "Icon": "AnimationSheet_Casual_Enemy_Watermelon_Move_01",
     "Group": "Tank",
     "Hp": "90",
     "Attack": "12",
@@ -36,7 +34,6 @@
   "Banana": {
     "Name": "Text_Core_EnemyBanana",
     "Desc": "Text_Core_EnemyBananaDesc",
-    "Icon": "AnimationSheet_Casual_Enemy_Banana_Move_01",
     "Group": "Ranged",
     "Hp": "25",
     "Attack": "6",

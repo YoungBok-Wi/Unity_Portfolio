@@ -17,7 +17,6 @@ namespace Library
         public int Attack2 { get; private set; }
         public int Attack3 { get; private set; }
         public float AttackInterval { get; private set; }
-        public float InputBuffer { get; private set; }
         public float MoveSpeed { get; private set; }
         public float RangeWidth { get; private set; }
         public float RangeHeight { get; private set; }
@@ -92,12 +91,6 @@ namespace Library
             	_dic.Remove(_addID + "AttackInterval");
             }
             m_Data.Add("AttackInterval",AttackInterval);
-            if (_dic.TryGetValue(_addID + "InputBuffer", out o) && !string.IsNullOrEmpty(o))
-            {
-            	InputBuffer = float.Parse(o);
-            	_dic.Remove(_addID + "InputBuffer");
-            }
-            m_Data.Add("InputBuffer",InputBuffer);
             if (_dic.TryGetValue(_addID + "MoveSpeed", out o) && !string.IsNullOrEmpty(o))
             {
             	MoveSpeed = float.Parse(o);
