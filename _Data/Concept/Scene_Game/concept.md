@@ -7,19 +7,19 @@ description: |
 
 ## 개요
 외부 도구(Unity 등)가 파싱하여 적용하는 씬 설정값을 포함한다.
-- 역할: 게임 플레이 씬 — 방 단위 전진·전투·능력 선택·보스전을 씬 전환 없이 진행하고 런 종료 시 로비로 돌아간다 (`게임컨셉` "런 루프"·"전투 루프")
+- 역할: 게임 플레이 씬 — 방 단위 전진·전투·능력 선택·주기 보스전을 씬 전환 없이 진행하고 플레이어 사망으로 런이 끝나면 로비로 돌아간다 (`게임컨셉` "런 루프"·"전투 루프")
 - 빌드 인덱스: 1
 - 차원: 2D
 - 카메라: Side
 - 씬 경로: Assets/__Game/_Core/__Scene/Scene_Game.unity
 
 ## 설명
-- 로비에서 시작하면 진입하며 1번째 방은 항상 Battle이다. 방 클리어 → `Popup_RoomSelect`(2택·적 미리보기) → 같은 씬 안에서 다음 방을 구성·입장한다 (방 종류·선택지 세트는 `게임컨셉`, 수치는 `밸런스컨셉`).
+- 로비에서 시작하면 진입하며 1번째 방은 항상 Battle이다. 방 클리어 → `Popup_RoomSelect`(2택 또는 보스 확정 1택·적 미리보기) → 같은 씬 안에서 다음 방을 구성·입장한다 (방 종류·선택지 세트·보스 주기는 `게임컨셉`, 수치는 `밸런스컨셉`). 보스방 클리어도 같은 흐름으로 다음 순번에 이어진다.
 - 카메라는 플레이어 X를 추적하고 Y는 고정하며 방 좌우 경계에서 클램프한다 (`게임컨셉` "화면 추적 기준"). 메인 카메라 `orthographicSize`는 4.0이다 (`리소스컨셉` "화면 비율" — 화면 높이 비율의 조정 주체는 이 씬 카메라이고 스프라이트 스케일은 손대지 않는다). 바닥선은 화면 하단 20% 높이다 (`리소스컨셉` "환경").
 - 방 좌우 벽·적 등장 위치·카메라 X 클램프 값은 `밸런스컨셉` "방 구조"가 정본이며, 벽 콜라이더는 `Room` 모듈이 방 구성 시 세운다 (씬에 미리 두지 않는다). 플레이어는 무입력 시 정지하고 피격 넉백 후 자동 정지한다 (`게임컨셉` "무입력 정지", 값은 `밸런스컨셉` "플레이어 공통").
-- 플레이어는 `Character` 모듈의 선택 캐릭터로 방 입장 시 스폰하고, 적·보스·투사체는 `Room`·`Battle` 모듈이 `ObjectPool`로 런타임 스폰한다 (씬에 미리 두지 않는다).
-- 보스 FSM(Pumpkin·Pineapple 5상태)과 적 상태는 `FSM` 모듈, 이동·점프·접지는 `CharacterPhysics` 모듈을 쓴다. Crumb 획득·리롤 소모는 `Bank` 재화 `Crumb`으로 처리한다.
-- 런 종료(보스 처치 또는 HP 0)는 `Popup_Result`로 도달 순번·Crumb 총량·Gun 해금 알림을 보인 뒤 `Scene_Lobby`로 전환한다. 전투 BGM은 `BGM_Casual/Battle`이며 보스방은 재생 속도 1.1배다.
+- 플레이어 오브젝트 2종(`Object_Player_Knife`·`Object_Player_Gun`)은 씬에 상주하고 런 시작 시 `PlayerCharacter` 모듈이 `Data` 모듈의 선택 캐릭터만 활성한다 (스폰 없음). 적·보스·투사체는 `Room`·`Game` 모듈이 `ObjectPool`로 런타임 스폰한다 (씬에 미리 두지 않는다).
+- 보스 FSM(Pumpkin·Pineapple 5상태)·적 상태·플레이어 상태(Idle·Move·Jump·Attack·Hit·Die)는 `FSM` 모듈, 이동·점프·접지는 `CharacterPhysics` 모듈을 쓴다. Crumb 획득·리롤 소모는 `Bank` 재화 `Crumb`으로 처리한다.
+- 런 종료(HP 0)는 `Popup_Result`로 도달 순번·Crumb 총량·Gun 해금 알림을 보인 뒤 `Scene_Lobby`로 전환한다 — 씬 전환은 `Game` 모듈의 얼굴 타일 연출 `SceneChangeAni_Face`를 쓴다. 전투 BGM은 `BGM_Casual/Battle`이며 보스방은 재생 속도 1.1배다.
 
 ## 사용 모듈
 
@@ -71,14 +71,29 @@ description: |
 ### ObjectPool
 - 적·보스·투사체·히트 이펙트 풀링.
 
+### Unit
+- 유닛 공용 `게임모듈` — 플레이어·적·보스 공용 베이스(HP·피격·넉백 곡선·경직·사망·프레임 애니메이터), 매니저 없음.
+
+### Enemy
+- 적 `게임모듈` — 적 오브젝트 베이스·FSM 상태(Move·Attack·Die), 보스도 공용, 매니저 없음.
+
+### Boss
+- 보스 `게임모듈` — 보스 오브젝트 베이스·FSM 상태(Idle·Move·Skill1·Skill2·Enrage), 매니저 없음.
+
+### PlayerCharacter
+- 플레이어 `게임모듈` — 플레이어 베이스·입력·FSM 상태(Idle·Move·Jump·Attack·Hit·Die), `[Local]` 하위 로컬 매니저가 씬 상주 플레이어 2종 중 선택 캐릭터를 활성한다.
+
 ### Room
-- 방 진행 `게임모듈` (신규) — 방 순번·이력·선택지 세트·웨이브 스폰·클리어 판정·능력 선택·결과.
+- 방 진행 `게임모듈` — 방 순번·이력·웨이브 스폰·클리어 판정·능력 선택·런 종료·방 좌우 벽·카메라 클램프.
 
-### Battle
-- 전투 `게임모듈` (신규) — HP·데미지·넉백·히트스톱·투사체·Crumb 낙하.
+### RoomSelect
+- 방 선택지 `게임모듈` — 선택지 세트·보스 주기·웨이브 변형 배정, `[Local]` 하위 로컬 매니저.
 
-### Character
-- 캐릭터 `게임모듈` (신규) — 선택 캐릭터 스폰·Gun 해금 저장.
+### Game
+- 게임 총괄 `게임모듈` — 전투 판정·풀·타격 연출·능력·일시정지·BGM·씬 전환 연출(`SceneChangeAni_Face`), Battle·Room·PlayerCharacter를 관리하는 전역+로컬 매니저.
+
+### Data
+- 데이터 `게임모듈` — 선택 캐릭터·Gun 해금·최고 순번 저장, Crumb 재화·누적 (전역 매니저).
 
 ## UI
 
@@ -95,7 +110,7 @@ description: |
 - `프레임형` 일시정지 팝업 — 게임 시간 정지, 재개·설정·포기(로비로) 버튼.
 
 ### Popup_Result
-- `프레임형` 결과 팝업 — 승패·도달 방 순번·Crumb 총량·Gun 해금 알림, 확인 시 `Scene_Lobby`로.
+- `프레임형` 결과 팝업 — 도달 방 순번·Crumb 총량·Gun 해금 알림, 확인 시 `Scene_Lobby`로 (승패 표시 없음).
 
 ### Popup_Notify
 - 단순 알림 팝업 (라이브러리 기본) — 설정 적용·해금 알림 표시.
@@ -141,10 +156,10 @@ description: |
 ## Object
 
 ### Object_Player_Knife
-- Knife 요리사 플레이어 — 근접 3단 콤보·점프 (`AnimationSheet_Casual_Player`).
+- Knife 요리사 플레이어 — 근접 3단 콤보·점프 (`AnimationSheet_Casual_Player`), 씬 배치 (런 시작 시 선택 캐릭터가 Knife면 활성, 아니면 비활성).
 
 ### Object_Player_Gun
-- Gun 요리사 플레이어 — 정지 연사·점프, 투사체 발사 (`AnimationSheet_Casual_Player` Gun 전용 `Idle_Gun`·`Move_Gun`·`Attack_Gun`, Knife 시트 공유 금지).
+- Gun 요리사 플레이어 — 정지 연사·점프, 투사체 발사 (`AnimationSheet_Casual_Player` Gun 전용 `Idle_Gun`·`Move_Gun`·`Attack_Gun`, Knife 시트 공유 금지), 씬 배치 (런 시작 시 선택 캐릭터가 Gun이면 활성, 아니면 비활성).
 
 ### Object_Enemy_Apple
 - 근접 공격형 일반 적 (`AnimationSheet_Casual_Enemy/Apple_*`), 런타임 스폰.

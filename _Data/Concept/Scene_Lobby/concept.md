@@ -17,9 +17,9 @@ description: |
 - 앱 시작 씬이자 런 종료(결과 팝업 확인) 후 복귀 씬이다. 씬 이름은 라이브러리 `SceneChangeManager`·`ShutdownManager` 기본값 `Scene_Lobby`와 같다.
 - 화면 중앙에 선택된 요리사 일러스트(`Illust_Casual_Chef` Knife·Gun, `리소스컨셉` 규격)가 서고 좌우에 Knife·Gun 선택 카드, 하단에 시작 버튼, 우상단에 설정 버튼을 둔다 (배치 정본은 `Concept_Scene_Lobby` 컨셉아트).
 - 카드 위 최고 도달 방 순번은 별 배지 `Icon_Casual_Room/Best` + 숫자로 표시한다 (`게임컨셉` "최고 순번 배지").
-- Gun 카드는 `Character` 모듈의 해금 저장값이 false면 `UI_Casual_Mark/Mark_Lock` 잠금 마크를 켜고 선택을 막으며, 잠금 카드 클릭 시 `Popup_Notify`로 해금 조건을 알린다 (해금 조건은 `게임컨셉` "캐릭터 해금").
-- 시작 버튼은 선택 캐릭터를 `Character` 모듈에 저장한 뒤 `SceneChangeManager`로 `Scene_Game`에 진입한다.
-- 로비 BGM은 `BGM_Casual/Lobby`를 재생한다 (`리소스컨셉` "사운드컨셉").
+- Gun 카드는 `Data` 모듈의 해금 저장값이 false면 `UI_Casual_Mark/Mark_Lock` 잠금 마크를 켜고 선택을 막으며, 잠금 카드 클릭 시 `Popup_Notify`로 해금 조건을 알린다 (해금 조건은 `게임컨셉` "캐릭터 해금").
+- 시작 버튼은 선택 캐릭터를 `Data` 모듈에 저장한 뒤 `SceneChangeManager`로 `Scene_Game`에 진입한다 — 씬 전환은 `Game` 모듈의 얼굴 타일 연출 `SceneChangeAni_Face`를 쓴다.
+- 로비 BGM은 `BGM_Casual/Lobby`를 `Game` 모듈 전역 매니저가 재생한다 (`리소스컨셉` "사운드컨셉").
 
 ## 사용 모듈
 
@@ -62,8 +62,11 @@ description: |
 ### Delegate
 - 값 갱신 콜백 병합.
 
-### Character
-- 캐릭터 선택·Gun 해금 저장값을 읽고 쓰는 `게임모듈` (신규).
+### Data
+- 캐릭터 선택·Gun 해금·최고 순번 저장값을 읽고 쓰는 `게임모듈` (전역 매니저).
+
+### Game
+- 게임 총괄 `게임모듈` — 로비 BGM 재생·씬 전환 연출(`SceneChangeAni_Face`) 전역 매니저 (로비에는 로컬 매니저를 세우지 않는다).
 
 ## UI
 

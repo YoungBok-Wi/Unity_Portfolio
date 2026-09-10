@@ -37,6 +37,13 @@
 - 플레이테스트·성능테스트는 편성하지 않는다 — "명시 요청 한정" 규칙(사용자가 검증을 요청하지 않음). 완결 조건은 컴파일 통과·익스포트·씬 검증
 - 회차 종료 시 README 갱신 3건: `## 폴리싱 작업` 절(성격 설명 + 회차 기록), `## 포트폴리오 개요`에 전 과정 Fable 5.1 사용 명시, 마지막에 `## GPT6 Astra 이후의 AI 방향성` 절 신설 (스킬 매칭 대상 아님 — 오케스트레이터 운영 규칙, Job_005 선례)
 
+## 진행 메모 (Work_1 이후)
+
+- `editor_util setup`은 활성 씬의 `[Local]`·`[Popup]`·`[Stage]` 오브젝트를 새 fileID로 재생성해 씬 오버라이드(Floor `View` Tiled 185x8·scale 0.325, 카메라 `orthographic size` 4)를 지운다 — Work_1에서 실행 뒤 git 복원. Work_6은 셋업 스킬 절차(setup 전 오버라이드 기록 → setup → 재적용·결손 보고)를 반드시 지키고, Work_1~5는 setup을 실행하지 않는다
+- Unity CLI는 `--project-path "C:/_Projects/Unity_Portfolio"` 명시 호출 (에디터 인스턴스 2개), `com.unity.pipeline`을 0.6.0-exp.1로 올려 CLI 정상화 (Work_1 비고)
+- 비네트 파일은 `UI_Common_Shape`(shared·default) 대신 신규 타입 `UI_Common_Gradient/Vignette` (Work_3·Work_5 지시서의 해당 ID를 이 값으로 읽는다)
+- 노드 규칙 "한 판 경계"(전투·진행 한 모듈)보다 사용자 지시(8모듈 분리)를 우선한다 — Work_4 `module.md`에 사유 기재
+
 ## 해석·가정 (사용자 부재로 확정, 레포트에 명시)
 
 - 보스 주기: 방 순번 5·10·15…는 보스방 확정, 선택지 1개(Boss)만 제시. 보스 처치 후 런은 계속되며(다음 순번 선택지) 런 종료는 플레이어 사망뿐 — `ERunResult.Win` 경로 제거, 결과 팝업은 도달 순번·Crumb 총량·Gun 해금 알림

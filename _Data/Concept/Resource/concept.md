@@ -13,6 +13,10 @@ description: |
    - 리소스 노드는 기존 `{계열}_Casual_{분류}` 타입을 재사용하고, 사이드뷰 전용 산출물만 같은 테마 마디 아래 신규 타입으로 둔다
    - 크기 차이는 배치 스케일이 아니라 계열별 캔버스·기준 높이로 낸다 (캐릭터 시트·타일 PPU 128, 배경·UI·아이콘 PPU 100 — 배경 에셋 임포트 실측값 우선)
 
+**애니메이션시트 참조 방식**
+   - `AnimationSheet_Casual_Player`·`Enemy`·`Boss` 3계열은 `Resources` 문자열 로드를 쓰지 않는다 — 출력 슬롯 `resources` 해제, 익스포트 경로 `Assets/__Game/_Core/SpriteAnim/`, 프리팹 `SpriteAnimPlayer` 인스펙터 프레임 배열이 참조 정본이다
+   - 적·보스 미리보기 아이콘도 테이블 `Icon` 문자열이 아니라 프리팹 `Icon` 필드(Move·Idle 첫 프레임)로 참조한다
+
 **재사용 대상 (등록 `inAsset` 127건 중 `Casual` 계열)**
    - 적 이동·사망 시트 `AnimationSheet_Casual_Enemy` (Apple·Banana·Watermelon — Orange는 미사용)
    - 플레이어 이동 시트 `AnimationSheet_Casual_Player/Move`
@@ -30,6 +34,8 @@ description: |
    - Gun 전용 대기·이동 — `AnimationSheet_Casual_Player`에 `Idle_Gun`·`Move_Gun` 추가 (케첩 건을 든 실루엣, 기존 `Idle`·`Move`는 Knife 전용으로 확정해 Gun이 공유하지 않는다)
    - 로비 중앙 요리사 — 신규 타입 `Illust_Casual_Chef` (Knife·Gun 2종, 선택 캐릭터에 따라 교체)
    - 사운드 — `BGM_Casual`(Lobby·Battle)·`SFX_Casual_Battle`(Attack·Hit·Die)·`SFX_Casual_Progress`(LevelUp·Unlock) 7건 업로드 (`BGM_Casual`은 타입 정의(`type.json`)가 없어 타입 등록이 선행 — 규격은 "사운드컨셉")
+   - 씬 전환 얼굴 타일 — 신규 타입 `Icon_Casual_Face` (`Illust_Casual_Chef/Knife` 머리(모자+얼굴) 크롭 1건 `Chef`, 256x256 투명 배경, 코드 합성 반입)
+   - 저체력 비네트 — 신규 타입 `UI_Common_Gradient` 파일 `Vignette` (512x512, 중심 투명 → 외곽 백색 알파 1 방사형 그라데이션, 코드 합성 반입, 순백이라 소비처가 `Image.color`로 틴트)
    - 일본어 한자 폴백 서체 — 신규 타입 `Font_Casual_NotoSansJP` (Noto Sans JP Regular, SIL OFL 1.1, 반입·라이선스 동봉) — 주 서체 `Font_Casual_GyeonggiTitle_*`가 한글·라틴·가나만 담아 한자가 □로 나오므로 TMP `DefaultFont`·`DefaultFont_Bold` 폴백 테이블에 연결한다(Dynamic 아틀라스 1024, 폴백 에셋은 연결 대상 서체와 같은 샘플링·패딩(`DefaultFont` 96pt·4, `DefaultFont_Bold` 64pt·2)으로 각각 만든다 — 다르면 외곽선·밑판 머티리얼이 폴백 글리프에서 뒤틀린다, 폴백 전용 — 가나·한글·라틴은 주 서체 유지). 획이 고른 산세리프라 둥근 제목체와 다르지만 한자 한정이라 테마 마디 `Casual` 안에 둔다
 
 ### 캐릭터
@@ -51,6 +57,7 @@ description: |
 **일반 적 (반란 과일)**
    - 몸 없이 굴러오는 과일 머리 단독 — Apple(근접)·Watermelon(탱킹)·Banana(원거리)
    - 크기 위계는 잉크 장축으로 표현한다 (Apple 113px < Banana 123px < Watermelon 138px)
+   - 시트 방향: 전 동작 프레임은 우향이 원본이다 (플레이어와 같은 규칙, 좌향은 런타임 X축 반전) — 좌향으로 생성된 프레임은 수평 반전본으로 교체 반입한다
 
 **보스 (거대 과일)**
    - Pumpkin은 일반 적의 1.75배 기준 높이의 근접형, Pineapple은 가시 왕관이 두드러지는 원거리형
@@ -72,7 +79,10 @@ description: |
    - 서체: 전 UI 문구는 `Font_Casual_GyeonggiTitle_Light`(TMP `DefaultFont`)·`Bold`(`DefaultFont_Bold`), 일본어 한자는 `Font_Casual_NotoSansJP` 폴백으로 그린다 — 지원 언어 English·Korean·Japanese(라이브러리 `LanguageConst.LanguageList`) 전 언어에서 글리프 결손(□) 0이 규격이다
    - 방 이력은 `Icon_Casual_Room` 아이콘을 좌→우로 나열하고 현재 방을 `Panel/Select`로 강조한다 (슬롯 초과 시 최근 N개 — N은 `밸런스컨셉`)
    - 로비 중앙에는 선택 캐릭터의 `Illust_Casual_Chef` 일러스트를 세우고, 카드 위 최고 도달 방 순번은 `Icon_Casual_Room/Best` 별 배지 + 숫자로 표시한다 (방 종류 아이콘 재사용 금지)
-   - 방 선택 팝업 선택지는 방종류 아이콘 + 적 미리보기(적 아이콘 대신 `AnimationSheet_Casual_Enemy` 첫 프레임 축소 표시 + 마릿수)
+   - 방 선택 팝업 선택지는 방종류 아이콘 + 적 미리보기(적 아이콘 대신 `AnimationSheet_Casual_Enemy` 첫 프레임 축소 표시 + 마릿수), 보스 확정 순번은 선택지 1개를 중앙에 둔다
+   - Canvas Scaler: 게임 팝업 전 종 공통 Scale With Screen Size·기준 해상도 1920x1080·Expand(match 0)
+   - 프레임형 팝업 연출: Blocker 알파 페이드(`PopupAni_Alpha_Smooth` 열기 0→1·닫기 1→0) + 프레임 회전 등장(`PopupAni_Rotation_Dynamic` 열기 z -14°→0°, 닫기 0°→-14°, 프레임 피벗 중심) — `Popup_Notify`와 같은 구성, 대상은 `Popup_RoomSelect`·`Popup_Ability`·`Popup_Pause`·`Popup_Result`·`Popup_Setting`
+   - 저체력 경고: HUD 외곽에 `UI_Common_Gradient/Vignette`를 붉은 틴트 (1, 0.25, 0.25)로 화면 전체 스트레치해 깔고 알파를 깜빡인다 (임계·주기·알파 대역은 `밸런스컨셉`)
 
 ### 화면 비율
 **카메라 관계식**
@@ -138,6 +148,20 @@ description: |
 - 점유율: 캔버스 세로 58%, 화면 높이 21.9%
 - 서열: 플레이어 1.75배
 
+### Icon_Casual_Face
+- 캔버스: 256x256
+- 기준 높이: 232 (상하 12px 여백, `Illust_Casual_Chef/Knife` 머리 크롭을 균일 축소)
+- 피벗: 중심 (0.5, 0.5)
+- 점유율: 캔버스 세로 90%, 씬 전환 타일 표시 160px
+- 서열: 아이콘 공통 (타일 격자 12x7이 1920x1080을 덮는다)
+
+### UI_Common_Gradient
+- 캔버스: 512x512
+- 기준 높이: 512
+- 피벗: 중심 (0.5, 0.5)
+- 점유율: 화면 100% (HUD 전체 스트레치 오버레이, 알파 0.35 지점 반지름 = 캔버스 반폭의 0.35)
+- 서열: 화면 전면 오버레이
+
 ### Illust_Casual_Chef
 - 캔버스: 640x960
 - 기준 높이: 864 (상하 48px 여백)
@@ -186,10 +210,24 @@ description: |
 **컨셉아트 산출**
    - `Concept_Resource` 1장 — 전투 방 한 장면에 요리사(Knife)·Apple·Watermelon·Banana·Pumpkin을 한 화면에 담아 팔레트·크기 서열 정본으로 쓴다
 
+**타격 단계**
+   - Knife 1·2·3단 순으로 `Illust_Casual_Slash/Knife` 궤적과 `Illust_Casual_Hit/Impact` 히트 이펙트가 커지고 진해진다 — 배율·색은 `밸런스컨셉` "타격 연출 단계", 3단만 히트스톱
+
+**팝업 등장**
+   - 프레임형 팝업은 Blocker 페이드와 프레임 회전 등장을 동시에 재생한다 ("UI" 프레임형 팝업 연출)
+
+**저체력 경고**
+   - HP 비율이 임계 미만이면 HUD 외곽 비네트가 연하게 깜빡인다 ("UI" 저체력 경고, 값은 `밸런스컨셉`)
+
+**씬 전환**
+   - `SceneChangeAni_Face` — `Icon_Casual_Face/Chef` 타일 12x7 격자가 화면 대각선(행+열 순) 지연으로 스케일 0→1 팝해 가리고(총 0.6s), 새 씬이 오르면 같은 순서로 1→0 소멸해 걷는다 (Overlay 캔버스, unscaled 시간)
+
 ## 애니메이션 규격
 - 시트 구성: 한 동작 = 파일 1건, 프레임 슬롯 6개 (4~8프레임, 남는 슬롯 비움)
 - 프레임 공통: 같은 캔버스·피벗 유지, 좌우는 X축 반전. 잉크 높이는 기준 프레임(`Idle` 첫 프레임)이 기준 높이 ±3%, 그 외 전 프레임(Idle 나머지·Move·Attack·Skill)은 기준 높이의 60~125%(웅크림·도약 신축 허용), Die는 상한 125%·하한 없음(쓰러짐) — 범위 밖 프레임이 있는 동작만 재제작 대상
 - 적 이동 예외: `AnimationSheet_Casual_Enemy` 이동은 실측대로 1프레임 + 런타임 코드 회전 (기존 산출물 실측 우선)
+- 프레임 참조: 동작별 프레임 배열은 프리팹 `SpriteAnimPlayer` 인스펙터가 정본 — 플레이어 공격 동작(Attack_Knife·Attack2·Attack3)은 배열 2번째 요소가 칼을 완전히 내린 자세가 되게 준비 프레임을 배열에서 뺀다 (프레임 파일은 보존)
+- 시트 방향: 전 계열 원본 프레임은 우향, 좌향으로 생성된 프레임은 수평 반전본으로 교체 반입한다
 - 클립 길이: 공격·패턴 클립 길이는 `밸런스컨셉` 공격 주기·전조 시간이 정본
 - 보스 동작: Idle·Move·Attack1(Slam/Spike)·Attack2(Charge/Rain)·Die 5동작
 - 플레이어 추가 동작: Attack1·Attack2·Attack3(Knife), Shoot(Gun), Jump
