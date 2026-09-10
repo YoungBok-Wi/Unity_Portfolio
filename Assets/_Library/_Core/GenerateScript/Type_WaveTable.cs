@@ -17,6 +17,7 @@ namespace Library
         public int Enemy2Count { get; private set; }
         public string Enemy3Id { get; private set; }
         public int Enemy3Count { get; private set; }
+        public int Variant { get; private set; }
         #endregion
 
         #region Event
@@ -79,6 +80,12 @@ namespace Library
             	_dic.Remove(_addID + "Enemy3Count");
             }
             m_Data.Add("Enemy3Count",Enemy3Count);
+            if (_dic.TryGetValue(_addID + "Variant", out o) && !string.IsNullOrEmpty(o))
+            {
+            	Variant = int.Parse(o);
+            	_dic.Remove(_addID + "Variant");
+            }
+            m_Data.Add("Variant",Variant);
         }
         #endregion
     }

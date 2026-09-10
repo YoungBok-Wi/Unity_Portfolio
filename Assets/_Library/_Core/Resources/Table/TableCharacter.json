@@ -20,7 +20,8 @@
     "KnockbackTime": "0.15",
     "KnockbackDistFinish": "0.8",
     "KnockbackTimeFinish": "0.2",
-    "UnlockRoom": "0"
+    "UnlockRoom": "0",
+    "ComboWindow": "0.4"
   },
   "Gun": {
     "Name": "Text_Core_WeaponGun",
@@ -43,6 +44,7 @@
     "KnockbackTime": "0.1",
     "KnockbackDistFinish": "0.3",
     "KnockbackTimeFinish": "0.1",
-    "UnlockRoom": "5"
+    "UnlockRoom": "5",
+    "ComboWindow": "0"
   }
 }

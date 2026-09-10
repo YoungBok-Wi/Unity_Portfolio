@@ -29,6 +29,7 @@ namespace Library
         public float KnockbackDistFinish { get; private set; }
         public float KnockbackTimeFinish { get; private set; }
         public int UnlockRoom { get; private set; }
+        public float ComboWindow { get; private set; }
         #endregion
 
         #region Event
@@ -163,6 +164,12 @@ namespace Library
             	_dic.Remove(_addID + "UnlockRoom");
             }
             m_Data.Add("UnlockRoom",UnlockRoom);
+            if (_dic.TryGetValue(_addID + "ComboWindow", out o) && !string.IsNullOrEmpty(o))
+            {
+            	ComboWindow = float.Parse(o);
+            	_dic.Remove(_addID + "ComboWindow");
+            }
+            m_Data.Add("ComboWindow",ComboWindow);
         }
         #endregion
     }

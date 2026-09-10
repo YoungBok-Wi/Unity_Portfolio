@@ -46,5 +46,14 @@
   },
   "Battle_BossBgmPitch": {
     "": "1.1"
+  },
+  "Room_BossCycle": {
+    "": "5"
+  },
+  "Battle_HitStunSec": {
+    "": "0.1"
+  },
+  "Battle_LowHpRatio": {
+    "": "0.3"
   }
 }

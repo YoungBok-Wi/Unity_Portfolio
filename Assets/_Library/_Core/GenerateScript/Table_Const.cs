@@ -29,6 +29,9 @@ namespace Library
         public string Room_ChoiceSet3 { get; private set; }
         public string Room_ChoiceSet4 { get; private set; }
         public float Battle_BossBgmPitch { get; private set; }
+        public int Room_BossCycle { get; private set; }
+        public float Battle_HitStunSec { get; private set; }
+        public float Battle_LowHpRatio { get; private set; }
         #endregion
 
         #region Event
@@ -69,6 +72,12 @@ namespace Library
                 Room_ChoiceSet4 = ((Dictionary<string, object>)data["Room_ChoiceSet4"])[""].ToString();
             if (data.ContainsKey("Battle_BossBgmPitch"))
                 Battle_BossBgmPitch = float.Parse(((Dictionary<string, object>)data["Battle_BossBgmPitch"])[""].ToString());
+            if (data.ContainsKey("Room_BossCycle"))
+                Room_BossCycle = int.Parse(((Dictionary<string, object>)data["Room_BossCycle"])[""].ToString());
+            if (data.ContainsKey("Battle_HitStunSec"))
+                Battle_HitStunSec = float.Parse(((Dictionary<string, object>)data["Battle_HitStunSec"])[""].ToString());
+            if (data.ContainsKey("Battle_LowHpRatio"))
+                Battle_LowHpRatio = float.Parse(((Dictionary<string, object>)data["Battle_LowHpRatio"])[""].ToString());
         }
 
         #if NBING_THEBACKEND
@@ -98,6 +107,9 @@ namespace Library
             Room_ChoiceSet3 = dic["Room_ChoiceSet3"][""];
             Room_ChoiceSet4 = dic["Room_ChoiceSet4"][""];
             Battle_BossBgmPitch = float.Parse(dic["Battle_BossBgmPitch"][""]);
+            Room_BossCycle = int.Parse(dic["Room_BossCycle"][""]);
+            Battle_HitStunSec = float.Parse(dic["Battle_HitStunSec"][""]);
+            Battle_LowHpRatio = float.Parse(dic["Battle_LowHpRatio"][""]);
         }
         #endif
         #endregion
