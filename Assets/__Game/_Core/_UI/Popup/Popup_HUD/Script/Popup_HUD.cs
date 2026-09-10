@@ -13,6 +13,7 @@ namespace Game
         [SerializeField, Tooltip("HP 게이지 (Filled 이미지)")] private UIWrapper_Guage m_HpGauge;
         [SerializeField, Tooltip("HP 바 왼쪽 하트 아이콘")] private Image m_HpIcon;
         [SerializeField, Tooltip("HP 숫자 라벨 (현재/최대)")] private UIWrapper_Text m_HpText;
+        [SerializeField, Tooltip("저체력일 때 화면 가장자리를 점멸하는 비네트")] private CanvasGroup m_LowHpVignette;
         [SerializeField, Tooltip("현재 방 순번 라벨")] private UIWrapper_Text m_RoomText;
         [SerializeField, Tooltip("웨이브 진행 라벨 (현재/전체, Battle 방에서만 표시)")] private UIWrapper_Text m_WaveText;
         [SerializeField, Tooltip("지나온 방 이력 항목 (입장 순, 슬롯 수 = RoomConst.HistoryMax, 넘치면 최근 것만)")] private Control_RoomHistoryItem[] m_HistoryItems;
@@ -42,6 +43,11 @@ namespace Game
             if (instance == this)
                 instance = null;
         }
+        private void Update()
+        {
+            if (m_LowHpVignette != null && m_LowHpVignette.gameObject.activeSelf)
+                m_LowHpVignette.alpha = Mathf.Lerp(0.15f, 0.45f, Mathf.PingPong(Time.unscaledTime * 2f, 1f));
+        }
         public override void Init()
         {
             m_PauseButton.AddClickListener(OnClickPause);
@@ -57,7 +63,10 @@ namespace Game
             room.WaveCount.AddChanged(this, OnWaveChanged);
             DataManager.instance.Crumb.AddChanged(this, OnCrumbChanged);
             if (LocalGameManager.instance != null)
+            {
+                LocalGameManager.instance.PlayerChanged += OnPlayerChanged;
                 LocalGameManager.instance.HitApplied += OnHitApplied;
+            }
             if (m_DamagePopTemplate != null && m_DamagePopRoot != null)
                 m_DamagePopPool = new ObjectPool(m_DamagePopTemplate.gameObject, m_DamagePopRoot, m_DamagePopPoolSize);
             base.InitUIOnce();
@@ -86,7 +95,10 @@ namespace Game
             if (DataManager.instance != null)
                 DataManager.instance.Crumb.RemoveChanged(this, OnCrumbChanged);
             if (LocalGameManager.instance != null)
+            {
+                LocalGameManager.instance.PlayerChanged -= OnPlayerChanged;
                 LocalGameManager.instance.HitApplied -= OnHitApplied;
+            }
             UnbindPlayer();
             base.OnShutdown();
         }
@@ -136,6 +148,11 @@ namespace Game
             if (DataManager.instance != null)
                 UIWrapper_Text.Set(m_CrumbText, DataManager.instance.Crumb.v.ToString());
         }
+        /// <summary>_player 변경 통지에 맞춰 HP 구독 대상을 다시 잇는다.</summary>
+        private void OnPlayerChanged(Object_PlayerBase _player)
+        {
+            BindPlayer();
+        }
         /// <summary>HP 게이지·숫자 갱신</summary>
         private void OnHpChanged(ValueBase _)
         {
@@ -144,6 +161,13 @@ namespace Game
             int max = Mathf.Max(1, m_Player.MaxHp.v);
             m_HpGauge.Set((float)m_Player.Hp.v / max);
             UIWrapper_Text.Set(m_HpText, $"{m_Player.Hp.v}/{m_Player.MaxHp.v}");
+            if (m_LowHpVignette != null)
+            {
+                bool isLow = (float)m_Player.Hp.v / max < TableManager.instance.Const.Battle_LowHpRatio;
+                m_LowHpVignette.gameObject.SetActive(isLow);
+                if (!isLow)
+                    m_LowHpVignette.alpha = 0f;
+            }
         }
         /// <summary>명중 통지 — _hit.Point 위에 데미지 숫자 팝을 띄운다 (_target 이 플레이어면 붉은색, 풀이 비면 생략)</summary>
         private void OnHitApplied(SHit _hit, Object_UnitBase _target)
@@ -194,6 +218,11 @@ namespace Game
         /// <summary>플레이어 HP 구독을 푼다</summary>
         private void UnbindPlayer()
         {
+            if (m_LowHpVignette != null)
+            {
+                m_LowHpVignette.alpha = 0f;
+                m_LowHpVignette.gameObject.SetActive(false);
+            }
             if (m_Player == null)
                 return;
             m_Player.Hp.RemoveChanged(this, OnHpChanged);
@@ -210,6 +239,8 @@ namespace Game
             if (room == null) return;
             _report.AddNumber("hp", m_Player != null ? m_Player.Hp.v : 0);
             _report.AddNumber("maxHp", m_Player != null ? m_Player.MaxHp.v : 0);
+            _report.AddRaw("lowHp", m_LowHpVignette != null && m_LowHpVignette.gameObject.activeSelf ? "true" : "false");
+            _report.Add("lowHpAlpha", m_LowHpVignette != null ? m_LowHpVignette.alpha.ToString("0.00") : "0.00");
             _report.AddNumber("roomIndex", room.RoomIndex.v);
             _report.Add("wave", m_WaveText != null ? m_WaveText.v.text : "");
             _report.Add("history", string.Join(",", room.History));

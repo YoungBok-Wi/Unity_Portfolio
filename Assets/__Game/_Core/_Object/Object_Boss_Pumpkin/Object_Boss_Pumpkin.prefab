@@ -165,12 +165,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14ed6a9984ce7fc43835db8aab8d68a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.Object_Boss_Pumpkin
-  m_Kind: 2
   m_Id: Pumpkin
   m_Physics: {fileID: 1969874698197748990}
   m_Anim: {fileID: 3000351967502161667}
   m_Fsm: {fileID: 1717076426487165858}
   m_HitHeight: 0.85
+  m_Icon: {fileID: 21300000, guid: 80fd531e8beb6674593036e24d0be961, type: 3}
 --- !u!50 &6820408477231884548
 Rigidbody2D:
   serializedVersion: 5
@@ -391,5 +391,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.SpriteAnimPlayer
   m_Renderer: {fileID: 6289985269834715194}
-  m_Prefix: AnimationSheet_Casual_Boss_Pumpkin
-  m_Fps: 10
+  m_Clips:
+  - Name: Idle
+    Frames:
+    - {fileID: 21300000, guid: 80fd531e8beb6674593036e24d0be961, type: 3}
+    - {fileID: 21300000, guid: 5d4076a74db9678419f13d7872f01635, type: 3}
+    - {fileID: 21300000, guid: b54628dc6c6c66146b793965563d92f7, type: 3}
+    - {fileID: 21300000, guid: 2b74eba520fb2ae4cbeca4828709b406, type: 3}
+    Fps: 10
+  - Name: Move
+    Frames:
+    - {fileID: 21300000, guid: f8594264397c3b84da09abac2db9d6c7, type: 3}
+    - {fileID: 21300000, guid: 05e3a8b2ffd09424c97a732a06ae1ab9, type: 3}
+    - {fileID: 21300000, guid: fe685850d419f9342bbf4cdd29a28223, type: 3}
+    - {fileID: 21300000, guid: 1bd47dda49818b5438dfc3c4068d4a82, type: 3}
+    - {fileID: 21300000, guid: d52254d842cd26549b4398740c1a5d77, type: 3}
+    - {fileID: 21300000, guid: 564f73bece882a84a9349ecf6ac905c7, type: 3}
+    Fps: 10
+  - Name: Attack1
+    Frames:
+    - {fileID: 21300000, guid: fcbf913409ce90c4f9aa599195cd1638, type: 3}
+    - {fileID: 21300000, guid: 0ea8b7a74dd0d3142ac7bdb772c49d29, type: 3}
+    - {fileID: 21300000, guid: 62991aec3cc9a4f41a8087aa98bca986, type: 3}
+    - {fileID: 21300000, guid: af8f2db27e95efe4e804d9fc41eb548a, type: 3}
+    - {fileID: 21300000, guid: 0c065db50499efa4cb462f842f01de4a, type: 3}
+    - {fileID: 21300000, guid: ca9d4265c70bcc649ae52ebbe2a5eb92, type: 3}
+    Fps: 10
+  - Name: Attack2
+    Frames:
+    - {fileID: 21300000, guid: 1b259885b44034b4e8780f874364f0a7, type: 3}
+    - {fileID: 21300000, guid: bdaa482684c1bd840849f14c57d521cf, type: 3}
+    - {fileID: 21300000, guid: 22d8bb9e45ec18d4796de8a918ba4278, type: 3}
+    - {fileID: 21300000, guid: e7f729aac8447e14ab146c851dc79963, type: 3}
+    - {fileID: 21300000, guid: c4aad89559785eb48bc249236a638fd2, type: 3}
+    - {fileID: 21300000, guid: dabfe86042e24f54b81bfb2fb8d8e7b3, type: 3}
+    Fps: 10
+  - Name: Die
+    Frames:
+    - {fileID: 21300000, guid: d9b13a466cf335146a4457f61e76f6e6, type: 3}
+    - {fileID: 21300000, guid: 6f91d47dd86e7cd45bf618a526122bb6, type: 3}
+    - {fileID: 21300000, guid: ea5d9288597a23140a4161dbb3cb810e, type: 3}
+    - {fileID: 21300000, guid: 7a8f4edc70566534ca1d81792fca4a8c, type: 3}
+    - {fileID: 21300000, guid: 87baac71037aa2846a882b445b1e8d7d, type: 3}
+    - {fileID: 21300000, guid: 897918a9ac7dcef41a003d1089f8b304, type: 3}
+    Fps: 10

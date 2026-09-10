@@ -1,7 +1,7 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "런 결과 프레임형 팝업 — 승패·도달 방 순번·Crumb 총량·Gun 해금 알림, 확인 시 Scene_Lobby로 전환",
+  "description": "방 진행 결과·획득 빵가루·해금·확인을 표시하는 팝업",
   "inAsset": true,
   "sortOrder": 0
 }

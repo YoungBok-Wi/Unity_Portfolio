@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6499605930013344531}
   - component: {fileID: 5104275597605334232}
   - component: {fileID: 390778883983767478}
+  - component: {fileID: 4556002202261878414}
   m_Layer: 0
   m_Name: Object_Player_Gun
   m_TagString: Untagged
@@ -34,6 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7918725814840198113}
+  - {fileID: 7068088662177696344}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9061164430838758683
@@ -48,12 +50,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7b82e5e36d5c24783c611c179770fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.Object_Player_Gun
-  m_Kind: 0
   m_Id: Gun
   m_Physics: {fileID: 390778883983767478}
   m_Anim: {fileID: 1515932129023884918}
-  m_Fsm: {fileID: 0}
+  m_Fsm: {fileID: 4556002202261878414}
   m_HitHeight: 0.5
+  m_Icon: {fileID: 0}
   m_AttackRange: {fileID: 8094648176861911274}
 --- !u!50 &6499605930013344531
 Rigidbody2D:
@@ -141,6 +143,26 @@ MonoBehaviour:
   m_JumpPower: 9
   m_JumpMoveChangeFac: 1
   m_IgnoreLayer: []
+--- !u!114 &4556002202261878414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210516991495230365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c377a476f83a1e04ab1118346f577d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Library::Library.FSM
+  m_States:
+  - {fileID: 4938338660669268492}
+  - {fileID: 2643444076056722214}
+  - {fileID: 3492088105966232289}
+  - {fileID: 3978963126248579499}
+  - {fileID: 4685073112996194055}
+  - {fileID: 108063475908571989}
+  m_DefaultState: {fileID: 4938338660669268492}
 --- !u!1 &5231336619136377248
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,5 +347,167 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.SpriteAnimPlayer
   m_Renderer: {fileID: 8903690641148378485}
-  m_Prefix: AnimationSheet_Casual_Player
-  m_Fps: 10
+  m_Clips:
+  - Name: Idle
+    Frames:
+    - {fileID: 21300000, guid: 59e046c0d1ef15042996f76c868d5d02, type: 3}
+    - {fileID: 21300000, guid: e75ceeba6aa143f48a7d768c8305627f, type: 3}
+    - {fileID: 21300000, guid: 3e9bc4cfdd2188944b72690cf99984f9, type: 3}
+    - {fileID: 21300000, guid: f345a721372f28c49b009b1f96cb97e8, type: 3}
+    Fps: 10
+  - Name: Move
+    Frames:
+    - {fileID: 21300000, guid: b6114d889800c804e8631efaa2976799, type: 3}
+    - {fileID: 21300000, guid: e5106779d5a69e449b0d89386a14f8b6, type: 3}
+    - {fileID: 21300000, guid: 7a411aaf4694aed4cb862bb205cfebaa, type: 3}
+    - {fileID: 21300000, guid: c0eebe10fecd7ea41a798aaa0867ec17, type: 3}
+    - {fileID: 21300000, guid: ea576894b8669c04e902913d5ae24123, type: 3}
+    - {fileID: 21300000, guid: f1cf3e24af7aa2148a19b3a4293fd523, type: 3}
+    Fps: 10
+  - Name: Jump
+    Frames:
+    - {fileID: 21300000, guid: f51da7ffd5d9e5d458de0d7b45262337, type: 3}
+    - {fileID: 21300000, guid: d6214859d347cba4c8d92446787c58e0, type: 3}
+    - {fileID: 21300000, guid: 980f9177d0241974fa493a0f5e27b979, type: 3}
+    - {fileID: 21300000, guid: 1ef303ef1a7404f4aa825ede38084112, type: 3}
+    - {fileID: 21300000, guid: 820c26a23042b1540a6e4380e987f013, type: 3}
+    - {fileID: 21300000, guid: f7d57efeee5b72a4d9ef3ddfb53a4a29, type: 3}
+    Fps: 10
+  - Name: Attack_Gun
+    Frames:
+    - {fileID: 21300000, guid: ffe3f5fa00393fd4fb81e1f646dbc17f, type: 3}
+    - {fileID: 21300000, guid: fdaf6a233ce41c244a202010d6f72b81, type: 3}
+    - {fileID: 21300000, guid: e2a0421dc6b68374b93c3b96a8202460, type: 3}
+    - {fileID: 21300000, guid: 6ac76f3bf8b1db748aa7c0639ec081dd, type: 3}
+    Fps: 10
+  - Name: Hit
+    Frames:
+    - {fileID: 21300000, guid: 46c0e56b816b9b34584864c900260c09, type: 3}
+    - {fileID: 21300000, guid: 08ec59e1bd0516a4782b93ad5b384e29, type: 3}
+    - {fileID: 21300000, guid: 5d0553025134c7c459f22d1c41e4a4eb, type: 3}
+    - {fileID: 21300000, guid: 869f81c7285adf644bbe940aeb6fd8d6, type: 3}
+    Fps: 10
+  - Name: Die
+    Frames:
+    - {fileID: 21300000, guid: 2a839147314e6df45a6059a571e5a578, type: 3}
+    - {fileID: 21300000, guid: 80b5f70cf6fcbab4da257fa29f56fa04, type: 3}
+    - {fileID: 21300000, guid: 1cdb505524a974c4cb37822230850fbf, type: 3}
+    - {fileID: 21300000, guid: cbe84259c16585d45acd7a9ff2901e9a, type: 3}
+    - {fileID: 21300000, guid: 588f330d2f430594a94412ecee234ffb, type: 3}
+    - {fileID: 21300000, guid: e482d8b1bce34e64a862ce8dd6a69c6b, type: 3}
+    Fps: 10
+--- !u!1 &8112490191608408599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7068088662177696344}
+  - component: {fileID: 4938338660669268492}
+  - component: {fileID: 2643444076056722214}
+  - component: {fileID: 3492088105966232289}
+  - component: {fileID: 3978963126248579499}
+  - component: {fileID: 4685073112996194055}
+  - component: {fileID: 108063475908571989}
+  m_Layer: 0
+  m_Name: States
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7068088662177696344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8112490191608408599}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4689412815481148560}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4938338660669268492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8112490191608408599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e6de687342abd46911fd9a91a387ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FSMState_PlayerIdle
+  m_ID: Idle
+--- !u!114 &2643444076056722214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8112490191608408599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9faaf82dbd9d47d4385c2e42ec46829b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FSMState_PlayerMove
+  m_ID: Move
+--- !u!114 &3492088105966232289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8112490191608408599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 976b627a690f859479a5f97f2cf99e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FSMState_PlayerJump
+  m_ID: Jump
+--- !u!114 &3978963126248579499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8112490191608408599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd65db6aac859c04b839798648c19a90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FSMState_PlayerAttack
+  m_ID: Attack
+--- !u!114 &4685073112996194055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8112490191608408599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24973357522e6b4f8b7df80744a3a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FSMState_PlayerHit
+  m_ID: Hit
+--- !u!114 &108063475908571989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8112490191608408599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b4354ed4765b254892e3dc75de7211d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FSMState_PlayerDie
+  m_ID: Die

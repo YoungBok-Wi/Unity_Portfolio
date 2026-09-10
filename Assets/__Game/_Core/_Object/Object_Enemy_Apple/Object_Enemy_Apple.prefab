@@ -178,8 +178,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.SpriteAnimPlayer
   m_Renderer: {fileID: 3736789345597133421}
-  m_Prefix: AnimationSheet_Casual_Enemy_Apple
-  m_Fps: 10
+  m_Clips:
+  - Name: Move
+    Frames:
+    - {fileID: 21300000, guid: ead8c96fda4843e4cbdae397ed9e4493, type: 3}
+    Fps: 10
+  - Name: Attack
+    Frames:
+    - {fileID: 21300000, guid: 426827c60039dac4eb222a0635f1ed95, type: 3}
+    - {fileID: 21300000, guid: 736badf2f24e0c34fb8922b300689280, type: 3}
+    - {fileID: 21300000, guid: b0df79b8ba2cf134da458fcfaeb9caf5, type: 3}
+    - {fileID: 21300000, guid: 93c927d7a4d8fa444b47bf138539637a, type: 3}
+    Fps: 10
+  - Name: Die
+    Frames:
+    - {fileID: 21300000, guid: 96fef274017faa44ba27baca6de4172c, type: 3}
+    - {fileID: 21300000, guid: 9ad2c90277f522540aade2346e779a6b, type: 3}
+    - {fileID: 21300000, guid: 2f6354034c8af4b49885b723207c66aa, type: 3}
+    - {fileID: 21300000, guid: ba8087a06ff39174b9651100aaa17090, type: 3}
+    - {fileID: 21300000, guid: 0db3ab24f271ada48920129a22bed57b, type: 3}
+    - {fileID: 21300000, guid: 3541c7ccca0d9994497025c995c23751, type: 3}
+    Fps: 10
 --- !u!1 &8222977138315168454
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,12 +249,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4252d4edcf3ce64286bbebc7a17c805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.Object_Enemy_Apple
-  m_Kind: 1
   m_Id: Apple
   m_Physics: {fileID: 7278167101088865086}
   m_Anim: {fileID: 3117657825282568195}
   m_Fsm: {fileID: 6447685920341620720}
   m_HitHeight: 0.45
+  m_Icon: {fileID: 21300000, guid: ead8c96fda4843e4cbdae397ed9e4493, type: 3}
 --- !u!50 &3150843510023493563
 Rigidbody2D:
   serializedVersion: 5

@@ -66,7 +66,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1, y: 0.75}
+  m_Offset: {x: 1, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -184,8 +184,71 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.SpriteAnimPlayer
   m_Renderer: {fileID: 2824096406336310886}
-  m_Prefix: AnimationSheet_Casual_Player
-  m_Fps: 10
+  m_Clips:
+  - Name: Idle
+    Frames:
+    - {fileID: 21300000, guid: 9fe197862568c4847b07f57ed7d72d93, type: 3}
+    - {fileID: 21300000, guid: ba387cc1fffcc21478c4da2fd9d87c2f, type: 3}
+    - {fileID: 21300000, guid: 49ea94f243e48ba4497ae7a35ecd7ad4, type: 3}
+    - {fileID: 21300000, guid: 0d9b69d90bdde2346bef2ae09f53cda7, type: 3}
+    Fps: 10
+  - Name: Move
+    Frames:
+    - {fileID: 21300000, guid: f299928d5e0c38a48905d0aaac9f5e5f, type: 3}
+    - {fileID: 21300000, guid: f8a52d8c6dde69640ac6363125c23c96, type: 3}
+    - {fileID: 21300000, guid: c15290c3bcfe7ae448f7a7d11fbe3ade, type: 3}
+    - {fileID: 21300000, guid: 4fe78e77bec30bb4089d36e40d4a64ba, type: 3}
+    - {fileID: 21300000, guid: 58a437e31d134f049a4939276c1785e6, type: 3}
+    - {fileID: 21300000, guid: 6c185fc0015eef642a1dc2c78d926be3, type: 3}
+    Fps: 10
+  - Name: Jump
+    Frames:
+    - {fileID: 21300000, guid: f51da7ffd5d9e5d458de0d7b45262337, type: 3}
+    - {fileID: 21300000, guid: d6214859d347cba4c8d92446787c58e0, type: 3}
+    - {fileID: 21300000, guid: 980f9177d0241974fa493a0f5e27b979, type: 3}
+    - {fileID: 21300000, guid: 1ef303ef1a7404f4aa825ede38084112, type: 3}
+    - {fileID: 21300000, guid: 820c26a23042b1540a6e4380e987f013, type: 3}
+    - {fileID: 21300000, guid: f7d57efeee5b72a4d9ef3ddfb53a4a29, type: 3}
+    Fps: 10
+  - Name: Attack_Knife
+    Frames:
+    - {fileID: 21300000, guid: 9c61199c5a34d1d4fb1ccd345461cebf, type: 3}
+    - {fileID: 21300000, guid: bdd49573ff346cd449bf6e4da0d06fd3, type: 3}
+    - {fileID: 21300000, guid: 4eedaaa850a5580448e8159571d6a69e, type: 3}
+    Fps: 10
+  - Name: Attack2
+    Frames:
+    - {fileID: 21300000, guid: efe8e1b304f51924f87f367d0b2d48ef, type: 3}
+    - {fileID: 21300000, guid: 413d28659c695a8458c3b8ec09071a24, type: 3}
+    - {fileID: 21300000, guid: f56916c7610cd90469b00caa87c449df, type: 3}
+    - {fileID: 21300000, guid: 96d2e71581c09be479cb9aa72406cac3, type: 3}
+    - {fileID: 21300000, guid: 038149a358409f841be45b2bd242e475, type: 3}
+    - {fileID: 21300000, guid: 357cf01b39d20d14c8c496eeb46765d4, type: 3}
+    Fps: 10
+  - Name: Attack3
+    Frames:
+    - {fileID: 21300000, guid: 43f76e6bb641fd84ebbd045632efc203, type: 3}
+    - {fileID: 21300000, guid: e1c39d532db034c47b2358c9432862b1, type: 3}
+    - {fileID: 21300000, guid: 52a2a42413f528e428cfd54103e9aeb2, type: 3}
+    - {fileID: 21300000, guid: c468f0eac6ea68f4ea048a9d8ea5faed, type: 3}
+    - {fileID: 21300000, guid: 5b3b118615a2174458a17c5ea5a8d4d5, type: 3}
+    Fps: 10
+  - Name: Hit
+    Frames:
+    - {fileID: 21300000, guid: 46c0e56b816b9b34584864c900260c09, type: 3}
+    - {fileID: 21300000, guid: 08ec59e1bd0516a4782b93ad5b384e29, type: 3}
+    - {fileID: 21300000, guid: 5d0553025134c7c459f22d1c41e4a4eb, type: 3}
+    - {fileID: 21300000, guid: 869f81c7285adf644bbe940aeb6fd8d6, type: 3}
+    Fps: 10
+  - Name: Die
+    Frames:
+    - {fileID: 21300000, guid: 2a839147314e6df45a6059a571e5a578, type: 3}
+    - {fileID: 21300000, guid: 80b5f70cf6fcbab4da257fa29f56fa04, type: 3}
+    - {fileID: 21300000, guid: 1cdb505524a974c4cb37822230850fbf, type: 3}
+    - {fileID: 21300000, guid: cbe84259c16585d45acd7a9ff2901e9a, type: 3}
+    - {fileID: 21300000, guid: 588f330d2f430594a94412ecee234ffb, type: 3}
+    - {fileID: 21300000, guid: e482d8b1bce34e64a862ce8dd6a69c6b, type: 3}
+    Fps: 10
 --- !u!1 &7155225150703407844
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,6 +262,7 @@ GameObject:
   - component: {fileID: 6507756812805779293}
   - component: {fileID: 722102448950715516}
   - component: {fileID: 2467114448457703640}
+  - component: {fileID: 7559929123034830189}
   m_Layer: 0
   m_Name: Object_Player_Knife
   m_TagString: Untagged
@@ -220,6 +284,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3494723802188132095}
+  - {fileID: 6209940069795184922}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6346759776827025845
@@ -234,12 +299,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f3bf165e12c61418f336d743277512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.Object_Player_Knife
-  m_Kind: 0
   m_Id: Knife
   m_Physics: {fileID: 2467114448457703640}
   m_Anim: {fileID: 5302416586426042705}
-  m_Fsm: {fileID: 0}
+  m_Fsm: {fileID: 7559929123034830189}
   m_HitHeight: 0.5
+  m_Icon: {fileID: 0}
   m_AttackRange: {fileID: 842423568240502971}
 --- !u!50 &6507756812805779293
 Rigidbody2D:
@@ -327,3 +392,138 @@ MonoBehaviour:
   m_JumpPower: 9
   m_JumpMoveChangeFac: 1
   m_IgnoreLayer: []
+--- !u!114 &7559929123034830189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7155225150703407844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c377a476f83a1e04ab1118346f577d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Library::Library.FSM
+  m_States:
+  - {fileID: 5154051997681975927}
+  - {fileID: 3183950434232876290}
+  - {fileID: 569402009465450285}
+  - {fileID: 953163852600042353}
+  - {fileID: 9133687892837078477}
+  - {fileID: 6501295258706686410}
+  m_DefaultState: {fileID: 5154051997681975927}
+--- !u!1 &9040788926923955423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6209940069795184922}
+  - component: {fileID: 5154051997681975927}
+  - component: {fileID: 3183950434232876290}
+  - component: {fileID: 569402009465450285}
+  - component: {fileID: 953163852600042353}
+  - component: {fileID: 9133687892837078477}
+  - component: {fileID: 6501295258706686410}
+  m_Layer: 0
+  m_Name: States
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6209940069795184922
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040788926923955423}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5856419488473121175}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5154051997681975927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040788926923955423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e6de687342abd46911fd9a91a387ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FSMState_PlayerIdle
+  m_ID: Idle
+--- !u!114 &3183950434232876290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040788926923955423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9faaf82dbd9d47d4385c2e42ec46829b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FSMState_PlayerMove
+  m_ID: Move
+--- !u!114 &569402009465450285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040788926923955423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 976b627a690f859479a5f97f2cf99e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FSMState_PlayerJump
+  m_ID: Jump
+--- !u!114 &953163852600042353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040788926923955423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd65db6aac859c04b839798648c19a90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FSMState_PlayerAttack
+  m_ID: Attack
+--- !u!114 &9133687892837078477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040788926923955423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24973357522e6b4f8b7df80744a3a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FSMState_PlayerHit
+  m_ID: Hit
+--- !u!114 &6501295258706686410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040788926923955423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b4354ed4765b254892e3dc75de7211d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FSMState_PlayerDie
+  m_ID: Die

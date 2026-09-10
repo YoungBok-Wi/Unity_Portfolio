@@ -10,7 +10,6 @@ namespace Game
 
         #region Inspector
         [SerializeField, Tooltip("프레임 (제목)")] private Control_GameFrame m_Frame;
-        [SerializeField, Tooltip("승패 라벨")] private UIWrapper_Text m_ResultLabel;
         [SerializeField, Tooltip("도달 방 순번 라벨")] private UIWrapper_Text m_RoomLabel;
         [SerializeField, Tooltip("Crumb 총량 라벨")] private UIWrapper_Text m_CrumbLabel;
         [SerializeField, Tooltip("Gun 해금 알림 라벨 (이번 런에 해금됐을 때만 표시)")] private UIWrapper_Text m_UnlockLabel;
@@ -67,14 +66,13 @@ namespace Game
         }
         #endregion
         #region Local Function
-        /// <summary>승패·순번·Crumb·해금 표시를 채운다</summary>
+        /// <summary>도달 방·Crumb 총량·Gun 해금 표시를 채운다.</summary>
         private void Refresh()
         {
             var room = LocalRoomManager.instance;
             if (room == null)
                 return;
             var language = LanguageManager.instance;
-            UIWrapper_Text.SetTextId(m_ResultLabel, "Text_Core_Fail");
             UIWrapper_Text.Set(m_RoomLabel, room.RoomIndex.v.ToString());
             UIWrapper_Text.Set(m_CrumbLabel, DataManager.instance != null ? DataManager.instance.CrumbTotal.v.ToString() : "0");
             bool newlyUnlocked = !m_GunUnlockedAtStart && DataManager.instance.GunUnlocked.v;
@@ -93,7 +91,6 @@ namespace Game
             base.MCPDetail(_report);
             var room = LocalRoomManager.instance;
             if (room == null) return;
-            _report.Add("result", "Lose");
             _report.AddNumber("roomIndex", room.RoomIndex.v);
             _report.AddNumber("crumbTotal", DataManager.instance != null ? DataManager.instance.CrumbTotal.v : 0);
             _report.AddRaw("gunNewlyUnlocked", !m_GunUnlockedAtStart && DataManager.instance.GunUnlocked.v ? "true" : "false");

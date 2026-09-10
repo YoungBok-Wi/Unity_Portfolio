@@ -50,12 +50,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58e1aafea39bae4fb9d01471cebbc4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.Object_Enemy_Banana
-  m_Kind: 1
   m_Id: Banana
   m_Physics: {fileID: 656908675420992075}
   m_Anim: {fileID: 2381117605996165925}
   m_Fsm: {fileID: 3496227609928705709}
   m_HitHeight: 0.5
+  m_Icon: {fileID: 21300000, guid: a89913cb0db86dd43b05835983574018, type: 3}
 --- !u!50 &6706163157608156683
 Rigidbody2D:
   serializedVersion: 5
@@ -346,5 +346,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.SpriteAnimPlayer
   m_Renderer: {fileID: 3385095057039021411}
-  m_Prefix: AnimationSheet_Casual_Enemy_Banana
-  m_Fps: 10
+  m_Clips:
+  - Name: Move
+    Frames:
+    - {fileID: 21300000, guid: a89913cb0db86dd43b05835983574018, type: 3}
+    Fps: 10
+  - Name: Attack
+    Frames:
+    - {fileID: 21300000, guid: 8ea3dd1ca0fedb04c942b86b82101cc2, type: 3}
+    - {fileID: 21300000, guid: 7d24b48839248ee4f95de4992ab41d44, type: 3}
+    - {fileID: 21300000, guid: 08c50d2e485132a4a9fd362699b4f178, type: 3}
+    - {fileID: 21300000, guid: c39e14e2558dfbc418ea70c7812f465e, type: 3}
+    Fps: 10
+  - Name: Die
+    Frames:
+    - {fileID: 21300000, guid: 7dde7c37edde38346a846fd7be4c72a2, type: 3}
+    - {fileID: 21300000, guid: 67ea16964e71d0745b251c5ae2ff424c, type: 3}
+    - {fileID: 21300000, guid: bd83ec052aecb674587ea56b9166c49a, type: 3}
+    - {fileID: 21300000, guid: ad7802c5961e208408e294f3b86c8be8, type: 3}
+    - {fileID: 21300000, guid: bb840f10463b75b4d839fed9f368c961, type: 3}
+    - {fileID: 21300000, guid: 9fd204a99bbfdde439340fba1a79d34d, type: 3}
+    Fps: 10

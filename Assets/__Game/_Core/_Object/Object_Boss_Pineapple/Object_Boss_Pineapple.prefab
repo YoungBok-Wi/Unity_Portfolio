@@ -105,8 +105,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.SpriteAnimPlayer
   m_Renderer: {fileID: 7740749930328915305}
-  m_Prefix: AnimationSheet_Casual_Boss_Pineapple
-  m_Fps: 10
+  m_Clips:
+  - Name: Idle
+    Frames:
+    - {fileID: 21300000, guid: 790a18ff43cceeb4298f18fdb915f7d4, type: 3}
+    - {fileID: 21300000, guid: c301cd64cec71884a9ab51a074b86082, type: 3}
+    - {fileID: 21300000, guid: ceb7b0aaba35e944483ca64e1f7f337c, type: 3}
+    - {fileID: 21300000, guid: 067deafccfa08c34e89bc77c10f1aa4a, type: 3}
+    Fps: 10
+  - Name: Move
+    Frames:
+    - {fileID: 21300000, guid: b62dea592283b8d4f98876fdb3e296a4, type: 3}
+    - {fileID: 21300000, guid: 7c8c85e63002a4d44b597c234c8e72fd, type: 3}
+    - {fileID: 21300000, guid: 2a0951c8fcbcde840a309e6bcba827de, type: 3}
+    - {fileID: 21300000, guid: 5b587eff6102bbe4dad4c0730c0ebc94, type: 3}
+    - {fileID: 21300000, guid: a3343d03a9fb9db4084a40f931a77b8d, type: 3}
+    - {fileID: 21300000, guid: fa5712671e5f69743bf1e21efbaf6488, type: 3}
+    Fps: 10
+  - Name: Attack1
+    Frames:
+    - {fileID: 21300000, guid: 579572bd79b5ffc40b0e53d8ab3ad35f, type: 3}
+    - {fileID: 21300000, guid: 5dd5ea7ee83a1db4ab2210962cbcb89c, type: 3}
+    - {fileID: 21300000, guid: 24d5b8b257c67cd42b4d74dcba822c7b, type: 3}
+    - {fileID: 21300000, guid: 36af56a815e5f00429a2ca2b7a4399b8, type: 3}
+    - {fileID: 21300000, guid: ce535a10a6a97564eba973359ab3e790, type: 3}
+    - {fileID: 21300000, guid: 4a1602750564ba6439ad4ac95e9a5a97, type: 3}
+    Fps: 10
+  - Name: Attack2
+    Frames:
+    - {fileID: 21300000, guid: e7d457e948275204c8f08c8f6f5dae12, type: 3}
+    - {fileID: 21300000, guid: a4fd52d35cd84314a8ab1815ca6c17f1, type: 3}
+    - {fileID: 21300000, guid: e4676b526cdd00b47baae4c3702905c5, type: 3}
+    - {fileID: 21300000, guid: 4b957ea3e3a0f4147af76c05a62a4bee, type: 3}
+    - {fileID: 21300000, guid: 7ec524f8a95b2ad43a8b8957731612d4, type: 3}
+    - {fileID: 21300000, guid: dd2c2722c6532c74f8f1eb3ae6537a4a, type: 3}
+    Fps: 10
+  - Name: Die
+    Frames:
+    - {fileID: 21300000, guid: 159486a082deff046975f63b12b928ab, type: 3}
+    - {fileID: 21300000, guid: 105dc76ea580ce4418d3288ecd4614b7, type: 3}
+    - {fileID: 21300000, guid: 6594f05e51bed304caa5c57f8434341a, type: 3}
+    - {fileID: 21300000, guid: 476dda892f63a064d8743fd6940080ce, type: 3}
+    - {fileID: 21300000, guid: 6526bb608c5a81f4e89cfc9a14ee6b31, type: 3}
+    - {fileID: 21300000, guid: 4354bd4f662cdd74f9a23bdf817420f5, type: 3}
+    Fps: 10
 --- !u!1 &7614299740060636774
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,12 +314,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806e017b18694fd49aa3924ec10bf7a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.Object_Boss_Pineapple
-  m_Kind: 2
   m_Id: Pineapple
   m_Physics: {fileID: 1297656760031359171}
   m_Anim: {fileID: 1806251262934759106}
   m_Fsm: {fileID: 2456062390049226192}
   m_HitHeight: 0.85
+  m_Icon: {fileID: 21300000, guid: 790a18ff43cceeb4298f18fdb915f7d4, type: 3}
 --- !u!50 &6089093426284931651
 Rigidbody2D:
   serializedVersion: 5

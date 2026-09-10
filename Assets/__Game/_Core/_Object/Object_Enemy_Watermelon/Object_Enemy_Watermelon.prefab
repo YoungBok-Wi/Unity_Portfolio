@@ -178,8 +178,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.SpriteAnimPlayer
   m_Renderer: {fileID: 8407614774754939538}
-  m_Prefix: AnimationSheet_Casual_Enemy_Watermelon
-  m_Fps: 10
+  m_Clips:
+  - Name: Move
+    Frames:
+    - {fileID: 21300000, guid: ed3a70d8cd1c40e48a0ef4078b51fc1c, type: 3}
+    Fps: 10
+  - Name: Attack
+    Frames:
+    - {fileID: 21300000, guid: 451b684b9ba88e145b7b637ec72cd7d5, type: 3}
+    - {fileID: 21300000, guid: 77bed9b6094cb8549a27703dc83b76bb, type: 3}
+    - {fileID: 21300000, guid: fccd54bacea13964bab7d303eed95fd3, type: 3}
+    - {fileID: 21300000, guid: 0f587fd95da6a744080f4da32704407c, type: 3}
+    Fps: 10
+  - Name: Die
+    Frames:
+    - {fileID: 21300000, guid: 9403d1d3ba89b1c429ec04d38e3c3dac, type: 3}
+    - {fileID: 21300000, guid: 62235075755c15c4eac0259d59b806d9, type: 3}
+    - {fileID: 21300000, guid: 72e359a1c5900654fb1f60989469062d, type: 3}
+    - {fileID: 21300000, guid: 72114d1be9b65134ebb9c1f6301aa5d0, type: 3}
+    - {fileID: 21300000, guid: aa009709ed6c2b74687fd22b11ab08f7, type: 3}
+    - {fileID: 21300000, guid: 62cedc6e0982f11428e7060f8845c8e2, type: 3}
+    Fps: 10
 --- !u!1 &6310319925626850183
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,12 +249,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc968cc3473740e4384cb1a71a3169fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.Object_Enemy_Watermelon
-  m_Kind: 1
   m_Id: Watermelon
   m_Physics: {fileID: 5992684725008562323}
   m_Anim: {fileID: 7827836012516252444}
   m_Fsm: {fileID: 392729719341693927}
   m_HitHeight: 0.5
+  m_Icon: {fileID: 21300000, guid: ed3a70d8cd1c40e48a0ef4078b51fc1c, type: 3}
 --- !u!50 &6871629442582576641
 Rigidbody2D:
   serializedVersion: 5

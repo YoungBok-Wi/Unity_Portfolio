@@ -1,5 +1,6 @@
 using Library;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game
 {
@@ -10,6 +11,7 @@ namespace Game
 
         #region Inspector
         [SerializeField, Tooltip("프레임 (제목)")] private Control_GameFrame m_Frame;
+        [SerializeField, Tooltip("선택지 카드를 가운데 정렬하는 가로 레이아웃")] private HorizontalLayoutGroup m_ChoiceLayout;
         [SerializeField, Tooltip("선택지 카드 2개 (좌·우)")] private Control_RoomChoice[] m_Choices;
         [SerializeField, Tooltip("적 미리보기 항목 — 카드마다 PreviewPerChoice 개씩 순서대로")] private Control_EnemyPreview[] m_Previews;
         [SerializeField, Tooltip("카드 하나가 갖는 미리보기 항목 수")] private int m_PreviewPerChoice = 3;
@@ -90,6 +92,11 @@ namespace Game
                         m_Previews[slot].Set(LocalGameManager.instance.GetUnitIcon(choice.Enemies[p].Id), choice.Enemies[p].Count);
                 }
             }
+            if (m_ChoiceLayout != null)
+            {
+                m_ChoiceLayout.childAlignment = TextAnchor.MiddleCenter;
+                LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)m_ChoiceLayout.transform);
+            }
         }
         #endregion
         #region MCP
@@ -99,6 +106,7 @@ namespace Game
             base.MCPDetail(_report);
             var roomSelect = LocalRoomSelectManager.instance;
             if (roomSelect == null) return;
+            _report.AddNumber("choiceCount", roomSelect.Choices.Count);
             for (int i = 0; i < roomSelect.Choices.Count; i++)
             {
                 var choice = roomSelect.Choices[i];

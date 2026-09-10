@@ -1,7 +1,7 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "전투 HUD 베이스형 팝업 — 하트 아이콘 HP 게이지·방 순번·웨이브·지나온 방 이력(점선 연결, 최근 8개)·Crumb 잔액·일시정지 버튼·명중 데미지 숫자 팝(풀 16)",
+  "description": "전투 HUD: HP·저체력 비네트·방·웨이브·재화·히스토리·일시정지 표시",
   "inAsset": true,
   "sortOrder": 0
 }
