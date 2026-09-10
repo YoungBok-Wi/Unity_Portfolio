@@ -1,0 +1,12 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "verifyBlacklist": [],
+  "description": "보스 모듈 — 보스 데이터 로드와 Idle·Move·Skill1·Skill2·Enrage FSM 상태를 제공한다.",
+  "important": "Basic",
+  "inAsset": true,
+  "replicateBlacklist": [],
+  "globalManagerPrefab": "",
+  "localManagerPrefab": "",
+  "parentNodeId": "게임기능_전투"
+}

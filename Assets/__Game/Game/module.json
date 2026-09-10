@@ -1,0 +1,12 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "verifyBlacklist": [],
+  "description": "게임 흐름 총괄 모듈 — 전투 판정·오브젝트 풀·연출·능력·일시정지·BGM과 씬 전환 연출을 관리한다.",
+  "important": "Basic",
+  "inAsset": true,
+  "replicateBlacklist": [],
+  "globalManagerPrefab": "Prefab/[GameManager]",
+  "localManagerPrefab": "Prefab/[LocalGameManager]",
+  "parentNodeId": "게임기능_전투"
+}

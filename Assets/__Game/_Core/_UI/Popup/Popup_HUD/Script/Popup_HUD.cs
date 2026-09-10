@@ -55,9 +55,9 @@ namespace Game
             room.HistoryCount.AddChanged(this, OnHistoryChanged);
             room.WaveIndex.AddChanged(this, OnWaveChanged);
             room.WaveCount.AddChanged(this, OnWaveChanged);
-            BattleManager.instance.Crumb.AddChanged(this, OnCrumbChanged);
-            if (LocalBattleManager.instance != null)
-                LocalBattleManager.instance.HitApplied += OnHitApplied;
+            DataManager.instance.Crumb.AddChanged(this, OnCrumbChanged);
+            if (LocalGameManager.instance != null)
+                LocalGameManager.instance.HitApplied += OnHitApplied;
             if (m_DamagePopTemplate != null && m_DamagePopRoot != null)
                 m_DamagePopPool = new ObjectPool(m_DamagePopTemplate.gameObject, m_DamagePopRoot, m_DamagePopPoolSize);
             base.InitUIOnce();
@@ -83,10 +83,10 @@ namespace Game
                 room.WaveIndex.RemoveChanged(this, OnWaveChanged);
                 room.WaveCount.RemoveChanged(this, OnWaveChanged);
             }
-            if (BattleManager.instance != null)
-                BattleManager.instance.Crumb.RemoveChanged(this, OnCrumbChanged);
-            if (LocalBattleManager.instance != null)
-                LocalBattleManager.instance.HitApplied -= OnHitApplied;
+            if (DataManager.instance != null)
+                DataManager.instance.Crumb.RemoveChanged(this, OnCrumbChanged);
+            if (LocalGameManager.instance != null)
+                LocalGameManager.instance.HitApplied -= OnHitApplied;
             UnbindPlayer();
             base.OnShutdown();
         }
@@ -133,8 +133,8 @@ namespace Game
         /// <summary>Crumb 잔액 라벨 갱신</summary>
         private void OnCrumbChanged(ValueBase _)
         {
-            if (BattleManager.instance != null)
-                UIWrapper_Text.Set(m_CrumbText, BattleManager.instance.Crumb.v.ToString());
+            if (DataManager.instance != null)
+                UIWrapper_Text.Set(m_CrumbText, DataManager.instance.Crumb.v.ToString());
         }
         /// <summary>HP 게이지·숫자 갱신</summary>
         private void OnHpChanged(ValueBase _)
@@ -154,7 +154,7 @@ namespace Game
             if (go == null)
                 return;
             var pop = go.GetComponent<Control_DamagePop>();
-            pop.Show(WorldToPopLocal(_hit.Point), _hit.Damage, _target.Kind == EUnitKind.Player ? DamageColorPlayer : DamageColorEnemy, OnDamagePopDone);
+            pop.Show(WorldToPopLocal(_hit.Point), _hit.Damage, _target.IsPlayerSide ? DamageColorPlayer : DamageColorEnemy, OnDamagePopDone);
         }
         /// <summary>수명이 끝난 데미지 팝 _pop 을 풀에 돌려놓는다</summary>
         private void OnDamagePopDone(Control_DamagePop _pop)
@@ -176,7 +176,7 @@ namespace Game
         /// <summary>현재 플레이어 유닛의 HP·MaxHp 를 구독한다 (같은 유닛이면 유지)</summary>
         private void BindPlayer()
         {
-            var battle = LocalBattleManager.instance;
+            var battle = LocalGameManager.instance;
             var player = battle != null ? battle.Player : null;
             if (player == m_Player)
             {
@@ -214,7 +214,7 @@ namespace Game
             _report.Add("wave", m_WaveText != null ? m_WaveText.v.text : "");
             _report.Add("history", string.Join(",", room.History));
             _report.AddNumber("historySlots", m_HistoryItems != null ? m_HistoryItems.Length : 0);
-            _report.AddNumber("crumb", BattleManager.instance != null ? BattleManager.instance.Crumb.v : 0);
+            _report.AddNumber("crumb", DataManager.instance != null ? DataManager.instance.Crumb.v : 0);
             int popActive = 0;
             if (m_DamagePopRoot != null)
                 for (int i = 0; i < m_DamagePopRoot.childCount; i++)

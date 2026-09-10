@@ -1,0 +1,12 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "verifyBlacklist": [],
+  "description": "일반 적 모듈 — 적 데이터 로드와 Move·Attack·Die FSM 상태를 제공한다.",
+  "important": "Basic",
+  "inAsset": true,
+  "replicateBlacklist": [],
+  "globalManagerPrefab": "",
+  "localManagerPrefab": "",
+  "parentNodeId": "게임기능_전투"
+}

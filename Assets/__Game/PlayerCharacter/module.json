@@ -1,0 +1,12 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "verifyBlacklist": [],
+  "description": "플레이어 캐릭터 모듈 — 입력·FSM 상태와 씬 상주 플레이어 활성 선택을 관리한다.",
+  "important": "Basic",
+  "inAsset": true,
+  "replicateBlacklist": [],
+  "globalManagerPrefab": "",
+  "localManagerPrefab": "Prefab/[LocalPlayerCharacterManager]",
+  "parentNodeId": "게임기능_캐릭터"
+}

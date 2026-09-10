@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game
 {
-    /// <summary>방 진행 계산 유틸 — 성장 배율·웨이브 조회·적 미리보기·선택지 세트 파싱·보스 추첨·유닛 아이콘 로드</summary>
+    /// <summary>방 성장·웨이브 Variant·선택지 파싱·보스 추첨을 계산한다.</summary>
     public static class RoomUtil
     {
         #region Function
@@ -19,24 +19,24 @@ namespace Game
         {
             return 1f + TableManager.instance.Const.Room_GrowthAtk * (_roomIndex - 1);
         }
-        /// <summary>_roomIndex 가 RoomMin~RoomMax 에 드는 웨이브를 WaveIndex 순으로 반환한다. 없으면 예외</summary>
-        public static List<WaveTable> GetWaves(int _roomIndex)
+        /// <summary>방 순번과 `_variant`가 일치하는 웨이브를 순서대로 반환한다.</summary>
+        public static List<WaveTable> GetWaves(int _roomIndex, int _variant)
         {
             var waves = new List<WaveTable>();
             foreach (var wave in TableManager.instance.Wave.Data.Values)
-                if (wave.RoomMin <= _roomIndex && _roomIndex <= wave.RoomMax)
+                if (wave.RoomMin <= _roomIndex && _roomIndex <= wave.RoomMax && wave.Variant == _variant)
                     waves.Add(wave);
             if (waves.Count == 0)
-                throw new InvalidOperationException($"Wave 테이블에 방 순번 {_roomIndex} 구간이 없다");
+                throw new InvalidOperationException($"Wave 테이블에 방 순번 {_roomIndex}, Variant {_variant} 구간이 없다");
             waves.Sort((a, b) => a.WaveIndex.CompareTo(b.WaveIndex));
             return waves;
         }
         /// <summary>_roomIndex 방 전체 웨이브의 적 종류별 합계를 등장 순으로 반환한다</summary>
-        public static SEnemyPreview[] GetPreview(int _roomIndex)
+        public static SEnemyPreview[] GetPreview(int _roomIndex, int _variant)
         {
             var order = new List<string>();
             var counts = new Dictionary<string, int>();
-            foreach (var wave in GetWaves(_roomIndex))
+            foreach (var wave in GetWaves(_roomIndex, _variant))
             {
                 var slots = new (string id, int count)[] { (wave.Enemy1Id, wave.Enemy1Count), (wave.Enemy2Id, wave.Enemy2Count), (wave.Enemy3Id, wave.Enemy3Count) };
                 foreach (var (id, count) in slots)
@@ -71,22 +71,6 @@ namespace Game
             if (ids.Count == 0)
                 throw new InvalidOperationException("Boss 테이블이 비어 있다");
             return ids[UnityEngine.Random.Range(0, ids.Count)];
-        }
-        /// <summary>Enemy·Boss 테이블 _unitId 의 Icon 프레임을 Resources/SpriteAnim 에서 읽어 반환한다. 행·파일이 없으면 예외</summary>
-        public static Sprite LoadUnitIcon(string _unitId)
-        {
-            var table = TableManager.instance;
-            string icon;
-            if (table.Enemy.Data.TryGetValue(_unitId, out var enemy))
-                icon = enemy.Icon;
-            else if (table.Boss.Data.TryGetValue(_unitId, out var boss))
-                icon = boss.Icon;
-            else
-                throw new ArgumentException($"Enemy·Boss 테이블에 없는 ID : {_unitId}", nameof(_unitId));
-            var sprite = Resources.Load<Sprite>($"SpriteAnim/{icon}");
-            if (sprite == null)
-                throw new InvalidOperationException($"Resources/SpriteAnim/{icon} 스프라이트가 없다 ({_unitId})");
-            return sprite;
         }
         #endregion
     }

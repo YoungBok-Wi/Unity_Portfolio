@@ -1,0 +1,12 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "verifyBlacklist": [],
+  "description": "저장 데이터 모듈 — 선택 캐릭터·Gun 해금·최고 방 순번과 Crumb 잔액·누적 획득량을 관리한다.",
+  "important": "Basic",
+  "inAsset": true,
+  "replicateBlacklist": [],
+  "globalManagerPrefab": "Prefab/[DataManager]",
+  "localManagerPrefab": "",
+  "parentNodeId": "게임기능_세이브"
+}

@@ -62,7 +62,7 @@ namespace Game
         }
         public override void InitUIOnce()
         {
-            var mgr = CharacterManager.instance;
+            var mgr = DataManager.instance;
             mgr.SelectedId.AddChanged(this, RefreshCards);
             mgr.GunUnlocked.AddChanged(this, RefreshCards);
             mgr.BestRoom.AddChanged(this, RefreshBest);
@@ -76,7 +76,7 @@ namespace Game
         }
         public override void OnShutdown()
         {
-            var mgr = CharacterManager.instance;
+            var mgr = DataManager.instance;
             if (mgr != null)
             {
                 mgr.SelectedId.RemoveChanged(this, RefreshCards);
@@ -101,7 +101,7 @@ namespace Game
         /// <summary>_id 카드 클릭 — 해금됐으면 선택, 아니면 해금 조건 알림</summary>
         private void OnClickCharacter(string _id)
         {
-            var mgr = CharacterManager.instance;
+            var mgr = DataManager.instance;
             if (mgr.IsUnlocked(_id))
             {
                 mgr.Select(_id);
@@ -113,7 +113,7 @@ namespace Game
         /// <summary>시작 — 게임 씬으로 전환한다</summary>
         private void OnClickStart(UIWrapper_Button _)
         {
-            SceneChangeManager.instance.SceneChange(SceneChangeManager.instance.GameSceneID);
+            SceneChangeManager.instance.SceneChange(SceneChangeManager.instance.GameSceneID, "Face");
         }
         /// <summary>설정 팝업을 연다 (이 씬에 등재돼 있을 때만)</summary>
         private void OnClickSetting(UIWrapper_Button _)
@@ -136,7 +136,7 @@ namespace Game
         /// <summary>선택 강조(파란 카드·프레임·요리사 일러스트)·잠금 마크·회색 처리·Gun 설명(해금 전엔 해금 조건)을 갱신한다</summary>
         private void RefreshCards(ValueBase _)
         {
-            var mgr = CharacterManager.instance;
+            var mgr = DataManager.instance;
             if (mgr == null)
                 return;
             bool gunUnlocked = mgr.IsUnlocked(GunId);
@@ -170,8 +170,8 @@ namespace Game
         /// <summary>최고 도달 방 순번 표시를 갱신한다</summary>
         private void RefreshBest(ValueBase _)
         {
-            if (CharacterManager.instance != null)
-                UIWrapper_Text.Set(m_BestRoom, CharacterManager.instance.BestRoom.v.ToString());
+            if (DataManager.instance != null)
+                UIWrapper_Text.Set(m_BestRoom, DataManager.instance.BestRoom.v.ToString());
         }
         /// <summary>Gun 해금 조건 문구를 반환한다 (Text_Core_GunUnlock 의 {0} 에 해금 방 순번)</summary>
         private string UnlockText()
@@ -201,7 +201,7 @@ namespace Game
         public override void MCPDetail(MCPReport _report)
         {
             base.MCPDetail(_report);
-            var mgr = CharacterManager.instance;
+            var mgr = DataManager.instance;
             if (mgr == null) return;
             _report.Add("selected", mgr.SelectedId.v);
             _report.AddRaw("gunUnlocked", mgr.GunUnlocked.v ? "true" : "false");

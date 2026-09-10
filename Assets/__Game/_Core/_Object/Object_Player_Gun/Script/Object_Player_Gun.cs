@@ -1,4 +1,3 @@
-using Library;
 using UnityEngine;
 
 namespace Game
@@ -9,7 +8,6 @@ namespace Game
         #region Value
         private const string AnimIdleGun = "Idle_Gun";
         private const string AnimMoveGun = "Move_Gun";
-        private float m_Timer;
         #endregion
 
         #region Event
@@ -19,48 +17,34 @@ namespace Game
         }
         protected override string ResolveAnim(string _action)
         {
-            if (_action == BattleConst.AnimIdle)
+            if (_action == UnitConst.AnimIdle)
                 return AnimIdleGun;
-            if (_action == BattleConst.AnimMove)
+            if (_action == UnitConst.AnimMove)
                 return AnimMoveGun;
             return _action;
         }
-        protected override void UpdateAttack()
+        protected override void OnAttackStart(int _step)
         {
-            if (!AttackHeld)
-            {
-                if (IsAttacking)
-                {
-                    IsAttacking = false;
-                    SetAttackRange(false);
-                }
-                return;
-            }
-            if (!IsAttacking)
-            {
-                IsAttacking = true;
-                m_Timer = 0;
-                StopMove();
-                SetAttackRange(true);
-                PlayAnim(BattleConst.AnimAttackGun, true);
-            }
-            m_Timer -= Time.deltaTime;
-            if (0 < m_Timer)
-                return;
-            m_Timer = Battle != null ? Battle.GetPlayerAttackInterval(CharacterData.AttackInterval) : CharacterData.AttackInterval;
+            PlayAnim(UnitConst.AnimAttackGun, true);
             Fire();
+        }
+        protected override void OnAttackFrame(int _step, int _frame)
+        {
+        }
+        protected override void OnAttackEnd()
+        {
         }
         #endregion
         #region Local Function
         /// <summary>전방으로 투사체 1발을 발사한다</summary>
         private void Fire()
         {
-            if (Battle == null)
+            if (Game == null)
                 return;
             var data = CharacterData;
             var velocity = new Vector2(Facing * data.ProjectileSpeed, 0);
-            Battle.PlayAttackSfx();
-            Battle.Fire(new SProjectile(this, HitPoint, velocity, Battle.GetPlayerDamage(data.Attack1), data.Pierce, data.RangeWidth, data.KnockbackDist, data.KnockbackTime));
+            Game.PlayAttackSfx();
+            Game.Fire(new SProjectile(this, HitPoint, velocity, Game.GetPlayerDamage(data.Attack1), data.Pierce, data.RangeWidth, data.KnockbackDist, data.KnockbackTime));
         }
         #endregion
     }

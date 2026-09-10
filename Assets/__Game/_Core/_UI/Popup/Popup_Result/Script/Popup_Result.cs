@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
-    /// <summary>런 결과 프레임형 팝업 — 승패·도달 방 순번·Crumb 총량·Gun 해금 알림을 보이고 확인 시 로비로 돌아간다. 취소 불가</summary>
+    /// <summary>사망한 런의 도달 방·Crumb·Gun 해금 결과를 표시한다.</summary>
     public class Popup_Result : PopupBase
     {
         public static Popup_Result instance { get; private set; }
@@ -42,7 +42,7 @@ namespace Game
         }
         public override void InitGame()
         {
-            m_GunUnlockedAtStart = CharacterManager.instance.GunUnlocked.v;
+            m_GunUnlockedAtStart = DataManager.instance.GunUnlocked.v;
             base.InitGame();
         }
         public override void OnOpen(object _option = null)
@@ -74,10 +74,10 @@ namespace Game
             if (room == null)
                 return;
             var language = LanguageManager.instance;
-            UIWrapper_Text.SetTextId(m_ResultLabel, room.Result.v == ERunResult.Win ? "Text_Core_Clear" : "Text_Core_Fail");
+            UIWrapper_Text.SetTextId(m_ResultLabel, "Text_Core_Fail");
             UIWrapper_Text.Set(m_RoomLabel, room.RoomIndex.v.ToString());
-            UIWrapper_Text.Set(m_CrumbLabel, BattleManager.instance != null ? BattleManager.instance.CrumbTotal.v.ToString() : "0");
-            bool newlyUnlocked = !m_GunUnlockedAtStart && CharacterManager.instance.GunUnlocked.v;
+            UIWrapper_Text.Set(m_CrumbLabel, DataManager.instance != null ? DataManager.instance.CrumbTotal.v.ToString() : "0");
+            bool newlyUnlocked = !m_GunUnlockedAtStart && DataManager.instance.GunUnlocked.v;
             if (m_UnlockLabel != null)
             {
                 m_UnlockLabel.gameObject.SetActive(newlyUnlocked);
@@ -93,10 +93,10 @@ namespace Game
             base.MCPDetail(_report);
             var room = LocalRoomManager.instance;
             if (room == null) return;
-            _report.Add("result", room.Result.v.ToString());
+            _report.Add("result", "Lose");
             _report.AddNumber("roomIndex", room.RoomIndex.v);
-            _report.AddNumber("crumbTotal", BattleManager.instance != null ? BattleManager.instance.CrumbTotal.v : 0);
-            _report.AddRaw("gunNewlyUnlocked", !m_GunUnlockedAtStart && CharacterManager.instance.GunUnlocked.v ? "true" : "false");
+            _report.AddNumber("crumbTotal", DataManager.instance != null ? DataManager.instance.CrumbTotal.v : 0);
+            _report.AddRaw("gunNewlyUnlocked", !m_GunUnlockedAtStart && DataManager.instance.GunUnlocked.v ? "true" : "false");
         }
         public override void MCPInteraction(MCPReport _report)
         {

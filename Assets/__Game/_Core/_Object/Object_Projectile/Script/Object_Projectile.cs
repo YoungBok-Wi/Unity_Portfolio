@@ -36,7 +36,7 @@ namespace Game
             var step = m_Data.Velocity * Time.deltaTime;
             transform.position += (Vector3)step;
             m_Traveled += step.magnitude;
-            var battle = LocalBattleManager.instance;
+            var battle = LocalGameManager.instance;
             if (m_Data.MaxDistance <= m_Traveled || battle == null)
             {
                 Finish();
@@ -77,8 +77,8 @@ namespace Game
         private void Finish()
         {
             m_IsFlying = false;
-            if (LocalBattleManager.instance != null)
-                LocalBattleManager.instance.ReturnProjectile(gameObject);
+            if (LocalGameManager.instance != null)
+                LocalGameManager.instance.ReturnProjectile(gameObject);
             else
                 gameObject.SetActive(false);
         }

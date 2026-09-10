@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
-    /// <summary>방 선택 프레임형 팝업 — LocalRoomManager 의 2택 선택지를 카드(방 종류 아이콘·이름·설명·적 미리보기)로 보이고 선택을 넘긴다. 취소 불가</summary>
+    /// <summary>RoomSelect 선택지를 방 카드와 적 미리보기로 표시한다.</summary>
     public class Popup_RoomSelect : PopupBase
     {
         public static Popup_RoomSelect instance { get; private set; }
@@ -54,20 +54,20 @@ namespace Game
         /// <summary>_index 선택지의 방으로 들어간다</summary>
         private void OnClickChoice(int _index)
         {
-            var room = LocalRoomManager.instance;
-            if (room == null || room.State.v != ERoomState.Choosing)
+            var roomSelect = LocalRoomSelectManager.instance;
+            if (roomSelect == null || LocalRoomManager.instance == null || LocalRoomManager.instance.State.v != ERoomState.Choosing)
                 return;
-            room.SelectRoom(_index);
+            roomSelect.SelectRoom(_index);
         }
         #endregion
         #region Local Function
         /// <summary>선택지·미리보기 표시를 현재 Choices 로 채운다</summary>
         private void Refresh()
         {
-            var room = LocalRoomManager.instance;
-            if (room == null)
+            var roomSelect = LocalRoomSelectManager.instance;
+            if (roomSelect == null)
                 return;
-            var choices = room.Choices;
+            var choices = roomSelect.Choices;
             var roomTable = TableManager.instance.Room.Data;
             var language = LanguageManager.instance;
             for (int c = 0; c < m_Choices.Length; c++)
@@ -87,7 +87,7 @@ namespace Game
                     bool show = p < choice.Enemies.Length;
                     m_Previews[slot].gameObject.SetActive(show);
                     if (show)
-                        m_Previews[slot].Set(RoomUtil.LoadUnitIcon(choice.Enemies[p].Id), choice.Enemies[p].Count);
+                        m_Previews[slot].Set(LocalGameManager.instance.GetUnitIcon(choice.Enemies[p].Id), choice.Enemies[p].Count);
                 }
             }
         }
@@ -97,11 +97,11 @@ namespace Game
         public override void MCPDetail(MCPReport _report)
         {
             base.MCPDetail(_report);
-            var room = LocalRoomManager.instance;
-            if (room == null) return;
-            for (int i = 0; i < room.Choices.Count; i++)
+            var roomSelect = LocalRoomSelectManager.instance;
+            if (roomSelect == null) return;
+            for (int i = 0; i < roomSelect.Choices.Count; i++)
             {
-                var choice = room.Choices[i];
+                var choice = roomSelect.Choices[i];
                 var enemies = new System.Text.StringBuilder();
                 foreach (var e in choice.Enemies)
                     enemies.Append(e.Id).Append('x').Append(e.Count).Append(' ');
@@ -111,9 +111,9 @@ namespace Game
         public override void MCPInteraction(MCPReport _report)
         {
             base.MCPInteraction(_report);
-            if (!IsOpened || LocalRoomManager.instance == null) return;
-            for (int i = 0; i < LocalRoomManager.instance.Choices.Count; i++)
-                _report.Add($"Select{i}", $"{LocalRoomManager.instance.Choices[i].Kind} 방 선택");
+            if (!IsOpened || LocalRoomSelectManager.instance == null) return;
+            for (int i = 0; i < LocalRoomSelectManager.instance.Choices.Count; i++)
+                _report.Add($"Select{i}", $"{LocalRoomSelectManager.instance.Choices[i].Kind} 방 선택");
         }
         public override string MCPInteract(string _interactionId, float _value)
         {

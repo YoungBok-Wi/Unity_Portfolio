@@ -93,8 +93,8 @@ namespace Game
         /// <summary>시간 정지를 전투 매니저(소유자)에 맡긴다. 매니저가 없으면 timeScale 을 직접 다룬다</summary>
         private void SetPaused(bool _isPaused)
         {
-            if (LocalBattleManager.instance != null)
-                LocalBattleManager.instance.SetPaused(_isPaused);
+            if (LocalGameManager.instance != null)
+                LocalGameManager.instance.SetPaused(_isPaused);
             else
                 Time.timeScale = _isPaused ? 0 : 1;
         }
@@ -116,7 +116,7 @@ namespace Game
         public override void MCPDetail(MCPReport _report)
         {
             base.MCPDetail(_report);
-            _report.AddRaw("paused", LocalBattleManager.instance != null && LocalBattleManager.instance.IsPaused ? "true" : "false");
+            _report.AddRaw("paused", LocalGameManager.instance != null && LocalGameManager.instance.IsPaused ? "true" : "false");
         }
         public override void MCPInteraction(MCPReport _report)
         {

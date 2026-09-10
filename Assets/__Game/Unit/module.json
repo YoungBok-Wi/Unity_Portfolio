@@ -1,0 +1,12 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "verifyBlacklist": [],
+  "description": "플레이어·적·보스 공용 유닛 모듈 — HP·피격·넉백 곡선·경직·사망·프레임 애니메이터와 투사체 판정을 제공한다.",
+  "important": "Basic",
+  "inAsset": true,
+  "replicateBlacklist": [],
+  "globalManagerPrefab": "",
+  "localManagerPrefab": "",
+  "parentNodeId": "게임기능_전투"
+}

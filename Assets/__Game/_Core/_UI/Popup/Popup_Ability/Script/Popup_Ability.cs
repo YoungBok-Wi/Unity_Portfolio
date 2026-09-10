@@ -43,15 +43,15 @@ namespace Game
         public override void InitUIOnce()
         {
             LocalRoomManager.instance.RerollCount.AddChanged(this, OnRerollChanged);
-            BattleManager.instance.Crumb.AddChanged(this, OnCrumbChanged);
+            DataManager.instance.Crumb.AddChanged(this, OnCrumbChanged);
             base.InitUIOnce();
         }
         public override void OnShutdown()
         {
             if (LocalRoomManager.instance != null)
                 LocalRoomManager.instance.RerollCount.RemoveChanged(this, OnRerollChanged);
-            if (BattleManager.instance != null)
-                BattleManager.instance.Crumb.RemoveChanged(this, OnCrumbChanged);
+            if (DataManager.instance != null)
+                DataManager.instance.Crumb.RemoveChanged(this, OnCrumbChanged);
             base.OnShutdown();
         }
         public override void OnOpen(object _option = null)
@@ -93,8 +93,8 @@ namespace Game
         /// <summary>Crumb 잔액 라벨 갱신</summary>
         private void OnCrumbChanged(ValueBase _)
         {
-            if (BattleManager.instance != null)
-                UIWrapper_Text.Set(m_CrumbLabel, BattleManager.instance.Crumb.v.ToString());
+            if (DataManager.instance != null)
+                UIWrapper_Text.Set(m_CrumbLabel, DataManager.instance.Crumb.v.ToString());
         }
         #endregion
         #region Local Function
@@ -127,7 +127,7 @@ namespace Game
             if (room == null) return;
             _report.Add("choices", string.Join(",", room.AbilityChoices));
             _report.AddNumber("rerollCost", room.RerollCost);
-            _report.AddNumber("crumb", BattleManager.instance != null ? BattleManager.instance.Crumb.v : 0);
+            _report.AddNumber("crumb", DataManager.instance != null ? DataManager.instance.Crumb.v : 0);
         }
         public override void MCPInteraction(MCPReport _report)
         {

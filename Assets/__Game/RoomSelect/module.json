@@ -1,0 +1,12 @@
+{
+  "reuse": "add",
+  "confirmed": {},
+  "verifyBlacklist": [],
+  "description": "방 선택 모듈 — 선택지 세트·보스 주기·웨이브 변형 배정과 선택 처리를 관리한다.",
+  "important": "Basic",
+  "inAsset": true,
+  "replicateBlacklist": [],
+  "globalManagerPrefab": "",
+  "localManagerPrefab": "Prefab/[LocalRoomSelectManager]",
+  "parentNodeId": "게임기능_진행"
+}
