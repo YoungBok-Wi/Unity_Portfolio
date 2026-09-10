@@ -41,6 +41,8 @@ namespace Game
         #region Property
         /// <summary>등록된 플레이어 유닛. 없으면 null</summary>
         public Object_PlayerBase Player { get; private set; }
+        /// <summary>활성 플레이어 참조가 실제로 바뀔 때 새 참조를 알린다.</summary>
+        public event Action<Object_PlayerBase> PlayerChanged;
         /// <summary>스폰된 보스 유닛. 없으면 null</summary>
         public Object_BossBase Boss { get; private set; }
         /// <summary>넉백 거리 진행 곡선을 반환한다.</summary>
@@ -349,10 +351,13 @@ namespace Game
         /// <summary>씬 상주 플레이어를 현재 전투 플레이어로 등록한다.</summary>
         public void SetPlayer(Object_PlayerBase _player)
         {
+            bool changed = Player != _player;
             Player = _player;
             m_PlayerKnockAnchorX = _player != null ? _player.transform.position.x : float.NaN;
             if (_player != null)
                 m_UnitIcons.Set(_player.Id, _player.Icon);
+            if (changed)
+                PlayerChanged?.Invoke(_player);
         }
         /// <summary>등록된 유닛 ID의 인스펙터 아이콘을 반환한다.</summary>
         public Sprite GetUnitIcon(string _id)
