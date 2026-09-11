@@ -1,57 +1,42 @@
 # 업무지시서
 
-## 1. 셋업 전 상태 재확인
+## 1. Delegate Odin 전용 코드 제거
 
-**대상 스킬**: 유니티엔진_씬_질문
+**대상 스킬**: 게임개발_모듈_폴더_코드_작성
 
-**"question"**: `Work_6`·`Work_6_1`의 두 씬 스냅샷과 현재 열린 씬·빌드 등재·`Delegate` Assets 복원 상태
+**"moduleId"**: `Delegate`
 
-**업무**
-
-- `_Temp/Work_6_J8/before_Scene_Game.json`과 `before_Scene_Lobby.json`을 셋업 전 기준으로 재사용한다.
-- `Scene_Lobby`가 열린 상태, 두 씬 빌드 등재, `Assets/_Library/Delegate/Prefab/[DelegateManager].prefab` 존재를 확인한다.
-- 완료 기준은 기준 스냅샷 2개와 셋업 선행조건 확인이다.
-
-## 2. 씬 셋업 실행
-
-**대상 스킬**: 유니티엔진_씬_셋업_실행
-
-**"sceneName"**: `Scene_Game`, `Scene_Lobby`
-
-**"modules"**: 각 씬설정 `사용 모듈` 전부
-
-**"popups"**: 각 씬설정 `UI` 목록
-
-**"objects"**: 각 씬설정 `Object` 목록
+**"moduleNamespace"**: `Library`
 
 **업무**
 
-- `[Global]`·`[Local]` 매니저, `[SceneChangeManager]/Face`, 팝업, `Scene_Game` 플레이어 2종을 셋업한다.
-- setup 전후 프리팹 오버라이드를 대조하고 허용 예외 복원값을 기록한다.
-- 완료 기준은 두 씬 setup 응답 성공, 등록된 매니저 인스턴스 전건 존재, UI 카메라 스택 배선이다.
+- `module_manage path`로 확인한 원본 `DelegateManager.cs`에서 삭제된 Odin Inspector에만 필요한 `using`과 속성을 제거한다.
+- Unity 기본 `[SerializeField]`와 필드·동작은 보존하고 다른 라이브러리 코드는 수정하지 않는다.
+- 완료 기준은 원본 코드에 `Sirenix`·`TabGroup`·`SuffixLabel` 참조가 없고 기존 직렬화 필드가 유지되는 상태다.
 
-## 3. 씬 고유 참조 이관과 오버라이드 복원
+## 2. Delegate 재익스포트와 재임포트
 
-**대상 스킬**: 유니티엔진_씬_구성
+**대상 스킬**: 게임개발_모듈_폴더_익스포트
 
-**"sceneName"**: `Scene_Game`, `Scene_Lobby`
+**"moduleId"**: `Delegate`
 
-**"content"**: 스냅샷 기준 씬 고유 참조 이관, 구 매니저 정리, `Scene_Lobby` 카메라 `orthographicSize=4.0` 복원, 상주 플레이어 배치·비활성화·배선
-
-**업무**
-
-- 적·보스 프리팹, 투사체, 이펙트, SFX, BGM, 스폰 위치·반폭을 새 매니저에 보존한다.
-- `[LocalPlayerCharacterManager].m_Players`에 씬 상주 플레이어 2종을 배선하고 `m_PlayerSpawn` 위치에 둔다.
-- 구 `[BattleManager]`·`[CharacterManager]`·`[LocalBattleManager]`·`[LocalCharacterManager]`를 제거한다.
-- 완료 기준은 저장된 씬 YAML의 새 매니저 배선, Missing 스크립트 `0건`, 스냅샷 대비 의도한 변경만 존재하는 상태다.
-
-## 4. 씬 검증
-
-**대상 스킬**: 유니티엔진_씬_검증
-
-**"scope"**: `Scene_Game`·`Scene_Lobby` 계층·직렬화 필드·컨셉 반영·컴파일·빌드 등재
+**"moduleNamespace"**: `Library`
 
 **업무**
 
-- 완료 기준은 verify 통과, 컴파일 오류 `0건`, Missing 참조 `0건`, 두 씬 빌드 등재 유지다.
-- `confirmed`·`reuse`를 변경하지 않고 이번에 승인된 `Delegate inAsset=true` 외 설정은 바꾸지 않는다.
+- 수정한 원본을 엔진 사본에 반영하고 Unity 에셋을 재임포트한다.
+- `confirmed`·`reuse`·`inAsset`은 변경하지 않는다.
+- 완료 기준은 익스포트 성공과 원본·엔진 사본의 Odin 전용 선언 제거 일치다.
+
+## 3. 컴파일과 매니저 프리팹 검증
+
+**대상 스킬**: 유니티엔진_컴파일_실행
+
+**"scope"**: `Delegate` Odin 의존 제거 영향
+
+**업무**
+
+- Unity 재컴파일 완료를 확인하고 컴파일 오류를 수집한다.
+- `module_manage verify`와 Unity 로드로 `[DelegateManager].prefab`의 매니저 컴포넌트와 Missing 스크립트를 확인한다.
+- `runSetup=false`로 두고 씬 셋업은 후속 Work에서 수행한다.
+- 완료 기준은 컴파일 오류 `0건`, 모듈 verify 성공, 프리팹 로드·Missing 스크립트 `0건`이다.
