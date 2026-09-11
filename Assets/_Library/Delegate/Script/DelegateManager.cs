@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,7 +12,7 @@ namespace Library
         public static DelegateManager instance { get; private set; }
 
         #region Inspector
-        [SerializeField, TabGroup("DelegateManager", "설정"), Range(0.1f, 10.0f), SuffixLabel("ms")]  private double m_MaxMSPerFrame = 2.0f;
+        [SerializeField, Range(0.1f, 10.0f)] private double m_MaxMSPerFrame = 2.0f;
         #endregion
         #region Value
         private Dictionary<(object owner, ValueBase value), Action<ValueBase>> m_EventMap = new();
