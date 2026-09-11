@@ -35,6 +35,7 @@ namespace Game
             var (center, size) = GetAttackBox();
             Game.HitBox(this, center, size, Game.GetPlayerDamage(baseDamage), data.HitMax,
                 isFinish ? data.KnockbackDistFinish : data.KnockbackDist, isFinish ? data.KnockbackTimeFinish : data.KnockbackTime, isFinish, _step);
+            CommitAttack();
         }
         protected override void OnAttackEnd()
         {

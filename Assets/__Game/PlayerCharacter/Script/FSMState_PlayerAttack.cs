@@ -30,6 +30,15 @@ namespace Game
             }
             m_Timer += Time.deltaTime;
             Player.TickAttack(m_Step);
+            if (!Player.IsAttackCommitted)
+                Player.ConsumeJump();
+            else if (Player.CanControl)
+            {
+                if (Player.JumpPressed && Player.IsGrounded)
+                    return State(UnitConst.StateJump);
+                if (Player.MoveInput != 0f)
+                    return State(UnitConst.StateMove);
+            }
             if (m_Timer < m_Interval)
                 return this;
             float comboWindow = Mathf.Max(0f, Player.CharacterData.ComboWindow);

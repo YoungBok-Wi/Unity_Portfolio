@@ -45,6 +45,7 @@ namespace Game
             var velocity = new Vector2(Facing * data.ProjectileSpeed, 0);
             Game.PlayAttackSfx();
             Game.Fire(new SProjectile(this, HitPoint, velocity, Game.GetPlayerDamage(data.Attack1), data.Pierce, data.RangeWidth, data.KnockbackDist, data.KnockbackTime));
+            CommitAttack();
         }
         #endregion
     }

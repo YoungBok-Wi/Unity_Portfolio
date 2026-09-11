@@ -23,6 +23,7 @@ namespace Game
         internal bool JumpPressed => m_JumpPressed;
         internal bool AttackPressed => m_AttackPressed;
         internal bool AttackHeld => m_AttackHeld;
+        internal bool IsAttackCommitted => m_IsAttackCommitted;
         internal bool IsGrounded => Physics != null && Physics.FlyState == CharacterPhysicsBase.EFlyState.None;
         internal bool CanControl => !IsDead.v && !IsStunned && 0f < Time.timeScale && LocalRoomManager.instance != null && LocalRoomManager.instance.State.v == ERoomState.Playing;
         protected LocalGameManager Game => LocalGameManager.instance;
@@ -35,6 +36,7 @@ namespace Game
         private bool m_JumpPressed;
         private bool m_AttackPressed;
         private bool m_AttackHeld;
+        private bool m_IsAttackCommitted;
         private string m_CurAnim;
         private bool m_CurLoop;
         #endregion
@@ -59,6 +61,7 @@ namespace Game
             m_JumpPressed = false;
             m_AttackPressed = false;
             m_AttackHeld = false;
+            m_IsAttackCommitted = false;
             SetAttackRange(false);
             PlayAnim(UnitConst.AnimIdle, true);
             base.OnSpawned();
@@ -66,6 +69,7 @@ namespace Game
         protected override void OnHit(SHit _hit)
         {
             m_IsAttacking = false;
+            m_IsAttackCommitted = false;
             SetAttackRange(false);
             if (Fsm != null && Fsm.GetState(UnitConst.StateHit) != null)
                 Fsm.Set(UnitConst.StateHit);
@@ -76,6 +80,7 @@ namespace Game
         protected override void OnDie()
         {
             m_IsAttacking = false;
+            m_IsAttackCommitted = false;
             SetAttackRange(false);
             base.OnDie();
         }
@@ -135,6 +140,7 @@ namespace Game
         public void BeginAttack(int _step)
         {
             m_IsAttacking = true;
+            m_IsAttackCommitted = false;
             StopMove();
             SetAttackRange(true);
             OnAttackStart(_step);
@@ -148,9 +154,12 @@ namespace Game
         public void FinishAttack()
         {
             m_IsAttacking = false;
+            m_IsAttackCommitted = false;
             SetAttackRange(false);
             OnAttackEnd();
         }
+        /// <summary>현재 공격의 이펙트와 판정 생성이 완료됐음을 기록한다.</summary>
+        public void CommitAttack() => m_IsAttackCommitted = true;
         /// <summary>_input 방향으로 이동하고 방 경계를 적용한다.</summary>
         public void Move(float _input)
         {
