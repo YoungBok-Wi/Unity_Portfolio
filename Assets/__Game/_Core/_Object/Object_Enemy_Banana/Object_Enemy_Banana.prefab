@@ -166,6 +166,7 @@ MonoBehaviour:
   m_States:
   - {fileID: 1742233571554193479}
   - {fileID: 6369023177375790588}
+  - {fileID: 6340161498585959897}
   - {fileID: 2319339828106560067}
   m_DefaultState: {fileID: 1742233571554193479}
 --- !u!1 &6946405482390748652
@@ -180,6 +181,7 @@ GameObject:
   - component: {fileID: 1742233571554193479}
   - component: {fileID: 6369023177375790588}
   - component: {fileID: 2319339828106560067}
+  - component: {fileID: 6340161498585959897}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -241,6 +243,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.FSMState_UnitDie
   m_ID: Die
+--- !u!114 &6340161498585959897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6946405482390748652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165402ff2e858f24bac342d634429df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FSMState_UnitKnockback
+  m_ID: Knockback
 --- !u!1 &8549274779097078450
 GameObject:
   m_ObjectHideFlags: 0

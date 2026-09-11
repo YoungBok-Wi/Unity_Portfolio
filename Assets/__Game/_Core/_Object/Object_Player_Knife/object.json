@@ -1,6 +1,6 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "근접 3단 콤보·점프·피격·사망 FSM과 전방 공격 범위를 갖는 Knife 플레이어",
+  "description": "Idle·Move·Jump·Attack·Hit·Knockback·Die FSM과 근접 3단 콤보·전방 공격 범위를 갖는 Knife 플레이어",
   "inAsset": true
 }

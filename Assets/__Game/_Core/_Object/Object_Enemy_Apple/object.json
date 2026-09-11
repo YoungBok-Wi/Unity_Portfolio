@@ -1,6 +1,6 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "Move·Attack·Die FSM과 프레임 애니메이션·아이콘을 갖는 근접 Apple 적",
+  "description": "Move·Attack·Knockback·Die FSM과 근접 공격을 갖는 Apple 적",
   "inAsset": true
 }

@@ -1,6 +1,6 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "정지 연사·점프·피격·사망 FSM과 Gun 전용 동작을 갖는 원거리 플레이어",
+  "description": "Idle·Move·Jump·Attack·Hit·Knockback·Die FSM과 정지 연사 동작을 갖는 Gun 플레이어",
   "inAsset": true
 }
