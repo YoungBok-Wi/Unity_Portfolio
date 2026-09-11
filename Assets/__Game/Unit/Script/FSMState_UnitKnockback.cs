@@ -29,8 +29,6 @@ namespace Game
         protected override void OnStart()
         {
             Begin();
-            if (Unit.Anim != null)
-                Unit.Anim.Play(UnitConst.AnimHit, false);
         }
         protected override FSMState OnUpdate()
         {
