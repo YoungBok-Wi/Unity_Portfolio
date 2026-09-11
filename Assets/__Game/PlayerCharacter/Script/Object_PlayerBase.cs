@@ -26,6 +26,7 @@ namespace Game
         internal bool IsGrounded => Physics != null && Physics.FlyState == CharacterPhysicsBase.EFlyState.None;
         internal bool CanControl => !IsDead.v && !IsStunned && 0f < Time.timeScale && LocalRoomManager.instance != null && LocalRoomManager.instance.State.v == ERoomState.Playing;
         protected LocalGameManager Game => LocalGameManager.instance;
+        internal override string KnockbackReturnState => IsGrounded && Mathf.Abs(m_MoveInput) > 0f ? UnitConst.StateMove : UnitConst.StateIdle;
         #endregion
         #region Value
         private CharacterTable m_CharacterData;
@@ -39,9 +40,8 @@ namespace Game
         #endregion
 
         #region Event
-        protected override void Update()
+        private void Update()
         {
-            base.Update();
             ReadInput();
         }
         protected override (int hp, float moveSpeed) LoadBase()

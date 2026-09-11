@@ -9,6 +9,7 @@ namespace Game
         public const string StateJump = "Jump";
         public const string StateAttack = "Attack";
         public const string StateHit = "Hit";
+        public const string StateKnockback = "Knockback";
         public const string StateDie = "Die";
         public const string StateSkill1 = "Skill1";
         public const string StateSkill2 = "Skill2";

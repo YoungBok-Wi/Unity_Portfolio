@@ -34,6 +34,7 @@ namespace Game
         [SerializeField, Tooltip("Gun 해금음")] private AudioClip m_SfxUnlock;
         [SerializeField, Tooltip("전투 BGM (없으면 재생 생략)")] private AudioClip m_Bgm;
         [SerializeField, Tooltip("넉백 거리 진행 곡선")] private AnimationCurve m_KnockbackCurve = new(new Keyframe(0f, 0f), new Keyframe(0.25f, 0.85f), new Keyframe(1f, 1f));
+        [SerializeField, Min(0f), Tooltip("넉백 완료 뒤 스턴 시간 (초)")] private float m_KnockbackStunSec = 0.1f;
         [SerializeField, Tooltip("Knife 단계별 궤적 크기")] private float[] m_SlashStepScale = { 1f, 1.25f, 1.5f };
         [SerializeField, Tooltip("Knife 단계별 궤적 색")] private Color[] m_SlashStepColor = { Color.white, new Color(1f, 0.95f, 0.65f), new Color(1f, 0.55f, 0.15f) };
         [SerializeField, Tooltip("공격 단계별 히트 이펙트 크기")] private float[] m_HitStepScale = { 1f, 1.2f, 1.4f };
@@ -47,6 +48,8 @@ namespace Game
         public Object_BossBase Boss { get; private set; }
         /// <summary>넉백 거리 진행 곡선을 반환한다.</summary>
         public AnimationCurve KnockbackCurve => m_KnockbackCurve;
+        /// <summary>넉백 완료 뒤 스턴 시간을 초 단위로 반환한다.</summary>
+        public float KnockbackStunSec => Mathf.Max(0f, m_KnockbackStunSec);
         /// <summary>살아 있는 일반 적 수 (스폰·사망마다 갱신)</summary>
         public IReadOnlyIntValue AliveEnemyCount => m_AliveEnemyCount;
         /// <summary>플레이어 사망 통지</summary>

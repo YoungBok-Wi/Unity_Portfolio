@@ -2,6 +2,7 @@ using Library;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game
 {
@@ -10,6 +11,7 @@ namespace Game
     {
         #region Inspector
         [SerializeField, Tooltip("행 우선 순서의 12x7 타일")] private RectTransform[] m_Tiles;
+        [SerializeField, Tooltip("모든 타일에 표시할 플레이어 얼굴 Sprite")] private Sprite m_Face;
         #endregion
         #region Value
 
@@ -24,6 +26,18 @@ namespace Game
         {
             if (m_Tiles == null || m_Tiles.Length != ColumnCount * RowCount)
                 throw new InvalidOperationException($"{name} : Face 타일은 {ColumnCount * RowCount}개여야 한다");
+            if (m_Face == null)
+                throw new InvalidOperationException($"{name} : 플레이어 얼굴 Sprite가 없다");
+            foreach (var tile in m_Tiles)
+            {
+                if (tile == null)
+                    throw new InvalidOperationException($"{name} : Face 타일 배열에 빈 슬롯이 있다");
+                var image = tile.GetComponent<Image>();
+                if (image == null)
+                    throw new InvalidOperationException($"{tile.name} : Image가 없다");
+                image.sprite = m_Face;
+                image.preserveAspect = true;
+            }
             SetAllScale(0f);
             base.Init();
         }
@@ -58,7 +72,10 @@ namespace Game
                     int row = i / ColumnCount;
                     int column = i % ColumnCount;
                     float progress = Mathf.Clamp01((elapsed - (row + column) * delayStep) / scaleSecond);
-                    SetScale(m_Tiles[i], Mathf.Lerp(_from, _to, progress));
+                    float scale = _from < _to
+                        ? Mathf.LerpUnclamped(_from, _to, EaseOutBack(progress))
+                        : Mathf.SmoothStep(_from, _to, progress);
+                    SetScale(m_Tiles[i], scale);
                 }
                 yield return null;
             }
@@ -78,6 +95,11 @@ namespace Game
         private static void SetScale(RectTransform _tile, float _scale)
         {
             _tile.localScale = new Vector3(_scale, _scale, 1f);
+        }
+        private static float EaseOutBack(float _progress)
+        {
+            float shifted = _progress - 1f;
+            return 1f + 2.70158f * shifted * shifted * shifted + 1.70158f * shifted * shifted;
         }
         #endregion
     }

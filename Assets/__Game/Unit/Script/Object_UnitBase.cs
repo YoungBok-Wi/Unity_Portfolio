@@ -1,4 +1,5 @@
 using Library;
+using System;
 using UnityEngine;
 
 namespace Game
@@ -32,7 +33,7 @@ namespace Game
         /// <summary>사망 여부 읽기 값을 반환한다.</summary>
         public IReadOnlyBoolValue IsDead => m_IsDead;
         /// <summary>넉백 또는 피격 경직 중인지 반환한다.</summary>
-        public bool IsStunned => m_KnockElapsed < m_KnockTime || 0f < m_StunTimer;
+        public bool IsStunned => m_Fsm != null && m_Fsm.CurState != null && m_Fsm.CurState.v == UnitConst.StateKnockback;
         /// <summary>월드 타격점을 반환한다.</summary>
         public Vector2 HitPoint => (Vector2)transform.position + Vector2.up * m_HitHeight;
         /// <summary>바라보는 수평 방향을 반환한다.</summary>
@@ -50,16 +51,15 @@ namespace Game
         }
         /// <summary>스폰 직후 진입할 상태 ID를 반환한다.</summary>
         protected virtual string SpawnState => UnitConst.StateIdle;
+        /// <summary>넉백 종료 뒤 복귀할 상태 ID를 반환한다.</summary>
+        internal virtual string KnockbackReturnState => SpawnState;
         #endregion
         #region Value
         private IntValue m_Hp;
         private IntValue m_MaxHp;
         private BoolValue m_IsDead;
-        private float m_StunTimer;
-        private float m_KnockElapsed;
         private float m_KnockTime;
         private float m_KnockDistance;
-        private float m_KnockApplied;
         private int m_KnockDirection;
         private float m_MoveSpeedBase;
         private int m_Facing;
@@ -86,34 +86,6 @@ namespace Game
                 m_Fsm.Init();
             base.Init();
         }
-        protected virtual void Update()
-        {
-            if (m_KnockElapsed < m_KnockTime || m_StunTimer <= 0f)
-                return;
-            m_StunTimer -= Time.deltaTime;
-            if (m_StunTimer <= 0f)
-            {
-                SetMoveSpeed(m_MoveSpeedBase);
-                StopHorizontal();
-            }
-        }
-        protected virtual void FixedUpdate()
-        {
-            if (m_Physics == null || m_KnockTime <= m_KnockElapsed)
-                return;
-            float nextElapsed = Mathf.Min(m_KnockElapsed + Time.fixedDeltaTime, m_KnockTime);
-            float progress = nextElapsed / m_KnockTime;
-            var curve = LocalGameManager.instance != null ? LocalGameManager.instance.KnockbackCurve : null;
-            float normalized = curve != null ? curve.Evaluate(progress) : progress;
-            float targetDistance = m_KnockDistance * normalized;
-            float delta = Mathf.Max(0f, targetDistance - m_KnockApplied);
-            m_Physics.MoveSpeed.v = delta / Time.fixedDeltaTime;
-            m_Physics.Move(m_KnockDirection, true);
-            m_KnockApplied = targetDistance;
-            m_KnockElapsed = nextElapsed;
-            if (m_KnockTime <= m_KnockElapsed)
-                m_StunTimer = Mathf.Max(0f, TableManager.instance.Const.Battle_HitStunSec);
-        }
         protected abstract (int hp, float moveSpeed) LoadBase();
         protected virtual void OnSpawned()
         {
@@ -137,8 +109,6 @@ namespace Game
         {
             transform.position = _pos;
             m_AttackScale = _atkScale;
-            m_StunTimer = 0f;
-            m_KnockElapsed = 0f;
             m_KnockTime = 0f;
             var (hp, moveSpeed) = LoadBase();
             m_MaxHp.Set(Mathf.Max(1, Mathf.RoundToInt(hp * _hpScale)), false, false);
@@ -159,12 +129,9 @@ namespace Game
             m_Hp.v = Mathf.Max(0, m_Hp.v - _hit.Damage);
             if (!IsKnockbackImmune && m_Physics != null && 0f < _hit.KnockbackTime && 0f <= _hit.KnockbackDist)
             {
-                m_KnockElapsed = 0f;
                 m_KnockTime = _hit.KnockbackTime;
                 m_KnockDistance = _hit.KnockbackDist * Mathf.Max(0f, KnockbackRate);
-                m_KnockApplied = 0f;
                 m_KnockDirection = _hit.Direction < 0 ? -1 : 1;
-                m_StunTimer = 0f;
             }
             if (m_Hp.v == 0)
             {
@@ -172,8 +139,38 @@ namespace Game
                 OnDie();
             }
             else
+            {
                 OnHit(_hit);
+                if (0f < m_KnockTime)
+                {
+                    if (m_Fsm == null)
+                        throw new InvalidOperationException($"{name} : 넉백 FSM이 없다");
+                    var state = m_Fsm.GetState<FSMState_UnitKnockback>(UnitConst.StateKnockback);
+                    if (state == null)
+                        throw new InvalidOperationException($"{name} : Knockback 상태가 등록되지 않았다");
+                    if (m_Fsm.CurStateObject == state)
+                        state.Restart();
+                    else
+                        m_Fsm.Set(state);
+                }
+            }
             return true;
+        }
+        /// <summary>대기 중인 넉백의 시간·거리·방향을 반환하고 소비한다.</summary>
+        public bool TryConsumeKnockback(out float _time, out float _distance, out int _direction)
+        {
+            _time = m_KnockTime;
+            _distance = m_KnockDistance;
+            _direction = m_KnockDirection;
+            m_KnockTime = 0f;
+            m_KnockDistance = 0f;
+            return 0f < _time;
+        }
+        /// <summary>넉백 전에 보관한 기본 이동 속도를 복원한다.</summary>
+        public void RestoreMoveSpeed()
+        {
+            if (m_Physics != null)
+                m_Physics.MoveSpeed.v = m_MoveSpeedBase;
         }
         /// <summary>현재 HP를 _amount만큼 회복한다.</summary>
         public void Heal(int _amount)
