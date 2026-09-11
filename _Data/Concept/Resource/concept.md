@@ -34,7 +34,7 @@ description: |
    - Gun 전용 대기·이동 — `AnimationSheet_Casual_Player`에 `Idle_Gun`·`Move_Gun` 추가 (케첩 건을 든 실루엣, 기존 `Idle`·`Move`는 Knife 전용으로 확정해 Gun이 공유하지 않는다)
    - 로비 중앙 요리사 — 신규 타입 `Illust_Casual_Chef` (Knife·Gun 2종, 선택 캐릭터에 따라 교체)
    - 사운드 — `BGM_Casual`(Lobby·Battle)·`SFX_Casual_Battle`(Attack·Hit·Die)·`SFX_Casual_Progress`(LevelUp·Unlock) 7건 업로드 (`BGM_Casual`은 타입 정의(`type.json`)가 없어 타입 등록이 선행 — 규격은 "사운드컨셉")
-   - 씬 전환 얼굴 타일 — 신규 타입 `Icon_Casual_Face` (`Illust_Casual_Chef/Knife` 머리(모자+얼굴) 크롭 1건 `Chef`, 256x256 투명 배경, 코드 합성 반입)
+   - 씬 전환 얼굴 타일 — 신규 타입 `Icon_Casual_Face` (`Illust_Casual_Chef/Knife` 머리(모자+얼굴) 크롭 1건 `Chef`, 256x256 투명 배경, 코드 합성 반입). `SceneChangeAni_Face`의 12x7 타일 84개 모두 같은 `Chef` 얼굴을 사용하며 빈 타일·단색 대체 타일은 두지 않는다
    - 저체력 비네트 — 신규 타입 `UI_Common_Gradient` 파일 `Vignette` (512x512, 중심 투명 → 외곽 백색 알파 1 방사형 그라데이션, 코드 합성 반입, 순백이라 소비처가 `Image.color`로 틴트)
    - 일본어 한자 폴백 서체 — 신규 타입 `Font_Casual_NotoSansJP` (Noto Sans JP Regular, SIL OFL 1.1, 반입·라이선스 동봉) — 주 서체 `Font_Casual_GyeonggiTitle_*`가 한글·라틴·가나만 담아 한자가 □로 나오므로 TMP `DefaultFont`·`DefaultFont_Bold` 폴백 테이블에 연결한다(Dynamic 아틀라스 1024, 폴백 에셋은 연결 대상 서체와 같은 샘플링·패딩(`DefaultFont` 96pt·4, `DefaultFont_Bold` 64pt·2)으로 각각 만든다 — 다르면 외곽선·밑판 머티리얼이 폴백 글리프에서 뒤틀린다, 폴백 전용 — 가나·한글·라틴은 주 서체 유지). 획이 고른 산세리프라 둥근 제목체와 다르지만 한자 한정이라 테마 마디 `Casual` 안에 둔다
 
@@ -150,10 +150,10 @@ description: |
 
 ### Icon_Casual_Face
 - 캔버스: 256x256
-- 기준 높이: 232 (상하 12px 여백, `Illust_Casual_Chef/Knife` 머리 크롭을 균일 축소)
+- 기준 높이: 252 (알파>0 경계 y 4~255 실측, `Illust_Casual_Chef/Knife` 머리 크롭)
 - 피벗: 중심 (0.5, 0.5)
-- 점유율: 캔버스 세로 90%, 씬 전환 타일 표시 160px
-- 서열: 아이콘 공통 (타일 격자 12x7이 1920x1080을 덮는다)
+- 점유율: 캔버스 세로 98.4%, 씬 전환 타일 표시 160px. 원본 종횡비를 유지해 타일 중심에 배치하고 투명 여백을 보존한다
+- 서열: 아이콘 공통 (타일 격자 12x7이 1920x1080을 덮으며 각 타일에서 모자·눈·입이 잘리지 않고 식별된다)
 
 ### UI_Common_Gradient
 - 캔버스: 512x512
@@ -220,7 +220,7 @@ description: |
    - HP 비율이 임계 미만이면 HUD 외곽 비네트가 연하게 깜빡인다 ("UI" 저체력 경고, 값은 `밸런스컨셉`)
 
 **씬 전환**
-   - `SceneChangeAni_Face` — `Icon_Casual_Face/Chef` 타일 12x7 격자가 화면 대각선(행+열 순) 지연으로 스케일 0→1 팝해 가리고(총 0.6s), 새 씬이 오르면 같은 순서로 1→0 소멸해 걷는다 (Overlay 캔버스, unscaled 시간)
+   - `SceneChangeAni_Face` — 타일 12x7 격자 84개 전부에 투명 배경 `Icon_Casual_Face/Chef`를 원본 종횡비로 배치한다. 얼굴 타일은 화면 대각선(행+열 순)의 짧은 지연마다 스케일 0→1로 통통 튀듯 연속 팝해 화면을 가리고(총 0.6s), 새 씬이 오르면 같은 순서로 1→0 소멸해 걷는다 (빈 타일·단색 대체 타일 없음, Overlay 캔버스, unscaled 시간)
 
 ## 애니메이션 규격
 - 시트 구성: 한 동작 = 파일 1건, 프레임 슬롯 6개 (4~8프레임, 남는 슬롯 비움)
