@@ -349,14 +349,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game::Game.SpriteAnimPlayer
   m_Renderer: {fileID: 8903690641148378485}
   m_Clips:
-  - Name: Idle
+  - Name: Idle_Gun
     Frames:
     - {fileID: 21300000, guid: 59e046c0d1ef15042996f76c868d5d02, type: 3}
     - {fileID: 21300000, guid: e75ceeba6aa143f48a7d768c8305627f, type: 3}
     - {fileID: 21300000, guid: 3e9bc4cfdd2188944b72690cf99984f9, type: 3}
     - {fileID: 21300000, guid: f345a721372f28c49b009b1f96cb97e8, type: 3}
     Fps: 10
-  - Name: Move
+  - Name: Move_Gun
     Frames:
     - {fileID: 21300000, guid: b6114d889800c804e8631efaa2976799, type: 3}
     - {fileID: 21300000, guid: e5106779d5a69e449b0d89386a14f8b6, type: 3}
