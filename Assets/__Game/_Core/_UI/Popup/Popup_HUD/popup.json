@@ -1,7 +1,7 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "전투 HUD: HP·저체력 비네트·방·웨이브·재화·히스토리·일시정지 표시",
+  "description": "전투 HUD — 일시정지 버튼 Animator_Button 전환",
   "inAsset": true,
   "sortOrder": 0
 }

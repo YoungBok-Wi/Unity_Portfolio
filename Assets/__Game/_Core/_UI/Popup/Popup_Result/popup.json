@@ -1,7 +1,7 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "방 진행 결과·획득 빵가루·해금·확인을 표시하는 팝업",
+  "description": "방 진행 결과 팝업 — 확인 버튼 Animator_Button 전환",
   "inAsset": true,
   "sortOrder": 0
 }

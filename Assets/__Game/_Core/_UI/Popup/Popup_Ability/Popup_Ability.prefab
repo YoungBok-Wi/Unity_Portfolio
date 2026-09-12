@@ -555,6 +555,7 @@ GameObject:
   - component: {fileID: 729332708807001211}
   - component: {fileID: 2082055402461801476}
   - component: {fileID: 605489549646138594}
+  - component: {fileID: 7486087038288083022}
   m_Layer: 0
   m_Name: RerollButton
   m_TagString: Untagged
@@ -639,7 +640,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -677,6 +678,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Library::Library.UIWrapper_Button
   m_Delay: 0.5
+--- !u!95 &7486087038288083022
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8436175023351006830}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8d13b111f7670484c9239b808f35f5a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1063780119554873576
 PrefabInstance:
   m_ObjectHideFlags: 0

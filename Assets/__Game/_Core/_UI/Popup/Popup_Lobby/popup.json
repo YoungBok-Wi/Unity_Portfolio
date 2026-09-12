@@ -1,7 +1,7 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "캐릭터·스킨 선택과 게임 시작을 제공하는 로비 팝업",
+  "description": "캐릭터 선택·게임 시작 로비 팝업 — 전체 버튼 Animator_Button 전환",
   "inAsset": true,
   "sortOrder": 0
 }

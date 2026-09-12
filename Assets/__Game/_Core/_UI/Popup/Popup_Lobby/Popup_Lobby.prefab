@@ -390,6 +390,7 @@ GameObject:
   - component: {fileID: 486396742460911680}
   - component: {fileID: 8910262279943237773}
   - component: {fileID: 5001464720305104247}
+  - component: {fileID: 5287183464322787217}
   m_Layer: 0
   m_Name: StartButton
   m_TagString: Untagged
@@ -474,7 +475,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -512,6 +513,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Library::Library.UIWrapper_Button
   m_Delay: 0.5
+--- !u!95 &5287183464322787217
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2609016801169020495}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8d13b111f7670484c9239b808f35f5a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2733166110547529848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,6 +1148,7 @@ GameObject:
   - component: {fileID: 8825495935937579993}
   - component: {fileID: 6637664016039335383}
   - component: {fileID: 2276335402759422612}
+  - component: {fileID: 5594337049194563113}
   m_Layer: 0
   m_Name: GunCard
   m_TagString: Untagged
@@ -1213,7 +1237,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1251,6 +1275,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Library::Library.UIWrapper_Button
   m_Delay: 0.5
+--- !u!95 &5594337049194563113
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4353863609140778377}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8d13b111f7670484c9239b808f35f5a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4626075744704400050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,6 +1345,7 @@ GameObject:
   - component: {fileID: 8384164654238063133}
   - component: {fileID: 3420827149448027707}
   - component: {fileID: 2948914775121624943}
+  - component: {fileID: 762179134126524861}
   m_Layer: 0
   m_Name: SettingButton
   m_TagString: Untagged
@@ -1382,7 +1429,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1420,6 +1467,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Library::Library.UIWrapper_Button
   m_Delay: 0.5
+--- !u!95 &762179134126524861
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5239371527832207894}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8d13b111f7670484c9239b808f35f5a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5579209363502863395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,6 +1762,7 @@ GameObject:
   - component: {fileID: 6387024775223765565}
   - component: {fileID: 2542201996624414339}
   - component: {fileID: 7952799477646925321}
+  - component: {fileID: 2628920871836166523}
   m_Layer: 0
   m_Name: KnifeCard
   m_TagString: Untagged
@@ -1780,7 +1850,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1818,6 +1888,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Library::Library.UIWrapper_Button
   m_Delay: 0.5
+--- !u!95 &2628920871836166523
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6840549783474755328}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8d13b111f7670484c9239b808f35f5a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6849688067172353695
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "전투 재개·설정·포기를 제공하는 일시정지 팝업",
+  "description": "전투 재개·설정·포기 팝업 — 전체 버튼 Animator_Button 전환",
   "inAsset": true,
   "sortOrder": 0
 }
