@@ -1,7 +1,7 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "캐릭터 선택·게임 시작 로비 팝업 — 전체 버튼 Animator_Button 전환",
+  "description": "로비 팝업 — 캐릭터 카드·시작·설정 버튼이 표준 Control_Button 계층과 Animator_Button 전환을 사용",
   "inAsset": true,
   "sortOrder": 0
 }

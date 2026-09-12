@@ -1,7 +1,7 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "능력 카드 선택·재굴림 프레임형 팝업 — Position·Rotation·Scale·Alpha 애니메이션",
+  "description": "능력 선택 팝업 — 능력 카드와 재시도 버튼이 표준 Control_Button 계층과 Animator_Button 전환을 사용",
   "inAsset": true,
   "sortOrder": 0
 }

@@ -1,7 +1,7 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "방 진행 결과 프레임형 팝업 — Position·Rotation·Scale·Alpha 애니메이션",
+  "description": "결과 팝업 — 확인 버튼이 표준 Control_Button_Box 계층과 Animator_Button 전환을 사용",
   "inAsset": true,
   "sortOrder": 0
 }
