@@ -37,6 +37,7 @@ namespace Game
         private bool m_AttackPressed;
         private bool m_AttackHeld;
         private bool m_IsAttackCommitted;
+        private float m_NextAttackTime;
         private string m_CurAnim;
         private bool m_CurLoop;
         #endregion
@@ -62,6 +63,7 @@ namespace Game
             m_AttackPressed = false;
             m_AttackHeld = false;
             m_IsAttackCommitted = false;
+            m_NextAttackTime = 0f;
             SetAttackRange(false);
             PlayAnim(UnitConst.AnimIdle, true);
             base.OnSpawned();
@@ -129,8 +131,8 @@ namespace Game
         #region Function
         /// <summary>대기 중인 점프 입력을 소비한다.</summary>
         public void ConsumeJump() => m_JumpPressed = false;
-        /// <summary>현재 공격을 시작할 수 있는지 반환한다.</summary>
-        public bool IsAttackReady() => CanControl && !IsAttacking;
+        /// <summary>조작 가능하고 이전 공격 간격이 지난 경우 다음 공격을 시작할 수 있음을 반환한다.</summary>
+        public bool IsAttackReady() => CanControl && !IsAttacking && m_NextAttackTime <= Time.time;
         /// <summary>능력 배율을 반영한 공격 간격을 반환한다.</summary>
         public float AttackInterval()
         {
@@ -141,6 +143,7 @@ namespace Game
         {
             m_IsAttacking = true;
             m_IsAttackCommitted = false;
+            m_NextAttackTime = Time.time + Mathf.Max(0.01f, AttackInterval());
             StopMove();
             SetAttackRange(true);
             OnAttackStart(_step);
