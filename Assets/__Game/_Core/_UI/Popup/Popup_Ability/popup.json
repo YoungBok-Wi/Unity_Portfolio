@@ -1,7 +1,7 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "능력 카드 선택·재굴림 팝업 — 전체 버튼 Animator_Button 전환",
+  "description": "능력 카드 선택·재굴림 프레임형 팝업 — Position·Rotation·Scale·Alpha 애니메이션",
   "inAsset": true,
   "sortOrder": 0
 }

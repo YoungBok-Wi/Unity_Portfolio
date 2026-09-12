@@ -1,7 +1,7 @@
 {
   "reuse": "add",
   "confirmed": {},
-  "description": "전투 재개·설정·포기 팝업 — 전체 버튼 Animator_Button 전환",
+  "description": "전투 재개·설정·포기 프레임형 팝업 — Position·Rotation·Scale·Alpha 애니메이션",
   "inAsset": true,
   "sortOrder": 0
 }
